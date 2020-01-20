@@ -62,13 +62,13 @@ public class CommandEffectExecutor : MonoBehaviour
     private IEnumerator PhysicalAttack(PhysicalAttackEffect physicalAttackEffect, BattleCharacter owner, BattleCharacter target)
     {
         float damageRate = physicalAttackEffect.damageRate;
-        int damege = (owner.status.attack / 2) - (target.status.deffence / 4);
-        damege = (int)(damege * damageRate);
+        int damage = BattleFormula.PhysicalAttackDamage(owner.status,target.status);
+        damage = (int)(damage * damageRate);
 
         directionExecution.Hit();
 
-        target.ReceiveDamage(damege);
-        yield return StartCoroutine(message.ShowAuto(target.CharacterName + "は" + damege + "うけた"));
+        target.ReceiveDamage(damage);
+        yield return StartCoroutine(message.ShowAuto(target.CharacterName + "は" + damage + "うけた"));
         yield break;
     }
 
