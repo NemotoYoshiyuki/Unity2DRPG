@@ -16,6 +16,9 @@ public class AnimationStateController : MonoBehaviour
         // コントローラをセットしたオブジェクトに紐付いている
         // Animatorを取得する
         this.animator = GetComponent<Animator>();
+
+        //開始時に正面を向かせる
+        setStateToAnimator(Vector2.down);
     }
 
     /**
