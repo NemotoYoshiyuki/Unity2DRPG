@@ -21,7 +21,7 @@ public class MessageWindow : MonoBehaviour
     {
         ShowText(text);
         yield return new WaitForEndOfFrame();
-        yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Return));
+        yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Return) || Input.GetButtonDown("Fire1"));
         yield break;
     }
 
