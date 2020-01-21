@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be46f72873aa1ef4384d104cb8bc93cb, type: 3}
+  m_Name: "\u3072\u306E\u3053"
+  m_EditorClassIdentifier: 
+  characterName: "\u3072\u306E\u3053"
+  status:
+    lv: 0
+    maxHp: 77
+    hp: 77
+    maxMp: 77
+    mp: 77
+    attack: 77
+    deffence: 77
+    speed: 77
+    exp: 77
+  graphic: {fileID: 21300000, guid: a5d3c03baf6e0e1498f8a83073b00db4, type: 3}
+  exp: 77
+  commands:
+  - {fileID: 11400000, guid: c3df78851716f754dafd35ac1e4c665b, type: 2}
+  - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
