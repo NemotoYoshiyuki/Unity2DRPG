@@ -70,7 +70,7 @@ public class TargetFilter
             case TargetRange.単体:
                 return Randam(target);
             case TargetRange.全体:
-                return (List<BattleCharacter>)target;
+                return target.Cast<BattleCharacter>().ToList();
             default:
                 break;
         }
@@ -114,7 +114,7 @@ public class TargetFilter
             case TargetRange.単体:
                 return Randam(target);
             case TargetRange.全体:
-                return (List<BattleCharacter>)target;
+                return target.Cast<BattleCharacter>().ToList();
             default:
                 break;
         }
