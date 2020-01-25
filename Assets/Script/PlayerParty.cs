@@ -27,7 +27,7 @@ public class PlayerParty : MonoBehaviour
         return partyMember.Where(x => !x.IsDead()).ToList();
     }
 
-    public void Create(SaveData.PlayerParty playerParty)
+    public void Create(SaveData.PartyData playerParty)
     {
         //セーブデータを元に再構成する
     }
