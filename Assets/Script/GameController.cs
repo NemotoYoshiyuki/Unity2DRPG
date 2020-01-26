@@ -27,12 +27,24 @@ public class GameController : MonoBehaviour
 
     public void Save()
     {
-        //保存
+        //前回のセーブデータを破棄
+        this.saveData = new SaveData();
+
+        //ゲームデータ保存
         saveData.gameData.playerPotion = PlayerInput.playerPotision;
         saveData.gameData.sceneName = SceneController.Instance.CurrentScene;
 
+        //インベントリデータ保存
         saveData.inventoryData.SetInventorySystem(inventorySystem);
 
+        //パーティー保存
+        var partyMember = PlayerParty.instance.partyMember;
+        foreach (var item in partyMember)
+        {
+            saveData.partyData.SetData(item.playerData, item.status);
+        }
+
+        //ファイルに書き込む
         GetSaveSystem().Save(this);
     }
 

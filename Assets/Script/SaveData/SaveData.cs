@@ -20,7 +20,7 @@ public class SaveData
     [System.Serializable]
     public class InventoryData
     {
-        public InventorySystem inventorySystem;
+        public InventorySystem inventorySystem = new InventorySystem();
 
         public void SetInventorySystem(InventorySystem inventorySystem)
         {
@@ -31,10 +31,12 @@ public class SaveData
     [System.Serializable]
     public class PartyData
     {
-        //メンバー　サブメンバー
-        //メンバーのステータス
-        public PlayerParty PlayerParty;
-        public List<PlayerCharacterData> characterDatas;
+        public List<PlayerCharacterData> characterDatas = new List<PlayerCharacterData>();
+
+        public void SetData(PlayerData characterData, Status characterStatus)
+        {
+            this.characterDatas.Add(new PlayerCharacterData(characterData, characterStatus));
+        }
     }
 
     [System.Serializable]
@@ -43,5 +45,12 @@ public class SaveData
         public string characterName;
         public PlayerData characterData;
         public Status characterStatus;
+
+        public PlayerCharacterData(PlayerData playerData, Status status)
+        {
+            this.characterName = playerData.characterName;
+            this.characterData = playerData;
+            this.characterStatus = status.Copy();
+        }
     }
 }

@@ -21,4 +21,19 @@ public class SaveSystem
     {
         JsonSerializer.Load(obj, SaveFileName);
     }
+
+    public void Clear()
+    {
+
+    }
+
+    public void Copy()
+    {
+
+    }
+
+    public void Delete()
+    {
+
+    }
 }
