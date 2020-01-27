@@ -52,5 +52,6 @@ public class GameController : MonoBehaviour
     {
         //復元
         GetSaveSystem().Load(this);
+        PlayerParty.instance.Load();
     }
 }
