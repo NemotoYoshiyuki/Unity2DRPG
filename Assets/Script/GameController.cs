@@ -27,6 +27,11 @@ public class GameController : MonoBehaviour
         return instance.saveSystem;
     }
 
+    public static SaveData GetSaveData()
+    {
+        return instance.saveData;
+    }
+
     public void Save()
     {
         //前回のセーブデータを破棄

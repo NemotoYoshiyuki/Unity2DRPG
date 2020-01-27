@@ -53,6 +53,19 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(newSceneName);
     }
 
+    public void Transition(string newSceneName, Vector2 playerPosition)
+    {
+        StartCoroutine(TransitionInternal(newSceneName, playerPosition));
+    }
+
+    public IEnumerator TransitionInternal(string newSceneName, Vector2 playerPosition)
+    {
+        yield return SceneManager.LoadSceneAsync(newSceneName);
+        PlayerInput playerInput = PlayerTransitionController.Instance.FindPlayerInput();
+        playerInput.transform.position = playerPosition;
+        yield break;
+    }
+
     public void BackToField()
     {
         //バトルシーンからフィールドシーンに戻ります

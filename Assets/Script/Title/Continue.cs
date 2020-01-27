@@ -17,11 +17,15 @@ public class Continue : MonoBehaviour
 
     public void PlayContinue()
     {
-        //未実装
+        GameController.instance.Load();
+        SaveData.GameData gameData = GameController.GetSaveData().gameData;
+
+        //プレイヤーの位置を指定してシーンを再生
+        SceneController.Instance.Transition(gameData.sceneName,gameData.playerPotion);
     }
 
     private bool ExistsSaveData()
     {
-        return false;
+        return GameController.GetSaveSystem().ExistsSaveData();
     }
 }
