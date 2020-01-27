@@ -14,12 +14,6 @@ public class PlayerParty : MonoBehaviour
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
-
-        //セーブデータが存在する時
-        if (true)
-        {
-            //Create();
-        }
     }
 
     public List<PlayerCharacter> AliveMember()
@@ -33,8 +27,11 @@ public class PlayerParty : MonoBehaviour
         player.name = playerData.characterName;
 
         PlayerCharacter playerCharacter = player.GetComponent<PlayerCharacter>();
-        //playerCharacter.CharacterName = playerData.characterName;
-        playerCharacter.status = Instantiate(playerData).status;
+        PlayerData _playerData = Instantiate(playerData);
+
+        playerCharacter.CharacterName = _playerData.characterName;
+        playerCharacter.playerData = _playerData;
+        playerCharacter.status = _playerData.status;
         return playerCharacter;
     }
 
@@ -44,7 +41,7 @@ public class PlayerParty : MonoBehaviour
         PlayerCharacter playerCharacter = Create(playerData);
         playerCharacter.transform.parent = gameObject.transform;
         partyMember.Add(playerCharacter);
-        Debug.Log(playerCharacter.CharacterName + "がパーティーに加入した");
+        Debug.Log(playerCharacter.CharacterName + "が新しくパーティーに加入した");
     }
 
     public void Join(PlayerCharacter playerCharacter)
@@ -65,12 +62,11 @@ public class PlayerParty : MonoBehaviour
         SaveData saveData = GameController.instance.saveData;
         var characterDatas = saveData.partyData.characterDatas;
 
-        foreach (var playerCharacter in characterDatas)
+        foreach (var data in characterDatas)
         {
-            PlayerCharacter character = Create(playerCharacter.characterData);
-            character.playerData = Instantiate(playerCharacter.characterData);
-            character.status = playerCharacter.characterStatus.Copy();
-            Join(character);
+            PlayerCharacter playerCharacter = Create(data.characterData);
+            playerCharacter.status = data.characterStatus.Copy();
+            Join(playerCharacter);
         }
     }
 }

@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public InventorySystem inventorySystem = new InventorySystem();
+    public int money = 0;
+
     public SaveSystem saveSystem = new SaveSystem();
     public SaveData saveData = new SaveData();
 
@@ -37,11 +39,11 @@ public class GameController : MonoBehaviour
         //インベントリデータ保存
         saveData.inventoryData.SetInventorySystem(inventorySystem);
 
-        //パーティー保存
+        //パーティーデータ保存
         var partyMember = PlayerParty.instance.partyMember;
-        foreach (var item in partyMember)
+        foreach (var member in partyMember)
         {
-            saveData.partyData.SetData(item.playerData, item.status);
+            saveData.partyData.SetData(member.playerData, member.status);
         }
 
         //ファイルに書き込む
@@ -50,7 +52,6 @@ public class GameController : MonoBehaviour
 
     public void Load()
     {
-        //復元
         GetSaveSystem().Load(this);
         PlayerParty.instance.Load();
     }
