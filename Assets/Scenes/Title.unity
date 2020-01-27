@@ -151,6 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startScene: Field
+  startPotisition: {x: 0, y: 0}
+  startItem:
+  - {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
   playerChacter: {fileID: 11400000, guid: d9a7ff1907daba249aa1b67a83e4bc6b, type: 2}
 --- !u!4 &182685628
 Transform:
@@ -1215,6 +1218,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySystem:
     itemDatas: []
+  money: 0
+  saveData:
+    gameData:
+      playerPotion: {x: 0, y: 0}
+      sceneName: 
+      money: 0
+    inventoryData:
+      inventorySystem:
+        itemDatas: []
+    partyData:
+      characterDatas: []
 --- !u!4 &1484937418
 Transform:
   m_ObjectHideFlags: 0

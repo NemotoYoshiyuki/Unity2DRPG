@@ -78,7 +78,7 @@ public class PlayerTransitionController : MonoBehaviour
         return null;
     }
 
-    protected PlayerInput FindPlayerInput()
+    public PlayerInput FindPlayerInput()
     {
         //シーン内を検索する
         PlayerInput player = FindObjectOfType<PlayerInput>();

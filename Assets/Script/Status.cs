@@ -14,4 +14,9 @@ public class Status
     public int deffence;
     public int speed;
     public int exp;
+
+    public Status Copy()
+    {
+        return (Status)this.MemberwiseClone();
+    }
 }

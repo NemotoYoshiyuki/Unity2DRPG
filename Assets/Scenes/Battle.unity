@@ -1374,8 +1374,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySystem:
-    itemDatas:
-    - {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
+    itemDatas: []
+  saveData:
+    gameData:
+      playerPotion: {x: 0, y: 0}
+      sceneName: 
+      money: 0
+    inventoryData:
+      inventorySystem:
+        itemDatas: []
+    partyData:
+      PlayerParty: {fileID: 0}
+      characterDatas: []
 --- !u!4 &526784821
 Transform:
   m_ObjectHideFlags: 0
