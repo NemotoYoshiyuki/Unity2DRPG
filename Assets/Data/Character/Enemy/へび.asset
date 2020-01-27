@@ -15,16 +15,16 @@ MonoBehaviour:
   characterName: "\u3078\u3073"
   status:
     lv: 0
-    maxHp: 77
-    hp: 77
-    maxMp: 77
-    mp: 77
-    attack: 77
-    deffence: 77
-    speed: 77
-    exp: 77
+    maxHp: 12
+    hp: 12
+    maxMp: 8
+    mp: 8
+    attack: 6
+    deffence: 6
+    speed: 6
+    exp: 100
   graphic: {fileID: 21300000, guid: f2049fc81b384324a97f20b4089c14c4, type: 3}
-  exp: 77
+  exp: 100
   commands:
-  - {fileID: 11400000, guid: c3df78851716f754dafd35ac1e4c665b, type: 2}
+  - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
   - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
