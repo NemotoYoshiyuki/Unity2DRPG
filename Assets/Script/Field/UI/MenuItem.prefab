@@ -119,6 +119,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   index: 0
+  text: {fileID: 3133487418260642979}
 --- !u!1 &3133487418260642981
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using TMPro;
+using UnityEditor;
 
 public class MenuItem : Button
 {
     public int index;
+    public TextMeshProUGUI text;
     public event Action<int> onHover;
     public event Action<int> onLeftClick;
     public event Action<int> onRightClick;
@@ -35,3 +38,16 @@ public class MenuItem : Button
         }
     }
 }
+
+#if UNITY_EDITOR
+[CanEditMultipleObjects, CustomEditor(typeof(MenuItem), true)]
+public class ButtonExEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        this.serializedObject.Update();
+        this.serializedObject.ApplyModifiedProperties();
+    }
+}
+#endif

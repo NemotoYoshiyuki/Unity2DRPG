@@ -27,6 +27,7 @@ public class SpellWindow : BaseWindow
     private List<PlayerCharacter> party;
     private SpellData hoverItem;
     private SpellData selectedItem;
+
     public void OpenWindow()
     {
         party = PlayerParty.instance.partyMember;
@@ -47,6 +48,7 @@ public class SpellWindow : BaseWindow
         {
             MenuItem _menuItem = Instantiate(menuItem);
             _menuItem.index = i;
+            _menuItem.text.SetText(spellDatas[i].skillName);
 
             _menuItem.transform.parent = list.transform;
 

@@ -44,6 +44,7 @@ public class ItemWindow : MonoBehaviour
         {
             MenuItem _menuItem = Instantiate(menuItem);
             _menuItem.index = i;
+            _menuItem.text.SetText(itemSouce[i].itemName);
 
             _menuItem.transform.parent = itemList.transform;
 
