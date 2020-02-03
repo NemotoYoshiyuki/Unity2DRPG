@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: "\u3084\u304F\u305D\u3046"
   m_EditorClassIdentifier: 
   id: 0
-  skillName: "\u3084\u304F\u305D\u3046"
+  itemName: 
   useType: 0
   targetUnit: 2
   targetRange: 1
   mp: 0
-  description: 
+  description: "30\u56DE\u5FA9\u3057\u307E\u3059"
   effects:
   - id: 0
   references:
