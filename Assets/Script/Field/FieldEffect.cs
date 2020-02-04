@@ -72,6 +72,7 @@ public class FieldEffect : MonoBehaviour
                 target.Recover(target.status.maxHp / resuscitationEffect.healRate);
                 break;
             default:
+                Debug.Log("not effect");
                 break;
         }
         //ステータス更新

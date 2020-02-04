@@ -24,6 +24,7 @@ public class SpellWindow : BaseWindow
     public FieldEffect fieldEffect;
 
     public PlayerCharacter owner;
+    private List<MenuItem> menuItems = new List<MenuItem>();
     private List<PlayerCharacter> party;
     private SpellData hoverItem;
     private SpellData selectedItem;
@@ -62,9 +63,21 @@ public class SpellWindow : BaseWindow
             {
                 selectedItem = spellDatas[index];
                 fieldEffect.Spell(selectedItem,owner);
-                gameObject.SetActive(false);
+                CloseSpellList();
             };
+
+            menuItems.Add(_menuItem);
         }
+    }
+
+    public void CloseSpellList()
+    {
+        foreach (var item in menuItems)
+        {
+            Destroy(item.gameObject);
+        }
+        menuItems.Clear();
+        gameObject.SetActive(false);
     }
 
     public void ObjectHoveredEnter(int index)

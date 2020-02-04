@@ -101,5 +101,4 @@ public class CommandEffectExecutor : MonoBehaviour
         yield return StartCoroutine(message.ShowAuto(target.CharacterName + "はいきかえった"));
         yield break;
     }
-
 }

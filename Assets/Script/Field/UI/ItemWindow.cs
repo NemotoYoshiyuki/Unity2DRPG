@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using TMPro;
 public class ItemWindow : MonoBehaviour
 {
-   
+
     public MenuItem menuItem;
     public GameObject itemList;
     public TextMeshProUGUI ItemDescription;
     public FieldEffect fieldEffect;
 
-
+    public List<MenuItem> menuItems;
     public List<ItemData> itemSouce;
     public ItemData selectedItem;
     public ItemData hoverItem;
@@ -20,7 +20,7 @@ public class ItemWindow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
 
@@ -32,6 +32,15 @@ public class ItemWindow : MonoBehaviour
     private void OnEnable()
     {
         Initialized();
+    }
+
+    private void OnDisable()
+    {
+        foreach (var item in menuItems)
+        {
+            Destroy(item.gameObject);
+        }
+        menuItems.Clear();
     }
 
     public ItemSlot[] itemSlots;
@@ -59,6 +68,8 @@ public class ItemWindow : MonoBehaviour
                 fieldEffect.Item(selectedItem);
                 gameObject.SetActive(false);
             };
+
+            menuItems.Add(_menuItem);
         }
     }
 

@@ -21,12 +21,13 @@ public class MenuWindow : BaseWindow
         if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("キャンセル");
-            currentWindow.Close();
+            Back();
         }
     }
 
     public void Back()
     {
         //一つ前の状態に戻る
+        currentWindow.Close();
     }
 }

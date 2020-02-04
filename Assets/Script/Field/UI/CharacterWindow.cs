@@ -27,6 +27,8 @@ public class CharacterWindow : BaseWindow
 
     public void Show()
     {
+        CloseWindow();
+
         member = PlayerParty.instance.partyMember;
         foreach (var item in member)
         {
@@ -38,6 +40,15 @@ public class CharacterWindow : BaseWindow
 
             characterSlots.Add(_characterSlot);
         }
+    }
+
+    public void CloseWindow()
+    {
+        foreach (var item in characterSlots)
+        {
+            Destroy(item.gameObject);
+        }
+        characterSlots.Clear();
     }
 
     //ターゲット処理
