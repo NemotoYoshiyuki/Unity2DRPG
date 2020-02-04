@@ -60,6 +60,22 @@ public class FieldEffect : MonoBehaviour
 
     public void DoEffect(CommandEffect commandEffect, PlayerCharacter target)
     {
+        switch (commandEffect)
+        {
+            //回復効果
+            case HealEffect healEffect:
+                target.Recover(healEffect.healAmount);
+                break;
+            //蘇生効果
+            case ResuscitationEffect resuscitationEffect:
+                if (target.status.hp >= 0) return;
+                target.Recover(target.status.maxHp / resuscitationEffect.healRate);
+                break;
+            default:
+                break;
+        }
+        //ステータス更新
+        characterWindow.Show();
         Debug.Log(target + commandEffect.ToString());
     }
 }
