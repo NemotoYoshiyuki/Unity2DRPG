@@ -36,6 +36,7 @@ public class SpellWindow : BaseWindow
         {
             owner = party[index];
             OpenSpellList(owner);
+            characterWindow.OffSelect();
         });
     }
 
@@ -51,7 +52,7 @@ public class SpellWindow : BaseWindow
             _menuItem.index = i;
             _menuItem.text.SetText(spellDatas[i].skillName);
 
-            _menuItem.transform.parent = list.transform;
+            _menuItem.transform.SetParent(list.transform);
 
             _menuItem.onHover += (int index) =>
             {
@@ -59,12 +60,18 @@ public class SpellWindow : BaseWindow
                 ObjectHoveredEnter(index);
             };
 
-            _menuItem.onLeftClick += (int index) =>
-            {
+            //_menuItem.onLeftClick += (int index) =>
+            //{
+            //    selectedItem = spellDatas[index];
+            //    fieldEffect.Spell(selectedItem, owner);
+            //    CloseSpellList();
+            //};
+
+            _menuItem.AddRegister((int index)=> {
                 selectedItem = spellDatas[index];
-                fieldEffect.Spell(selectedItem,owner);
+                fieldEffect.Spell(selectedItem, owner);
                 CloseSpellList();
-            };
+            });
 
             menuItems.Add(_menuItem);
         }

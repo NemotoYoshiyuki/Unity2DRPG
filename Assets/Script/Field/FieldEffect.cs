@@ -7,6 +7,10 @@ public class FieldEffect : MonoBehaviour
     public CharacterWindow characterWindow;
     public MenuItem menuItem;
 
+    public SpellData spellData;
+    public PlayerCharacter spellOwner;
+    public PlayerCharacter spellTarget;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +43,17 @@ public class FieldEffect : MonoBehaviour
     public void Spell(SpellData spellData, PlayerCharacter owner)
     {
         //MP消費
-        owner.GainMp(spellData.mp);
+        this.spellData = spellData;
+        this.spellOwner = owner;
+
+        //owner.GainMp(spellData.mp);
 
         characterWindow.OnSelect((int index) =>
         {
+            Debug.Log("d");
+            spellOwner.GainMp(this.spellData.mp);
             PlayerCharacter playerCharacter = PlayerParty.instance.partyMember[index];
-            UseItem(spellData, playerCharacter);
+            UseItem(this.spellData, playerCharacter);
         });
 
         //DoEffect(spellData.effects[0], target);
@@ -76,7 +85,8 @@ public class FieldEffect : MonoBehaviour
                 break;
         }
         //ステータス更新
-        characterWindow.Show();
+        //  characterWindow.Show();
+        characterWindow.UpdateShow();
         Debug.Log(target + commandEffect.ToString());
     }
 }

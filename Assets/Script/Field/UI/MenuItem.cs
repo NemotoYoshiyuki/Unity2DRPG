@@ -30,12 +30,17 @@ public class MenuItem : Button
         //Use this to tell when the user left-clicks on the Button
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            onLeftClick.Invoke(index);
+            onLeftClick?.Invoke(index);
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             onRightClick.Invoke(index);
         }
+    }
+
+    public void AddRegister(Action<int> action)
+    {
+        onLeftClick = action;
     }
 }
 

@@ -19,12 +19,6 @@ public class CharacterWindow : BaseWindow
         OffSelect();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Show()
     {
         CloseWindow();
@@ -36,9 +30,17 @@ public class CharacterWindow : BaseWindow
             _characterSlot.playerCharacter = item;
             _characterSlot.Show();
 
-            _characterSlot.transform.parent = list.transform;
+            _characterSlot.transform.SetParent(list.transform);
 
             characterSlots.Add(_characterSlot);
+        }
+    }
+
+    public void UpdateShow()
+    {
+        foreach (var item in characterSlots)
+        {
+            item.Show();
         }
     }
 
@@ -49,9 +51,11 @@ public class CharacterWindow : BaseWindow
             Destroy(item.gameObject);
         }
         characterSlots.Clear();
+        OffSelect();
     }
 
     //ターゲット処理
+    public SelectTargetWindow select;
     private Action<int> action;
     public void OnSelect(Action<int> onClick)
     {
@@ -62,7 +66,8 @@ public class CharacterWindow : BaseWindow
             MenuItem item = characterSlots[i].gameObject.GetComponent<MenuItem>();
             item.index = i;
             item.enabled = true;
-            item.onLeftClick += onClick;
+            item.AddRegister(onClick);
+           // item.onLeftClick += onClick;
         }
     }
 
@@ -74,11 +79,5 @@ public class CharacterWindow : BaseWindow
             item.enabled = false;
             item.onLeftClick -= action;
         }
-    }
-
-    public void Select(Action<int> onClick)
-    {
-        Show();
-        OnSelect(onClick);
     }
 }

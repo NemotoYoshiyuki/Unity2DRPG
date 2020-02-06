@@ -55,7 +55,7 @@ public class ItemWindow : MonoBehaviour
             _menuItem.index = i;
             _menuItem.text.SetText(itemSouce[i].itemName);
 
-            _menuItem.transform.parent = itemList.transform;
+            _menuItem.transform.SetParent(itemList.transform); 
 
             _menuItem.onHover += (int index) =>
             {
