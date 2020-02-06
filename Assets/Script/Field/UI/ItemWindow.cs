@@ -86,4 +86,11 @@ public class ItemWindow : MonoBehaviour
         //説明文の更新
         ItemDescription.SetText(hoverItem.description);
     }
+
+    public void ObjectOnclic(ItemSlot item)
+    {
+        hoverItem = itemSouce[item.index];
+        //説明文の更新
+        ItemDescription.SetText(hoverItem.description);
+    }
 }
