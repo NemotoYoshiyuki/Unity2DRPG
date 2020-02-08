@@ -1,18 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CharacterSelect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<MenuItem> menuItems;
+    private event Action<int> onLeftClick;
+    private CharacterWindow characterWindow;
+
+    private void Start()
     {
-        
+        characterWindow = GetComponent<CharacterWindow>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddRegister(Action<int> action)
     {
-        
+        onLeftClick = action;
+        menuItems = characterWindow.menuItems;
+
+        foreach (var item in menuItems)
+        {
+            item.AddRegister(onLeftClick); ;
+        }
+    }
+
+    public void Select(Action<int> action)
+    {
+        AddRegister(action);
+
+        foreach (var item in menuItems)
+        {
+            item.enabled = true;
+        }
+    }
+
+
+    public void Release()
+    {
+        onLeftClick -= onLeftClick;
     }
 }

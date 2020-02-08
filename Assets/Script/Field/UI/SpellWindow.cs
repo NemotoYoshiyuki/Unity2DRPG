@@ -5,26 +5,16 @@ using TMPro;
 
 public class SpellWindow : BaseWindow
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        party = PlayerParty.instance.partyMember;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+   
     public GameObject list;
-    public MenuItem menuItem;
+    public SpellSlot spellSlotPrefab;
+    private List<SpellSlot> spellSlots = new List<SpellSlot>();
+
     public TextMeshProUGUI spellDescription;
-    public CharacterWindow characterWindow;
+    public CharacterSelect selectTarget;
     public FieldEffect fieldEffect;
 
-    public PlayerCharacter owner;
-    private List<MenuItem> menuItems = new List<MenuItem>();
+    private PlayerCharacter owner;
     private List<PlayerCharacter> party;
     private SpellData hoverItem;
     private SpellData selectedItem;
@@ -32,11 +22,11 @@ public class SpellWindow : BaseWindow
     public void OpenWindow()
     {
         party = PlayerParty.instance.partyMember;
-        characterWindow.OnSelect((int index) =>
+        selectTarget.Select((int index) =>
         {
             owner = party[index];
             OpenSpellList(owner);
-            characterWindow.OffSelect();
+            selectTarget.Release();
         });
     }
 
@@ -48,47 +38,38 @@ public class SpellWindow : BaseWindow
 
         for (int i = 0; i < spellDatas.Count; i++)
         {
-            MenuItem _menuItem = Instantiate(menuItem);
+            SpellSlot _menuItem = Instantiate(spellSlotPrefab);
             _menuItem.index = i;
-            _menuItem.text.SetText(spellDatas[i].skillName);
+            _menuItem.spell = spellDatas[i];
+            _menuItem.owner = this;
 
+            _menuItem.text.SetText(spellDatas[i].skillName);
             _menuItem.transform.SetParent(list.transform);
 
-            _menuItem.onHover += (int index) =>
-            {
-                hoverItem = spellDatas[index];
-                ObjectHoveredEnter(index);
-            };
-
-            //_menuItem.onLeftClick += (int index) =>
-            //{
-            //    selectedItem = spellDatas[index];
-            //    fieldEffect.Spell(selectedItem, owner);
-            //    CloseSpellList();
-            //};
-
-            _menuItem.AddRegister((int index)=> {
-                selectedItem = spellDatas[index];
-                fieldEffect.Spell(selectedItem, owner);
-                CloseSpellList();
-            });
-
-            menuItems.Add(_menuItem);
+            spellSlots.Add(_menuItem);
         }
     }
 
     public void CloseSpellList()
     {
-        foreach (var item in menuItems)
+        foreach (var item in spellSlots)
         {
             Destroy(item.gameObject);
         }
-        menuItems.Clear();
+        spellSlots.Clear();
         gameObject.SetActive(false);
     }
 
-    public void ObjectHoveredEnter(int index)
+    public void ObjectHoveredEnter(SpellSlot spellSlot)
     {
+        hoverItem = spellSlot.spell;
         spellDescription.SetText(hoverItem.description);
+    }
+
+    public void ObjectOnClick(SpellSlot spellSlot)
+    {
+        selectedItem = spellSlot.spell;
+        fieldEffect.UseSpell(selectedItem, owner);
+        CloseSpellList();
     }
 }

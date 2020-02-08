@@ -3,31 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class ItemWindow : MonoBehaviour
+public class ItemWindow : BaseWindow
 {
-
-    public MenuItem menuItem;
+    public ItemSlot itemSlotPrefab;
     public GameObject itemList;
     public TextMeshProUGUI ItemDescription;
     public FieldEffect fieldEffect;
 
-    public List<MenuItem> menuItems;
-    public List<ItemData> itemSouce;
-    public ItemData selectedItem;
-    public ItemData hoverItem;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-
-    public void Open()
-    {
-
-    }
+    private List<ItemSlot> itemSlots = new List<ItemSlot>();
+    private List<ItemData> itemSouce;
+    private ItemData selectedItem;
+    private ItemData hoverItem;
 
     private void OnEnable()
     {
@@ -36,49 +22,35 @@ public class ItemWindow : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var item in menuItems)
-        {
-            Destroy(item.gameObject);
-        }
-        menuItems.Clear();
+        ClearItems();
     }
-
-    public ItemSlot[] itemSlots;
-    private void Initialized()
+    
+    public void Initialized()
     {
         this.itemSouce = GameController.GetInventorySystem().itemDatas;
         this.selectedItem = itemSouce[0];
 
         for (int i = 0; i < itemSouce.Count; i++)
         {
-            MenuItem _menuItem = Instantiate(menuItem);
-            _menuItem.index = i;
-            _menuItem.text.SetText(itemSouce[i].itemName);
+            ItemSlot itemSlot = Instantiate(itemSlotPrefab);
+            itemSlot.index = i;
+            itemSlot.owner = this;
+            itemSlot.item = itemSouce[i];
 
-            _menuItem.transform.SetParent(itemList.transform); 
-
-            _menuItem.onHover += (int index) =>
-            {
-                ObjectHoveredEnter(index);
-            };
-
-            _menuItem.onLeftClick += (int index) =>
-            {
-                selectedItem = itemSouce[index];
-                fieldEffect.Item(selectedItem);
-                gameObject.SetActive(false);
-            };
-
-            menuItems.Add(_menuItem);
+            itemSlot.SetText(itemSouce[i].itemName);
+            itemSlot.transform.SetParent(itemList.transform);
+            itemSlots.Add(itemSlot);
         }
     }
 
-    public void ObjectHoveredEnter(int index)
+    public void ClearItems()
     {
-        hoverItem = itemSouce[index];
-        ItemDescription.SetText(hoverItem.description);
+        foreach (var item in itemSlots)
+        {
+            Destroy(item.gameObject);
+        }
+        itemSlots.Clear();
     }
-
 
     public void ObjectHoveredEnter(ItemSlot item)
     {
@@ -89,8 +61,8 @@ public class ItemWindow : MonoBehaviour
 
     public void ObjectOnclic(ItemSlot item)
     {
-        hoverItem = itemSouce[item.index];
-        //説明文の更新
-        ItemDescription.SetText(hoverItem.description);
+        selectedItem = item.item;
+        fieldEffect.UseItem(selectedItem);
+        gameObject.SetActive(false);
     }
 }

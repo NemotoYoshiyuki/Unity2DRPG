@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FieldEffect : MonoBehaviour
 {
+    public CharacterSelect selectTargetWindow;
     public CharacterWindow characterWindow;
     public MenuItem menuItem;
 
@@ -11,58 +12,37 @@ public class FieldEffect : MonoBehaviour
     public PlayerCharacter spellOwner;
     public PlayerCharacter spellTarget;
 
-    // Start is called before the first frame update
-    void Start()
+    public void UseItem(ItemData itemData)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void Item(ItemData itemData)
-    {
-        characterWindow.OnSelect((int index) =>
+        selectTargetWindow.Select((int index) =>
         {
             PlayerCharacter playerCharacter = PlayerParty.instance.partyMember[index];
-            UseItem(itemData, playerCharacter);
+            Execut(itemData, playerCharacter);
         });
     }
 
-    private void UseItem(ItemData itemData, PlayerCharacter taregt)
-    {
-        //アイテムを消費
-
-        CommandEffect commandEffect = itemData.effects[0];
-        DoEffect(commandEffect, taregt);
-    }
-
-    public void Spell(SpellData spellData, PlayerCharacter owner)
+    public void UseSpell(SpellData spellData, PlayerCharacter owner)
     {
         //MP消費
         this.spellData = spellData;
         this.spellOwner = owner;
 
-        //owner.GainMp(spellData.mp);
-
-        characterWindow.OnSelect((int index) =>
+        selectTargetWindow.Select((int index) =>
         {
-            Debug.Log("d");
             spellOwner.GainMp(this.spellData.mp);
-            PlayerCharacter playerCharacter = PlayerParty.instance.partyMember[index];
-            UseItem(this.spellData, playerCharacter);
+            PlayerCharacter target = PlayerParty.instance.partyMember[index];
+            Execut(this.spellData, target);
         });
-
-        //DoEffect(spellData.effects[0], target);
     }
 
-    private void UseItem(SpellData itemData, PlayerCharacter taregt)
+    private void Execut(ItemData itemData, PlayerCharacter taregt)
     {
-        //アイテムを消費
+        CommandEffect commandEffect = itemData.effects[0];
+        DoEffect(commandEffect, taregt);
+    }
 
+    private void Execut(SpellData itemData, PlayerCharacter taregt)
+    {
         CommandEffect commandEffect = itemData.effects[0];
         DoEffect(commandEffect, taregt);
     }
@@ -85,7 +65,6 @@ public class FieldEffect : MonoBehaviour
                 break;
         }
         //ステータス更新
-        //  characterWindow.Show();
         characterWindow.UpdateShow();
         Debug.Log(target + commandEffect.ToString());
     }

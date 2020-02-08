@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using TMPro;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
+public class SpellSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
     public int index;
-    public ItemWindow owner;
-    public ItemData item;
+    public SpellWindow owner;
+    public SpellData spell;
     public TextMeshProUGUI text;
 
     private SelectableItem selectable;
@@ -33,6 +32,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        owner.ObjectOnclic(this);
+        owner.ObjectOnClick(this);
     }
 }

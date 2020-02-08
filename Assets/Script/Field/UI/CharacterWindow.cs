@@ -16,7 +16,6 @@ public class CharacterWindow : BaseWindow
     void Start()
     {
         Show();
-        OffSelect();
     }
 
     public void Show()
@@ -33,6 +32,15 @@ public class CharacterWindow : BaseWindow
             _characterSlot.transform.SetParent(list.transform);
 
             characterSlots.Add(_characterSlot);
+        }
+
+        for (int i = 0; i < characterSlots.Count; i++)
+        {
+            MenuItem item = characterSlots[i].gameObject.GetComponent<MenuItem>();
+            item.index = i;
+            item.enabled = true;
+            menuItems.Add(item);
+
         }
     }
 
@@ -51,33 +59,5 @@ public class CharacterWindow : BaseWindow
             Destroy(item.gameObject);
         }
         characterSlots.Clear();
-        OffSelect();
-    }
-
-    //ターゲット処理
-    public SelectTargetWindow select;
-    private Action<int> action;
-    public void OnSelect(Action<int> onClick)
-    {
-        action = onClick;
-
-        for (int i = 0; i < characterSlots.Count; i++)
-        {
-            MenuItem item = characterSlots[i].gameObject.GetComponent<MenuItem>();
-            item.index = i;
-            item.enabled = true;
-            item.AddRegister(onClick);
-           // item.onLeftClick += onClick;
-        }
-    }
-
-    public void OffSelect()
-    {
-        foreach (var slot in characterSlots)
-        {
-            MenuItem item = slot.gameObject.GetComponent<MenuItem>();
-            item.enabled = false;
-            item.onLeftClick -= action;
-        }
     }
 }
