@@ -38,6 +38,9 @@ public class CharacterSelect : MonoBehaviour
 
     public void Release()
     {
-        onLeftClick -= onLeftClick;
+        foreach (var item in menuItems)
+        {
+            item.Release();
+        }
     }
 }

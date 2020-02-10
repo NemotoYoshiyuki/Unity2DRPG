@@ -19,6 +19,10 @@ public class FieldEffect : MonoBehaviour
             PlayerCharacter playerCharacter = PlayerParty.instance.partyMember[index];
             Execut(itemData, playerCharacter);
         });
+
+        Debug.Log("s");
+        MenuWindow.AddHistory(new Undo(() => selectTargetWindow.Release()));
+
     }
 
     public void UseSpell(SpellData spellData, PlayerCharacter owner)
@@ -33,6 +37,8 @@ public class FieldEffect : MonoBehaviour
             PlayerCharacter target = PlayerParty.instance.partyMember[index];
             Execut(this.spellData, target);
         });
+
+        MenuWindow.AddHistory(new Undo(()=> selectTargetWindow.Release()));
     }
 
     private void Execut(ItemData itemData, PlayerCharacter taregt)

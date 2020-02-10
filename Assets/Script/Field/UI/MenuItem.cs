@@ -42,6 +42,11 @@ public class MenuItem : Button
     {
         onLeftClick = action;
     }
+
+    public void Release()
+    {
+        onLeftClick = null;
+    }
 }
 
 #if UNITY_EDITOR

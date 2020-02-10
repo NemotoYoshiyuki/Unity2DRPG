@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class ItemWindow : BaseWindow
+public class ItemWindow : BaseWindow, ICancel
 {
     public ItemSlot itemSlotPrefab;
     public GameObject itemList;
@@ -24,7 +24,14 @@ public class ItemWindow : BaseWindow
     {
         ClearItems();
     }
-    
+
+    public void _Open()
+    {
+        Open();
+        MenuWindow.AddHistory(this);
+        MenuWindow.AddHistory(new Undo(()=> Close()));
+    }
+
     public void Initialized()
     {
         this.itemSouce = GameController.GetInventorySystem().itemDatas;
@@ -61,8 +68,16 @@ public class ItemWindow : BaseWindow
 
     public void ObjectOnclic(ItemSlot item)
     {
+        MenuWindow.AddHistory(new Undo(() => Open()));
         selectedItem = item.item;
         fieldEffect.UseItem(selectedItem);
         gameObject.SetActive(false);
+        
+        MenuWindow.AddHistory(item);
+    }
+
+    void ICancel.Undo()
+    {
+        Close();
     }
 }
