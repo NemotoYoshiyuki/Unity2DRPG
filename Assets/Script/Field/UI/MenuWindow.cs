@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using System;
 
 public class MenuWindow : BaseWindow, ICancel
 {
@@ -18,8 +20,13 @@ public class MenuWindow : BaseWindow, ICancel
         currentWindow = this;
         instance = this;
 
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+        // When the Menu starts, set the rendering to target 20fps
+        //OnDemandRendering.renderFrameInterval = 3;
+
         cancels.Push(this);
-        AddHistory(new Undo(()=>Close()));
+        AddHistory(new Undo(() => Close()));
     }
 
     // Update is called once per frame
@@ -27,8 +34,16 @@ public class MenuWindow : BaseWindow, ICancel
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
+            // If the mouse button or touch detected render at 60 FPS (every frame).
+            OnDemandRendering.renderFrameInterval = 1;
+
             Debug.Log("キャンセル");
             Back();
+        }
+        else
+        {
+            // If there is no mouse and no touch input then we can go back to 20 FPS (every 3 frames).
+            OnDemandRendering.renderFrameInterval = 3;
         }
     }
 
@@ -60,6 +75,12 @@ public class MenuWindow : BaseWindow, ICancel
     {
         Debug.Log("add");
         instance.undos.Push(undo);
+    }
+
+    public static void AddHistory(Action action)
+    {
+        Debug.Log("add");
+        instance.undos.Push(new Undo(action));
     }
 
     void ICancel.Undo()
