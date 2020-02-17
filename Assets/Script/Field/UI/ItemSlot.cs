@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,ICancel
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
     public int index;
     public ItemWindow owner;
@@ -34,10 +34,5 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public void OnPointerClick(PointerEventData eventData)
     {
         owner.ObjectOnclic(this);
-    }
-
-    public void Undo()
-    {
-        owner.Open();
     }
 }

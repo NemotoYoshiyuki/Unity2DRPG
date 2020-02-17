@@ -21,7 +21,7 @@ public class FieldEffect : MonoBehaviour
         });
 
         Debug.Log("s");
-        MenuWindow.AddHistory(new Undo(() => selectTargetWindow.Release()));
+        //MenuWindow.AddHistory(() => selectTargetWindow.Release());
 
     }
 
@@ -38,7 +38,7 @@ public class FieldEffect : MonoBehaviour
             Execut(this.spellData, target);
         });
 
-        MenuWindow.AddHistory(new Undo(()=> selectTargetWindow.Release()));
+        //MenuWindow.AddHistory(()=>selectTargetWindow.Release());
     }
 
     private void Execut(ItemData itemData, PlayerCharacter taregt)

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SideMenu : MonoBehaviour, ICancel
+public class SideMenu : MonoBehaviour
 {
     public List<Button> sideButtons;
 
@@ -21,12 +21,9 @@ public class SideMenu : MonoBehaviour, ICancel
     //Buttonを半透明にしないで現在の状態のままinteractable = false;に変更します
     private IEnumerator Locking()
     {
-        MenuWindow.AddHistory(this);
-        MenuWindow.AddHistory(new Undo(() => Unlock()));
-
         //Buttonの色がFadeを完了されるまで待ちます
         //fadeDurationの値によってFadeにかかる時間は変わりますデフォルトでは0.1fです
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
 
         foreach (var item in sideButtons)
         {
@@ -48,10 +45,6 @@ public class SideMenu : MonoBehaviour, ICancel
     public void Unlock()
     {
         sideButtons.ForEach(x => x.interactable = true);
-    }
-
-    void ICancel.Undo()
-    {
-        Unlock();
+        sideButtons[0].Select();
     }
 }

@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectItemList : BaseWindow, ICancel
+public class SelectItemList : BaseWindow
 {
-    void ICancel.Undo()
-    {
-        Close();
-    }
+
 }

@@ -21,18 +21,20 @@ public class CharacterSelect : MonoBehaviour
 
         foreach (var item in menuItems)
         {
-            item.AddRegister(onLeftClick); ;
+            item.AddRegister(onLeftClick);
         }
     }
 
     public void Select(Action<int> action)
     {
-        AddRegister(action);
-
+        //AddRegister(action);
+        menuItems = characterWindow.menuItems;
         foreach (var item in menuItems)
         {
             item.enabled = true;
+            item.AddRegister(action);
         }
+        //menuItems[0].Select();
     }
 
 

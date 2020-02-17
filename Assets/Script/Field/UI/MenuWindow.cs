@@ -4,29 +4,26 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using System;
 
-public class MenuWindow : BaseWindow, ICancel
+public class MenuWindow : BaseWindow
 {
     public static MenuWindow instance;
     public BaseWindow currentWindow;
     public CharacterWindow CharacterWindow;
+    public SideMenu sideMenu;
 
-    private List<BaseWindow> history;
-    private Stack<ICancel> cancels = new Stack<ICancel>();
     private Stack<Undo> undos = new Stack<Undo>();
 
     // Start is called before the first frame update
     void Start()
     {
-        currentWindow = this;
         instance = this;
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         // When the Menu starts, set the rendering to target 20fps
-        //OnDemandRendering.renderFrameInterval = 3;
+        OnDemandRendering.renderFrameInterval = 3;
 
-        cancels.Push(this);
-        AddHistory(new Undo(() => Close()));
+        currentWindow = this;
     }
 
     // Update is called once per frame
@@ -49,44 +46,11 @@ public class MenuWindow : BaseWindow, ICancel
 
     public void Back()
     {
-        //一つ前の状態に戻る
-        //currentWindow.Close();
-        //ICancel cancel = cancels.Pop();
-        //Debug.Log(cancel.ToString());
-        //cancel.Undo();
-        //cancels.Pop().Undo();
-
-        //Undo
-        undos.Pop().Excute();
+        currentWindow.Cancel();
     }
 
-    public void AddHistory(BaseWindow baseWindow)
-    {
-        history.Add(baseWindow);
-    }
-
-    public static void AddHistory(ICancel baseWindow)
-    {
-        Debug.Log(baseWindow);
-        instance.cancels.Push(baseWindow);
-    }
-
-    public static void AddHistory(Undo undo)
-    {
-        Debug.Log("add");
-        instance.undos.Push(undo);
-    }
-
-    public static void AddHistory(Action action)
-    {
-        Debug.Log("add");
-        instance.undos.Push(new Undo(action));
-    }
-
-    void ICancel.Undo()
+    public override void Cancel()
     {
         Close();
     }
-
-
 }

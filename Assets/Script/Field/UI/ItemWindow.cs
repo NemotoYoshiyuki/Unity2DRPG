@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class ItemWindow : BaseWindow, ICancel
+using System;
+
+public class ItemWindow : BaseWindow
 {
     public ItemSlot itemSlotPrefab;
     public GameObject itemList;
@@ -15,21 +17,32 @@ public class ItemWindow : BaseWindow, ICancel
     private ItemData selectedItem;
     private ItemData hoverItem;
 
-    private void OnEnable()
-    {
-        Initialized();
-    }
-
+    public Action OnCancel;
     private void OnDisable()
     {
-        ClearItems();
+        Close();
     }
 
-    public void _Open()
+    public override void Open()
     {
-        Open();
-        MenuWindow.AddHistory(this);
-        MenuWindow.AddHistory(new Undo(()=> Close()));
+        base.Open();
+        MenuWindow.instance.sideMenu.Lock();
+        MenuWindow.instance.currentWindow = this;
+        Initialized();
+
+        ////キャンセルが押されたら
+        OnCancel = () =>
+        {
+            MenuWindow.instance.currentWindow = MenuWindow.instance;
+            MenuWindow.instance.sideMenu.Unlock();
+            Close();
+        };
+    }
+
+    public override void Close()
+    {
+        base.Close();
+        ClearItems();
     }
 
     public void Initialized()
@@ -68,16 +81,19 @@ public class ItemWindow : BaseWindow, ICancel
 
     public void ObjectOnclic(ItemSlot item)
     {
-        MenuWindow.AddHistory(new Undo(() => Open()));
+       
         selectedItem = item.item;
         fieldEffect.UseItem(selectedItem);
-        gameObject.SetActive(false);
-        
-        MenuWindow.AddHistory(item);
+        Close();
+
+        OnCancel = () =>
+        {
+            Open();
+        };
     }
 
-    void ICancel.Undo()
+    public override void Cancel()
     {
-        Close();
+        OnCancel.Invoke();
     }
 }
