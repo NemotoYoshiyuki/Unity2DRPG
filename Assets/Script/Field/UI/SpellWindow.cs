@@ -68,7 +68,7 @@ public class SpellWindow : BaseWindow
 
             spellSlots.Add(spellSlot);
 
-            if (CanFieldSpell(spellSlot.spell) == true) spellSlot.selectable.interactable = false;
+            if (CanFieldSpell(spellSlot.spell) == false) spellSlot.selectable.interactable = false;
         }
 
         //キャンセルが押されたら
@@ -90,9 +90,10 @@ public class SpellWindow : BaseWindow
     {
         if (spellData.useType != UseType.戦闘中)
         {
-            return false;
+            if (owner.status.mp <= spellData.mp) return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public override void Cancel()

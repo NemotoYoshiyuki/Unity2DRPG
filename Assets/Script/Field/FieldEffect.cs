@@ -6,6 +6,8 @@ public class FieldEffect : MonoBehaviour
 {
     public CharacterSelect selectTargetWindow;
     public CharacterWindow characterWindow;
+    public ItemWindow itemWindow;
+    public SpellWindow spellWindow;
 
     public SpellData spellData;
     public PlayerCharacter spellOwner;
@@ -75,9 +77,11 @@ public class FieldEffect : MonoBehaviour
         {
             DoEffect(item, taregt);
         }
+
+        itemWindow.Open();
     }
 
-    private void Execut(SpellData itemData, PlayerCharacter taregt)
+    private void Execut(SpellData spellData, PlayerCharacter taregt)
     {
         //Mpの消費
         spellOwner.GainMp(this.spellData.mp);
@@ -86,6 +90,12 @@ public class FieldEffect : MonoBehaviour
         foreach (var item in commandEffect)
         {
             DoEffect(item, taregt);
+        }
+
+        //MP不足で連続で使用できないとき
+        if (spellOwner.status.mp <= spellData.mp)
+        {
+            spellWindow.ShowSpellList(spellOwner);
         }
     }
 

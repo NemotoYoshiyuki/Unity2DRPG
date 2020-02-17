@@ -61,7 +61,7 @@ public class ItemWindow : BaseWindow
             itemSlot.transform.SetParent(itemList.transform);
             itemSlots.Add(itemSlot);
 
-            if (CanUse(itemSlot.item) == true) itemSlot.selectable.interactable = false;
+            if (CanUse(itemSlot.item) == false) itemSlot.selectable.interactable = false;
         }
     }
 
