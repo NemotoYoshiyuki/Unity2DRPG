@@ -13,11 +13,28 @@ public class FieldEffect : MonoBehaviour
 
     public void UseItem(ItemData itemData)
     {
-        selectTargetWindow.Select((int index) =>
+        List<PlayerCharacter> party = PlayerParty.instance.partyMember;
+
+        //複数対象の処理
+        if (itemData.targetRange == TargetRange.全体)
         {
-            PlayerCharacter playerCharacter = PlayerParty.instance.partyMember[index];
-            Execut(itemData, playerCharacter);
-        });
+            selectTargetWindow.SelectAll((int index) =>
+            {
+                foreach (var item in party)
+                {
+                    Execut(itemData, item);
+                }
+            });
+        }
+        else
+        {
+            //キャラクターを選択して実行
+            selectTargetWindow.Select((int index) =>
+            {
+                PlayerCharacter playerCharacter = party[index];
+                Execut(itemData, playerCharacter);
+            });
+        }
     }
 
     public void UseSpell(SpellData spellData, PlayerCharacter owner)
@@ -26,25 +43,50 @@ public class FieldEffect : MonoBehaviour
         this.spellData = spellData;
         this.spellOwner = owner;
 
-        selectTargetWindow.Select((int index) =>
+        List<PlayerCharacter> party = PlayerParty.instance.partyMember;
+        //複数対象の処理
+        if (spellData.targetRange == TargetRange.全体)
         {
-            spellOwner.GainMp(this.spellData.mp);
-            PlayerCharacter target = PlayerParty.instance.partyMember[index];
-            Execut(this.spellData, target);
-        });
-
+            selectTargetWindow.SelectAll((int index) =>
+            {
+                foreach (var item in party)
+                {
+                    Execut(spellData, item);
+                }
+            });
+        }
+        else
+        {
+            selectTargetWindow.Select((int index) =>
+             {
+                 PlayerCharacter target = PlayerParty.instance.partyMember[index];
+                 Execut(this.spellData, target);
+             });
+        }
     }
 
     private void Execut(ItemData itemData, PlayerCharacter taregt)
     {
-        CommandEffect commandEffect = itemData.effects[0];
-        DoEffect(commandEffect, taregt);
+        //アイテムの消費
+        GameController.GetInventorySystem().UseItem(itemData);
+
+        List<CommandEffect> commandEffect = itemData.effects;
+        foreach (var item in commandEffect)
+        {
+            DoEffect(item, taregt);
+        }
     }
 
     private void Execut(SpellData itemData, PlayerCharacter taregt)
     {
-        CommandEffect commandEffect = itemData.effects[0];
-        DoEffect(commandEffect, taregt);
+        //Mpの消費
+        spellOwner.GainMp(this.spellData.mp);
+
+        List<CommandEffect> commandEffect = spellData.effects;
+        foreach (var item in commandEffect)
+        {
+            DoEffect(item, taregt);
+        }
     }
 
     public void DoEffect(CommandEffect commandEffect, PlayerCharacter target)

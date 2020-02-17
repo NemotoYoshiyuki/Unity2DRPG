@@ -28,6 +28,21 @@ public class CharacterSelect : MonoBehaviour
         selectItems[0].Select();
     }
 
+    //すべての要素を選択状態にする
+    public void SelectAll(Action<int> action)
+    {
+        List<CharacterSlot> characterSlots = characterWindow.characterSlots;
+        for (int i = 0; i < characterSlots.Count; i++)
+        {
+            SelectItem selectItem = characterSlots[i].gameObject.GetComponent<SelectItem>();
+            selectItem.index = i;
+            selectItem.enabled = true;
+            selectItem.AddRegister(action);
+            selectItems.Add(selectItem);
+            selectItem.Select();
+        }
+    }
+
     public void Release()
     {
         foreach (var item in selectItems)
