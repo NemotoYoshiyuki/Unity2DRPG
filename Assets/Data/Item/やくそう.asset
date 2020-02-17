@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   itemName: "\u3084\u304F\u305D\u3046"
-  useType: 0
+  useType: 2
   targetUnit: 2
   targetRange: 1
   mp: 0

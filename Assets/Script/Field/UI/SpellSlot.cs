@@ -11,7 +11,7 @@ public class SpellSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     public SpellData spell;
     public TextMeshProUGUI text;
 
-    private SelectableItem selectable;
+    public SelectableItem selectable;
 
     private void Start()
     {

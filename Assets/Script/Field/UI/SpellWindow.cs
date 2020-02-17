@@ -68,7 +68,7 @@ public class SpellWindow : BaseWindow
 
             spellSlots.Add(spellSlot);
 
-            if (CanFieldSpell(spellSlot.spell) == true) spellSlot.gameObject.GetComponent<SelectableItem>().interactable = false;
+            if (CanFieldSpell(spellSlot.spell) == true) spellSlot.selectable.interactable = false;
         }
 
         //キャンセルが押されたら

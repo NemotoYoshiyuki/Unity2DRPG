@@ -12,7 +12,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public ItemData item;
     public TextMeshProUGUI text;
 
-    private SelectableItem selectable;
+    public SelectableItem selectable;
 
     private void Start()
     {
@@ -33,6 +33,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (selectable.interactable == false) return;
         owner.ObjectOnclic(this);
     }
 }

@@ -60,7 +60,18 @@ public class ItemWindow : BaseWindow
             itemSlot.SetText(itemSouce[i].itemName);
             itemSlot.transform.SetParent(itemList.transform);
             itemSlots.Add(itemSlot);
+
+            if (CanUse(itemSlot.item) == true) itemSlot.selectable.interactable = false;
         }
+    }
+
+    private bool CanUse(ItemData item)
+    {
+        if (item.useType != UseType.戦闘中)
+        {
+            return true;
+        }
+        return false;   
     }
 
     public void ClearItems()
@@ -81,7 +92,7 @@ public class ItemWindow : BaseWindow
 
     public void ObjectOnclic(ItemSlot item)
     {
-       
+
         selectedItem = item.item;
         fieldEffect.UseItem(selectedItem);
         Close();

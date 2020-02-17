@@ -248,6 +248,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   item: {fileID: 0}
   text: {fileID: 1772345912738990299}
+  selectable: {fileID: 1772345914115656677}
 --- !u!114 &1772345914115656677
 MonoBehaviour:
   m_ObjectHideFlags: 0
