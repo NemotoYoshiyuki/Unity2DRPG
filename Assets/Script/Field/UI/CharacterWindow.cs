@@ -7,10 +7,10 @@ public class CharacterWindow : BaseWindow
 {
     public List<PlayerCharacter> member;
     public GameObject list;
-    public CharacterSlot characterSlot;
+    public CharacterSlot characterSlotPrefab;
 
     public List<CharacterSlot> characterSlots;
-    public List<MenuItem> menuItems;
+    public List<SelectItem> menuItems;
 
     // Start is called before the first frame update
     void Start()
@@ -25,22 +25,13 @@ public class CharacterWindow : BaseWindow
         member = PlayerParty.instance.partyMember;
         foreach (var item in member)
         {
-            CharacterSlot _characterSlot = Instantiate(characterSlot);
-            _characterSlot.playerCharacter = item;
-            _characterSlot.Show();
+            CharacterSlot characterSlot = Instantiate(characterSlotPrefab);
+            characterSlot.playerCharacter = item;
+            characterSlot.Show();
 
-            _characterSlot.transform.SetParent(list.transform);
+            characterSlot.transform.SetParent(list.transform);
 
-            characterSlots.Add(_characterSlot);
-        }
-
-        for (int i = 0; i < characterSlots.Count; i++)
-        {
-            MenuItem item = characterSlots[i].gameObject.GetComponent<MenuItem>();
-            item.index = i;
-            item.enabled = true;
-            menuItems.Add(item);
-
+            characterSlots.Add(characterSlot);
         }
     }
 

@@ -5,44 +5,35 @@ using System;
 
 public class CharacterSelect : MonoBehaviour
 {
-    public List<MenuItem> menuItems;
-    private event Action<int> onLeftClick;
     private CharacterWindow characterWindow;
+    private List<SelectItem> selectItems = new List<SelectItem>();
+
 
     private void Start()
     {
         characterWindow = GetComponent<CharacterWindow>();
     }
 
-    public void AddRegister(Action<int> action)
-    {
-        onLeftClick = action;
-        menuItems = characterWindow.menuItems;
-
-        foreach (var item in menuItems)
-        {
-            item.AddRegister(onLeftClick);
-        }
-    }
-
     public void Select(Action<int> action)
     {
-        //AddRegister(action);
-        menuItems = characterWindow.menuItems;
-        foreach (var item in menuItems)
+        List<CharacterSlot> characterSlots = characterWindow.characterSlots;
+        for (int i = 0; i < characterSlots.Count; i++)
         {
-            item.enabled = true;
-            item.AddRegister(action);
+            SelectItem selectItem = characterSlots[i].gameObject.GetComponent<SelectItem>();
+            selectItem.index = i;
+            selectItem.enabled = true;
+            selectItem.AddRegister(action);
+            selectItems.Add(selectItem);
         }
-        //menuItems[0].Select();
+        selectItems[0].Select();
     }
-
 
     public void Release()
     {
-        foreach (var item in menuItems)
+        foreach (var item in selectItems)
         {
             item.Release();
+            item.enabled = false;
         }
     }
 }

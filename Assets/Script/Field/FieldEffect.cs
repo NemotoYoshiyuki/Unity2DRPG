@@ -6,7 +6,6 @@ public class FieldEffect : MonoBehaviour
 {
     public CharacterSelect selectTargetWindow;
     public CharacterWindow characterWindow;
-    public MenuItem menuItem;
 
     public SpellData spellData;
     public PlayerCharacter spellOwner;
@@ -19,10 +18,6 @@ public class FieldEffect : MonoBehaviour
             PlayerCharacter playerCharacter = PlayerParty.instance.partyMember[index];
             Execut(itemData, playerCharacter);
         });
-
-        Debug.Log("s");
-        //MenuWindow.AddHistory(() => selectTargetWindow.Release());
-
     }
 
     public void UseSpell(SpellData spellData, PlayerCharacter owner)
@@ -38,7 +33,6 @@ public class FieldEffect : MonoBehaviour
             Execut(this.spellData, target);
         });
 
-        //MenuWindow.AddHistory(()=>selectTargetWindow.Release());
     }
 
     private void Execut(ItemData itemData, PlayerCharacter taregt)

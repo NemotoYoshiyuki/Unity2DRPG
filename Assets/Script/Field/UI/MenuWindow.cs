@@ -8,20 +8,18 @@ public class MenuWindow : BaseWindow
 {
     public static MenuWindow instance;
     public BaseWindow currentWindow;
-    public CharacterWindow CharacterWindow;
     public SideMenu sideMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        currentWindow = this;
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         // When the Menu starts, set the rendering to target 20fps
         OnDemandRendering.renderFrameInterval = 3;
-
-        currentWindow = this;
     }
 
     // Update is called once per frame

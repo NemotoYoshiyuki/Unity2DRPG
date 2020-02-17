@@ -88,7 +88,6 @@ public class SpellWindow : BaseWindow
     {
         OnCancel.Invoke();
     }
-   
 
     public void ObjectHoveredEnter(SpellSlot spellSlot)
     {
