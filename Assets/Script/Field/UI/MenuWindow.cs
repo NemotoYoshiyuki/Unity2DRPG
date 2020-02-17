@@ -11,8 +11,6 @@ public class MenuWindow : BaseWindow
     public CharacterWindow CharacterWindow;
     public SideMenu sideMenu;
 
-    private Stack<Undo> undos = new Stack<Undo>();
-
     // Start is called before the first frame update
     void Start()
     {
