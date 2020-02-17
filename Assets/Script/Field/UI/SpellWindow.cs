@@ -67,6 +67,8 @@ public class SpellWindow : BaseWindow
             spellSlot.transform.SetParent(list.transform);
 
             spellSlots.Add(spellSlot);
+
+            if (CanFieldSpell(spellSlot.spell) == true) spellSlot.gameObject.GetComponent<SelectableItem>().interactable = false;
         }
 
         //キャンセルが押されたら
@@ -82,6 +84,15 @@ public class SpellWindow : BaseWindow
         spellSlots.ForEach(x => Destroy(x.gameObject));
         spellSlots.Clear();
         gameObject.SetActive(false);
+    }
+
+    public bool CanFieldSpell(SpellData spellData)
+    {
+        if (spellData.useType != UseType.戦闘中)
+        {
+            return false;
+        }
+        return true;
     }
 
     public override void Cancel()

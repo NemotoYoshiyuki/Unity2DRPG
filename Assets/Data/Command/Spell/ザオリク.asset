@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   skillName: "\u30B6\u30AA\u30EA\u30AF"
-  useType: 0
+  useType: 2
   targetUnit: 2
   targetRange: 1
   mp: 15

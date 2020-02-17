@@ -32,6 +32,7 @@ public class SpellSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (selectable.interactable == false) return;
         owner.ObjectOnClick(this);
     }
 }
