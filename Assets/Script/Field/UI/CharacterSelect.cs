@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class CharacterSelect : MonoBehaviour
 {
@@ -50,5 +51,13 @@ public class CharacterSelect : MonoBehaviour
             item.Release();
             item.enabled = false;
         }
+    }
+
+    public void Flash(PlayerCharacter player,Color color,float time)
+    {
+        List<CharacterSlot> characterSlots = characterWindow.characterSlots;
+        CharacterSlot characterSlot = characterSlots.First(x=>x.playerCharacter == player);
+        Flash flash = characterSlot.GetComponent<Flash>();
+        flash.FlashStart(color,time);
     }
 }

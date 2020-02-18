@@ -106,6 +106,7 @@ public class FieldEffect : MonoBehaviour
             //回復効果
             case HealEffect healEffect:
                 target.Recover(healEffect.healAmount);
+                selectTargetWindow.Flash(target,new Color(0,1,0,0.5f),1f);
                 break;
             //蘇生効果
             case ResuscitationEffect resuscitationEffect:
