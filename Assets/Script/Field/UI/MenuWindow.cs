@@ -11,6 +11,16 @@ public class MenuWindow : BaseWindow
     public SideMenu sideMenu;
     public MenuGuide menuGuide;
 
+    private void OnEnable()
+    {
+        PlayerInput.canMove = false;
+    }
+
+    private void OnDisable()
+    {
+        PlayerInput.canMove = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

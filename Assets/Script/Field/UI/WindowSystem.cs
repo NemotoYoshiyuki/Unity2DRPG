@@ -27,7 +27,6 @@ public class WindowSystem : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             if (MenuWindow.activeSelf) MenuWindow.SetActive(false);
-            //Window表示中は移動できない
             else MenuWindow.SetActive(true);
         }
     }
