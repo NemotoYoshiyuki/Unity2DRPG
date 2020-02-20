@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3b307455eb5caa49a1edf35449bf3f4, type: 3}
-  m_Name: "\u3084\u304F\u305D\u3046"
+  m_Name: "\u3044\u3044\u3084\u304F\u305D\u3046"
   m_EditorClassIdentifier: 
   id: 0
-  itemName: "\u3084\u304F\u305D\u3046"
+  itemName: "\u3044\u3044\u3084\u304F\u305D\u3046"
   useType: 2
   targetUnit: 2
   targetRange: 1
   mp: 0
-  description: "30\u56DE\u5FA9\u3057\u307E\u3059"
+  description: "60\u56DE\u5FA9\u3057\u307E\u3059"
   effects:
   - id: 0
   references:
@@ -26,4 +26,4 @@ MonoBehaviour:
     00000000:
       type: {class: HealEffect, ns: , asm: Assembly-CSharp}
       data:
-        healAmount: 30
+        healAmount: 60

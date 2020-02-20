@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b307455eb5caa49a1edf35449bf3f4, type: 3}
-  m_Name: "\u3084\u304F\u305D\u3046"
+  m_Script: {fileID: 11500000, guid: a9ee8cd5c0c15944eafa0f8a1c79e4d7, type: 3}
+  m_Name: "\u30D9\u30DB\u30A4\u30DF"
   m_EditorClassIdentifier: 
   id: 0
-  itemName: "\u3084\u304F\u305D\u3046"
+  skillName: "\u30D9\u30DB\u30A4\u30DF"
   useType: 2
   targetUnit: 2
-  targetRange: 1
-  mp: 0
-  description: "30\u56DE\u5FA9\u3057\u307E\u3059"
+  targetRange: 2
+  mp: 14
+  description: "\u5168\u4F53\u306E\u4F53\u529B\u3092\u56DE\u5FA9\u3057\u307E\u3059"
   effects:
   - id: 0
   references:

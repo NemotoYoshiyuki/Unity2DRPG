@@ -19,7 +19,7 @@ namespace djkusuha.Utility
         /// Edit > CaptureScreenshot に追加。
         /// HotKeyは Ctrl + Shift + F12。
         /// </remarks>
-        [MenuItem("Edit/CaptureScreenshot #%F12")]
+        [UnityEditor.MenuItem("Edit/CaptureScreenshot #%F12")]
         private static void CaptureScreenshot()
         {
             // 現在時刻からファイル名を決定
