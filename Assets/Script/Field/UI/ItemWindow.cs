@@ -48,6 +48,7 @@ public class ItemWindow : BaseWindow
     public void Initialized()
     {
         this.itemSouce = GameController.GetInventorySystem().itemDatas;
+        if (itemSouce.Count == 0) return;
         this.selectedItem = itemSouce[0];
 
         for (int i = 0; i < itemSouce.Count; i++)

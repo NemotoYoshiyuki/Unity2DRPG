@@ -20,11 +20,17 @@ public class SpellWindow : BaseWindow
     private SpellData hoverItem;
     private SpellData selectedItem;
 
+    private SideMenu sideMenu;
+    private MenuGuide menuGuide;
+
     public Action OnCancel;
     public override void Open()
     {
-        UserSelect();
         MenuWindow.instance.currentWindow = this;
+        sideMenu = MenuWindow.instance.sideMenu;
+        menuGuide = MenuWindow.instance.menuGuide;
+
+        UserSelect();
     }
 
     public void UserSelect()
@@ -32,6 +38,7 @@ public class SpellWindow : BaseWindow
         ////ターゲットリストを表示
         party = PlayerParty.instance.partyMember;
         MenuWindow.instance.sideMenu.Lock();
+        menuGuide.Show("だれが呪文を使用しますか");
         ////ボタンが押されたら
         selectTarget.Select((int index) =>
         {
@@ -45,6 +52,7 @@ public class SpellWindow : BaseWindow
         {
             MenuWindow.instance.currentWindow = MenuWindow.instance;
             MenuWindow.instance.sideMenu.Unlock();
+            menuGuide.Hide();
             selectTarget.Release();
         };
     }

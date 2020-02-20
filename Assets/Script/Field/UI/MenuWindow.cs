@@ -9,6 +9,7 @@ public class MenuWindow : BaseWindow
     public static MenuWindow instance;
     public BaseWindow currentWindow;
     public SideMenu sideMenu;
+    public MenuGuide menuGuide;
 
     // Start is called before the first frame update
     void Start()

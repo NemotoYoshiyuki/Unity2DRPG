@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * フィールド場で呪文・アイテムを使用するためのクラスです
+ */
 public class FieldEffect : MonoBehaviour
 {
     public CharacterSelect selectTargetWindow;
@@ -16,6 +19,8 @@ public class FieldEffect : MonoBehaviour
     public void UseItem(ItemData itemData)
     {
         List<PlayerCharacter> party = PlayerParty.instance.partyMember;
+
+        MenuWindow.instance.menuGuide.Show(itemData.itemName + "使用対象を選んでください");
 
         //複数対象の処理
         if (itemData.targetRange == TargetRange.全体)
@@ -44,6 +49,8 @@ public class FieldEffect : MonoBehaviour
         //MP消費
         this.spellData = spellData;
         this.spellOwner = owner;
+
+        MenuWindow.instance.menuGuide.Show(spellData.skillName+"使用対象を選んでください");
 
         List<PlayerCharacter> party = PlayerParty.instance.partyMember;
         //複数対象の処理
