@@ -1,5 +1,11 @@
-say "‚ "
-say "‚¢"
-say "‚¤"
-say "‚¦"
-say "‚¨"
+
+M = {}
+
+function M.start()
+say("ok")
+say("oks")
+say("oksss")
+
+end
+
+return M

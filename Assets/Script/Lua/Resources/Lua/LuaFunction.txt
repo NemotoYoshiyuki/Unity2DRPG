@@ -1,7 +1,7 @@
 local M = {}
 
 function M.say(txt)
-	evt.Say(txt)
+	luaEvent.Say(txt)
 	coroutine.yield()
 end
 

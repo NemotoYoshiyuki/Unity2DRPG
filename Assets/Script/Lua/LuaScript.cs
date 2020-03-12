@@ -17,7 +17,11 @@ public class LuaScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         Initialized();
+        InitFungusModule();
+        //
+        Run();
     }
 
     public void Execution(TextAsset luaFile)
@@ -31,7 +35,7 @@ public class LuaScript : MonoBehaviour
         UserData.RegisterAssembly(typeof(LuaScript).Assembly);
 
         script = new Script(CoreModules.Preset_Complete);
-        script.Globals["evt"] = luaEvent;
+        //script.Globals["evt"] = luaEvent;
         object[] result = Resources.LoadAll("Lua", typeof(TextAsset));
         script.Options.ScriptLoader = new LuaScriptLoader(result.OfType<TextAsset>());
     }
@@ -57,10 +61,11 @@ public class LuaScript : MonoBehaviour
     public void Run()
     {
         // コードをコンパイル
-       // DynValue function = script.DoString(luaFile.text);
+        // DynValue function = script.DoString(luaFile.text);
         DynValue function = script.DoString(GetLuaCode());
         //// コルーチンを生成
-        DynValue coroutine = script.CreateCoroutine(function);
+        //DynValue coroutine = script.CreateCoroutine(function);
+        coroutine = script.CreateCoroutine(function);
         //// コルーチン開始
         coroutine.Coroutine.Resume();
     }
@@ -76,12 +81,41 @@ public class LuaScript : MonoBehaviour
     {
         string code =
             @"-- Load the 'junglestory' module
-            lua = require('LuaFunction')
-            return function()
-            lua.say('say')
-            end
+--a = require('LuaFunction')
+            f = require('NPC')
+return function()
+say('ll')
+            f.start()
+--a.say('p')
+           end
             ";
 
         return code;
+    }
+    protected LuaEventScript luaEnvironment { get; set; }
+    public void InitFungusModule()
+    {
+        luaEnvironment = luaEvent;
+        DynValue value = script.RequireModule("LuaFunction");
+        Table fungusTable = null;
+        fungusTable = value.Function.Call().Table;
+        if (fungusTable == null) UnityEngine.Debug.LogError("Failed to create Fungus table");
+        script.Globals["LuaFunction"] = fungusTable;
+
+        //
+        Debug.Log(luaEvent);
+        fungusTable["luaEvent"] = luaEnvironment;
+
+        foreach (TablePair p in fungusTable.Pairs)
+        {
+            if (script.Globals.Keys.Contains(p.Key))
+            {
+                UnityEngine.Debug.LogError("Lua globals already contains a variable " + p.Key);
+            }
+            else
+            {
+                script.Globals[p.Key] = p.Value;
+            }
+        }
     }
 }
