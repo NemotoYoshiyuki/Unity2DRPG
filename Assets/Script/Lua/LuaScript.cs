@@ -55,6 +55,7 @@ public class LuaScript : MonoBehaviour
         }
 
         //Luaスクリプトが終了した
+        //メッセージウィンドウを閉じる等の終了処理
         yield break;
     }
 
@@ -90,7 +91,8 @@ say('ll')
            end
             ";
 
-        return code;
+        //return code;
+        return luaFile.text;
     }
     protected LuaEventScript luaEnvironment { get; set; }
     public void InitFungusModule()

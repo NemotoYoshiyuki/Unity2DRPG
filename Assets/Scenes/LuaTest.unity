@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   luaEvent: {fileID: 1222050196}
-  luaFile: {fileID: 0}
+  luaFile: {fileID: 4900000, guid: 01e2cc9726607ce4cb6107420b57ec94, type: 3}
 --- !u!4 &1222050195
 Transform:
   m_ObjectHideFlags: 0

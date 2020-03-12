@@ -1,11 +1,10 @@
-
+﻿
 M = {}
 
-function M.start()
-say("ok")
-say("oks")
-say("oksss")
+return function ()
+say("ラダトームの町に　ようこそ。")
+say("私は　この町の案内係です")
+say("東の山はとてもきけんなので\nちかずかないでください")
 
 end
 
-return M
