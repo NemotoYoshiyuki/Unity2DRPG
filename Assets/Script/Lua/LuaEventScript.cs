@@ -25,6 +25,12 @@ public class LuaEventScript : MonoBehaviour
 
     }
 
+    public void End()
+    {
+        MessageWindow messageWindow = MessageSystem.instance.messageWindow;
+        messageWindow.Close();
+    }
+
     public Player GetPlayer()
     {
         return null;
