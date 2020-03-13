@@ -1,0 +1,11 @@
+﻿return function ()
+say("選択肢をえらんでください")
+
+local choice = choice("はい","いいえ")
+
+if choice == 1 then
+        say "はい　がえらばれました"
+    elseif choice == 2 then
+        say "いいえ　がえらばれました"
+    end
+end
