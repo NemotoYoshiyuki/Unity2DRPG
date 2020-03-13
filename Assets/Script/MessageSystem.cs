@@ -5,6 +5,7 @@ using UnityEngine;
 public class MessageSystem : MonoBehaviour
 {
     public MessageWindow messageWindow;
+    public ChoiceWindow choiceWindow;
     public static MessageSystem instance;
 
     private void Awake()
@@ -15,5 +16,10 @@ public class MessageSystem : MonoBehaviour
     public static MessageWindow GetWindow()
     {
         return instance.messageWindow;
+    }
+
+    public static ChoiceWindow GetChoise()
+    {
+        return instance.choiceWindow;
     }
 }

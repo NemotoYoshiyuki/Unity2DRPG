@@ -5,4 +5,10 @@ function M.say(txt)
 	coroutine.yield()
 end
 
+function M.choice(txt1,txt2)
+	luaEvent.Choice(txt1,txt2)
+	coroutine.yield()
+	return luaEvent.ChoiceResult()
+end
+
 return M

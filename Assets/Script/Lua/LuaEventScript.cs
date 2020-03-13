@@ -20,9 +20,22 @@ public class LuaEventScript : MonoBehaviour
         }
     }
 
-    public void Choice()
+    public void Choice(string c1,string c2)
     {
+        StartCoroutine(Choise());
+        IEnumerator Choise()
+        {
+            ChoiceWindow choice = MessageSystem.GetChoise();
+            yield return choice.Choice(c1,c2);
+            LuaScript.instance.Resume();
+            yield break;
+        }
+    }
 
+    public int ChoiceResult()
+    {
+        ChoiceWindow choice = MessageSystem.GetChoise();
+        return choice.Result();
     }
 
     public void End()
