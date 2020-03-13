@@ -2,55 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System;
 
 public class ChoiceWindow : MonoBehaviour
 {
-    public Button choiseButton;
-    public Canvas canvas;
+    public Button yesButton;
+    public Button noButton;
     private int index;
-    private IEnumerator choise;
 
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(Choice("はい","いいえ"));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
-
-
-    public IEnumerator Choice(string yse, string no)
+    public IEnumerator Choice(string yse = "はい", string no = "いいえ")
     {
-        bool a = false;
-        Button _yse = Instantiate(choiseButton).GetComponent<Button>();
-        Button _no = Instantiate(choiseButton).GetComponent<Button>();
+        index = 0;
+        bool isChoise = false;
 
-        _yse.GetComponentInChildren<Text>().text = yse;
-        _yse.transform.parent = canvas.transform;
-        _no.transform.parent = canvas.transform;
-        _no.GetComponentInChildren<Text>().text = no;
+        gameObject.SetActive(true);
+        yesButton.GetComponentInChildren<TextMeshProUGUI>().SetText(yse);
+        noButton.GetComponentInChildren<TextMeshProUGUI>().SetText(no);
 
-        _yse.onClick.AddListener(() =>
+        void OnClick()
+        {
+            isChoise = true;
+            Close();
+        }
+
+        yesButton.onClick.AddListener(() =>
         {
             index = 1;
-            a = true;
-            Close();
-            
-        });
-        _no.onClick.AddListener(() =>
-        {
-            index = 2;
-            a = true;
-            Close();
+            OnClick();
+
         });
 
-        yield return new WaitUntil(() => a == true);
+        noButton.onClick.AddListener(() =>
+        {
+            index = 2;
+            OnClick();
+        });
+
+        yield return new WaitUntil(() => isChoise == true);
         yield break;
     }
 
@@ -62,10 +57,5 @@ public class ChoiceWindow : MonoBehaviour
     private void Close()
     {
         gameObject.SetActive(false);
-    }
-
-    public IEnumerator Choice(Action c1, Action c2)
-    {
-        yield break;
     }
 }
