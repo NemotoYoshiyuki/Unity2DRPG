@@ -44,6 +44,11 @@ public class LuaEventScript : MonoBehaviour
         messageWindow.Close();
     }
 
+    public PlayerCharacter GetCharacter(int id)
+    {
+        return PlayerParty.instance.GetMember(id);
+    }
+
     public Player GetPlayer()
     {
         return null;

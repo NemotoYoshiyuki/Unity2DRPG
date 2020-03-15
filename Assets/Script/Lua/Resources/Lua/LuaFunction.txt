@@ -1,5 +1,10 @@
 local M = {}
 
+
+-------------
+-- Coroutines
+-------------
+
 function M.say(txt)
 	luaEvent.Say(txt)
 	coroutine.yield()

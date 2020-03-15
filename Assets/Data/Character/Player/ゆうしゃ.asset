@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\u3086\u3046\u3057\u3083"
   m_EditorClassIdentifier: 
   characterName: "\u3086\u3046\u3057\u3083"
+  characterID: 0
   status:
     lv: 0
     maxHp: 10

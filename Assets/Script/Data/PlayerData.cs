@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public string characterName;
+    public int characterID;
     public Status status;
     public List<SpellData> spellDatas;
     public List<SkillData> skillDatas;

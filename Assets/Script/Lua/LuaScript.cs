@@ -45,6 +45,8 @@ public class LuaScript : MonoBehaviour
     private void Initialized()
     {
         UserData.RegisterAssembly(typeof(LuaScript).Assembly);
+        UserData.RegisterType<PlayerCharacter>();
+        UserData.RegisterType<Status>();
 
         script = new Script(CoreModules.Preset_Complete);
         object[] result = Resources.LoadAll("Lua", typeof(TextAsset));

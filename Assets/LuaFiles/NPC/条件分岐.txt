@@ -1,0 +1,19 @@
+﻿return function ()
+
+say "レベル　が　5いじょうなら　なかまになってやるぜ"
+
+local hero = luaEvent.GetCharacter(0)
+local lv = hero.status.lv
+if lv >= 5 then
+		say "なかまになってもらいますか？"
+        local choice = choice("はい","ことわる")
+		if choice == 1 then
+        say "???が　なかまになった"
+    elseif choice == 2 then
+        say "また　きかいがあったらこえをかけてくれよな！"
+    end
+
+    else
+        say("レベル"..lv.."か\nもっと強くなってからきてくれよな！")
+    end
+end
