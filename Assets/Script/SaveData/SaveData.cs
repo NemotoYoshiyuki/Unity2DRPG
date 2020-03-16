@@ -8,6 +8,7 @@ public class SaveData
     public GameData gameData = new GameData();
     public InventoryData inventoryData = new InventoryData();
     public PartyData partyData = new PartyData();
+    public FlagData flagData = new FlagData();
 
     [System.Serializable]
     public class GameData
@@ -51,6 +52,16 @@ public class SaveData
             this.characterName = playerData.characterName;
             this.characterData = playerData;
             this.characterStatus = status.Copy();
+        }
+    }
+
+    [System.Serializable]
+    public class FlagData
+    {
+        public List<Flag> flags = new List<Flag>();
+        public void SetFlagData(List<Flag> flagDatas)
+        {
+            this.flags = flagDatas;
         }
     }
 }

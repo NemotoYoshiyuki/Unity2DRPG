@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    public InventorySystem inventorySystem = new InventorySystem();
     public int money = 0;
+    public InventorySystem inventorySystem = new InventorySystem();
+    public FlagManager flagManager = new FlagManager();
 
     public SaveSystem saveSystem = new SaveSystem();
     public SaveData saveData = new SaveData();
@@ -56,6 +57,9 @@ public class GameController : MonoBehaviour
         {
             saveData.partyData.SetData(member.playerData, member.status);
         }
+
+        //フラグデータ保存
+        saveData.flagData.SetFlagData(flagManager.flags);
 
         //ファイルに書き込む
         GetSaveSystem().Save(this);
