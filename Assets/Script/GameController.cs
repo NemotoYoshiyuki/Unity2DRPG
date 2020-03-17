@@ -34,6 +34,11 @@ public class GameController : MonoBehaviour
         return instance.saveSystem;
     }
 
+    public static FlagManager GetFlagManager()
+    {
+        return instance.flagManager;    
+    }
+
     public static SaveData GetSaveData()
     {
         return instance.saveData;

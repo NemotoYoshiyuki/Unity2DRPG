@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 [System.Serializable]
-public class FlagManager 
+public class FlagManager
 {
     public List<Flag> flags = new List<Flag>();
 
@@ -31,6 +31,15 @@ public class FlagManager
         Flag flag = GetFlag(flagName);
         if (flag == null) return false;
         return true;
+    }
+
+    public bool Comparison(string flagName, bool value)
+    {
+        Flag flag = GetFlag(flagName);
+        if (flag == null) throw new System.Exception("not flag");
+
+        if (flag.value == value) return true;
+        return false;
     }
 }
 

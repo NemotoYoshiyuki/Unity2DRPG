@@ -15,18 +15,22 @@ public class LuaScript : MonoBehaviour
     protected DynValue coroutine;
     protected string luaCode;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         instance = this;
         Initialized();
         InitModule();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+       
 
         //テスト用
         luaCode = luaFile.text;
         Debug.Log(luaCode);
-        StartCoroutine(RunCoroutine());
+        //StartCoroutine(RunCoroutine());
     }
 
     public void Execution(TextAsset luaFile)

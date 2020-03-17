@@ -676,6 +676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 998925961}
   - component: {fileID: 998925962}
+  - component: {fileID: 998925960}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -683,6 +684,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &998925960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998925959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67fbb62c7b27e0b43ba331b5df070956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  launchCondition: 1
+  conditional:
+    flagName: "\u30C6\u30B9\u30C8"
+    flagValue: 0
+  LuaScript: {fileID: 4900000, guid: 3863cd41b607c154f8e374cfdb07384b, type: 3}
+  luaScript: {fileID: 1222050194}
 --- !u!4 &998925961
 Transform:
   m_ObjectHideFlags: 0
@@ -713,7 +732,9 @@ MonoBehaviour:
   inventorySystem:
     itemDatas: []
   flagManager:
-    flags: []
+    flags:
+    - flagName: "\u30C6\u30B9\u30C8"
+      value: 0
   saveData:
     gameData:
       playerPotion: {x: 0, y: 0}
@@ -724,6 +745,8 @@ MonoBehaviour:
         itemDatas: []
     partyData:
       characterDatas: []
+    flagData:
+      flags: []
 --- !u!1 &1222050193
 GameObject:
   m_ObjectHideFlags: 0

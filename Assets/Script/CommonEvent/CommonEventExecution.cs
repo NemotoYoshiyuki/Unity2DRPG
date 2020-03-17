@@ -3,32 +3,71 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CommonEventExecution : MonoBehaviour
+public class CommonEventExecution : Interactable
 {
-    //イベント起動条件
-    //起動するイベント
-    //条件を満たしていなければ非表示
+    public enum LaunchCondition
+    {
+        決定キーで実行,
+        自動実行,
+        コライダー接触
+    }
 
-    //セルフ変数
-    public bool on = false;//このオブジェクトを表示するか
-    public int a = 0;//イベント進行度
-    public bool self0 = false;
-    public bool self1 = false;
+    [System.Serializable]
+    public class ConditionalExecution
+    {
+        public string flagName;
+        public bool flagValue;
+    }
 
-    public UnityEvent OnStart;
+    public CommonEventExecution.LaunchCondition launchCondition;
+    public ConditionalExecution conditional = new ConditionalExecution();
+    public TextAsset LuaScript;
+
+    //
+    public LuaScript luaScript;
+
 
     private void Start()
     {
-        gameObject.SetActive(on);
+        //実行条件を満たしていないときGameObjectを非表示にします
+        if (!IsExecute())
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        if (launchCondition == LaunchCondition.自動実行)
+        {
+            Execute();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (launchCondition == LaunchCondition.コライダー接触)
+        {
+            Execute();
+        }
+    }
+
+    public override void OnInteractable()
+    {
+        if (launchCondition == LaunchCondition.決定キーで実行)
+        {
+            Execute();
+        }
+    }
+
+
+    private void Execute()
+    {
+        luaScript.Execution(LuaScript);
+    }
+
+    private bool IsExecute()
+    {
+        if (conditional.flagName == string.Empty) return true;
+
+        return GameController.GetFlagManager().Comparison(conditional.flagName, conditional.flagValue);
     }
 }
-
-/*
- * レベル１０になったら仲間になるよ
- *  ifで判定する
- *  以下のとき　もっときたえろ
- *  以上のとき　お前強そうだな
- *  「～が仲間になった」
- *  パーティーに入れる
- *  これ以降非表示になる
- */
