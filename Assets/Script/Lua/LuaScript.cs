@@ -25,8 +25,6 @@ public class LuaScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-
         //テスト用
         luaCode = luaFile.text;
         Debug.Log(luaCode);

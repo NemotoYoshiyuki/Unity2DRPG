@@ -70,12 +70,12 @@ public class LuaEventScript : MonoBehaviour
     //フラグ操作
     public bool GetFlag(string flagName)
     {
-        return GameController.instance.flagManager.Get(flagName);
+        return GameController.instance.flagManager.GetValue(flagName);
     }
 
     public void SetFlag(string flagName, bool value)
     {
-        GameController.instance.flagManager.Set(flagName, value);
+        GameController.instance.flagManager.SetFlag(flagName, value);
     }
 
     public Player GetPlayer()

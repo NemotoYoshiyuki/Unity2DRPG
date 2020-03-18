@@ -19,12 +19,13 @@ public class CommonEventExecution : Interactable
         public bool flagValue;
     }
 
-    public CommonEventExecution.LaunchCondition launchCondition;
-    public ConditionalExecution conditional = new ConditionalExecution();
-    public TextAsset LuaScript;
 
-    //
-    public LuaScript luaScript;
+    [Header("起動条件")]
+    public CommonEventExecution.LaunchCondition launchCondition;
+    [Header("実行条件")]
+    public ConditionalExecution conditional = new ConditionalExecution();
+    [Header("実行するイベントスクリプト")]
+    public TextAsset luaFile;
 
 
     private void Start()
@@ -34,6 +35,11 @@ public class CommonEventExecution : Interactable
         {
             gameObject.SetActive(false);
             return;
+        }
+
+        if (launchCondition == LaunchCondition.コライダー接触)
+        {
+            if (GetComponent<BoxCollider2D>() == null) throw new System.Exception("Not BoxCollider2D");
         }
 
         if (launchCondition == LaunchCondition.自動実行)
@@ -61,13 +67,13 @@ public class CommonEventExecution : Interactable
 
     private void Execute()
     {
-        luaScript.Execution(LuaScript);
+        LuaScript.instance.Execution(luaFile);
     }
 
     private bool IsExecute()
     {
         if (conditional.flagName == string.Empty) return true;
 
-        return GameController.GetFlagManager().Comparison(conditional.flagName, conditional.flagValue);
+        return GameController.GetFlagManager().Equals(conditional.flagName, conditional.flagValue);
     }
 }

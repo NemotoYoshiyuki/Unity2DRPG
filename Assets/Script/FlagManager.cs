@@ -10,36 +10,30 @@ public class FlagManager
 
     public Flag GetFlag(string flagName)
     {
+        if (!Exists(flagName)) throw new System.Exception("Exists Flag");
+
         return flags.FirstOrDefault(x => x.flagName == flagName);
     }
 
-    public bool Get(string flagName)
+    public bool GetValue(string flagName)
     {
-        if (!Has(flagName)) throw new System.Exception("not flag");
         return GetFlag(flagName).value;
     }
 
-    public void Set(string flagName, bool value)
+    public void SetFlag(string flagName, bool value)
     {
-        if (!Has(flagName)) throw new System.Exception("not flag");
         Flag flag = GetFlag(flagName);
         flag.value = value;
     }
 
-    public bool Has(string flagName)
+    public bool Exists(string flagName)
     {
-        Flag flag = GetFlag(flagName);
-        if (flag == null) return false;
-        return true;
+        return flags.Exists(x => x.flagName == flagName);
     }
 
-    public bool Comparison(string flagName, bool value)
+    public bool Equals(string flagName, bool value)
     {
-        Flag flag = GetFlag(flagName);
-        if (flag == null) throw new System.Exception("not flag");
-
-        if (flag.value == value) return true;
-        return false;
+        return GetValue(flagName) == value;
     }
 }
 
