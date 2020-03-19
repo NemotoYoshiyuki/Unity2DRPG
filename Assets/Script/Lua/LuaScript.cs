@@ -18,6 +18,7 @@ public class LuaScript : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
         Initialized();
         InitModule();
     }
@@ -25,10 +26,7 @@ public class LuaScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //テスト用
-        luaCode = luaFile.text;
-        Debug.Log(luaCode);
-        //StartCoroutine(RunCoroutine());
+
     }
 
     public void Execution(TextAsset luaFile)
