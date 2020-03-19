@@ -83,6 +83,7 @@ public class LuaScript : MonoBehaviour
     {
         //プレイヤーの移動を制御
         PlayerInput.canMove = false;
+        PlayerInteract.canInteract = false;
 
         //コルーチンを開始
         Run();
@@ -95,6 +96,7 @@ public class LuaScript : MonoBehaviour
 
         //メッセージウィンドウを閉じる等の終了処理
         PlayerInput.canMove = true;
+        PlayerInteract.canInteract = true;
         luaEvent.End();
         yield break;
     }
