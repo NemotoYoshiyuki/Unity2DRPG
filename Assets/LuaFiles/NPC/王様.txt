@@ -1,0 +1,13 @@
+﻿return function ()
+say("おお 勇者よ！\nそなたが来るのを待っておった")
+say("そなたに頼みたいことがあるのだ\n魔王を討伐してほしいのだ")
+::continue::
+say("もちろんひきうけてもらえるか？")
+
+local choice = choice("はい","いいえ")
+	if choice == 2 then
+		goto continue
+	end
+
+say("では　たのんだぞ")
+end
