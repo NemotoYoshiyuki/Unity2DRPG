@@ -55,12 +55,46 @@ public class LuaEventScript : MonoBehaviour
         }
     }
 
+    public void FadeIn()
+    {
+        StartCoroutine(Fade());
+        IEnumerator Fade()
+        {
+            yield return StartCoroutine(SceneFader.FadeSceneIn());
+            LuaScript.instance.Resume();
+            yield break;
+        }
+    }
+
+    public void FadeOut()
+    {
+        StartCoroutine(Fade());
+        IEnumerator Fade()
+        {
+            yield return StartCoroutine(SceneFader.FadeSceneOut());
+            LuaScript.instance.Resume();
+            yield break;
+        }
+    }
+
     //BGMイベント
     //パーティーイベント
     public void PartyIn(int id)
     {
         //PlayerParty.instance.Join(id);
     }
+
+    public void GainMony(int mony)
+    {
+        GameController.instance.money -= mony;
+    }
+
+    public void AddMony(int mony)
+    {
+        GameController.instance.money += mony;
+    }
+
+   
 
     public PlayerCharacter GetCharacter(int id)
     {
