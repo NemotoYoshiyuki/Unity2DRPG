@@ -94,8 +94,6 @@ public class LuaEventScript : MonoBehaviour
         GameController.instance.money += mony;
     }
 
-   
-
     public PlayerCharacter GetCharacter(int id)
     {
         return PlayerParty.instance.GetMember(id);
