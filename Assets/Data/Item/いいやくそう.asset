@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b307455eb5caa49a1edf35449bf3f4, type: 3}
   m_Name: "\u3044\u3044\u3084\u304F\u305D\u3046"
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   itemName: "\u3044\u3044\u3084\u304F\u305D\u3046"
   useType: 2
   targetUnit: 2
