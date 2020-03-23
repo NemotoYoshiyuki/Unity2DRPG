@@ -12,6 +12,28 @@ public class GameController : MonoBehaviour
     public SaveSystem saveSystem = new SaveSystem();
     public SaveData saveData = new SaveData();
 
+    public static GameController Instance
+    {
+        get
+        {
+            if (instance != null)
+            {
+                return instance;
+            }
+
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameController>();
+            }
+
+            if (instance == null)
+            {
+                Create();
+            }
+            return instance;
+        }
+    }
+
     private void Awake()
     {
         if (instance != null)
@@ -20,15 +42,12 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        instance = FindObjectOfType<GameController>();
-        if (instance == null) Create();
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Create()
+    private static void Create()
     {
-        GameObject gameObject = Instantiate(new GameObject("GameController"));
-        instance = gameObject.AddComponent<GameController>();
+        instance = new GameObject("GameController").AddComponent<GameController>();
     }
 
     public static InventorySystem GetInventorySystem()

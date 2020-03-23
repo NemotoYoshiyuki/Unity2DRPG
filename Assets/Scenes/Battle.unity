@@ -1373,8 +1373,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da6b2b856be3b74dbcc342cb7d33714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 0
   inventorySystem:
     itemDatas: []
+  flagManager:
+    flags: []
   saveData:
     gameData:
       playerPotion: {x: 0, y: 0}
@@ -1384,8 +1387,9 @@ MonoBehaviour:
       inventorySystem:
         itemDatas: []
     partyData:
-      PlayerParty: {fileID: 0}
       characterDatas: []
+    flagData:
+      flags: []
 --- !u!4 &526784821
 Transform:
   m_ObjectHideFlags: 0
@@ -2370,6 +2374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageWindow: {fileID: 1649380311}
+  choiceWindow: {fileID: 0}
 --- !u!4 &837032326
 Transform:
   m_ObjectHideFlags: 0
@@ -5388,8 +5393,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 52
-  m_fontSizeBase: 52
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5405,7 +5410,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 100
+  m_firstOverflowCharacterIndex: 48
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
