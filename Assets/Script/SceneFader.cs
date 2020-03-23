@@ -37,6 +37,7 @@ public class SceneFader : MonoBehaviour
     public static void Create()
     {
         SceneFader controllerPrefab = Resources.Load<SceneFader>("ScreenFader");
+        Debug.Log(controllerPrefab);
         s_Instance = Instantiate(controllerPrefab);
     }
 
