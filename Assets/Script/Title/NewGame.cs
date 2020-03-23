@@ -15,7 +15,7 @@ public class NewGame : MonoBehaviour
 
     public void PlayNewGame()
     {
-        PlayerParty.instance.Join(playerChacter);
+        PlayerParty.Instance.Join(playerChacter);
         GameController.GetInventorySystem().itemDatas = new List<ItemData>(startItem);
         SceneController.Instance.Transition(startScene, startPotisition);
     }

@@ -22,7 +22,7 @@ public class CharacterWindow : BaseWindow
     {
         CloseWindow();
 
-        member = PlayerParty.instance.partyMember;
+        member = PlayerParty.Instance.partyMember;
         foreach (var item in member)
         {
             CharacterSlot characterSlot = Instantiate(characterSlotPrefab);

@@ -6,7 +6,7 @@ public class BattleResultPhase : MonoBehaviour
 {
     public IEnumerator Do()
     {
-        List<PlayerCharacter> aliveMember = PlayerParty.instance.AliveMember();
+        List<PlayerCharacter> aliveMember = PlayerParty.Instance.AliveMember();
         int dropExp = BattleController.instance.GetRewardExp();
 
         foreach (var alivePlayer in aliveMember)

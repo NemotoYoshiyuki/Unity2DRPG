@@ -25,7 +25,7 @@ public class BattleSetUpPhase : MonoBehaviour
 
     public void GeneratePlayer()
     {
-        List<PlayerCharacter> partyMember = PlayerParty.instance.partyMember;
+        List<PlayerCharacter> partyMember = PlayerParty.Instance.partyMember;
         BattleController.instance.playerCharacters = partyMember;
 
         foreach (var player in partyMember)

@@ -18,7 +18,7 @@ public class FieldEffect : MonoBehaviour
 
     public void UseItem(ItemData itemData)
     {
-        List<PlayerCharacter> party = PlayerParty.instance.partyMember;
+        List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
 
         MenuWindow.instance.menuGuide.Show(itemData.itemName + "使用対象を選んでください");
 
@@ -52,7 +52,7 @@ public class FieldEffect : MonoBehaviour
 
         MenuWindow.instance.menuGuide.Show(spellData.skillName+"使用対象を選んでください");
 
-        List<PlayerCharacter> party = PlayerParty.instance.partyMember;
+        List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
         //複数対象の処理
         if (spellData.targetRange == TargetRange.全体)
         {
@@ -68,7 +68,7 @@ public class FieldEffect : MonoBehaviour
         {
             selectTargetWindow.Select((int index) =>
              {
-                 PlayerCharacter target = PlayerParty.instance.partyMember[index];
+                 PlayerCharacter target = PlayerParty.Instance.partyMember[index];
                  Execut(this.spellData, target);
              });
         }

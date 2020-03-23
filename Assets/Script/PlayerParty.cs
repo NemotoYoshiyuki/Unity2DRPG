@@ -8,7 +8,31 @@ public class PlayerParty : MonoBehaviour
     public GameObject playerEntity;
     public List<PlayerCharacter> partyMember;
 
-    public static PlayerParty instance;
+    private static PlayerParty instance;
+
+    public static PlayerParty Instance
+    {
+        get
+        {
+            if (instance != null)
+                return instance;
+
+            instance = FindObjectOfType<PlayerParty>();
+
+            if (instance != null)
+                return instance;
+
+            _Create();
+
+            return instance;
+        }
+    }
+
+    private static void _Create()
+    {
+        instance = new GameObject("PlayerParty").AddComponent<PlayerParty>();
+        instance.playerEntity = Resources.Load<GameObject>("PlayerEntity");
+    }
 
     private void Awake()
     {

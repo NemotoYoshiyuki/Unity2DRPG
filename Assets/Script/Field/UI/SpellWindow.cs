@@ -36,7 +36,7 @@ public class SpellWindow : BaseWindow
     public void UserSelect()
     {
         ////ターゲットリストを表示
-        party = PlayerParty.instance.partyMember;
+        party = PlayerParty.Instance.partyMember;
         MenuWindow.instance.sideMenu.Lock();
         menuGuide.Show("だれが呪文を使用しますか");
         ////ボタンが押されたら
