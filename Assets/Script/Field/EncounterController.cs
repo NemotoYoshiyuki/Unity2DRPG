@@ -13,16 +13,16 @@ public class EncounterController : MonoBehaviour
     public static EncounterController Instance;
     private void Awake()
     {
+        if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         Instance = FindObjectOfType<EncounterController>();
         if (Instance == null)
         {
             GameObject gameObject = new GameObject("EncounterController");
             Instance = gameObject.AddComponent<EncounterController>();
-        }
-
-        if (Instance != this)
-        {
-            Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
     }

@@ -96,7 +96,7 @@ public class LuaEventScript : MonoBehaviour
 
     public PlayerCharacter GetCharacter(int id)
     {
-        return PlayerParty.instance.GetMember(id);
+        return PlayerParty.Instance.GetMember(id);
     }
 
     //フラグ操作

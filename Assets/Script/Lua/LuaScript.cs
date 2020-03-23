@@ -15,6 +15,31 @@ public class LuaScript : MonoBehaviour
     protected DynValue coroutine;
     protected string luaCode;
 
+    public static LuaScript Instance
+    {
+        get
+        {
+            if (instance != null)
+                return instance;
+
+            instance = FindObjectOfType<LuaScript>();
+
+            if (instance != null)
+                return instance;
+
+            Create();
+
+            return instance;
+        }
+    }
+
+    private static void Create()
+    {
+        GameObject gameObject = new GameObject("LuaScript");
+        instance = gameObject.AddComponent<LuaScript>();
+        instance.luaEvent = gameObject.AddComponent<LuaEventScript>();
+    }
+
     private void Awake()
     {
         instance = this;

@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
         saveData.inventoryData.SetInventorySystem(inventorySystem);
 
         //パーティーデータ保存
-        var partyMember = PlayerParty.instance.partyMember;
+        var partyMember = PlayerParty.Instance.partyMember;
         foreach (var member in partyMember)
         {
             saveData.partyData.SetData(member.playerData, member.status);
@@ -80,6 +80,6 @@ public class GameController : MonoBehaviour
     public void Load()
     {
         GetSaveSystem().Load(this);
-        PlayerParty.instance.Load();
+        PlayerParty.Instance.Load();
     }
 }
