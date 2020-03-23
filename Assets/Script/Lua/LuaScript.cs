@@ -42,8 +42,15 @@ public class LuaScript : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         DontDestroyOnLoad(gameObject);
+
+
         Initialized();
         InitModule();
     }
