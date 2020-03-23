@@ -20,8 +20,15 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        instance = this;
+        instance = FindObjectOfType<GameController>();
+        if (instance == null) Create();
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Create()
+    {
+        GameObject gameObject = Instantiate(new GameObject("GameController"));
+        instance = gameObject.AddComponent<GameController>();
     }
 
     public static InventorySystem GetInventorySystem()
@@ -36,7 +43,7 @@ public class GameController : MonoBehaviour
 
     public static FlagManager GetFlagManager()
     {
-        return instance.flagManager;    
+        return instance.flagManager;
     }
 
     public static SaveData GetSaveData()
