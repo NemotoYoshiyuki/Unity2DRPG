@@ -16,5 +16,4 @@ public class BattleMessage : MonoBehaviour
     {
         return instance.messageWindow;
     }
-
 }
