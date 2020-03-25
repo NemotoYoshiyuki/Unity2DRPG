@@ -6,7 +6,16 @@ using System.Linq;
 [System.Serializable]
 public class FlagManager
 {
+    public FlagMasterData masterData;
     public List<Flag> flags = new List<Flag>();
+
+    public void Init()
+    {
+        foreach (var item in masterData.flags)
+        {
+            flags.Add(new Flag(item.flagName, false));
+        }
+    }
 
     public Flag GetFlag(string flagName)
     {
