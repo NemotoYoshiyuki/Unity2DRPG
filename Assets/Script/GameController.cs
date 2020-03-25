@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController instance;
+    protected static GameController instance;
     public int money = 0;
     public InventorySystem inventorySystem = new InventorySystem();
     public FlagManager flagManager = new FlagManager();
@@ -52,22 +52,22 @@ public class GameController : MonoBehaviour
 
     public static InventorySystem GetInventorySystem()
     {
-        return instance.inventorySystem;
+        return Instance.inventorySystem;
     }
 
     public static SaveSystem GetSaveSystem()
     {
-        return instance.saveSystem;
+        return Instance.saveSystem;
     }
 
     public static FlagManager GetFlagManager()
     {
-        return instance.flagManager;
+        return Instance.flagManager;
     }
 
     public static SaveData GetSaveData()
     {
-        return instance.saveData;
+        return Instance.saveData;
     }
 
     public void Save()

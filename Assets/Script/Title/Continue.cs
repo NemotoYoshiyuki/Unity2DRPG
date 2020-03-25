@@ -17,7 +17,7 @@ public class Continue : MonoBehaviour
 
     public void PlayContinue()
     {
-        GameController.instance.Load();
+        GameController.Instance.Load();
         SaveData.GameData gameData = GameController.GetSaveData().gameData;
 
         //プレイヤーの位置を指定してシーンを再生

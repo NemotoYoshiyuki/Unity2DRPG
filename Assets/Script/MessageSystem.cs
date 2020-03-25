@@ -6,7 +6,7 @@ public class MessageSystem : MonoBehaviour
 {
     public MessageWindow messageWindow;
     public ChoiceWindow choiceWindow;
-    public static MessageSystem instance;
+    protected static MessageSystem instance;
     public static MessageSystem Instance
     {
         get

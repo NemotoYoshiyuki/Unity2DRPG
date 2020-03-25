@@ -9,7 +9,7 @@ public class MoneyWindow : MonoBehaviour
 
     private void OnEnable()
     {
-        int money = GameController.instance.money;
+        int money = GameController.Instance.money;
         text.SetText(money + " Gold");
     }
 }

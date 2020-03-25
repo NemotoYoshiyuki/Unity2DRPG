@@ -13,7 +13,7 @@ public class BattleResultPhase : MonoBehaviour
         {
             alivePlayer.status.exp = dropExp;
             string ms = alivePlayer.CharacterName + "は" + dropExp + "けいけんちをかくとく";
-            yield return StartCoroutine(MessageSystem.GetWindow().ShowClick(ms));
+            yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(ms));
         }
         yield break;
     }

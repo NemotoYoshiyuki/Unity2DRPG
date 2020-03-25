@@ -12,7 +12,7 @@ public class BattleEndPhase : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        yield return StartCoroutine(MessageSystem.GetWindow().ShowClick("まけました"));
+        yield return StartCoroutine(BattleMessage.GetWindow().ShowClick("まけました"));
         SceneController.Instance.Transition("Title");
         yield break;
     }

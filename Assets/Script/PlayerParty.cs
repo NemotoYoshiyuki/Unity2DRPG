@@ -94,7 +94,7 @@ public class PlayerParty : MonoBehaviour
             return;
         }
 
-        SaveData saveData = GameController.instance.saveData;
+        SaveData saveData = GameController.Instance.saveData;
         var characterDatas = saveData.partyData.characterDatas;
 
         foreach (var data in characterDatas)

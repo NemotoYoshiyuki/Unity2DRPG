@@ -10,7 +10,7 @@ public class CommandExecutor : MonoBehaviour
 
     private void Start()
     {
-        message = MessageSystem.GetWindow();
+        message = BattleMessage.GetWindow();
     }
 
     //バトルコマンドを実行します

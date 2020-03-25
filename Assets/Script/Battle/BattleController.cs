@@ -105,7 +105,7 @@ public class BattleController : MonoBehaviour
 
     public IEnumerator Escape()
     {
-        MessageWindow messageWindow = MessageSystem.GetWindow();
+        MessageWindow messageWindow = BattleMessage.GetWindow();
         if (IsEscapeSuccess())
         {
             yield return StartCoroutine(messageWindow.ShowAuto("逃げ切れた"));

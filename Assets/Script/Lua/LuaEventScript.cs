@@ -13,7 +13,7 @@ public class LuaEventScript : MonoBehaviour
         Debug.Log(txt);
         IEnumerator Say()
         {
-            MessageWindow messageWindow = MessageSystem.instance.messageWindow;
+            MessageWindow messageWindow = MessageSystem.Instance.messageWindow;
             yield return StartCoroutine(messageWindow.ShowClick(txt));
             LuaScript.instance.Resume();
             yield break;
@@ -40,7 +40,7 @@ public class LuaEventScript : MonoBehaviour
 
     public void End()
     {
-        MessageWindow messageWindow = MessageSystem.instance.messageWindow;
+        MessageWindow messageWindow = MessageSystem.Instance.messageWindow;
         messageWindow.Close();
     }
 
@@ -86,12 +86,12 @@ public class LuaEventScript : MonoBehaviour
 
     public void GainMony(int mony)
     {
-        GameController.instance.money -= mony;
+        GameController.Instance.money -= mony;
     }
 
     public void AddMony(int mony)
     {
-        GameController.instance.money += mony;
+        GameController.Instance.money += mony;
     }
 
     public PlayerCharacter GetCharacter(int id)
@@ -102,12 +102,12 @@ public class LuaEventScript : MonoBehaviour
     //フラグ操作
     public bool GetFlag(string flagName)
     {
-        return GameController.instance.flagManager.GetValue(flagName);
+        return GameController.Instance.flagManager.GetValue(flagName);
     }
 
     public void SetFlag(string flagName, bool value)
     {
-        GameController.instance.flagManager.SetFlag(flagName, value);
+        GameController.Instance.flagManager.SetFlag(flagName, value);
     }
 
     public Player GetPlayer()
