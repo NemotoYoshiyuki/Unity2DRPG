@@ -504,9 +504,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMaster: {fileID: 11400000, guid: ba22848fd2137214baa4dd6019475cb5, type: 2}
+  itemMasterData: {fileID: 11400000, guid: d0ae585e618c7c041a08349de1b943e6, type: 2}
   money: 0
   inventorySystem:
-    itemDatas: []
+    itemDatas:
+    - {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
   flagManager:
     masterData: {fileID: 11400000, guid: 473ad828506584648ab3002456dfc7e0, type: 2}
     flags: []

@@ -32,6 +32,6 @@ public class InventorySystem
 
     public bool HasItem(int id)
     {
-        return GameController.Instance.itemMasterData.items.Any(x => x.id == id);
+        return itemDatas.Any(x => x.id == id);
     }
 }
