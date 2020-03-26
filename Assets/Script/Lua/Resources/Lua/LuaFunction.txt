@@ -16,4 +16,16 @@ function M.choice(txt1,txt2)
 	return luaEvent.ChoiceResult()
 end
 
+-------------
+-- Flag
+-------------
+
+function M.getFlag(txt1)
+	return luaEvent.GetFlag(txt1)
+end
+
+function M.setFlag(txt1,value)
+	luaEvent.SetFlag(txt1,value)
+end
+
 return M
