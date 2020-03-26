@@ -29,6 +29,22 @@ function M.setFlag(txt1,value)
 end
 
 -------------
+-- Item
+-------------
+
+function M.addItem(id)
+	 luaEvent.AddItem(id)
+end
+
+function M.gainItem(id)
+	 luaEvent.GainItem(id)
+end
+
+function M.hasItem(id)
+	return luaEvent.HasItem(id)
+end
+
+-------------
 -- Party
 -------------
 

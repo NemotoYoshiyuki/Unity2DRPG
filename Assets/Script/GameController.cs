@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     [Header("マスターデータ")]
     public CharacterMasterData characterMaster;
+    public ItemMasterData itemMasterData;
 
     protected static GameController instance;
     public int money = 0;

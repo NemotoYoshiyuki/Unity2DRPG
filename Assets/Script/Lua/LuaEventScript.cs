@@ -94,6 +94,22 @@ public class LuaEventScript : MonoBehaviour
         GameController.Instance.money += mony;
     }
 
+    //アイテム操作
+    public void AddItem(int id)
+    {
+        GameController.Instance.inventorySystem.AddItem(id);
+    }
+
+    public void GainItem(int id)
+    {
+        GameController.Instance.inventorySystem.UseItem(id);
+    }
+
+    public bool HasItem(int id)
+    {
+        return GameController.Instance.inventorySystem.HasItem(id); ;
+    }
+
     public PlayerCharacter GetCharacter(int id)
     {
         return PlayerParty.Instance.GetMember(id);
