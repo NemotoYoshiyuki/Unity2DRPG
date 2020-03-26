@@ -28,4 +28,12 @@ function M.setFlag(txt1,value)
 	luaEvent.SetFlag(txt1,value)
 end
 
+-------------
+-- Party
+-------------
+
+function M.partyIn(id)
+	luaEvent.PartyIn(id)
+end
+
 return M

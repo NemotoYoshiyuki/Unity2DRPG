@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flags:
   - flagName: "\u738B\u69D8\u3068\u4F1A\u8A71"
-    value: 0
+    value: 1
   - flagName: "\u305D\u3046\u308A\u3087\u304C\u4EF2\u9593\u306B\u306A\u3063\u305F"
     value: 0

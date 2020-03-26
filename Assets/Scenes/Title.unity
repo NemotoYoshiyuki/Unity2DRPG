@@ -1343,6 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da6b2b856be3b74dbcc342cb7d33714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaster: {fileID: 11400000, guid: ba22848fd2137214baa4dd6019475cb5, type: 2}
   money: 0
   inventorySystem:
     itemDatas: []

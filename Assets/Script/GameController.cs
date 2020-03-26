@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [Header("マスターデータ")]
+    public CharacterMasterData characterMaster;
+
     protected static GameController instance;
     public int money = 0;
     public InventorySystem inventorySystem = new InventorySystem();

@@ -81,6 +81,12 @@ public class PlayerParty : MonoBehaviour
         Debug.Log(playerCharacter.CharacterName + "がパーティーに加入した");
     }
 
+    public void Join(int id)
+    {
+        PlayerData playerData = GameController.Instance.characterMaster.characterData.FirstOrDefault(x => x.characterID == id);
+        Join(playerData);
+    }
+
     public PlayerCharacter GetMember(int id)
     {
         return partyMember.FirstOrDefault(x => x.playerData.characterID == id);
