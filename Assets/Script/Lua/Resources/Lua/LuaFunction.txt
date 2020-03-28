@@ -1,5 +1,12 @@
 local M = {}
 
+------------
+-- Debugging
+------------
+
+function M.print(obj)
+	luaEvent.Print(obj)
+end
 
 -------------
 -- Coroutines

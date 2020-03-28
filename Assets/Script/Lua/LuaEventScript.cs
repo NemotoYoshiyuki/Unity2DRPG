@@ -6,6 +6,12 @@ using MoonSharp.Interpreter;
 [MoonSharpUserData]
 public class LuaEventScript : MonoBehaviour
 {
+
+    public void Print(object obj)
+    {
+        Debug.Log(obj);
+    }
+
     //メッセージイベント
     public void Say(string txt)
     {
