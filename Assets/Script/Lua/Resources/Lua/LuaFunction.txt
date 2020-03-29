@@ -4,7 +4,7 @@ local M = {}
 -- Debugging
 ------------
 
-function M.print(obj)
+function M.printf(obj)
 	luaEvent.Print(obj)
 end
 

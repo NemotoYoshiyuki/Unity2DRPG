@@ -473,7 +473,7 @@ MonoBehaviour:
   conditional:
     flagName: 
     flagValue: 0
-  luaFile: {fileID: 4900000, guid: 7a47dcb83a4676544a1e16b2da4465f4, type: 3}
+  luaFile: {fileID: 4900000, guid: 19aed44a60b607a45b3c42a5578dedd7, type: 3}
 --- !u!1 &587693135
 GameObject:
   m_ObjectHideFlags: 0
