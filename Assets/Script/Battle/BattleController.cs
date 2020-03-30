@@ -109,8 +109,8 @@ public class BattleController : MonoBehaviour
         if (IsEscapeSuccess())
         {
             yield return StartCoroutine(messageWindow.ShowAuto("逃げ切れた"));
-            SceneController.Instance.BackToField();
-
+            yield return StartCoroutine(SceneController.Instance.BackToField());
+            yield break;
         }
         else
         {

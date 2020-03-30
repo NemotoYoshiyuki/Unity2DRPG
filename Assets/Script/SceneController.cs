@@ -66,10 +66,11 @@ public class SceneController : MonoBehaviour
         yield break;
     }
 
-    public void BackToField()
+    public IEnumerator BackToField()
     {
         //バトルシーンからフィールドシーンに戻ります
-        StartCoroutine(instance.TransitionToField());
+        yield return StartCoroutine(instance.TransitionToField());
+        yield break;
     }
 
     private IEnumerator TransitionToField()
