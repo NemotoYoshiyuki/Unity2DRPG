@@ -17,6 +17,8 @@ public class BattleCombatPhase : MonoBehaviour
         {
             BattleCharacter owner = command.owner;
             if (owner.IsDead()) continue;
+            //バトルの決着がついている時それ以上コマンドを実行しない
+            if (BattleController.instance.Settle()) continue;
             yield return StartCoroutine(commandExecution.Execution(command));
         }
         commandManager.Clea();
