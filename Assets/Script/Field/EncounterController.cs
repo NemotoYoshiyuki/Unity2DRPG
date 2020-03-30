@@ -13,7 +13,7 @@ public class EncounterController : MonoBehaviour
     public static EncounterController Instance;
     private void Awake()
     {
-        if (Instance != this)
+        if (Instance != null)
         {
             Destroy(gameObject);
         }
