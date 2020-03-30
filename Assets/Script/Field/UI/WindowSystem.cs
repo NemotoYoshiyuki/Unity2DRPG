@@ -25,10 +25,11 @@ public class WindowSystem : MonoBehaviour
     {
         if (!canOpen) return;
 
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (MenuWindow.activeSelf) MenuWindow.SetActive(false);
-            else MenuWindow.SetActive(true);
+            if (!MenuWindow.activeSelf) MenuWindow.SetActive(true);
+            //if (MenuWindow.activeSelf) MenuWindow.SetActive(false);
+            //else MenuWindow.SetActive(true);
         }
     }
 }

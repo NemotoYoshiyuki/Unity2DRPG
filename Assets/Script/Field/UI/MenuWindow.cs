@@ -36,7 +36,7 @@ public class MenuWindow : BaseWindow
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape))
         {
             // If the mouse button or touch detected render at 60 FPS (every frame).
             OnDemandRendering.renderFrameInterval = 1;
