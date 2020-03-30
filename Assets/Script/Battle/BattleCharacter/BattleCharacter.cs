@@ -23,6 +23,7 @@ public class BattleCharacter : MonoBehaviour
     public void ReceiveDamage(int damage)
     {
         status.hp = Mathf.Clamp(status.hp - damage, 0, status.maxHp);
+        if (IsDead()) OnDead();
     }
 
     //コマンド入力が可能な状態なのか
@@ -34,6 +35,12 @@ public class BattleCharacter : MonoBehaviour
     public bool IsDead()
     {
         return status.hp <= 0;
+    }
+
+    //味方キャラクターと敵キャラクターで死亡した時の処理が違うためvirtualで定義
+    public virtual void OnDead()
+    {
+
     }
 
     public void GainMp(int value)

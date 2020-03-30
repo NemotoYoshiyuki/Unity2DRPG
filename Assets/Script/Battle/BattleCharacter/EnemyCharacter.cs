@@ -12,6 +12,12 @@ public class EnemyCharacter : BattleCharacter
         return enemyData.commands;
     }
 
+    public override void OnDead()
+    {
+        base.OnDead();
+        gameObject.SetActive(false);
+    }
+
     public int DropExp()
     {
         return enemyData.exp;
