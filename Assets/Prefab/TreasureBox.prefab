@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5800339346543390131}
   - component: {fileID: 5800339346543390130}
   m_Layer: 0
-  m_Name: TreasureBox1
+  m_Name: TreasureBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: -1998389387
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21301980, guid: 31e24ed712cbf3b4595a8dbc9b18aa9c, type: 3}
+  m_Sprite: {fileID: 8548365069441084726, guid: 84475f7729c1d5540a9c25953790f1d7,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,3 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
+  enptyImage: {fileID: 6271433347336348431, guid: 84475f7729c1d5540a9c25953790f1d7,
+    type: 3}

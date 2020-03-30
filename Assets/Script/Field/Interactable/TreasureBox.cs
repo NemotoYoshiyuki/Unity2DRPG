@@ -7,6 +7,7 @@ using UnityEngine;
 public class TreasureBox : Interactable
 {
     public ItemData item;
+    public Sprite enptyImage;
     bool isObtain;
 
     private void Start()
@@ -39,10 +40,15 @@ public class TreasureBox : Interactable
         }
 
         isObtain = true;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = enptyImage;
         GameController.GetInventorySystem().AddItem(item);
         string ms = item.itemName + "を手に入れた";
         yield return StartCoroutine(MessageSystem.GetWindow().ShowClick(ms));
         messageWindow.Close();
+
+        
+
         InteractableEnd();
         yield break;
     }
