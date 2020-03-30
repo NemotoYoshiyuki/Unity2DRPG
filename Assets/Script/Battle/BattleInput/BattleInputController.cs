@@ -22,7 +22,7 @@ public class BattleInputController : MonoBehaviour
     public void Init()
     { 
         inputCharacters.Clear();
-        foreach (var player in BattleController.instance.GetPlayerCharacters())
+        foreach (var player in BattleController.instance.AlivePlayerCharacters)
         {
             if (player.CanCommandInput())
             {
