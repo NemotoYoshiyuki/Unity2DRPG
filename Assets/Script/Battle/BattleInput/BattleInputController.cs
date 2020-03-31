@@ -137,5 +137,10 @@ public class BattleInputController : MonoBehaviour
         BattleSpellInput spellInput = Change<BattleSpellInput>();
         spellInput.Show(spellDatas);
     }
+
+    public void Cancel()
+    {
+        Change<BattleFightInput>();
+    }
 }
 
