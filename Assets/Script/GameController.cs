@@ -25,22 +25,20 @@ public class GameController : MonoBehaviour
                 return instance;
             }
 
-            if (instance == null)
-            {
-                instance = FindObjectOfType<GameController>();
-            }
+            instance = FindObjectOfType<GameController>();
 
-            if (instance == null)
-            {
-                Create();
-            }
+            if (instance != null)
+                return instance;
+
+            Create();
+
             return instance;
         }
     }
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != this)
         {
             Destroy(gameObject);
             return;
