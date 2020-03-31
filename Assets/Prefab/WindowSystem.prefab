@@ -1863,7 +1863,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7557973222684865320, guid: 771b4bab6d15e26439c20b45c5f31704,
+          type: 3}
         m_MethodName: Save
         m_Mode: 1
         m_Arguments:
@@ -4552,7 +4553,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7557973222684865320, guid: 771b4bab6d15e26439c20b45c5f31704,
+          type: 3}
         m_MethodName: Load
         m_Mode: 1
         m_Arguments:

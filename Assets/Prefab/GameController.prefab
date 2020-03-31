@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7557973222684865321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7557973222684865323}
+  - component: {fileID: 7557973222684865320}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7557973222684865323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7557973222684865321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7557973222684865320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7557973222684865321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da6b2b856be3b74dbcc342cb7d33714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterMaster: {fileID: 11400000, guid: ba22848fd2137214baa4dd6019475cb5, type: 2}
+  itemMasterData: {fileID: 11400000, guid: d0ae585e618c7c041a08349de1b943e6, type: 2}
+  money: 0
+  inventorySystem:
+    itemDatas: []
+  flagManager:
+    masterData: {fileID: 11400000, guid: 473ad828506584648ab3002456dfc7e0, type: 2}
+    flags: []
+  saveData:
+    gameData:
+      playerPotion: {x: 0, y: 0}
+      sceneName: 
+      money: 0
+    inventoryData:
+      inventorySystem:
+        itemDatas: []
+    partyData:
+      characterDatas: []
+    flagData:
+      flags: []
