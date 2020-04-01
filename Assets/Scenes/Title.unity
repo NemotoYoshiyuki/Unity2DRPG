@@ -2217,6 +2217,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7557973222684865320, guid: 771b4bab6d15e26439c20b45c5f31704,
+        type: 3}
+      propertyPath: saveData.partyData.characterDatas.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7557973222684865321, guid: 771b4bab6d15e26439c20b45c5f31704,
         type: 3}
       propertyPath: m_Name

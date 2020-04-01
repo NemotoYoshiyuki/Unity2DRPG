@@ -49,7 +49,7 @@ public class SaveData
 
         public PlayerCharacterData(PlayerData playerData, Status status)
         {
-            this.characterName = playerData.characterName;
+            this.characterName = playerData.CharacterName;
             this.characterData = playerData;
             this.characterStatus = status.Copy();
         }

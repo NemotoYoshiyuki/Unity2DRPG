@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlayerCharacter : BattleCharacter
 {
     public PlayerData playerData;
-    public override string CharacterName { get => playerData.characterName; set => base.CharacterName = value; }
+    public override string CharacterName { get => playerData.CharacterName; set => base.CharacterName = value; }
 
     public List<SpellData> GetSpells()
     {
-        return playerData.spellDatas;
+        return playerData.SpellDatas;
     }
 
     public List<SkillData> GetSkills()
     {
-        return playerData.skillDatas;
+        return playerData.SkillDatas;
     }
 }
