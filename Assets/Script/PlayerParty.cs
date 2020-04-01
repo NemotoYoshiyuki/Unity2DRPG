@@ -54,14 +54,14 @@ public class PlayerParty : MonoBehaviour
     public PlayerCharacter Create(PlayerData playerData)
     {
         GameObject player = Instantiate(playerEntity);
-        player.name = playerData.characterName;
+        player.name = playerData.CharacterName;
 
         PlayerCharacter playerCharacter = player.GetComponent<PlayerCharacter>();
-        PlayerData _playerData = Instantiate(playerData);
+        PlayerData _playerData = playerData;
 
-        playerCharacter.CharacterName = _playerData.characterName;
+        playerCharacter.CharacterName = _playerData.CharacterName;
         playerCharacter.playerData = _playerData;
-        playerCharacter.status = _playerData.status;
+        playerCharacter.status = _playerData.Status.Copy();
         return playerCharacter;
     }
 
@@ -83,13 +83,13 @@ public class PlayerParty : MonoBehaviour
 
     public void Join(int id)
     {
-        PlayerData playerData = GameController.Instance.characterMaster.characterData.FirstOrDefault(x => x.characterID == id);
+        PlayerData playerData = GameController.Instance.characterMaster.characterData.FirstOrDefault(x => x.CharacterID == id);
         Join(playerData);
     }
 
     public PlayerCharacter GetMember(int id)
     {
-        return partyMember.FirstOrDefault(x => x.playerData.characterID == id);
+        return partyMember.FirstOrDefault(x => x.playerData.CharacterID == id);
     }
 
     public void Load()
