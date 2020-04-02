@@ -5,7 +5,7 @@ using UnityEngine;
 public class WindowSystem : MonoBehaviour
 {
     public GameObject MenuWindow;
-    public bool canOpen = true;
+    public static bool canOpen = true;
     public static WindowSystem instance;
 
     private void Awake()

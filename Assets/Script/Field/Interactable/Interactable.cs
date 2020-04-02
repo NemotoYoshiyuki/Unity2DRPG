@@ -16,11 +16,13 @@ public abstract class Interactable : MonoBehaviour
     {
         PlayerInput.canMove = false;
         PlayerInteract.canInteract = false;
+        WindowSystem.canOpen = false;
     }
 
     public void InteractableEnd()
     {
         PlayerInput.canMove = true;
         PlayerInteract.canInteract = true;
+        WindowSystem.canOpen = true;
     }
 }
