@@ -44,9 +44,9 @@ TagManager:
   - name: FieldGround
     uniqueID: 4019089947
     locked: 0
-  - name: FieldCollison
-    uniqueID: 2296577909
-    locked: 0
   - name: FieldCharacter
     uniqueID: 982356601
+    locked: 0
+  - name: FieldCollison
+    uniqueID: 2296577909
     locked: 0
