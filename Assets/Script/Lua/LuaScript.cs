@@ -8,6 +8,9 @@ using MoonSharp.Interpreter;
 public class LuaScript : MonoBehaviour
 {
     public static LuaScript instance;
+    //イベントを起動しているオブジェクト
+    [HideInInspector]
+    public GameObject evtObj;
     public LuaEventScript luaEvent;
 
     public TextAsset luaFile;
@@ -79,6 +82,7 @@ public class LuaScript : MonoBehaviour
         UserData.RegisterAssembly(typeof(LuaScript).Assembly);
         UserData.RegisterType<PlayerCharacter>();
         UserData.RegisterType<Status>();
+        UserData.RegisterType<GameObject>();
 
         script = new Script(CoreModules.Preset_Complete);
         object[] result = Resources.LoadAll("Lua", typeof(TextAsset));
@@ -116,7 +120,7 @@ public class LuaScript : MonoBehaviour
         //プレイヤーの移動を制御
         PlayerInput.canMove = false;
         PlayerInteract.canInteract = false;
-        WindowSystem.canOpen = false;   
+        WindowSystem.canOpen = false;
 
         //コルーチンを開始
         Run();

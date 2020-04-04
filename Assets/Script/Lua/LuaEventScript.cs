@@ -137,6 +137,11 @@ public class LuaEventScript : MonoBehaviour
         return null;
     }
 
+    public GameObject GetNPC()
+    {
+        return LuaScript.instance.evtObj;
+    }
+
     public InventorySystem GetInventory()
     {
         return null;

@@ -59,4 +59,8 @@ function M.partyIn(id)
 	luaEvent.PartyIn(id)
 end
 
+function M.getNPC()
+	return luaEvent.GetNPC()
+end
+
 return M

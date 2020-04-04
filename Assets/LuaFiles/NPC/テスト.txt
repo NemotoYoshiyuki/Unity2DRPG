@@ -1,3 +1,6 @@
 ﻿return function ()
 printf("p")
+local a =luaEvent.GetChara()
+a.SetActive(false);
+say "ok"
 end

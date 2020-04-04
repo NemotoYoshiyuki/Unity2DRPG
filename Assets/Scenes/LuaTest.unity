@@ -473,7 +473,7 @@ MonoBehaviour:
   conditional:
     flagName: 
     flagValue: 0
-  luaFile: {fileID: 4900000, guid: 19aed44a60b607a45b3c42a5578dedd7, type: 3}
+  luaFile: {fileID: 4900000, guid: 2e83151c1f27ed144aca8281f4749b63, type: 3}
 --- !u!1 &587693135
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3b0a8b99d862943a49042f13d0f2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  evtObj: {fileID: 0}
   luaEvent: {fileID: 1222050196}
   luaFile: {fileID: 4900000, guid: 3863cd41b607c154f8e374cfdb07384b, type: 3}
 --- !u!4 &1222050195

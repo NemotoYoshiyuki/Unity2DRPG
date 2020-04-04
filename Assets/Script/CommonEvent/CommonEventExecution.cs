@@ -27,7 +27,6 @@ public class CommonEventExecution : Interactable
     [Header("実行するイベントスクリプト")]
     public TextAsset luaFile;
 
-
     private void Start()
     {
         //実行条件を満たしていないときGameObjectを非表示にします
@@ -67,6 +66,7 @@ public class CommonEventExecution : Interactable
 
     private void Execute()
     {
+        LuaScript.instance.evtObj = gameObject;
         LuaScript.instance.Execution(luaFile);
     }
 
