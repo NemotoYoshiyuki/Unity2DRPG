@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     public string characterName;
+    public int id;
     public Status status;
 
     public Sprite graphic;

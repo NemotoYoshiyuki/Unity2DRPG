@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMaster: {fileID: 11400000, guid: ba22848fd2137214baa4dd6019475cb5, type: 2}
   itemMasterData: {fileID: 11400000, guid: d0ae585e618c7c041a08349de1b943e6, type: 2}
+  enemyMasterData: {fileID: 11400000, guid: a924e6e07f05e8a48b348cfd136ef497, type: 2}
   money: 0
   inventorySystem:
     itemDatas: []
