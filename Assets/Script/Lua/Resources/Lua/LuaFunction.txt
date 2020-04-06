@@ -23,6 +23,11 @@ function M.choice(txt1,txt2)
 	return luaEvent.ChoiceResult()
 end
 
+function M.wait(time)
+	luaEvent.Wait(time)
+	coroutine.yield()
+end
+
 -------------
 -- Flag
 -------------
@@ -61,6 +66,11 @@ end
 
 function M.getNPC()
 	return luaEvent.GetNPC()
+end
+
+function M.battle(id)
+	luaEvent.Battle(id)
+	coroutine.yield()
 end
 
 return M

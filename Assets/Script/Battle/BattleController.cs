@@ -19,10 +19,12 @@ public class BattleController : MonoBehaviour
     public BattleEndPhase battleEnd;
 
     public static BattleController instance;
+    public static bool isBattle;
 
     private void Awake()
     {
         instance = this;
+        isBattle = true;
     }
 
     public List<PlayerCharacter> GetPlayerCharacters()
@@ -46,6 +48,7 @@ public class BattleController : MonoBehaviour
 
     public IEnumerator GameLoop()
     {
+        isBattle = true;
         yield return StartCoroutine(battleSetUp.SetUp());
         yield return StartCoroutine(battleStart.Do());
 
@@ -74,6 +77,7 @@ public class BattleController : MonoBehaviour
         yield return StartCoroutine(battleResult.Do());
         //戦闘終了の処理
         yield return StartCoroutine(battleEnd.Win());
+        isBattle = false;
         yield break;
     }
 

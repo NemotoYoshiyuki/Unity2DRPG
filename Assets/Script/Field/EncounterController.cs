@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EncounterController : MonoBehaviour
 {
@@ -37,6 +38,17 @@ public class EncounterController : MonoBehaviour
     public static void SetEncounterSteps()
     {
         walkingSteps = 0;
-        encounterSteps = Random.Range(50,300);
+        encounterSteps = Random.Range(50, 300);
+    }
+
+    public static void Encount(int id)
+    {
+        Encounter encounter = Encounter.Instance;
+        //encounter.backGroundImage = backGroundImage;
+        EnemyData enemyData = GameController.Instance.enemyMasterData.characterData.First(x => x.id == id);
+        encounter.enemyGroups = new List<EncountEnemy>() { new EncountEnemy() { enemy = enemyData, posiiton = 0 } };
+        EncounterController.SetEncounterSteps();
+        SceneFader.FadeSceneOut();
+        SceneController.Instance.Transition("Battle");
     }
 }

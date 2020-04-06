@@ -132,6 +132,20 @@ public class LuaEventScript : MonoBehaviour
         GameController.Instance.flagManager.SetFlag(flagName, value);
     }
 
+    //戦闘操作
+    public void Battle(int id)
+    {
+        StartCoroutine(enumerator());
+        IEnumerator enumerator()
+        { 
+            EncounterController.Encount(id);
+            BattleController.isBattle = true;
+            yield return new WaitUntil(() => BattleController.isBattle == false);
+            LuaScript.instance.Resume();
+            yield break;
+        }
+    }
+
     public Player GetPlayer()
     {
         return null;

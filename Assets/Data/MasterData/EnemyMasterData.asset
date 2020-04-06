@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: EnemyMasterData
   m_EditorClassIdentifier: 
   characterData:
+  - {fileID: 11400000, guid: dd20403049431af4ebf64498737d114d, type: 2}
   - {fileID: 11400000, guid: 21fadbaff1209c242a5dc6623bb552fd, type: 2}
+  - {fileID: 11400000, guid: f24bd8f026f93c440813d2db9dba38d9, type: 2}

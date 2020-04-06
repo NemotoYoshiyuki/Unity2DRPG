@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3b0a8b99d862943a49042f13d0f2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  evtObj: {fileID: 0}
   luaEvent: {fileID: 452888484}
   luaFile: {fileID: 0}
 --- !u!1 &674962751

@@ -73,6 +73,17 @@ public class SceneController : MonoBehaviour
         yield break;
     }
 
+    //バトルシーンからフィールドシーンに戻ったときにイベントを開始します
+    public IEnumerator BackToField(TextAsset luaFile)
+    {
+        //バトルシーンからフィールドシーンに戻ります
+        yield return StartCoroutine(instance.TransitionToField());
+        //イベントを開始します
+        LuaScript.instance.luaFile = luaFile;
+        StartCoroutine(LuaScript.instance.RunCoroutine());
+        yield break;
+    }
+
     private IEnumerator TransitionToField()
     {
         yield return SceneManager.LoadSceneAsync(currentScene);
