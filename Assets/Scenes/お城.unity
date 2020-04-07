@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3b0a8b99d862943a49042f13d0f2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  evtObj: {fileID: 0}
   luaEvent: {fileID: 20898192}
   luaFile: {fileID: 0}
 --- !u!114 &20898192
@@ -249,7 +250,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1998389387
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2288,7 +2289,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1998389387
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21301864, guid: 31e24ed712cbf3b4595a8dbc9b18aa9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2411,6 +2412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMaster: {fileID: 0}
   itemMasterData: {fileID: 0}
+  enemyMasterData: {fileID: 0}
   money: 444
   inventorySystem:
     itemDatas: []
@@ -2740,7 +2742,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 982356601
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -4888052718916091045, guid: fa3bfbfb4eb8b104b9b16adc260b559b,
     type: 3}
@@ -2915,7 +2917,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1998389387
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21301880, guid: 31e24ed712cbf3b4595a8dbc9b18aa9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

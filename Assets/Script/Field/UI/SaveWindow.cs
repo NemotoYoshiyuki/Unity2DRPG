@@ -20,4 +20,14 @@ public class SaveWindow : BaseWindow
         MenuWindow.instance.currentWindow = MenuWindow.instance;
         Close();
     }
+
+    public void Save()
+    {
+        GameController.Instance.Save();
+    }
+
+    public void Load()
+    {
+        GameController.Instance.Load();
+    }
 }
