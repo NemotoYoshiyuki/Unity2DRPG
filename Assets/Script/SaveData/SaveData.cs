@@ -9,6 +9,7 @@ public class SaveData
     public InventoryData inventoryData = new InventoryData();
     public PartyData partyData = new PartyData();
     public FlagData flagData = new FlagData();
+    public MapFlagData mapFlagData = new MapFlagData();
 
     [System.Serializable]
     public class GameData
@@ -57,6 +58,16 @@ public class SaveData
 
     [System.Serializable]
     public class FlagData
+    {
+        public List<Flag> flags = new List<Flag>();
+        public void SetFlagData(List<Flag> flagDatas)
+        {
+            this.flags = flagDatas;
+        }
+    }
+
+    [System.Serializable]
+    public class MapFlagData
     {
         public List<Flag> flags = new List<Flag>();
         public void SetFlagData(List<Flag> flagDatas)

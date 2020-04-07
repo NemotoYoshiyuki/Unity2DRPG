@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public int money = 0;
     public InventorySystem inventorySystem = new InventorySystem();
     public FlagManager flagManager = new FlagManager();
+    public MapFlag mapFlag = new MapFlag();
 
     public SaveSystem saveSystem = new SaveSystem();
     public SaveData saveData = new SaveData();
@@ -94,6 +95,9 @@ public class GameController : MonoBehaviour
 
         //フラグデータ保存
         saveData.flagData.SetFlagData(flagManager.flags);
+        
+        //マップフラグデータ保存
+        saveData.mapFlagData.SetFlagData(mapFlag.mapFlags);
 
         //ファイルに書き込む
         GetSaveSystem().Save(this);

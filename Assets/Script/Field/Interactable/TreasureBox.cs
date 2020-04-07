@@ -13,6 +13,13 @@ public class TreasureBox : Interactable
     private void Start()
     {
         gameObject.layer = LayerMask.NameToLayer("Interactable");
+        isObtain = GameController.Instance.mapFlag.GetValue(FlagName);
+
+        if (ItemExists())
+        {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = enptyImage;
+        }
     }
 
     public override void OnInteractable()
@@ -47,9 +54,12 @@ public class TreasureBox : Interactable
         yield return StartCoroutine(MessageSystem.GetWindow().ShowClick(ms));
         messageWindow.Close();
 
-        
+        //フラグの保存
+        GameController.Instance.mapFlag.SetFlag(FlagName,true);
 
         InteractableEnd();
         yield break;
     }
+
+    public string FlagName => SceneController.Instance.CurrentScene + gameObject.name;
 }
