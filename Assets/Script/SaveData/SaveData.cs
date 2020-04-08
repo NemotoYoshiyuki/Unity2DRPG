@@ -17,6 +17,11 @@ public class SaveData
         public Vector2 playerPotion;
         public string sceneName;
         public int money;
+
+        //オプション
+        public int messageSpeed;
+        public int soundVolume;
+        public int sfxVolume;
     }
 
     [System.Serializable]

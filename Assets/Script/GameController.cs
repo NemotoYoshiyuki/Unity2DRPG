@@ -11,6 +11,11 @@ public class GameController : MonoBehaviour
 
     protected static GameController instance;
     public int money = 0;
+    [Header("オプション項目")]
+    public int messageSpeed;
+    public int soundVolume;
+    public int sfxVolume;
+
     public InventorySystem inventorySystem = new InventorySystem();
     public FlagManager flagManager = new FlagManager();
     public MapFlag mapFlag = new MapFlag();
@@ -83,6 +88,11 @@ public class GameController : MonoBehaviour
         saveData.gameData.playerPotion = PlayerInput.playerPotision;
         saveData.gameData.sceneName = SceneController.Instance.CurrentScene;
 
+        //オプション設定保存
+        saveData.gameData.messageSpeed = messageSpeed;
+        saveData.gameData.soundVolume = soundVolume;
+        saveData.gameData.sfxVolume = sfxVolume;
+
         //インベントリデータ保存
         saveData.inventoryData.SetInventorySystem(inventorySystem);
 
@@ -95,7 +105,7 @@ public class GameController : MonoBehaviour
 
         //フラグデータ保存
         saveData.flagData.SetFlagData(flagManager.flags);
-        
+
         //マップフラグデータ保存
         saveData.mapFlagData.SetFlagData(mapFlag.mapFlags);
 
