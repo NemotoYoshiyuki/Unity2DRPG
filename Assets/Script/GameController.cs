@@ -98,6 +98,8 @@ public class GameController : MonoBehaviour
         saveData.gameData.sfxVolume = sfxVolume;
 
         //全滅時の再開場所保存
+        saveData.gameData.resumeScene = resumeScene;
+        saveData.gameData.checkpoint = checkpoint;
 
 
         //インベントリデータ保存

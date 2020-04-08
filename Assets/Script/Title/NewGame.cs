@@ -18,6 +18,8 @@ public class NewGame : MonoBehaviour
         PlayerParty.Instance.Join(playerChacter);
         GameController.GetInventorySystem().itemDatas = new List<ItemData>(startItem);
         GameController.GetFlagManager().Init();
+        GameController.Instance.resumeScene = startScene;
+        GameController.Instance.checkpoint = startPotisition;
         SceneController.Instance.Transition(startScene, startPotisition);
     }
 }

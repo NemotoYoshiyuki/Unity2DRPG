@@ -22,6 +22,10 @@ public class SaveData
         public int messageSpeed;
         public int soundVolume;
         public int sfxVolume;
+
+        //全滅した時の復活場所
+        public string resumeScene;
+        public Vector3 checkpoint;
     }
 
     [System.Serializable]
