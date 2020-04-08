@@ -11,6 +11,10 @@ public class GameController : MonoBehaviour
 
     protected static GameController instance;
     public int money = 0;
+    [Header("ゲームオーバー再開場所")]
+    [SceneName] public string resumeScene;
+    public Vector3 checkpoint;
+
     [Header("オプション項目")]
     public int messageSpeed;
     public int soundVolume;
@@ -93,6 +97,9 @@ public class GameController : MonoBehaviour
         saveData.gameData.soundVolume = soundVolume;
         saveData.gameData.sfxVolume = sfxVolume;
 
+        //全滅時の再開場所保存
+
+
         //インベントリデータ保存
         saveData.inventoryData.SetInventorySystem(inventorySystem);
 
@@ -117,5 +124,15 @@ public class GameController : MonoBehaviour
     {
         GetSaveSystem().Load(this);
         PlayerParty.Instance.Load();
+    }
+
+    public void GameOver()
+    {
+        //ペナルティ
+        money = money / 2;
+        //パーティーの全回復
+        PlayerParty.Instance.FullRecovery();
+        //チェックポイントから再開
+        SceneController.Instance.Transition(resumeScene,checkpoint);
     }
 }

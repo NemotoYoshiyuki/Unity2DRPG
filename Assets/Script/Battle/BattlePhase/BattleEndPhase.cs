@@ -15,7 +15,8 @@ public class BattleEndPhase : MonoBehaviour
     {
         BattleController.isBattle = false;
         yield return StartCoroutine(BattleMessage.GetWindow().ShowClick("まけました"));
-        SceneController.Instance.Transition("Title");
+        //SceneController.Instance.Transition("Title");
+        GameController.Instance.GameOver();
         yield break;
     }
 }

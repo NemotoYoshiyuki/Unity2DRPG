@@ -110,4 +110,9 @@ public class PlayerParty : MonoBehaviour
             Join(playerCharacter);
         }
     }
+
+    public void FullRecovery()
+    {
+        partyMember.ForEach(x=> x.Recover(9999));
+    }
 }
