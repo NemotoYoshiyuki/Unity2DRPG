@@ -36,13 +36,13 @@ public class TreasureBox : Interactable
     {
         MessageWindow messageWindow = MessageSystem.GetWindow();
 
-        InteractableStart();
+        PlayerInteract.InteractableStart();
 
         if (ItemExists())
         {
             yield return StartCoroutine(messageWindow.ShowClick("からっぽだ"));
             messageWindow.Close();
-            InteractableEnd();
+            PlayerInteract.InteractableEnd();
             yield break;
         }
 
@@ -57,7 +57,7 @@ public class TreasureBox : Interactable
         //フラグの保存
         GameController.Instance.mapFlag.SetFlag(FlagName,true);
 
-        InteractableEnd();
+        PlayerInteract.InteractableEnd();
         yield break;
     }
 

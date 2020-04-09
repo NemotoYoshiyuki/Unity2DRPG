@@ -34,7 +34,7 @@ public class Switch : Interactable
     {
         MessageWindow messageWindow = MessageSystem.GetWindow();
 
-        InteractableStart();
+        PlayerInteract.InteractableStart();
 
         //スイッチがオンのときオフに切り替える
         //Switch off when switch is on
@@ -58,7 +58,7 @@ public class Switch : Interactable
         }
 
         messageWindow.Close();
-        InteractableEnd();
+        PlayerInteract.InteractableEnd();
         yield break;
     }
 

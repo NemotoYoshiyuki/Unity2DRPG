@@ -21,7 +21,7 @@ public class NPC : Interactable
         MessageWindow messageWindow = MessageSystem.GetWindow();
         Conversation conversation = GetComponent<Conversation>();
 
-        InteractableStart();
+        PlayerInteract.InteractableStart();
 
         //会話文章の表示
         //display talk
@@ -32,6 +32,6 @@ public class NPC : Interactable
         }
         messageWindow.Close();
 
-        InteractableEnd();
+        PlayerInteract.InteractableEnd();
     }
 }

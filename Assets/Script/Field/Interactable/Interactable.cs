@@ -11,18 +11,4 @@ public abstract class Interactable : MonoBehaviour
     {
 
     }
-
-    public void InteractableStart()
-    {
-        PlayerMovement.canMove = false;
-        PlayerInteract.canInteract = false;
-        WindowSystem.canOpen = false;
-    }
-
-    public void InteractableEnd()
-    {
-        PlayerMovement.canMove = true;
-        PlayerInteract.canInteract = true;
-        WindowSystem.canOpen = true;
-    }
 }

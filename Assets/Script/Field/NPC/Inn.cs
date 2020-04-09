@@ -23,7 +23,7 @@ public class Inn : Interactable
         MessageWindow messageWindow = MessageSystem.GetWindow();
         ChoiceWindow choiceWindow = MessageSystem.GetChoise();
 
-        InteractableStart();
+        PlayerInteract.InteractableStart();
 
         yield return StartCoroutine(messageWindow.ShowClick("ひと晩" + roomCharge + "ゴールドですが\nおとまりになられますか"));
         yield return StartCoroutine(choiceWindow.Choice());
@@ -35,7 +35,7 @@ public class Inn : Interactable
             {
                 yield return StartCoroutine(messageWindow.ShowClick("お金が　たりないようです"));
                 messageWindow.Close();
-                InteractableEnd();
+                PlayerInteract.InteractableEnd();
                 yield break;
             }
 
@@ -53,7 +53,7 @@ public class Inn : Interactable
 
         messageWindow.Close();
 
-        InteractableEnd();
+        PlayerInteract.InteractableEnd();
         yield break;
     }
 
