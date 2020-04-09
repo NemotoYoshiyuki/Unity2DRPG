@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
         this.saveData = new SaveData();
 
         //ゲームデータ保存
-        saveData.gameData.playerPotion = PlayerInput.playerPotision;
+        saveData.gameData.playerPotion = PlayerMovement.playerPotision;
         saveData.gameData.sceneName = SceneController.Instance.CurrentScene;
 
         //オプション設定保存

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerTransitionController : MonoBehaviour
 {
     [SerializeField]
-    protected PlayerInput m_PlayerInput;
+    protected PlayerMovement m_PlayerInput;
 
     protected static PlayerTransitionController instance;
     public static PlayerTransitionController Instance
@@ -41,7 +41,7 @@ public class PlayerTransitionController : MonoBehaviour
 
         if (m_PlayerInput == null)
         {
-            m_PlayerInput = Resources.Load<PlayerInput>("Player");
+            m_PlayerInput = Resources.Load<PlayerMovement>("Player");
         }
     }
 
@@ -57,7 +57,7 @@ public class PlayerTransitionController : MonoBehaviour
             yield return SceneManager.LoadSceneAsync(newSceneName);
         }
 
-        PlayerInput player = FindPlayerInput();
+        PlayerMovement player = FindPlayerInput();
         SceneTransitionDestination sceneTransitionDestination = GetDestination(tag);
         TransitionPoint transitionPoint = sceneTransitionDestination.gameObject.GetComponent<TransitionPoint>();
 
@@ -78,10 +78,10 @@ public class PlayerTransitionController : MonoBehaviour
         return null;
     }
 
-    public PlayerInput FindPlayerInput()
+    public PlayerMovement FindPlayerInput()
     {
         //シーン内を検索する
-        PlayerInput player = FindObjectOfType<PlayerInput>();
+        PlayerMovement player = FindObjectOfType<PlayerMovement>();
 
         //ない場合
         if (player == null)

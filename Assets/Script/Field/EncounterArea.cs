@@ -16,7 +16,7 @@ public class EncounterArea : MonoBehaviour
             return;
         }
 
-        if (!collision.GetComponent<PlayerInput>().Moving())
+        if (!collision.GetComponent<PlayerMovement>().Moving())
         {
             return;
         }

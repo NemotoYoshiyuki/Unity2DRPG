@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public static bool canInteract = true;
-    private PlayerInput playerInput;
+    private PlayerMovement playerInput;
 
     // Start is called before the first frame update
     void Start()
     {
         canInteract = true;
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame

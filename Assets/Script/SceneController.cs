@@ -61,7 +61,7 @@ public class SceneController : MonoBehaviour
     public IEnumerator TransitionInternal(string newSceneName, Vector2 playerPosition)
     {
         yield return SceneManager.LoadSceneAsync(newSceneName);
-        PlayerInput playerInput = PlayerTransitionController.Instance.FindPlayerInput();
+        PlayerMovement playerInput = PlayerTransitionController.Instance.FindPlayerInput();
         playerInput.transform.position = playerPosition;
         yield break;
     }
@@ -87,8 +87,8 @@ public class SceneController : MonoBehaviour
     private IEnumerator TransitionToField()
     {
         yield return SceneManager.LoadSceneAsync(currentScene);
-        PlayerInput player = FindObjectOfType<PlayerInput>();
-        player.gameObject.transform.position = PlayerInput.playerPotision;
+        PlayerMovement player = FindObjectOfType<PlayerMovement>();
+        player.gameObject.transform.position = PlayerMovement.playerPotision;
         yield break;
     }
 }

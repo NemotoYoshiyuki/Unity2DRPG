@@ -13,12 +13,12 @@ public class MenuWindow : BaseWindow
 
     private void OnEnable()
     {
-        PlayerInput.canMove = false;
+        PlayerMovement.canMove = false;
     }
 
     private void OnDisable()
     {
-        PlayerInput.canMove = true;
+        PlayerMovement.canMove = true;
     }
 
     // Start is called before the first frame update

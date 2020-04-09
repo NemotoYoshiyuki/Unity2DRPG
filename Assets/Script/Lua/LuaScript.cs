@@ -118,7 +118,7 @@ public class LuaScript : MonoBehaviour
     public IEnumerator RunCoroutine()
     {
         //プレイヤーの移動を制御
-        PlayerInput.canMove = false;
+        PlayerMovement.canMove = false;
         PlayerInteract.canInteract = false;
         WindowSystem.canOpen = false;
 
@@ -132,7 +132,7 @@ public class LuaScript : MonoBehaviour
         }
 
         //メッセージウィンドウを閉じる等の終了処理
-        PlayerInput.canMove = true;
+        PlayerMovement.canMove = true;
         PlayerInteract.canInteract = true;
         WindowSystem.canOpen = true;
         luaEvent.End();

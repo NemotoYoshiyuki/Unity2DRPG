@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 253870410094809440}
   - component: {fileID: 253870410094809447}
   - component: {fileID: 253870410094809443}
-  - component: {fileID: 253870410094809442}
   - component: {fileID: 253870410094809468}
   m_Layer: 0
   m_Name: Player
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 982356601
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6990084067037037992, guid: 397943d8bca91434aa51e5f334c9b7ce,
     type: 3}
@@ -166,19 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed90d01ce0cab440a08a472440fa9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SPEED: 5
---- !u!114 &253870410094809442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253870410094809444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4676e65a6d8ab7f4fa30cbb9b38170ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &253870410094809468
 MonoBehaviour:
   m_ObjectHideFlags: 0
