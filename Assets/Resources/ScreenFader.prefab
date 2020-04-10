@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 5847315696573081648}
   - component: {fileID: 5847315696573081651}
   m_Layer: 0
-  m_Name: SceneFader
+  m_Name: ScreenFader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

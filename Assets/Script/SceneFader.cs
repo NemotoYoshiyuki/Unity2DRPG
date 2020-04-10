@@ -115,6 +115,7 @@ public class SceneFader : MonoBehaviour
         }
 
         canvasGroup.gameObject.SetActive(true);
+        canvasGroup.alpha = 1f;
 
         yield return Instance.StartCoroutine(Instance.Fade(1f, canvasGroup));
     }
