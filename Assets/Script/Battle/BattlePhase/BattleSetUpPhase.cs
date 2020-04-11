@@ -15,7 +15,7 @@ public class BattleSetUpPhase : MonoBehaviour
 
     public IEnumerator SetUp()
     {
-        Encounter encounter = Encounter.Instance;
+        EncounterController encounter = EncounterController.Instance;
         SetBackGroundImage(encounter.backGroundImage);
         SetPlayAudio(encounter.bgm);
         GeneratePlayer();
@@ -42,6 +42,7 @@ public class BattleSetUpPhase : MonoBehaviour
 
     public void SetBackGroundImage(Sprite image)
     {
+        if (image == null) return;
         backGrounImage.sprite = image;
     }
 

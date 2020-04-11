@@ -7,6 +7,7 @@ using UnityEngine;
 public class EncounterArea : MonoBehaviour
 {
     public Sprite backGroundImage;
+    public AudioClip bgm;
     public List<EnemyGroup> enemyGroups;
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -26,19 +27,8 @@ public class EncounterArea : MonoBehaviour
         if (EncounterController.IsEncount)
         {
             //エンカウントする
-            RandamEncounter();
+            EncounterController.Encount(GetEncountEnemy(), backGroundImage, bgm);
         }
-    }
-
-    public void RandamEncounter()
-    {
-        Encounter encounter = Encounter.Instance;
-        encounter.backGroundImage = backGroundImage;
-        encounter.enemyGroups = GetEncountEnemy();
-
-        EncounterController.SetEncounterSteps();
-        SceneFader.FadeSceneOut();
-        SceneController.Instance.Transition("Battle");
     }
 
     private List<EncountEnemy> GetEncountEnemy()

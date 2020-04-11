@@ -22,13 +22,13 @@ public class PlayerParty : MonoBehaviour
             if (instance != null)
                 return instance;
 
-            _Create();
+            CreateInstance();
 
             return instance;
         }
     }
 
-    private static void _Create()
+    private static void CreateInstance()
     {
         instance = new GameObject("PlayerParty").AddComponent<PlayerParty>();
         instance.playerEntity = Resources.Load<GameObject>("PlayerEntity");
@@ -51,17 +51,21 @@ public class PlayerParty : MonoBehaviour
         return partyMember.Where(x => !x.IsDead()).ToList();
     }
 
+    public PlayerCharacter GetMember(int id)
+    {
+        return partyMember.FirstOrDefault(x => x.playerData.CharacterID == id);
+    }
+
     public PlayerCharacter Create(PlayerData playerData)
     {
         GameObject player = Instantiate(playerEntity);
         player.name = playerData.CharacterName;
 
         PlayerCharacter playerCharacter = player.GetComponent<PlayerCharacter>();
-        PlayerData _playerData = playerData;
 
-        playerCharacter.CharacterName = _playerData.CharacterName;
-        playerCharacter.playerData = _playerData;
-        playerCharacter.status = _playerData.Status.Copy();
+        playerCharacter.CharacterName = playerData.CharacterName;
+        playerCharacter.playerData = playerData;
+        playerCharacter.status = playerData.Status.Copy();
         return playerCharacter;
     }
 
@@ -69,16 +73,7 @@ public class PlayerParty : MonoBehaviour
     public void Join(PlayerData playerData)
     {
         PlayerCharacter playerCharacter = Create(playerData);
-        playerCharacter.transform.parent = gameObject.transform;
-        partyMember.Add(playerCharacter);
-        Debug.Log(playerCharacter.CharacterName + "が新しくパーティーに加入した");
-    }
-
-    public void Join(PlayerCharacter playerCharacter)
-    {
-        playerCharacter.transform.parent = gameObject.transform;
-        partyMember.Add(playerCharacter);
-        Debug.Log(playerCharacter.CharacterName + "がパーティーに加入した");
+        Join(playerCharacter);
     }
 
     public void Join(int id)
@@ -87,9 +82,11 @@ public class PlayerParty : MonoBehaviour
         Join(playerData);
     }
 
-    public PlayerCharacter GetMember(int id)
+    public void Join(PlayerCharacter playerCharacter)
     {
-        return partyMember.FirstOrDefault(x => x.playerData.CharacterID == id);
+        playerCharacter.transform.parent = gameObject.transform;
+        partyMember.Add(playerCharacter);
+        Debug.Log(playerCharacter.CharacterName + "がパーティーに加入した");
     }
 
     public void Load()
@@ -113,6 +110,6 @@ public class PlayerParty : MonoBehaviour
 
     public void FullRecovery()
     {
-        partyMember.ForEach(x=> x.Recover(9999));
+        partyMember.ForEach(x => x.Recover(9999));
     }
 }

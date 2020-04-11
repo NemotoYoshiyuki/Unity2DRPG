@@ -10,6 +10,11 @@ public class EncounterController : MonoBehaviour
     private static int encounterSteps;//エンカウントするまでの歩数
     public static bool isEncount = false;
 
+    [Tooltip("バトルデータ")]
+    public Sprite backGroundImage;
+    public AudioClip bgm;
+    public List<EncountEnemy> enemyGroups;
+
 
     public static EncounterController Instance;
     private void Awake()
@@ -41,14 +46,20 @@ public class EncounterController : MonoBehaviour
         encounterSteps = Random.Range(50, 300);
     }
 
+    public static void Encount(List<EncountEnemy> enemies, Sprite backGroundImage = null, AudioClip bgm = null)
+    {
+        Instance.backGroundImage = backGroundImage;
+        Instance.enemyGroups = enemies;
+
+        SetEncounterSteps();
+        Instance.StartCoroutine(SceneFader.FadeSceneOut());
+        SceneController.Instance.Transition("Battle");
+    }
+
     public static void Encount(int id)
     {
-        Encounter encounter = Encounter.Instance;
-        //encounter.backGroundImage = backGroundImage;
         EnemyData enemyData = GameController.Instance.enemyMasterData.characterData.First(x => x.id == id);
-        encounter.enemyGroups = new List<EncountEnemy>() { new EncountEnemy() { enemy = enemyData, posiiton = 0 } };
-        EncounterController.SetEncounterSteps();
-        SceneFader.FadeSceneOut();
-        SceneController.Instance.Transition("Battle");
+        var enemyGroups = new List<EncountEnemy>() { new EncountEnemy() { enemy = enemyData, posiiton = 0 } };
+        Encount(enemyGroups);
     }
 }
