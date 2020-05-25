@@ -7,7 +7,7 @@ public class SaveWindow : BaseWindow
     public override void Open()
     {
         base.Open();
-        MenuWindow.instance.currentWindow = this;
+        MenuWindow.instance.focusWindow = this;
     }
 
     public override void Close()
@@ -17,7 +17,7 @@ public class SaveWindow : BaseWindow
 
     public override void Cancel()
     {
-        MenuWindow.instance.currentWindow = MenuWindow.instance;
+        MenuWindow.instance.focusWindow = MenuWindow.instance;
         Close();
     }
 

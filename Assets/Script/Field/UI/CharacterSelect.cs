@@ -7,7 +7,7 @@ using System.Linq;
 public class CharacterSelect : MonoBehaviour
 {
     private CharacterWindow characterWindow;
-    private List<SelectItem> selectItems = new List<SelectItem>();
+    public List<SelectItem> selectItems = new List<SelectItem>();
 
 
     private void Start()
@@ -21,12 +21,19 @@ public class CharacterSelect : MonoBehaviour
         for (int i = 0; i < characterSlots.Count; i++)
         {
             SelectItem selectItem = characterSlots[i].gameObject.GetComponent<SelectItem>();
-            selectItem.index = i;
+            //selectItem.index = i;
             selectItem.enabled = true;
-            selectItem.AddRegister(action);
+            //selectItem.AddRegister(action);
             selectItems.Add(selectItem);
         }
         selectItems[0].Select();
+    }
+
+    //詳細表示、呪文・アイテムのターゲット選択
+    public void OnClick(Action action)
+    {
+        //セレクトボタンにアクションを登録する
+
     }
 
     //すべての要素を選択状態にする
@@ -36,9 +43,8 @@ public class CharacterSelect : MonoBehaviour
         for (int i = 0; i < characterSlots.Count; i++)
         {
             SelectItem selectItem = characterSlots[i].gameObject.GetComponent<SelectItem>();
-            selectItem.index = i;
             selectItem.enabled = true;
-            selectItem.AddRegister(action);
+            //selectItem.AddRegister(action);
             selectItems.Add(selectItem);
             selectItem.Select();
         }
@@ -48,16 +54,16 @@ public class CharacterSelect : MonoBehaviour
     {
         foreach (var item in selectItems)
         {
-            item.Release();
+            //item.Release();
             item.enabled = false;
         }
     }
 
-    public void Flash(PlayerCharacter player,Color color,float time)
+    public void Flash(PlayerCharacter player, Color color, float time)
     {
         List<CharacterSlot> characterSlots = characterWindow.characterSlots;
-        CharacterSlot characterSlot = characterSlots.First(x=>x.playerCharacter == player);
+        CharacterSlot characterSlot = characterSlots.First(x => x.playerCharacter == player);
         Flash flash = characterSlot.GetComponent<Flash>();
-        flash.FlashStart(color,time);
+        flash.FlashStart(color, time);
     }
 }

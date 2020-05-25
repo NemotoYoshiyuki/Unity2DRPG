@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    protected static GameController instance;
+
     [Header("マスターデータ")]
     public CharacterMasterData characterMaster;
     public ItemMasterData itemMasterData;
     public EnemyMasterData enemyMasterData;
 
-    protected static GameController instance;
     public int money = 0;
     [Header("ゲームオーバー再開場所")]
     [SceneName] public string resumeScene;
@@ -135,6 +136,6 @@ public class GameController : MonoBehaviour
         //パーティーの全回復
         PlayerParty.Instance.FullRecovery();
         //チェックポイントから再開
-        SceneController.Instance.Transition(resumeScene,checkpoint);
+        SceneController.Instance.Transition(resumeScene, checkpoint);
     }
 }

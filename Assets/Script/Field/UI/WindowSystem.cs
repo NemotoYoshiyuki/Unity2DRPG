@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Menuを全体管理するクラス
 public class WindowSystem : MonoBehaviour
 {
     public GameObject MenuWindow;
@@ -32,4 +33,21 @@ public class WindowSystem : MonoBehaviour
             //else MenuWindow.SetActive(true);
         }
     }
+
+    public void Open()
+    {
+        PlayerInteract.InteractableStart();
+    }
+
+    public void Close()
+    {
+        PlayerInteract.InteractableEnd();
+    }
 }
+
+//＊Menuを外から呼び出します
+//Menuを表示している間、移動等の入力を制限します
+
+//何がだめかわかったこのクラスMenuの親になっているのが紛らわしい
+//このクラスはUIと親子関係はなく協力関係である　初心者がよくやってしまう
+//menuWindowをプレファブ参照するべき

@@ -7,53 +7,79 @@ using System;
 public class MenuWindow : BaseWindow
 {
     public static MenuWindow instance;
-    public BaseWindow currentWindow;
+    public BaseWindow focusWindow;
+    //すべての子要素を参照
+    [Tooltip("各メニューのCanvas")]
     public SideMenu sideMenu;
+    public ItemWindow itemWindow;
+    public SpellWindow spellWindow;
+    public SaveWindow saveWindow;
     public MenuGuide menuGuide;
 
     private void OnEnable()
     {
-        PlayerMovement.canMove = false;
+        //PlayerMovement.canMove = false;
+        PlayerInteract.InteractableStart();
     }
 
     private void OnDisable()
     {
-        PlayerMovement.canMove = true;
+        //PlayerMovement.canMove = true;
+        PlayerInteract.InteractableEnd();
     }
-
+    
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        currentWindow = this;
+        focusWindow = this;
+
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        // When the Menu starts, set the rendering to target 20fps
+        // メニューが起動したら、レンダリングのターゲットを 20fps に設定します
         OnDemandRendering.renderFrameInterval = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (!Input.anyKey)
+        {
+            // マウスやタッチによる入力がない場合は（3 フレームごとに）20fps に戻します
+            OnDemandRendering.renderFrameInterval = 3;
+            return;
+        }
+        //何も入力がない
+        //retun 
+
+        // マウスクリックやタッチ操作が検出されたら、（フレームごとに）60fps でレンダリングします
+        OnDemandRendering.renderFrameInterval = 1;
+
+
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape))
         {
-            // If the mouse button or touch detected render at 60 FPS (every frame).
-            OnDemandRendering.renderFrameInterval = 1;
-
             Debug.Log("キャンセル");
             Back();
         }
-        else
-        {
-            // If there is no mouse and no touch input then we can go back to 20 FPS (every 3 frames).
-            OnDemandRendering.renderFrameInterval = 3;
-        }
+    }
+
+    public override void Open()
+    {
+        base.Open();
+        //フレームレートを下げる
+    }
+
+    public override void Close()
+    {
+        base.Close();
+        //フレームレートを戻す
     }
 
     public void Back()
     {
-        currentWindow.Cancel();
+        focusWindow.Cancel();
     }
 
     public override void Cancel()

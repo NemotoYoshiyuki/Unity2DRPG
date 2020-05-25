@@ -11,4 +11,11 @@ public abstract class Interactable : MonoBehaviour
     {
 
     }
+
+    public void OnExcute()
+    {
+        PlayerInteract.InteractableStart();
+        OnInteractable();
+        PlayerInteract.InteractableEnd();
+    }
 }

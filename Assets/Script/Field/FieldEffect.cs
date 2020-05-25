@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 /*
  * フィールド場で呪文・アイテムを使用するためのクラスです
  */
 public class FieldEffect : MonoBehaviour
 {
-    public CharacterSelect selectTargetWindow;
     public CharacterWindow characterWindow;
     public ItemWindow itemWindow;
     public SpellWindow spellWindow;
@@ -16,8 +16,20 @@ public class FieldEffect : MonoBehaviour
     public PlayerCharacter spellOwner;
     public PlayerCharacter spellTarget;
 
+    public AudioSource SE_Audio;
+    public AudioClip notUse;
+    public AudioClip healClip;
+
     public void UseItem(ItemData itemData)
     {
+        if (!itemWindow.CanUse(itemData))
+        {
+            NotExcute();
+            return;
+        }
+
+        itemWindow.Close();
+
         List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
 
         MenuWindow.instance.menuGuide.Show(itemData.itemName + "使用対象を選んでください");
@@ -25,56 +37,72 @@ public class FieldEffect : MonoBehaviour
         //複数対象の処理
         if (itemData.targetRange == TargetRange.全体)
         {
-            selectTargetWindow.SelectAll((int index) =>
+            characterWindow.SelectAll();
+            characterWindow.ClearLisner();
+            characterWindow.AddLisner((int index) =>
             {
-                foreach (var item in party)
-                {
-                    Execut(itemData, item);
-                }
+                AllItemExecut(itemData);
             });
         }
         else
         {
-            //キャラクターを選択して実行
-            selectTargetWindow.Select((int index) =>
+            characterWindow.Select(0);
+            characterWindow.ClearLisner();
+            characterWindow.AddLisner((int index) =>
             {
                 PlayerCharacter playerCharacter = party[index];
-                Execut(itemData, playerCharacter);
+                ItemExecut(itemData, playerCharacter);
             });
         }
     }
 
     public void UseSpell(SpellData spellData, PlayerCharacter owner)
     {
+        if (!spellWindow.CanFieldSpell(spellData))
+        {
+            NotExcute();
+            return;
+        }
+
         //MP消費
         this.spellData = spellData;
         this.spellOwner = owner;
 
-        MenuWindow.instance.menuGuide.Show(spellData.skillName+"使用対象を選んでください");
+        MenuWindow.instance.menuGuide.Show(spellData.skillName + "使用対象を選んでください");
 
         List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
         //複数対象の処理
         if (spellData.targetRange == TargetRange.全体)
         {
-            selectTargetWindow.SelectAll((int index) =>
+            characterWindow.SelectAll();
+            characterWindow.ClearLisner();
+            characterWindow.AddLisner((int index) =>
             {
-                foreach (var item in party)
-                {
-                    Execut(spellData, item);
-                }
+                AllSpellExecut(spellData);
             });
         }
         else
         {
-            selectTargetWindow.Select((int index) =>
-             {
-                 PlayerCharacter target = PlayerParty.Instance.partyMember[index];
-                 Execut(this.spellData, target);
-             });
+            characterWindow.Select(0);
+            characterWindow.ClearLisner();
+            characterWindow.AddLisner((int index) =>
+            {
+                PlayerCharacter playerCharacter = party[index];
+                SpellExecut(spellData, playerCharacter);
+            });
         }
     }
 
-    private void Execut(ItemData itemData, PlayerCharacter taregt)
+    private void AllItemExecut(ItemData itemData)
+    {
+        List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        foreach (var item in party)
+        {
+            ItemExecut(itemData, item);
+        }
+    }
+
+    private async void ItemExecut(ItemData itemData, PlayerCharacter taregt)
     {
         //アイテムの消費
         GameController.GetInventorySystem().UseItem(itemData);
@@ -84,11 +112,20 @@ public class FieldEffect : MonoBehaviour
         {
             DoEffect(item, taregt);
         }
-
+        await Task.Delay(1000);
         itemWindow.Open();
     }
 
-    private void Execut(SpellData spellData, PlayerCharacter taregt)
+    private void AllSpellExecut(SpellData spellData)
+    {
+        List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        foreach (var item in party)
+        {
+            SpellExecut(spellData, item);
+        }
+    }
+
+    private void SpellExecut(SpellData spellData, PlayerCharacter taregt)
     {
         //Mpの消費
         spellOwner.GainMp(this.spellData.mp);
@@ -113,7 +150,6 @@ public class FieldEffect : MonoBehaviour
             //回復効果
             case HealEffect healEffect:
                 target.Recover(healEffect.healAmount);
-                selectTargetWindow.Flash(target,new Color(0,1,0,0.5f),1f);
                 break;
             //蘇生効果
             case ResuscitationEffect resuscitationEffect:
@@ -124,8 +160,17 @@ public class FieldEffect : MonoBehaviour
                 Debug.Log("not effect");
                 break;
         }
+
+        //効果音再生
+        SE_Audio.PlayOneShot(healClip);
+
         //ステータス更新
         characterWindow.UpdateShow();
-        Debug.Log(target + commandEffect.ToString());
+    }
+
+    public void NotExcute()
+    {
+        //効果が仕様できない
+        SE_Audio.PlayOneShot(notUse);
     }
 }

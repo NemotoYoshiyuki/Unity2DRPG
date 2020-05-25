@@ -7,96 +7,131 @@ using System;
 
 public class ItemWindow : BaseWindow
 {
-    public ItemSlot itemSlotPrefab;
+    public ItemButton itemSlotPrefab;
     public GameObject itemList;
     public TextMeshProUGUI ItemDescription;
     public FieldEffect fieldEffect;
 
-    private List<ItemSlot> itemSlots = new List<ItemSlot>();
-    private List<ItemData> itemSouce;
-    private ItemData selectedItem;
-    private ItemData hoverItem;
+    private Action OnCancel;
+    private List<ItemButton> itemSlots = new List<ItemButton>();
+    private List<SelectableButton> selectables = new List<SelectableButton>();
+    private ItemSlot selectedItem;
 
-    public Action OnCancel;
+    public int selectedItemIndex
+    {
+        get { return Mathf.Clamp(selectedItemIndex, 0, itemSlots.Count); }
+        private set { }
+    }
+
+    private void OnEnable()
+    {
+        MenuWindow.instance.sideMenu.Lock();
+    }
+
     private void OnDisable()
     {
-        Close();
+        MenuWindow.instance.sideMenu.Unlock();
     }
 
     public override void Open()
     {
         base.Open();
-        MenuWindow.instance.sideMenu.Lock();
-        MenuWindow.instance.currentWindow = this;
+        MenuWindow.instance.focusWindow = this;
         Initialized();
 
         ////キャンセルが押されたら
         OnCancel = () =>
         {
-            MenuWindow.instance.currentWindow = MenuWindow.instance;
-            MenuWindow.instance.sideMenu.Unlock();
+            MenuWindow.instance.focusWindow = MenuWindow.instance;
             Close();
         };
     }
 
     public override void Close()
     {
+        CreateItemList();
         base.Close();
-        ClearItems();
     }
 
-    public void Initialized()
+    public override void Cancel()
     {
-        this.itemSouce = GameController.GetInventorySystem().itemDatas;
-        if (itemSouce.Count == 0) return;
-        this.selectedItem = itemSouce[0];
+        OnCancel.Invoke();
+    }
 
-        for (int i = 0; i < itemSouce.Count; i++)
+    private void Initialized()
+    {
+        List<ItemData> inventory = GameController.GetInventorySystem().itemDatas;
+        if (inventory == null || inventory.Count < 0) return;
+
+        ClearItemList();
+        CreateItemList();
+        itemSlots[0].selectable.Select();
+        ShowItemDescription(itemSlots[0].item);
+    }
+
+    private void CreateItemList()
+    {
+        List<ItemData> items = new List<ItemData>(GameController.GetInventorySystem().itemDatas);
+        if (items == null || items.Count < 0) return;
+
+        //ボタン作成
+        for (int i = 0; i < items.Count; i++)
         {
-            ItemSlot itemSlot = Instantiate(itemSlotPrefab);
+            ItemData item = items[i];
+            ItemButton itemSlot = CreateButton(item);
             itemSlot.index = i;
-            itemSlot.owner = this;
-            itemSlot.item = itemSouce[i];
-
-            itemSlot.SetText(itemSouce[i].itemName);
             itemSlot.transform.SetParent(itemList.transform);
             itemSlots.Add(itemSlot);
-
-            if (CanUse(itemSlot.item) == false) itemSlot.selectable.interactable = false;
+            selectables.Add(itemSlot.selectable);
         }
+        RegisterNavigation();
     }
 
-    private bool CanUse(ItemData item)
+    public void RefreshItemList()
+    {
+        ClearItemList();
+        CreateItemList();
+
+        itemSlots[selectedItemIndex].selectable.Select();
+        ShowItemDescription(itemSlots[selectedItemIndex].item);
+    }
+
+    private ItemButton CreateButton(ItemData itemData)
+    {
+        ItemButton itemSlot = Instantiate(itemSlotPrefab);
+        itemSlot.SetUp(itemData);
+
+        //クリック動作
+        itemSlot.selectable.onClick.AddListener(() =>
+        {
+            selectedItemIndex = itemSlot.index;
+            OnItemButtonClick(itemData);
+        });
+
+        itemSlot.selectable.onHover = (() => OnItemButtonHover(itemData));
+
+        if (CanUse(itemData) == false) itemSlot.Invalid();
+        return itemSlot;
+    }
+
+    public bool CanUse(ItemData item)
     {
         if (item.useType != UseType.戦闘中)
         {
             return true;
         }
-        return false;   
+        return false;
     }
 
-    public void ClearItems()
+    private void OnItemButtonClick(ItemData itemData)
     {
-        foreach (var item in itemSlots)
-        {
-            Destroy(item.gameObject);
-        }
-        itemSlots.Clear();
+        ItemUse(itemData);
     }
 
-    public void ObjectHoveredEnter(ItemSlot item)
+    private void ItemUse(ItemData itemData)
     {
-        hoverItem = itemSouce[item.index];
-        //説明文の更新
-        ItemDescription.SetText(hoverItem.description);
-    }
-
-    public void ObjectOnclic(ItemSlot item)
-    {
-
-        selectedItem = item.item;
-        fieldEffect.UseItem(selectedItem);
-        Close();
+        fieldEffect.UseItem(itemData);
+        //Close();
 
         OnCancel = () =>
         {
@@ -104,8 +139,43 @@ public class ItemWindow : BaseWindow
         };
     }
 
-    public override void Cancel()
+    private void OnItemButtonHover(ItemData itemData)
     {
-        OnCancel.Invoke();
+        ShowItemDescription(itemData);
+    }
+
+    private void ShowItemDescription(ItemData itemData)
+    {
+        ItemDescription.SetText(itemData.description);
+    }
+
+    private void CleraItemDescription()
+    {
+        ItemDescription.SetText(string.Empty);
+    }
+
+    private void ClearItemList()
+    {
+        itemSlots.ForEach(x => Destroy(x.gameObject));
+        itemSlots.Clear();
+        selectables.Clear();
+    }
+
+    private void RegisterNavigation()
+    {
+        StartCoroutine(CreateNavigation());
+    }
+
+    //Button.Navigation.modeのExplicitに適切なButtonを割り当てます
+    private IEnumerator CreateNavigation()
+    {
+        //Layoutgroupを使用しているため、レイアウトの構築が完了するまで待つ必要があります
+        yield return new WaitForEndOfFrame();
+
+        foreach (var item in selectables)
+        {
+            item.FindSelectable(selectables);
+        }
+        yield break;
     }
 }

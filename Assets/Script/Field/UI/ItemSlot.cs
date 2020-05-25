@@ -1,22 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using TMPro;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
+public class ItemSlot : MonoBehaviour
 {
-    public int index;
-    public ItemWindow owner;
+    public Sprite icon;
     public ItemData item;
+
+    public int index;
+
     public TextMeshProUGUI text;
 
-    public SelectableItem selectable;
+
+    public SelectableButton selectable;
 
     private void Start()
     {
-        selectable = GetComponent<SelectableItem>();
+        selectable = GetComponent<SelectableButton>();
     }
 
     public void SetText(string text)
@@ -24,16 +23,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         this.text.SetText(text);
     }
 
-    // オブジェクトの範囲内にマウスポインタが入った際に呼び出されます。SelectableSelectable
-    // this method called by mouse-pointer enter the object.
-    public void OnPointerEnter(PointerEventData eventData)
+    public void SetUp(ItemData itemData)
     {
-        owner.ObjectHoveredEnter(this);
+        this.item = itemData;
+        SetText(item.itemName);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void Invalid()
     {
-        if (selectable.interactable == false) return;
-        owner.ObjectOnclic(this);
+        //無効化
+        //テキストとアイコンを薄く
+        //ボタンを暗転
     }
 }

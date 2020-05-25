@@ -48,7 +48,6 @@ public class BattleController : MonoBehaviour
 
     public IEnumerator GameLoop()
     {
-        isBattle = true;
         yield return StartCoroutine(battleSetUp.SetUp());
         yield return StartCoroutine(battleStart.Do());
 
@@ -112,6 +111,7 @@ public class BattleController : MonoBehaviour
         MessageWindow messageWindow = BattleMessage.GetWindow();
         if (IsEscapeSuccess())
         {
+            isBattle = false;
             yield return StartCoroutine(messageWindow.ShowAuto("逃げ切れた"));
             yield return StartCoroutine(SceneController.Instance.BackToField());
             yield break;

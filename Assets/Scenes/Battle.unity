@@ -805,7 +805,6 @@ GameObject:
   m_Component:
   - component: {fileID: 210382796}
   - component: {fileID: 210382795}
-  - component: {fileID: 210382797}
   m_Layer: 0
   m_Name: BackGroundImage
   m_TagString: Untagged
@@ -877,18 +876,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &210382797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 210382794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c1e4e4fc2c01d42a1a2856372d99ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &246557027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,23 +1647,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMaster: {fileID: 0}
   itemMasterData: {fileID: 0}
+  enemyMasterData: {fileID: 0}
   money: 0
+  resumeScene: Title
+  checkpoint: {x: 0, y: 0, z: 0}
+  messageSpeed: 0
+  soundVolume: 0
+  sfxVolume: 0
   inventorySystem:
     itemDatas: []
   flagManager:
     masterData: {fileID: 0}
     flags: []
+  mapFlag:
+    mapFlags: []
   saveData:
     gameData:
       playerPotion: {x: 0, y: 0}
       sceneName: 
       money: 0
+      messageSpeed: 0
+      soundVolume: 0
+      sfxVolume: 0
+      resumeScene: 
+      checkpoint: {x: 0, y: 0, z: 0}
     inventoryData:
       inventorySystem:
         itemDatas: []
     partyData:
       characterDatas: []
     flagData:
+      flags: []
+    mapFlagData:
       flags: []
 --- !u!4 &526784821
 Transform:

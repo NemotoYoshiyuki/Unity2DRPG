@@ -8,7 +8,7 @@ public class PlayerParty : MonoBehaviour
     public GameObject playerEntity;
     public List<PlayerCharacter> partyMember;
 
-    private static PlayerParty instance;
+    protected static PlayerParty instance;
 
     public static PlayerParty Instance
     {
@@ -36,13 +36,12 @@ public class PlayerParty : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 

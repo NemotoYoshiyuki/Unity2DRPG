@@ -23,7 +23,7 @@ public class BattleSetUpPhase : MonoBehaviour
         yield break;
     }
 
-    public void GeneratePlayer()
+    private void GeneratePlayer()
     {
         List<PlayerCharacter> partyMember = PlayerParty.Instance.partyMember;
         BattleController.instance.playerCharacters = partyMember;
@@ -34,19 +34,19 @@ public class BattleSetUpPhase : MonoBehaviour
         }
     }
 
-    public void GenerateEnemy(List<EncountEnemy> enemies)
+    private void GenerateEnemy(List<EncountEnemy> enemies)
     {
         enemyParty.GenerateEnemy(enemies);
         BattleController.instance.enemyCharacters = enemyParty.EnemyCharacters;
     }
 
-    public void SetBackGroundImage(Sprite image)
+    private void SetBackGroundImage(Sprite image)
     {
         if (image == null) return;
         backGrounImage.sprite = image;
     }
 
-    public void SetPlayAudio(AudioClip audioClip)
+    private void SetPlayAudio(AudioClip audioClip)
     {
         if (audioClip == null) return;
 

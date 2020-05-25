@@ -154,4 +154,6 @@ public class LuaScript : MonoBehaviour
         //コルーチンを再開
         coroutine.Coroutine.Resume();
     }
+
+    //RPGのイベントについて　http://www.lancarse.co.jp/blog/?p=3443
 }

@@ -10,12 +10,19 @@ public class SpellSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     public SpellWindow owner;
     public SpellData spell;
     public TextMeshProUGUI text;
+    public AudioSource seAudio;
 
-    public SelectableItem selectable;
+    public SelectableButton selectable;
 
     private void Start()
     {
-        selectable = GetComponent<SelectableItem>();
+        selectable = GetComponent<SelectableButton>();
+    }
+
+    public void SetUp(SpellData spellData)
+    {
+        this.spell = spellData;
+        SetText(spellData.skillName);
     }
 
     public void SetText(string text)
@@ -23,16 +30,28 @@ public class SpellSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         this.text.SetText(text);
     }
 
+    public void Invalid()
+    {
+        Color subtractionColor = new Color(0.6f, 0.6f, 0.6f, 0);
+        selectable.image.color -= subtractionColor;
+        //icon.color -= subtractionColor;
+        text.color -= subtractionColor;
+
+        //クリック動作を変更する
+        selectable.onClick.RemoveAllListeners();
+        selectable.onClick.AddListener(() => seAudio.Play()); ;
+    }
+
     // オブジェクトの範囲内にマウスポインタが入った際に呼び出されます。SelectableSelectable
     // this method called by mouse-pointer enter the object.
     public void OnPointerEnter(PointerEventData eventData)
     {
-        owner.ObjectHoveredEnter(this);
+        //owner.ObjectHoveredEnter(this);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (selectable.interactable == false) return;
-        owner.ObjectOnClick(this);
+        //owner.ObjectOnClick(this);
     }
 }

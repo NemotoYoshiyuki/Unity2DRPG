@@ -27,5 +27,5 @@ MonoBehaviour:
     00000000:
       type: {class: PhysicalAttackEffect, ns: , asm: Assembly-CSharp}
       data:
-        damageRate: 0.5
+        damageRate: 1.1
         critical: 0

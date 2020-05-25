@@ -7,7 +7,7 @@ using UnityEngine;
 public class TreasureBox : Interactable
 {
     public ItemData item;
-    public Sprite enptyImage;
+    public Sprite enptyImage;//宝箱を開けた時置き換えられる画像
     bool isObtain;
 
     private void Start()
