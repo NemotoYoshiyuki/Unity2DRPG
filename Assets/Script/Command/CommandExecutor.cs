@@ -46,7 +46,7 @@ public class CommandExecutor : MonoBehaviour
         string attackMessage = attackCommand.owner.CharacterName + "のこうげき";
         yield return StartCoroutine(message.ShowAuto(attackMessage));
 
-        directionExecutor.Hit();
+        //directionExecutor.Hit();
 
         //BattleCommandの効果処理を行います
         yield return StartCoroutine(effectExecutor.Execution(attackCommand));
