@@ -16,4 +16,10 @@ public class BattleMessage : MonoBehaviour
     {
         return instance.messageWindow;
     }
+
+    public static IEnumerator Show(string message)
+    {
+        yield return instance.messageWindow.ShowAuto(message);
+        yield break;
+    }
 }

@@ -15,7 +15,7 @@ public class CommandExecutor : MonoBehaviour
 
     //バトルコマンドを実行します
     //継承している型でコマンド動作を決定します
-    public IEnumerator Execution(BattleCommand battleCommand)
+    public IEnumerator _Execution(BattleCommand battleCommand)
     {
         switch (battleCommand)
         {
@@ -38,6 +38,16 @@ public class CommandExecutor : MonoBehaviour
             default:
                 break;
         }
+        yield break;
+    }
+
+    public IEnumerator Execution(BattleCommand battleCommand)
+    {
+        //コマンド実行
+        yield return StartCoroutine(battleCommand.Execution());
+
+        //コマンドの効果実行
+        yield return effectExecutor.Execution(battleCommand);
         yield break;
     }
 
@@ -65,10 +75,10 @@ public class CommandExecutor : MonoBehaviour
     public IEnumerator Skill(SkillCommand skillCommand)
     {
         BattleCharacter owner = skillCommand.owner;
-        string skillName = skillCommand.skillData.skillName;
+        //string skillName = skillCommand.skillData.skillName;
         int skillMp = skillCommand.skillData.mp;
-        string skillMessage = skillCommand.owner.CharacterName + "は" + skillName + "をつかった";
-        yield return StartCoroutine(message.ShowAuto(skillMessage));
+        //string skillMessage = skillCommand.owner.CharacterName + "は" + skillName + "をつかった";
+        //yield return StartCoroutine(message.ShowAuto(skillMessage));
 
         if (owner.status.mp <= skillMp)
         {
@@ -85,7 +95,8 @@ public class CommandExecutor : MonoBehaviour
     {
         BattleCharacter owner = spellCommand.owner;
         int spellMp = spellCommand.spellData.mp;
-        string spellMessage = spellCommand.owner.CharacterName + "はじゅもんをとなえた";
+        //string spellMessage = spellCommand.owner.CharacterName + "をとなえた";
+        string spellMessage = $"{spellCommand.owner.CharacterName}は　{spellCommand.spellData.skillName}をとなえた";
         yield return StartCoroutine(message.ShowAuto(spellMessage));
 
         if (owner.status.mp <= spellMp)

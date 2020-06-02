@@ -6,6 +6,7 @@ public class SkillCommand : BattleCommand
 {
     public SkillData skillData;
 
+    //コンストラクタ
     public SkillCommand(SkillData skillData) : base()
     {
         this.skillData = skillData;
@@ -19,6 +20,22 @@ public class SkillCommand : BattleCommand
     public SkillCommand(SkillData skillData, BattleCharacter owner, List<BattleCharacter> target) : base(owner, target)
     {
         this.skillData = skillData;
+    }
+
+    public override IEnumerator Execution()
+    {
+        int skillMp = skillData.mp;
+
+        if (owner.status.mp <= skillMp)
+        {
+            //yield return StartCoroutine(message.ShowAuto("しかし ＭＰが たりない！"));
+            _BattleLogic.Instance.Message("しかし ＭＰが たりない！");
+            yield break;
+        }
+
+        owner.GainMp(skillMp);
+        //yield return StartCoroutine(effectExecutor.Execution(skillCommand));
+        yield break;
     }
 
     public override List<CommandEffect> GetEffect()

@@ -21,6 +21,19 @@ public class ItemCommand : BattleCommand
 
     }
 
+    public override IEnumerator Execution()
+    {
+        string itemName = item.itemName;
+        string itemMessage = owner.CharacterName + "は" + itemName + "をつかった";
+        _BattleLogic.Instance.Message(itemMessage);
+        //yield return StartCoroutine(message.ShowAuto(itemMessage));
+
+        GameController.GetInventorySystem().UseItem(item);
+
+        //yield return StartCoroutine(effectExecutor.Execution(itemCommand));
+        yield break;
+    }
+
     public override TargetType GetTargetType()
     {
         return new TargetType(item.targetUnit, item.targetRange);

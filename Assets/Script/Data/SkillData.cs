@@ -16,5 +16,4 @@ public class SkillData : Command
 
     //スキルの効果
     [SerializeReference, SubclassSelector] public List<CommandEffect> effects;
-   
 }

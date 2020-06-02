@@ -43,6 +43,11 @@ public class BattleCharacter : MonoBehaviour
 
     }
 
+    public void GainHp(int value)
+    {
+        status.hp = Mathf.Clamp(status.hp - value, 0, status.maxHp);
+    }
+
     public void GainMp(int value)
     {
         status.mp = Mathf.Clamp(status.mp - value, 0, status.maxMp);

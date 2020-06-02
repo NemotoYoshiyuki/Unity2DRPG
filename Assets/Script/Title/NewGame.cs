@@ -12,6 +12,10 @@ public class NewGame : MonoBehaviour
     public List<ItemData> startItem;
     [Header("主人公")]
     public PlayerData playerChacter;
+    [Header("仲間")]
+    public PlayerData friend1;
+    public PlayerData friend2;
+    public PlayerData friend3;
 
     public void PlayNewGame()
     {

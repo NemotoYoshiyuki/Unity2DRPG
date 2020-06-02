@@ -16,6 +16,27 @@ public class SpellCommand : BattleCommand
         this.spellData = spellData;
     }
 
+    public override IEnumerator Execution()
+    {
+        int spellMp = spellData.mp;
+        string spellMessage = $"{owner.CharacterName}は　{spellData.skillName}をとなえた"; ;
+        _BattleLogic.Instance.Message(spellMessage);
+        Debug.Log("呪文");
+
+        //yield return StartCoroutine(message.ShowAuto(spellMessage));
+
+        if (owner.status.mp <= spellMp)
+        {
+            //yield return StartCoroutine(message.ShowAuto("しかし ＭＰが たりない！"));
+            _BattleLogic.Instance.Message("しかし ＭＰが たりない！");
+            yield break;
+        }
+
+        owner.GainMp(spellMp);
+        //yield return StartCoroutine(effectExecutor.Execution(spellCommand));
+        yield break;
+    }
+
     public override List<CommandEffect> GetEffect()
     {
         return spellData.effects;

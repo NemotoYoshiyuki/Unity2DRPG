@@ -26,6 +26,8 @@ public class BattleCommand
         this.target.Add(target);
     }
 
+    public virtual IEnumerator Execution() { yield break; }
+
     public virtual List<CommandEffect> GetEffect() { return null; }
 
     public virtual TargetType GetTargetType() { return null; }
