@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ee8cd5c0c15944eafa0f8a1c79e4d7, type: 3}
+  m_Name: "\u72B6\u614B\u7570\u5E38\u4ED8\u4E0E\u546A\u6587"
+  m_EditorClassIdentifier: 
+  id: 0
+  skillName: "\u72B6\u614B\u7570\u5E38\u4ED8\u4E0E"
+  useType: 0
+  targetUnit: 3
+  targetRange: 2
+  mp: 0
+  description: "\u72B6\u614B\u7570\u5E38\u306B\u3059\u308B"
+  effects:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: AddStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectType: 1
+        counter: 2

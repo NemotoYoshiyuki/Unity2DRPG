@@ -68,6 +68,11 @@ public class _BattleLogic : MonoBehaviour
                 Hit(info.target);
                 Add(new DamageDirector(damage, info.target));
                 Add(new MessageDirector(info.target.CharacterName + "は" + damage + "うけた"));
+
+                //ダメージトリガー
+                StatusEffect statusEffect = info.target.statusEffect;
+                if (statusEffect == null) return;
+                statusEffect.OnDamage();
             }
 
             ////対象のHPが0になった
@@ -77,6 +82,18 @@ public class _BattleLogic : MonoBehaviour
             }
 
             //被ダメージ
+        }
+    }
+
+    public void PoisonDamage(BattleCharacter target, int damage,string message)
+    {
+        Add(new DamageDirector(damage, target,message));
+        //ステータスのコピーを参照する？
+
+        ////対象のHPが0になった
+        if (target.status.hp < damage)
+        {
+            Dead(target);
         }
     }
 
@@ -98,6 +115,21 @@ public class _BattleLogic : MonoBehaviour
     {
         Add(new HealDirectpr(character, healAmount));
         Add(new MessageDirector($"{character.CharacterName}は　いきかえった！"));
+    }
+
+    public void AddStatusEffect(BattleCharacter battleCharacter, StatusEffect statusEffect)
+    {
+        //状態異常を付与します
+        Add(new AddStatusEffectDirector(battleCharacter, statusEffect));
+        Message(statusEffect.onAdd);
+    }
+
+    public void RemoveStatusEffect(BattleCharacter battleCharacter)
+    {
+        StatusEffect statusEffect = battleCharacter.statusEffect;
+        //状態異常を解除します
+        Add(new RemoveStatusEffectDirector(battleCharacter, statusEffect));
+        Message(statusEffect.resolution);
     }
 
     public void Miss(BattleCharacter character)
@@ -146,7 +178,12 @@ public class _BattleLogic : MonoBehaviour
     //その他
     public void Message(string message)
     {
-        Debug.Log("s");
         Add(new MessageDirector(message));
+    }
+
+    public void End()
+    {
+        //演出キューにAddできないようにする
+        //ダメ！眠りのときターンエンドの処理ができない
     }
 }

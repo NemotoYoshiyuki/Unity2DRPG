@@ -6,11 +6,19 @@ public class DamageDirector : BattleDirector
 {
     private int damage;
     private BattleCharacter target;
+    private string message = null;
 
     public DamageDirector(int damage, BattleCharacter target)
     {
         this.damage = damage;
         this.target = target;
+    }
+
+    public DamageDirector(int damage, BattleCharacter target, string message)
+    {
+        this.damage = damage;
+        this.target = target;
+        this.message = message;
     }
 
     public override IEnumerator Do()
@@ -19,8 +27,11 @@ public class DamageDirector : BattleDirector
         target.GainHp(damage);
 
         //メッセージ表示
-        //yield return BattleMessage.Show(target.CharacterName + "は" + damage + "うけた");
-
+        if (message != null)
+        {
+            Debug.Log(message);
+            yield return BattleMessage.Show(message);
+        }
         yield break;
     }
 }

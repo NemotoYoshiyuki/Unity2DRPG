@@ -6,6 +6,10 @@ public class BattleCharacter : MonoBehaviour
 {
     //バフリスト
     public Status status;
+    //状態異常
+    public StatusEffect statusEffect;
+    //行動可能フラグ
+    public bool canAction = true;
 
     public virtual string CharacterName { get; set; }
 
@@ -14,10 +18,16 @@ public class BattleCharacter : MonoBehaviour
         status.hp = Mathf.Clamp(status.hp + amount, 0, status.maxHp);
     }
 
+    //状態異常にする
+    public void AddStatusEffect(StatusEffect statusEffect)
+    {
+        this.statusEffect = statusEffect;
+    }
+
     //状態異常を治療する
     public void Treatment()
     {
-
+        statusEffect = null;
     }
 
     public void ReceiveDamage(int damage)
@@ -40,7 +50,8 @@ public class BattleCharacter : MonoBehaviour
     //味方キャラクターと敵キャラクターで死亡した時の処理が違うためvirtualで定義
     public virtual void OnDead()
     {
-
+        //状態異常を解除
+        statusEffect = null;
     }
 
     public void GainHp(int value)

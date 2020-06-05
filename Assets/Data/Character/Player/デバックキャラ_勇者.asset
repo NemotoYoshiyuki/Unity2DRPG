@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57117949998b1a40a72b1d846afef95, type: 3}
+  m_Name: "\u30C7\u30D0\u30C3\u30AF\u30AD\u30E3\u30E9_\u52C7\u8005"
+  m_EditorClassIdentifier: 
+  characterName: "D\u3086\u3046\u3057\u3083"
+  characterID: 0
+  status:
+    lv: 0
+    maxHp: 10
+    hp: 10
+    maxMp: 29
+    mp: 25
+    attack: 10
+    deffence: 10
+    speed: 10
+    exp: 0
+  spellDatas:
+  - {fileID: 11400000, guid: a83d8245301ce8842832924a9a4461f5, type: 2}
+  - {fileID: 11400000, guid: 572456bf78c3056429fc14d5b45dc478, type: 2}
+  - {fileID: 11400000, guid: 503f92ad7aae28f41964d16f3041407b, type: 2}
+  - {fileID: 11400000, guid: c3df78851716f754dafd35ac1e4c665b, type: 2}
+  - {fileID: 11400000, guid: f0ce87dcbf2881949a75e8f03e8f1bdc, type: 2}
+  - {fileID: 11400000, guid: 3d82585c07b1a5f40a0c844440ee0486, type: 2}
+  skillDatas:
+  - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
+  - {fileID: 11400000, guid: 6a099cf3e75957f428ff4b507bec6b96, type: 2}
