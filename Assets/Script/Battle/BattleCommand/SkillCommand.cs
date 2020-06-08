@@ -43,6 +43,11 @@ public class SkillCommand : BattleCommand
         return skillData.effects;
     }
 
+    public override Command GetCommand()
+    {
+        return skillData;
+    }
+
     public override TargetType GetTargetType()
     {
         return new TargetType(skillData.targetUnit,skillData.targetRange);

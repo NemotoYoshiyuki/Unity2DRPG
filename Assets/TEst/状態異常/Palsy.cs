@@ -29,7 +29,6 @@ public class Palsy : StatusEffect
     {
         //その後、行動を行うことはできない
         _BattleLogic.Instance.Message(onGrant);
-        _BattleLogic.Instance.End();
     }
 
     public override void OnTurnEnd()

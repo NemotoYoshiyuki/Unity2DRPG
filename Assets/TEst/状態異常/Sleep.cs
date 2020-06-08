@@ -29,10 +29,9 @@ public class Sleep : StatusEffect
     {
         //その後、行動を行うことはできない
         _BattleLogic.Instance.Message(onGrant);
-        _BattleLogic.Instance.End();
     }
 
-    public override void OnDamage()
+    public override void OnDamage(EffectInfo info)
     {
         //攻撃を受けたときこの状態異常は解除される
         Refresh();
@@ -47,8 +46,6 @@ public class Sleep : StatusEffect
     public override void Refresh()
     {
         owner.canAction = true;
-        //_BattleLogic.Instance.RemoveStatusEffect(owner);
-        //_BattleLogic.Instance.Message(resolution);
         base.Refresh();
     }
 }

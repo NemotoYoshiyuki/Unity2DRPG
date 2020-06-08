@@ -26,4 +26,4 @@ MonoBehaviour:
     00000000:
       type: {class: RemoveStatusEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectType: 0
+        effectType: 99

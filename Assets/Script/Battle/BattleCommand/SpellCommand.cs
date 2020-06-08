@@ -42,6 +42,11 @@ public class SpellCommand : BattleCommand
         return spellData.effects;
     }
 
+    public override Command GetCommand()
+    {
+        return spellData;
+    }
+
     public override TargetType GetTargetType()
     {
         TargetUnit targetUnit = spellData.targetUnit;

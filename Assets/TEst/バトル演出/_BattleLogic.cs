@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.Playables;
 
 public class _BattleLogic : MonoBehaviour
 {
@@ -12,6 +14,11 @@ public class _BattleLogic : MonoBehaviour
     public AudioClip hit;
     public AudioClip avoidance;
     public AudioClip escape;
+
+    //トリガー
+    public Action onActionBefore = null;
+    public Action<EffectInfo> onDamage = null;
+    public Action onTurnEnd = null;
 
     public static _BattleLogic Instance;
     private void Awake()
@@ -68,26 +75,30 @@ public class _BattleLogic : MonoBehaviour
                 Hit(info.target);
                 Add(new DamageDirector(damage, info.target));
                 Add(new MessageDirector(info.target.CharacterName + "は" + damage + "うけた"));
-
-                //ダメージトリガー
-                StatusEffect statusEffect = info.target.statusEffect;
-                if (statusEffect == null) return;
-                statusEffect.OnDamage();
             }
 
             ////対象のHPが0になった
             if (info.target.status.hp < damage)
             {
                 Dead(info.target);
+                return;
             }
 
             //被ダメージ
+            //ダメージトリガー
+            //StatusEffect statusEffect = info.target.statusEffect;
+            //if (statusEffect == null) return;
+            //statusEffect.OnDamage();
+
+            onDamage?.Invoke(info);
         }
     }
 
-    public void PoisonDamage(BattleCharacter target, int damage,string message)
+    public void Damage(BattleCharacter target, int damage, string message)
     {
-        Add(new DamageDirector(damage, target,message));
+        Add(new DamageDirector(damage, target));
+        Message(message);
+
         //ステータスのコピーを参照する？
 
         ////対象のHPが0になった
@@ -181,9 +192,13 @@ public class _BattleLogic : MonoBehaviour
         Add(new MessageDirector(message));
     }
 
-    public void End()
+    public void AnimationPlay(PlayableAsset playableAsset)
     {
-        //演出キューにAddできないようにする
-        //ダメ！眠りのときターンエンドの処理ができない
+        Add(new AnimationDirector(playableAsset));
+    }
+
+    public void AnimationPlay(PlayableAsset playableAsset,Transform transform)
+    {
+        Add(new AnimationDirector(playableAsset,transform));
     }
 }

@@ -10,7 +10,8 @@ public class AddStatusEffect : CommandEffect
 
     public override void SetUp(EffectInfo effectInfo)
     {
-        base.SetUp(effectInfo);
+        effectInfo.characteristic = EffectInfo.Characteristic.特殊;
+        effectInfo.effectType = EffectInfo.EffectType.補助;
     }
 
     public override void Use(BattleCharacter owner, BattleCharacter target)

@@ -27,6 +27,10 @@ public class StatusEffect
     {
         this.counter = counter;
         this.owner = owner;
+
+        _BattleLogic.Instance.onActionBefore += OnActionBefore;
+        _BattleLogic.Instance.onDamage += OnDamage;
+        _BattleLogic.Instance.onTurnEnd += OnTurnEnd;
     }
 
     public virtual void OnAdd()
@@ -39,7 +43,7 @@ public class StatusEffect
 
     }
 
-    public virtual void OnDamage()
+    public virtual void OnDamage(EffectInfo info)
     {
 
     }
@@ -52,6 +56,10 @@ public class StatusEffect
     public virtual void Refresh()
     {
         _BattleLogic.Instance.RemoveStatusEffect(owner);
+
+        _BattleLogic.Instance.onActionBefore -= OnActionBefore;
+        _BattleLogic.Instance.onDamage -= OnDamage;
+        _BattleLogic.Instance.onTurnEnd -= OnTurnEnd;
     }
 
     public void CountDown()

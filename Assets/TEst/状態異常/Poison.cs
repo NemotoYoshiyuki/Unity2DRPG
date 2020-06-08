@@ -27,10 +27,6 @@ public class Poison : StatusEffect
         //毒ダメージ
         int damage = 100;
 
-        //EffectInfo effectInfo = new EffectInfo(EffectInfo.CommandType.スキル) {owner = owner, target = owner};
-        //_BattleLogic.Instance.DamageLogic(effectInfo,damage);
-        //_BattleLogic.Instance.Message(onGrant);
-
-        _BattleLogic.Instance.PoisonDamage(owner,damage,onGrant);
+        _BattleLogic.Instance.Damage(owner,damage,onGrant);
     }
 }

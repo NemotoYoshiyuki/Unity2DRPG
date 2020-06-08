@@ -43,4 +43,9 @@ public class ItemCommand : BattleCommand
     {
         return item.effects;
     }
+
+    public override Command GetCommand()
+    {
+        return item;
+    }
 }
