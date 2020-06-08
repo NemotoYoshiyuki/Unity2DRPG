@@ -143,6 +143,11 @@ public class _BattleLogic : MonoBehaviour
         Message(statusEffect.resolution);
     }
 
+    public void AddBuff(BattleCharacter battleCharacter, Buff buff)
+    {
+        Add(new SupportEffectDirector(battleCharacter, buff));
+    }
+
     public void Miss(BattleCharacter character)
     {
         Add(new SoundDirector(miss));

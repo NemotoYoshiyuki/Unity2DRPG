@@ -65,6 +65,7 @@ public class PlayerParty : MonoBehaviour
         playerCharacter.CharacterName = playerData.CharacterName;
         playerCharacter.playerData = playerData;
         playerCharacter.status = playerData.Status.Copy();
+        playerCharacter.SetUp();
         return playerCharacter;
     }
 

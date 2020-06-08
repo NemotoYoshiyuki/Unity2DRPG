@@ -32,6 +32,7 @@ public class EnemyParty : MonoBehaviour
             //EnemyDataの値を書き換えないようにするためコピーしたものを使います
             enemyCharacter.enemyData = ScriptableObject.Instantiate(enemies[i].enemy);
             enemyCharacter.status = enemyCharacter.enemyData.status;
+            enemyCharacter.SetUp();
 
             //名前の設定
             enemyCharacter.gameObject.name = enemyCharacter.CharacterName;

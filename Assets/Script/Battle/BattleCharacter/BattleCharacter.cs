@@ -11,7 +11,15 @@ public class BattleCharacter : MonoBehaviour
     //行動可能フラグ
     public bool canAction = true;
 
+    //強化
+    public BattleStaus battleStaus;//戦闘用ステータス
+
     public virtual string CharacterName { get; set; }
+
+    public void SetUp()
+    {
+        this.battleStaus = new BattleStaus(status);
+    }
 
     public void Recover(int amount)
     {
@@ -28,6 +36,12 @@ public class BattleCharacter : MonoBehaviour
     public void Treatment()
     {
         statusEffect = null;
+    }
+
+    public void AddBuff(Buff buff)
+    {
+        battleStaus.buffs.Add(buff);
+        battleStaus.Update();
     }
 
     public void ReceiveDamage(int damage)

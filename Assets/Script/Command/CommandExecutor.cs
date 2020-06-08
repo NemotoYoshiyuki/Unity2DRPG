@@ -34,6 +34,8 @@ public class CommandExecutor : MonoBehaviour
         }
 
         //全てのキャラクターの行動が終わったときの処理
+        //ステータスの再計算(敵・味方全員)
+
         //麻痺の解除
 
         yield break;
