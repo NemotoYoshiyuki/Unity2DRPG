@@ -48,6 +48,11 @@ public class _BattleLogic : MonoBehaviour
         Add(new AnimationDirector(animationClip));
     }
 
+    public void NormalAttack()
+    {
+        //武器によってアニメーションを変更
+    }
+
     public void DamageLogic(EffectInfo info, int damage, bool critical = false)
     {
         //回避判定
@@ -202,8 +207,8 @@ public class _BattleLogic : MonoBehaviour
         Add(new AnimationDirector(playableAsset));
     }
 
-    public void AnimationPlay(PlayableAsset playableAsset,Transform transform)
+    public void AnimationPlay(PlayableAsset playableAsset, Transform transform)
     {
-        Add(new AnimationDirector(playableAsset,transform));
+        Add(new AnimationDirector(playableAsset, transform));
     }
 }

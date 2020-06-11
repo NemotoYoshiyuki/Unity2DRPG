@@ -29,7 +29,7 @@ public class CommandEffectExecutor : MonoBehaviour
                 //効果の範囲が単体の場合
                 if (battleCommand.GetTargetType().targetRange != TargetRange.全体)
                 {
-                    Debug.Log(battleCommand.GetCommand().animation);
+                    //Debug.Log(battleCommand.GetCommand().animation);
                     Debug.Log(target.transform);
                     _BattleLogic.Instance.AnimationPlay(battleCommand.GetCommand().animation,target.transform);
                 }

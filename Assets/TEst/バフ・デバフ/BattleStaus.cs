@@ -7,9 +7,13 @@ using System.Linq;
 public class BattleStaus
 {
     private Status baseStatus;
+    public int lv;
     public Status status;
     //装備情報
     public List<Buff> buffs = new List<Buff>();
+
+    //防御率
+    //無敵フラグ等の特殊フラグ
 
     public BattleStaus(Status status)
     {
@@ -62,8 +66,10 @@ public class BattleStaus
     public void UpdateBuff()
     {
         if (buffs == null || buffs.Count == 0) return;
-        buffs.ForEach(x => x.count--); ;
-        buffs = buffs.Where(x => x.count <= 1).ToList();
+        buffs.ForEach(x => x.count--); 
+        buffs.ForEach(x => Debug.Log(x.count)); 
+        buffs = buffs.Where(x => x.count > 0).ToList();
+        Debug.Log(buffs.Count);
     }
 
     public void DeleteBuff()

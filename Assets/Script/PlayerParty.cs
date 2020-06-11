@@ -7,6 +7,7 @@ public class PlayerParty : MonoBehaviour
 {
     public GameObject playerEntity;
     public List<PlayerCharacter> partyMember;
+    public List<CharacterData> characterDatas;
 
     protected static PlayerParty instance;
 

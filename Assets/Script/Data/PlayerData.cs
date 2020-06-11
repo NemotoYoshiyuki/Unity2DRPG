@@ -11,6 +11,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] private Status status;
     [SerializeField] private List<SpellData> spellDatas;
     [SerializeField] private List<SkillData> skillDatas;
+    //初期装備
 
     public string CharacterName => characterName;
     public int CharacterID => characterID;

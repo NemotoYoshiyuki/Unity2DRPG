@@ -15,6 +15,18 @@ public class BattleResultPhase : MonoBehaviour
             string ms = alivePlayer.CharacterName + "は" + dropExp + "けいけんちをかくとく";
             yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(ms));
         }
+
+        //レベルアップ処理
+        //基礎ステータスに反映
+        //基礎ステータスにバトルで損傷したHPとMPを反映する
+        foreach (var item in aliveMember)
+        {
+            item.status.hp = item.battleStaus.status.hp;
+            item.status.mp = item.battleStaus.status.mp;
+
+            //死亡したキャラはHP１で復活
+            //レベルがあがったら体力全回復
+        }
         yield break;
     }
 }

@@ -28,5 +28,5 @@ MonoBehaviour:
       type: {class: SupportEffect, ns: , asm: Assembly-CSharp}
       data:
         statusType: 4
-        count: 100
-        value: 2
+        count: 2
+        value: 100

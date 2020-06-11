@@ -156,6 +156,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
   - {fileID: 11400000, guid: 270da3b449d490945b3ee00dda80c0ca, type: 2}
   playerChacter: {fileID: 11400000, guid: 70c8f02e58888a84085bf7b9c859794d, type: 2}
+  friend1: {fileID: 0}
+  friend2: {fileID: 0}
+  friend3: {fileID: 0}
 --- !u!4 &182685628
 Transform:
   m_ObjectHideFlags: 0
@@ -1166,6 +1169,7 @@ MonoBehaviour:
   playerEntity: {fileID: 4545350079945402718, guid: 1393f44dfafbd024193e1a739817b7c1,
     type: 3}
   partyMember: []
+  characterDatas: []
 --- !u!4 &1313072233
 Transform:
   m_ObjectHideFlags: 0

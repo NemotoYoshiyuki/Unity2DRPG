@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCharacter : BattleCharacter
 {
+    public CharacterData characterData;
     public PlayerData playerData;
     public override string CharacterName { get => playerData.CharacterName; set => base.CharacterName = value; }
 
