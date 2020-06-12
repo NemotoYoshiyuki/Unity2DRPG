@@ -53,6 +53,7 @@ public class _BattleLogic : MonoBehaviour
         //武器によってアニメーションを変更
     }
 
+    //物理ダメージ処理
     public void DamageLogic(EffectInfo info, int damage, bool critical = false)
     {
         //回避判定
@@ -180,7 +181,7 @@ public class _BattleLogic : MonoBehaviour
     public void Escape(BattleCharacter character)
     {
         Add(new SoundDirector(escape));
-        Add(new MessageDirector($"{character.CharacterName}は　ひらりと　みをかわした！"));
+        Add(new MessageDirector($"{character.CharacterName}は　にげだした！"));
     }
 
     //物理ダメージ

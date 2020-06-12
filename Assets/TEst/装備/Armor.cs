@@ -1,5 +1,5 @@
 ﻿
-public class Armor : ItemData
+public class Armor :Equipment
 {
 
 }

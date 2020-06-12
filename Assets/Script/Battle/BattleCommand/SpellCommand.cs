@@ -31,6 +31,8 @@ public class SpellCommand : BattleCommand
             _BattleLogic.Instance.Message("しかし ＭＰが たりない！");
             yield break;
         }
+        //封印
+        //しかし呪文は封じられている
 
         owner.GainMp(spellMp);
         //yield return StartCoroutine(effectExecutor.Execution(spellCommand));

@@ -12,6 +12,7 @@ public class BattleCombatPhase : MonoBehaviour
         //敵のコマンドを登録
         commandManager.RegisterEnemyCommand();
         var commands = commandManager.battleCommands;
+        //コマンド並び替え
 
         foreach (var command in commands)
         {
@@ -19,21 +20,26 @@ public class BattleCombatPhase : MonoBehaviour
             if (owner.IsDead()) continue;
             //バトルの決着がついている時それ以上コマンドを実行しない
             if (BattleController.instance.Settle()) continue;
+
+            //コマンド処理
             yield return StartCoroutine(commandExecution.Execution(command));
         }
+
+        //ターンエンド処理
+        //BattleController.instance.OnTurnEnd();
 
         //バフ・デバフの更新
         foreach (var item in BattleController.instance.AlivePlayerCharacters)
         {
             Debug.Log("バフの更新");
-            item.battleStaus.UpdateBuff();
-            item.battleStaus.Update();
+            item.battleStaus.StatusUpdate();
+            item.battleStaus.StatusUpdate();
         }
 
         foreach (var item in BattleController.instance.AliveEnemyCharacters)
         {
-            item.battleStaus.UpdateBuff();
-            item.battleStaus.Update();
+            item.battleStaus.BuffUpdate();
+            item.battleStaus.StatusUpdate();
         }
 
         commandManager.Clea();

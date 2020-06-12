@@ -8,6 +8,7 @@ public class SaveData
     public GameData gameData = new GameData();
     public InventoryData inventoryData = new InventoryData();
     public PartyData partyData = new PartyData();
+    public _PartyData _partyData = new _PartyData();
     public FlagData flagData = new FlagData();
     public MapFlagData mapFlagData = new MapFlagData();
 
@@ -47,6 +48,16 @@ public class SaveData
         public void SetData(PlayerData characterData, Status characterStatus)
         {
             this.characterDatas.Add(new PlayerCharacterData(characterData, characterStatus));
+        }
+    }
+
+    public class _PartyData
+    {
+        public List<CharacterData> characterDatas = new List<CharacterData>();
+
+        public void SetData(CharacterData characterData)
+        {
+            this.characterDatas.Add(characterData.Copy());
         }
     }
 

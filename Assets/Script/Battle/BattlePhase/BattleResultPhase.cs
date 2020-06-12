@@ -21,8 +21,8 @@ public class BattleResultPhase : MonoBehaviour
         //基礎ステータスにバトルで損傷したHPとMPを反映する
         foreach (var item in aliveMember)
         {
-            item.status.hp = item.battleStaus.status.hp;
-            item.status.mp = item.battleStaus.status.mp;
+            item.status.hp = item.battleStaus.Status.hp;
+            item.status.mp = item.battleStaus.Status.mp;
 
             //死亡したキャラはHP１で復活
             //レベルがあがったら体力全回復

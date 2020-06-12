@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class BattleController : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class BattleController : MonoBehaviour
     public BattleCombatPhase battleCombat;
     public BattleResultPhase battleResult;
     public BattleEndPhase battleEnd;
+
+    //バトルトリガー
+    public Action onActionBefore = null;
+    public Action<EffectInfo> onDamage = null;
+    public Action onTurnEnd = null;
 
     public static BattleController instance;
     public static bool isBattle;
@@ -128,5 +134,13 @@ public class BattleController : MonoBehaviour
     public int GetRewardExp()
     {
         return enemyCharacters.Sum(x => x.DropExp());
+    }
+
+    public void OnTurnEnd()
+    {
+        onTurnEnd?.Invoke();
+        //バフの更新
+        //ステータスの再計算
+        //commandManager.Clea();
     }
 }

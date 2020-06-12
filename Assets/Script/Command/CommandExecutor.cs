@@ -8,7 +8,7 @@ public class CommandExecutor : MonoBehaviour
 
     public IEnumerator Execution(BattleCommand battleCommand)
     {
-        //ターン開始処理
+        //行動開始処理
         StatusEffect statusEffect = battleCommand.owner.statusEffect;
         if (statusEffect != null) statusEffect.OnActionBefore();
 

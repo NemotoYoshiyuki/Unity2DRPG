@@ -11,6 +11,15 @@ public class CharacterData
     //種補正
     public StatusEffectType statusEffectType;//状態異常
 
+    public CharacterData(PlayerData playerData)
+    {
+        this.playerData = playerData;
+        //初期の設定
+        this.status = playerData.Status.Copy();
+        //初期装備
+
+    }
+
     public Status GetBaseStatus()
     {
         //補正を含まないステータスを返す
@@ -21,6 +30,11 @@ public class CharacterData
     {
         //装備の補正を含んだステータスを返す
         return status;
+    }
+
+    public CharacterData Copy()
+    {
+        return (CharacterData)this.MemberwiseClone();
     }
 
     //体力の増減　床ダメージ

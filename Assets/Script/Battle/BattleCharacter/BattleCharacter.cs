@@ -41,7 +41,7 @@ public class BattleCharacter : MonoBehaviour
     public void AddBuff(Buff buff)
     {
         battleStaus.buffs.Add(buff);
-        battleStaus.Update();
+        battleStaus.StatusUpdate();
     }
 
     public void ReceiveDamage(int damage)

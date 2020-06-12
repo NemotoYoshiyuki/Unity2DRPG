@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+//戦闘用プレイヤーメンバー
 public class PlayerParty : MonoBehaviour
 {
     public GameObject playerEntity;
     public List<PlayerCharacter> partyMember;
-    public List<CharacterData> characterDatas;
 
     protected static PlayerParty instance;
 

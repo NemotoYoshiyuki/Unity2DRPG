@@ -24,6 +24,7 @@ public class CommandEffectExecutor : MonoBehaviour
         {
             foreach (var target in targets)
             {
+                //いらない？
                 if (!CanEffect(target, targetUnit)) continue;
 
                 //効果の範囲が単体の場合
@@ -34,7 +35,15 @@ public class CommandEffectExecutor : MonoBehaviour
                     _BattleLogic.Instance.AnimationPlay(battleCommand.GetCommand().animation,target.transform);
                 }
 
+                //効果に情報を渡す
+                //魔法or物理
+                //反射(カウンター)・無効
+                //魔法ダメージ効果・物理ダメージ効果
                 effect.SetUp(new EffectInfo(EffectInfo.CommandType.スキル) { owner = owner, target = target });
+                //ターゲットが存在しないとき新しいターゲットに変更する
+                //target = newTarget;
+
+                //効果の処理
                 effect.Use(owner, target);
             }
 
@@ -42,6 +51,11 @@ public class CommandEffectExecutor : MonoBehaviour
             yield return StartCoroutine(_BattleLogic.Instance.Play());
         }
         yield break;
+    }
+
+    public void 単体処理()
+    {
+
     }
 
     public bool CanEffect(BattleCharacter target, TargetUnit targetUnit)

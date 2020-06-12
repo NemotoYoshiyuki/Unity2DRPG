@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     public int soundVolume;
     public int sfxVolume;
 
+    public Party party = new Party();
     public InventorySystem inventorySystem = new InventorySystem();
     public FlagManager flagManager = new FlagManager();
     public MapFlag mapFlag = new MapFlag();
@@ -62,6 +63,11 @@ public class GameController : MonoBehaviour
     private static void Create()
     {
         instance = new GameObject("GameController").AddComponent<GameController>();
+    }
+
+    public static Party GetParty()
+    {
+        return instance.party;
     }
 
     public static InventorySystem GetInventorySystem()
@@ -113,6 +119,13 @@ public class GameController : MonoBehaviour
             saveData.partyData.SetData(member.playerData, member.status);
         }
 
+        //パーティーデータ保存
+        var _partyMember = party.characterDatas;
+        foreach (var member in _partyMember)
+        {
+            saveData._partyData.SetData(member);
+        }
+
         //フラグデータ保存
         saveData.flagData.SetFlagData(flagManager.flags);
 
@@ -127,6 +140,7 @@ public class GameController : MonoBehaviour
     {
         GetSaveSystem().Load(this);
         PlayerParty.Instance.Load();
+        party.Load();
     }
 
     public void GameOver()
