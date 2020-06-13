@@ -35,6 +35,7 @@ public class PlayerParty : MonoBehaviour
         instance.playerEntity = Resources.Load<GameObject>("PlayerEntity");
     }
 
+    //シングルトンの必要はなくなった
     private void Awake()
     {
         if (Instance != this)
@@ -54,6 +55,38 @@ public class PlayerParty : MonoBehaviour
     public PlayerCharacter GetMember(int id)
     {
         return partyMember.FirstOrDefault(x => x.playerData.CharacterID == id);
+    }
+
+    public void SetUp()
+    {
+        var member = GameController.GetParty().GetMember();
+
+        foreach (var item in member)
+        {
+            PlayerCharacter playerCharacter = Create(item);
+            Join(playerCharacter);
+        }
+    }
+
+    public PlayerCharacter Create(CharacterData playerData)
+    {
+        GameObject player = Instantiate(playerEntity);
+        player.name = playerData.playerData.CharacterName;
+
+        PlayerCharacter playerCharacter = player.GetComponent<PlayerCharacter>();
+
+        playerCharacter.CharacterName = playerData.playerData.CharacterName;
+        playerCharacter.playerData = playerData.playerData;
+        playerCharacter.status = playerData.status.Copy();
+        //
+        playerCharacter.characterData = playerData;
+        playerCharacter.battleStaus = new BattleStaus(playerData.status.Copy());
+        Debug.Log(playerData.equip);
+        playerCharacter.battleStaus.equip = playerData.equip;
+        Debug.Log(playerCharacter.battleStaus.equip);
+        //
+        playerCharacter.SetUp();
+        return playerCharacter;
     }
 
     public PlayerCharacter Create(PlayerData playerData)
@@ -83,6 +116,7 @@ public class PlayerParty : MonoBehaviour
         Join(playerData);
     }
 
+    //戦闘中仲間の追加
     public void Join(PlayerCharacter playerCharacter)
     {
         playerCharacter.transform.parent = gameObject.transform;

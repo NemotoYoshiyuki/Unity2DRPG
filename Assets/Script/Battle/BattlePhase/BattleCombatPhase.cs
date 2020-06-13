@@ -32,7 +32,8 @@ public class BattleCombatPhase : MonoBehaviour
         foreach (var item in BattleController.instance.AlivePlayerCharacters)
         {
             Debug.Log("バフの更新");
-            item.battleStaus.StatusUpdate();
+            //item.battleStaus.StatusUpdate();
+            item.battleStaus.BuffUpdate();
             item.battleStaus.StatusUpdate();
         }
 

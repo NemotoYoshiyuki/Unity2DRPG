@@ -23,8 +23,20 @@ public class BattleSetUpPhase : MonoBehaviour
         yield break;
     }
 
+    //private void GeneratePlayer()
+    //{
+    //    List<PlayerCharacter> partyMember = PlayerParty.Instance.partyMember;
+    //    BattleController.instance.playerCharacters = partyMember;
+
+    //    foreach (var player in partyMember)
+    //    {
+    //        statusWindow.Register(player);
+    //    }
+    //}
+
     private void GeneratePlayer()
     {
+        PlayerParty.Instance.SetUp();
         List<PlayerCharacter> partyMember = PlayerParty.Instance.partyMember;
         BattleController.instance.playerCharacters = partyMember;
 

@@ -29,6 +29,12 @@ public class Party
         return characterDatas[num];
     }
 
+    //IDで検索
+    public CharacterData Find(int id)
+    {
+        return characterDatas.Find(x=>x.id == id);
+    }
+
     public CharacterData Create(PlayerData playerData)
     {
         return new CharacterData(playerData);
