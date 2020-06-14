@@ -1,4 +1,4 @@
-﻿
+﻿using UnityEngine;
 [System.Serializable]
 public class CharacterData
 {
@@ -23,6 +23,11 @@ public class CharacterData
 
     }
 
+    public string GetName()
+    {
+        return playerData.CharacterName;
+    }
+
     public Status GetBaseStatus()
     {
         //補正を含まないステータスを返す
@@ -33,6 +38,12 @@ public class CharacterData
     {
         //装備の補正を含んだステータスを返す
         return status;
+    }
+
+    public void Recover(int amount)
+    {
+        //using UnityEngine;
+        status.hp = Mathf.Clamp(status.hp + amount, 0, status.maxHp);
     }
 
     public CharacterData Copy()

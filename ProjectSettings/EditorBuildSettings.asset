@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/TEst/\u30D0\u30C8\u30EB\u6F14\u51FA/Battle 1.unity"
     guid: 9930efdaf0d3cd64da5fa27b441b3c0d
+  - enabled: 1
+    path: Assets/Scenes/Test_Field 1.unity
+    guid: 70f53952afc93d84896685137e0b5ca3
   m_configObjects: {}

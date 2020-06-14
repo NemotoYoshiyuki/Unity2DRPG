@@ -6,7 +6,8 @@ using UnityEngine.Events;
 
 public class CharacterWindow : BaseWindow
 {
-    public List<PlayerCharacter> member;
+    //public List<PlayerCharacter> member;
+    public List<CharacterData> member;
     public GameObject list;
     public CharacterSlot characterSlotPrefab;
 
@@ -33,7 +34,7 @@ public class CharacterWindow : BaseWindow
     {
         CloseWindow();
 
-        member = PlayerParty.Instance.partyMember;
+        member = GameController.GetParty().characterDatas;
 
         for (int i = 0; i < member.Count; i++)
         {

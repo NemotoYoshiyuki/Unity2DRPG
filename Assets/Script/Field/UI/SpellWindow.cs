@@ -18,8 +18,10 @@ public class SpellWindow : BaseWindow
     public CharacterWindow characterWindow;
     public FieldEffect fieldEffect;
 
-    public PlayerCharacter owner;//選択対象のキャラ
-    private List<PlayerCharacter> party;
+    //public PlayerCharacter owner;//選択対象のキャラ
+    public CharacterData owner;//選択対象のキャラ
+    //private List<PlayerCharacter> party;
+    private List<CharacterData> party;
     private SpellData selectedItem;
 
     private SideMenu sideMenu;
@@ -53,7 +55,7 @@ public class SpellWindow : BaseWindow
     public void UserSelect()
     {
         ////ターゲットリストを表示
-        party = PlayerParty.Instance.partyMember;
+        party = GameController.GetParty().characterDatas;
         menuGuide.Show("だれが呪文を使用しますか");
 
         characterWindow.Select(0);
@@ -73,7 +75,7 @@ public class SpellWindow : BaseWindow
         };
     }
 
-    public void ShowSpellList(PlayerCharacter owner)
+    public void ShowSpellList(CharacterData owner)
     {
         //アイテムリストを表示
         gameObject.SetActive(true);
@@ -91,9 +93,28 @@ public class SpellWindow : BaseWindow
         };
     }
 
-    private void CreateSpellList(PlayerCharacter playerCharacter)
+    //public void ShowSpellList(PlayerCharacter owner)
+    //{
+    //    //アイテムリストを表示
+    //    gameObject.SetActive(true);
+
+    //    ClearSpellList();
+    //    CreateSpellList(owner);
+    //    spellSlots[0].selectable.Select();
+    //    ShowSpellDescription(spellSlots[0].spell);
+
+    //    //キャンセルが押されたら
+    //    OnCancel = () =>
+    //    {
+    //        HideSpellList();
+    //        UserSelect();
+    //    };
+    //}
+
+    private void CreateSpellList(CharacterData playerCharacter)
     {
-        List<SpellData> spellDatas = playerCharacter.GetSpells();
+        //List<SpellData> spellDatas = playerCharacter.GetSpells();
+        List<SpellData> spellDatas = playerCharacter.playerData.SpellDatas;
 
         if (spellDatas.Count == 0) return;
 
@@ -109,6 +130,25 @@ public class SpellWindow : BaseWindow
         }
         RegisterNavigation();
     }
+
+    //private void CreateSpellList(PlayerCharacter playerCharacter)
+    //{
+    //    List<SpellData> spellDatas = playerCharacter.GetSpells();
+
+    //    if (spellDatas.Count == 0) return;
+
+    //    //ボタン作成
+    //    for (int i = 0; i < spellDatas.Count; i++)
+    //    {
+    //        SpellData item = spellDatas[i];
+    //        SpellSlot spellSlot = CreateButton(item);
+    //        spellSlot.index = i;
+    //        spellSlot.transform.SetParent(list.transform);
+    //        spellSlots.Add(spellSlot);
+    //        selectables.Add(spellSlot.selectable);
+    //    }
+    //    RegisterNavigation();
+    //}
 
     public void RefreshSpellList()
     {

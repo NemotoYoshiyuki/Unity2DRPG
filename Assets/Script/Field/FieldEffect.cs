@@ -13,8 +13,10 @@ public class FieldEffect : MonoBehaviour
     public SpellWindow spellWindow;
 
     public SpellData spellData;
-    public PlayerCharacter spellOwner;
-    public PlayerCharacter spellTarget;
+    //public PlayerCharacter spellOwner;
+    public CharacterData spellOwner;
+    //public PlayerCharacter spellTarget;
+    public CharacterData spellTarget;
 
     public AudioSource SE_Audio;
     public AudioClip notUse;
@@ -30,7 +32,8 @@ public class FieldEffect : MonoBehaviour
 
         itemWindow.Close();
 
-        List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        //List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        List<CharacterData> party = GameController.GetParty().characterDatas;
 
         MenuWindow.instance.menuGuide.Show(itemData.itemName + "使用対象を選んでください");
 
@@ -50,13 +53,13 @@ public class FieldEffect : MonoBehaviour
             characterWindow.ClearLisner();
             characterWindow.AddLisner((int index) =>
             {
-                PlayerCharacter playerCharacter = party[index];
+                CharacterData playerCharacter = party[index];
                 ItemExecut(itemData, playerCharacter);
             });
         }
     }
 
-    public void UseSpell(SpellData spellData, PlayerCharacter owner)
+    public void UseSpell(SpellData spellData, CharacterData owner)
     {
         if (!spellWindow.CanFieldSpell(spellData))
         {
@@ -70,7 +73,7 @@ public class FieldEffect : MonoBehaviour
 
         MenuWindow.instance.menuGuide.Show(spellData.skillName + "使用対象を選んでください");
 
-        List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        List<CharacterData> party = GameController.GetParty().characterDatas;
         //複数対象の処理
         if (spellData.targetRange == TargetRange.全体)
         {
@@ -87,22 +90,60 @@ public class FieldEffect : MonoBehaviour
             characterWindow.ClearLisner();
             characterWindow.AddLisner((int index) =>
             {
-                PlayerCharacter playerCharacter = party[index];
+                CharacterData playerCharacter = party[index];
                 SpellExecut(spellData, playerCharacter);
             });
         }
     }
 
+    //public void UseSpell(SpellData spellData, PlayerCharacter owner)
+    //{
+    //    if (!spellWindow.CanFieldSpell(spellData))
+    //    {
+    //        NotExcute();
+    //        return;
+    //    }
+
+    //    //MP消費
+    //    this.spellData = spellData;
+    //    this.spellOwner = owner;
+
+    //    MenuWindow.instance.menuGuide.Show(spellData.skillName + "使用対象を選んでください");
+
+    //    List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+    //    //複数対象の処理
+    //    if (spellData.targetRange == TargetRange.全体)
+    //    {
+    //        characterWindow.SelectAll();
+    //        characterWindow.ClearLisner();
+    //        characterWindow.AddLisner((int index) =>
+    //        {
+    //            AllSpellExecut(spellData);
+    //        });
+    //    }
+    //    else
+    //    {
+    //        characterWindow.Select(0);
+    //        characterWindow.ClearLisner();
+    //        characterWindow.AddLisner((int index) =>
+    //        {
+    //            PlayerCharacter playerCharacter = party[index];
+    //            SpellExecut(spellData, playerCharacter);
+    //        });
+    //    }
+    //}
+
     private void AllItemExecut(ItemData itemData)
     {
-        List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        //List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        List<CharacterData> party = GameController.GetParty().characterDatas;
         foreach (var item in party)
         {
             ItemExecut(itemData, item);
         }
     }
 
-    private async void ItemExecut(ItemData itemData, PlayerCharacter taregt)
+    private async void ItemExecut(ItemData itemData, CharacterData taregt)
     {
         //アイテムの消費
         GameController.GetInventorySystem().UseItem(itemData);
@@ -118,17 +159,20 @@ public class FieldEffect : MonoBehaviour
 
     private void AllSpellExecut(SpellData spellData)
     {
-        List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        //List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
+        List<CharacterData> party = GameController.GetParty().characterDatas;
         foreach (var item in party)
         {
             SpellExecut(spellData, item);
         }
     }
 
-    private void SpellExecut(SpellData spellData, PlayerCharacter taregt)
+    private void SpellExecut(SpellData spellData, CharacterData taregt)
     {
         //Mpの消費
-        spellOwner.GainMp(this.spellData.mp);
+        //spellOwner.GainMp(this.spellData.mp);
+        //マイナスに鳴る
+        spellOwner.status.mp -= (this.spellData.mp);
 
         List<CommandEffect> commandEffect = spellData.effects;
         foreach (var item in commandEffect)
@@ -143,12 +187,31 @@ public class FieldEffect : MonoBehaviour
         }
     }
 
-    public void DoEffect(CommandEffect commandEffect, PlayerCharacter target)
+    //private void SpellExecut(SpellData spellData, PlayerCharacter taregt)
+    //{
+    //    //Mpの消費
+    //    spellOwner.GainMp(this.spellData.mp);
+
+    //    List<CommandEffect> commandEffect = spellData.effects;
+    //    foreach (var item in commandEffect)
+    //    {
+    //        DoEffect(item, taregt);
+    //    }
+
+    //    //MP不足で連続で使用できないとき
+    //    if (spellOwner.status.mp <= spellData.mp)
+    //    {
+    //        spellWindow.ShowSpellList(spellOwner);
+    //    }
+    //}
+
+    public void DoEffect(CommandEffect commandEffect, CharacterData target)
     {
         switch (commandEffect)
         {
             //回復効果
             case HealEffect healEffect:
+                //target.Recover(healEffect.healAmount);
                 target.Recover(healEffect.healAmount);
                 break;
             //蘇生効果
@@ -167,6 +230,31 @@ public class FieldEffect : MonoBehaviour
         //ステータス更新
         characterWindow.UpdateShow();
     }
+
+    //public void DoEffect(CommandEffect commandEffect, PlayerCharacter target)
+    //{
+    //    switch (commandEffect)
+    //    {
+    //        //回復効果
+    //        case HealEffect healEffect:
+    //            target.Recover(healEffect.healAmount);
+    //            break;
+    //        //蘇生効果
+    //        case ResuscitationEffect resuscitationEffect:
+    //            if (target.status.hp >= 0) return;
+    //            target.Recover(target.status.maxHp / resuscitationEffect.healRate);
+    //            break;
+    //        default:
+    //            Debug.Log("not effect");
+    //            break;
+    //    }
+
+    //    //効果音再生
+    //    SE_Audio.PlayOneShot(healClip);
+
+    //    //ステータス更新
+    //    characterWindow.UpdateShow();
+    //}
 
     public void NotExcute()
     {

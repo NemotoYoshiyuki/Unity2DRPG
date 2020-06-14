@@ -59,11 +59,12 @@ public class CharacterSelect : MonoBehaviour
         }
     }
 
-    public void Flash(PlayerCharacter player, Color color, float time)
-    {
-        List<CharacterSlot> characterSlots = characterWindow.characterSlots;
-        CharacterSlot characterSlot = characterSlots.First(x => x.playerCharacter == player);
-        Flash flash = characterSlot.GetComponent<Flash>();
-        flash.FlashStart(color, time);
-    }
+    //再検討
+    //public void Flash(PlayerCharacter player, Color color, float time)
+    //{
+    //    List<CharacterSlot> characterSlots = characterWindow.characterSlots;
+    //    CharacterSlot characterSlot = characterSlots.First(x => x.playerCharacter == player);
+    //    Flash flash = characterSlot.GetComponent<Flash>();
+    //    flash.FlashStart(color, time);
+    //}
 }
