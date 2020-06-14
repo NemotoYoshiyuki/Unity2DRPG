@@ -13,6 +13,7 @@ public class BattleCombatPhase : MonoBehaviour
         commandManager.RegisterEnemyCommand();
         var commands = commandManager.battleCommands;
         //コマンド並び替え
+        commandManager.Sort();
 
         foreach (var command in commands)
         {
@@ -26,7 +27,7 @@ public class BattleCombatPhase : MonoBehaviour
         }
 
         //ターンエンド処理
-        //BattleController.instance.OnTurnEnd();
+        BattleController.instance.OnTurnEnd();
 
         //バフ・デバフの更新
         foreach (var item in BattleController.instance.AlivePlayerCharacters)

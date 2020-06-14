@@ -13,6 +13,7 @@ public class BattleStaus
     public Status Status => status;
     public Equip equip;//装備情報
     public List<Buff> buffs = new List<Buff>();
+    public StatusEffect statusEffect;//状態異常
 
     //攻撃加算倍率　バイキルト
     //防御率

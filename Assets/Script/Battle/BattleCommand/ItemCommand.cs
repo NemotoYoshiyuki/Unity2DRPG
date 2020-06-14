@@ -31,6 +31,7 @@ public class ItemCommand : BattleCommand
         GameController.GetInventorySystem().UseItem(item);
 
         //yield return StartCoroutine(effectExecutor.Execution(itemCommand));
+        yield return CommandEffectExecutor.Instance.Execution(this);
         yield break;
     }
 

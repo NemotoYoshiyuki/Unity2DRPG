@@ -6,6 +6,13 @@ using UnityEngine;
 public class CommandEffectExecutor : MonoBehaviour
 {
 
+    //とりあえずシングルトンでごまかす
+    public static CommandEffectExecutor Instance;
+     void Awake()
+    {
+        Instance = this;
+    }
+
     public IEnumerator Execution(BattleCommand battleCommand)
     {
         BattleCharacter owner = battleCommand.owner;

@@ -33,9 +33,17 @@ public class SpellCommand : BattleCommand
         }
         //封印
         //しかし呪文は封じられている
+        if(owner.battleStaus.isSpellLimit)
+        {
+            _BattleLogic.Instance.Message("しかし 呪文は 封印されいる");
+            yield break;
+        }
 
         owner.GainMp(spellMp);
+
+        //効果を実行
         //yield return StartCoroutine(effectExecutor.Execution(spellCommand));
+        yield return CommandEffectExecutor.Instance.Execution(this);
         yield break;
     }
 

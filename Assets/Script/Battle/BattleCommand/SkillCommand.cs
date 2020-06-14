@@ -34,7 +34,9 @@ public class SkillCommand : BattleCommand
         }
 
         owner.GainMp(skillMp);
-        //yield return StartCoroutine(effectExecutor.Execution(skillCommand));
+
+        //効果を実行する
+        yield return CommandEffectExecutor.Instance.Execution(this);
         yield break;
     }
 
