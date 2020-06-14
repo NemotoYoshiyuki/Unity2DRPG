@@ -51,6 +51,7 @@ public class _BattleLogic : MonoBehaviour
     public void NormalAttack()
     {
         //武器によってアニメーションを変更
+        Debug.Log("通常攻撃");
     }
 
     //物理ダメージ処理
