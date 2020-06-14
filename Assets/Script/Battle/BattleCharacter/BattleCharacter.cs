@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BattleCharacter : MonoBehaviour
 {
-    //バフリスト
-    public Status status;
+    public Status basicStatus;//変化しない基本ステータス
+    public Status status => battleStaus.Status;
     //状態異常
     public StatusEffect statusEffect;
     //行動可能フラグ
@@ -18,7 +18,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void SetUp()
     {
-        this.battleStaus = new BattleStaus(status);
+        this.battleStaus = new BattleStaus(basicStatus);
     }
 
     public void Recover(int amount)

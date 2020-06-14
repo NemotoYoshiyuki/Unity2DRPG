@@ -32,7 +32,14 @@ public class BattleStaus
 
     public void StatusUpdate()
     {
+        int hp = status.hp;
+        int mp = status.mp;
+
+        //HPとMPは引き継ぐ
         status = GetBasicStatus();
+        status.hp = hp;
+        status.mp = mp;
+
         装備補正値加算();
         強化補正値加算();
     }
@@ -51,6 +58,10 @@ public class BattleStaus
 
     private void 装備補正値加算()
     {
+        if (equip == null)
+        {
+            return;
+        }
         Debug.Log(equip);
         Debug.Log(equip.GetMaxHp());
         status.maxHp += equip.GetMaxHp();

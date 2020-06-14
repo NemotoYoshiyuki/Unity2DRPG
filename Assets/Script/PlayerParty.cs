@@ -77,7 +77,7 @@ public class PlayerParty : MonoBehaviour
 
         playerCharacter.CharacterName = playerData.playerData.CharacterName;
         playerCharacter.playerData = playerData.playerData;
-        playerCharacter.status = playerData.status.Copy();
+        playerCharacter.basicStatus = playerData.status.Copy();
         //
         playerCharacter.characterData = playerData;
         playerCharacter.battleStaus = new BattleStaus(playerData.status.Copy());
@@ -98,7 +98,7 @@ public class PlayerParty : MonoBehaviour
 
         playerCharacter.CharacterName = playerData.CharacterName;
         playerCharacter.playerData = playerData;
-        playerCharacter.status = playerData.Status.Copy();
+        playerCharacter.basicStatus = playerData.Status.Copy();
         playerCharacter.SetUp();
         return playerCharacter;
     }
@@ -138,7 +138,7 @@ public class PlayerParty : MonoBehaviour
         foreach (var data in characterDatas)
         {
             PlayerCharacter playerCharacter = Create(data.characterData);
-            playerCharacter.status = data.characterStatus.Copy();
+            playerCharacter.basicStatus = data.characterStatus.Copy();
             Join(playerCharacter);
         }
     }
