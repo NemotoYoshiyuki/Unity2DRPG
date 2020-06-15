@@ -119,6 +119,7 @@ public class BattleController : MonoBehaviour
         {
             isBattle = false;
             yield return StartCoroutine(messageWindow.ShowAuto("逃げ切れた"));
+            OnBattleEnd();
             yield return StartCoroutine(SceneController.Instance.BackToField());
             yield break;
         }
@@ -142,5 +143,22 @@ public class BattleController : MonoBehaviour
         //バフの更新
         //ステータスの再計算
         //commandManager.Clea();
+    }
+
+    public void OnBattleEnd(){
+
+        //ステータスの引き継ぎ
+        foreach (var item in BattleController.instance.playerCharacters)
+        {
+            CharacterData characterData = GameController.GetParty().Find(item.playerData.CharacterID);
+            characterData.status.hp = item.battleStaus.Status.hp;
+            characterData.status.mp = item.battleStaus.Status.mp;
+
+            //死亡したキャラはHP１で復活
+            if (item.battleStaus.Status.hp < 0)
+            {
+                characterData.status.hp = 1;
+            }
+        }
     }
 }

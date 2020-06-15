@@ -13,6 +13,10 @@ public class InventorySystem
         itemDatas.Add(itemData);
     }
 
+    public void AddEqip(Equipment equipment){
+
+    }
+
     public void AddItem(int id)
     {
         ItemData itemData = GameController.Instance.itemMasterData.items.FirstOrDefault(x => x.id == id);

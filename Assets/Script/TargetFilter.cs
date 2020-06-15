@@ -127,6 +127,13 @@ public class TargetFilter
         return new List<BattleCharacter>() { random };
     }
 
+    public BattleCharacter Auto(IReadOnlyCollection<BattleCharacter> target){
+        //ヘイトが高い順に決める
+
+        //ヘイトが全て同じ場合ランダム
+        return Randam(target)[0];
+    }
+
     public List<BattleCharacter> GetP(BattleCommand battleCommand)
     {
         IReadOnlyCollection<PlayerCharacter> playerCharacters = BattleController.instance.AlivePlayerCharacters;

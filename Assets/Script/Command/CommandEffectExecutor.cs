@@ -47,7 +47,24 @@ public class CommandEffectExecutor : MonoBehaviour
                 //反射(カウンター)・無効
                 //魔法ダメージ効果・物理ダメージ効果
                 effect.SetUp(new EffectInfo(EffectInfo.CommandType.スキル) { owner = owner, target = target });
+                
                 //ターゲットが存在しないとき新しいターゲットに変更する
+                if(target.IsDead()){
+                    TargetFilter targetFilter = new TargetFilter();
+                    BattleCharacter newTarget = null;
+                    if(target is PlayerCharacter){
+                         newTarget = targetFilter.Auto(BattleController.instance.AlivePlayerCharacters);
+                    }else{
+                        newTarget = targetFilter.Auto(BattleController.instance.AliveEnemyCharacters);
+                    }
+   //後で最適化
+                     //効果の処理
+                effect.Use(owner, target);
+                //演出を再生する
+            yield return StartCoroutine(_BattleLogic.Instance.Play());
+            yield break;
+         
+                }
                 //target = newTarget;
 
                 //効果の処理
