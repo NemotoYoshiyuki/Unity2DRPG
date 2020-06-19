@@ -20,29 +20,24 @@ public class SpellCommand : BattleCommand
     {
         int spellMp = spellData.mp;
         string spellMessage = $"{owner.CharacterName}は　{spellData.skillName}をとなえた"; ;
-        _BattleLogic.Instance.Message(spellMessage);
-        Debug.Log("呪文");
+        BattleDirectorController.Instance.Message(spellMessage);
 
-        //yield return StartCoroutine(message.ShowAuto(spellMessage));
 
         if (owner.status.mp <= spellMp)
         {
-            //yield return StartCoroutine(message.ShowAuto("しかし ＭＰが たりない！"));
-            _BattleLogic.Instance.Message("しかし ＭＰが たりない！");
+            BattleDirectorController.Instance.Message("しかし ＭＰが たりない！");
             yield break;
         }
         //封印
-        //しかし呪文は封じられている
-        if(owner.battleStaus.isSpellLimit)
+        if (owner.isSpellLimit)
         {
-            _BattleLogic.Instance.Message("しかし 呪文は 封印されいる");
+            BattleDirectorController.Instance.Message("しかし 呪文は 封印されいる");
             yield break;
         }
 
         owner.GainMp(spellMp);
 
         //効果を実行
-        //yield return StartCoroutine(effectExecutor.Execution(spellCommand));
         yield return CommandEffectExecutor.Instance.Execution(this);
         yield break;
     }

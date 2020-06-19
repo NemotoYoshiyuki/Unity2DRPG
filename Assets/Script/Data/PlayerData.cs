@@ -8,14 +8,16 @@ public class PlayerData : ScriptableObject
 
     [SerializeField] private string characterName;
     [SerializeField] private int characterID;
-    [SerializeField] private Status status;
-    [SerializeField] private List<SpellData> spellDatas;
-    [SerializeField] private List<SkillData> skillDatas;
+    [Header("初期ステータス"),SerializeField] private Status status;
+    [Header("覚える呪文"),SerializeField] private List<SpellData> spellDatas;
+    [Header("覚えるスキル"),SerializeField] private List<SkillData> skillDatas;
     //初期装備
+    [Header("初期装備"),SerializeField] private Equip equip;
 
     public string CharacterName => characterName;
     public int CharacterID => characterID;
     public Status Status => status;
     public List<SpellData> SpellDatas => spellDatas;
     public List<SkillData> SkillDatas => skillDatas;
+    public Equip Equip => equip;
 }

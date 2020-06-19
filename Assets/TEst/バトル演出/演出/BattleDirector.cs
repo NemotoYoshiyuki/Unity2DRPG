@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BattleDirector
 {
-    public virtual IEnumerator Do()
+    public virtual IEnumerator Execute()
     {
         yield break;
     }

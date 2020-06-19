@@ -11,7 +11,7 @@ public class DeadDirector : BattleDirector
         this.deadCharacter = deadCharacter;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
         //死亡処理を行う
         deadCharacter.OnDead();

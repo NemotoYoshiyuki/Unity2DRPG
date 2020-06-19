@@ -5,14 +5,8 @@ using UnityEngine.Playables;
 
 public class AnimationDirector : BattleDirector
 {
-    public AnimationClip animationClip;
     private PlayableAsset playableAsset;
     private Transform transform = null;
-
-    public AnimationDirector(AnimationClip animationClip)
-    {
-        this.animationClip = animationClip;
-    }
 
     public AnimationDirector(PlayableAsset playableAsset, Transform transform = null)
     {
@@ -20,24 +14,18 @@ public class AnimationDirector : BattleDirector
         this.transform = transform;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
-        Debug.Log("アニメーションを再生します");
 
-        if (playableAsset == null)
-        {
-            yield break;
-        }
+        if (playableAsset == null) yield break;
 
         if (transform == null)
         {
-            yield return BattleVFX.Instance.FullScreenPlay(playableAsset);
-        }
-        else
-        {
-            yield return BattleVFX.Instance.Play(playableAsset, transform);
+            yield return BattleVFX.Instance.Play(playableAsset);
+            yield break;
         }
 
+        yield return BattleVFX.Instance.Play(playableAsset, transform);
         yield break;
     }
 }

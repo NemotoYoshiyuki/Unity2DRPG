@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AddStatusEffectDirector : BattleDirector
 {
-    public BattleCharacter battleCharacter;
-    public StatusEffect statusEffect;
+    private BattleCharacter battleCharacter;
+    private StatusEffect statusEffect;
 
     public AddStatusEffectDirector(BattleCharacter battleCharacter, StatusEffect statusEffect)
     {
@@ -13,11 +13,18 @@ public class AddStatusEffectDirector : BattleDirector
         this.statusEffect = statusEffect;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
+
+        if (battleCharacter.GetStatusEffect() != null)
+        {
+            battleCharacter.GetStatusEffect().Refresh();
+        }
+
         //状態異常を付与する
         battleCharacter.AddStatusEffect(statusEffect);
         statusEffect.OnAdd();
-        return base.Do();
+        yield return BattleMessage.Show(statusEffect.addMessage);
+        yield break;
     }
 }

@@ -17,9 +17,9 @@ public class AddStatusEffect : CommandEffect
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
         //状態異常を付与できない、効かない
-        if (target.statusEffect != null)
+        if (target.GetStatusEffect() != null)
         {
-            _BattleLogic.Instance.Message("なにもおきなかった");
+            BattleDirectorController.Instance.Message("なにもおきなかった");
             return;
         }
 
@@ -27,13 +27,13 @@ public class AddStatusEffect : CommandEffect
         switch (effectType)
         {
             case StatusEffectType.どく:
-                statusEffect = new Poison(counter,target);
+                statusEffect = new Poison(target, counter);
                 break;
             case StatusEffectType.まひ:
-                statusEffect = new Palsy(counter, target);
+                statusEffect = new Palsy(target, counter);
                 break;
             case StatusEffectType.すいみん:
-                statusEffect = new Sleep(counter, target);
+                statusEffect = new Sleep(target, counter);
                 break;
             case StatusEffectType.全て:
                 break;
@@ -41,6 +41,6 @@ public class AddStatusEffect : CommandEffect
                 break;
         }
 
-        _BattleLogic.Instance.AddStatusEffect(target, statusEffect);
+        BattleDirectorController.Instance.AddStatusEffect(target, statusEffect);
     }
 }

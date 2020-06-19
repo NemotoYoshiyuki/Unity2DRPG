@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class ItemMasterData : ScriptableObject
+public class ItemMasterData : ScriptableObject, IMasterData<ItemData>
 {
-    public List<ItemData> items = new List<ItemData>();
+    [SerializeField] private List<ItemData> items = new List<ItemData>();
+
+    public List<ItemData> Get()
+    {
+        return items;
+    }
 }

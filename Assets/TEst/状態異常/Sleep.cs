@@ -7,34 +7,33 @@ public class Sleep : StatusEffect
     public override int id => (int)StatusEffectType.すいみん;
     public override string alimentName => "ねむり";
 
-    public override string onAdd => $"{owner.CharacterName}を ねむらせた！";
+    public override string addMessage => $"{owner.CharacterName}を ねむらせた！";
 
-    public override string onGrant => $"{owner.CharacterName}は ねむっている！";
+    public override string keepMessage => $"{owner.CharacterName}は ねむっている！";
 
-    public override string resolution => $"{owner.CharacterName} は　めを　さました！";
+    public override string refreshMessage => $"{owner.CharacterName} は　めを　さました！";
 
-    public Sleep(int counter, BattleCharacter owner) : base(counter, owner)
+    public Sleep(BattleCharacter owner, int counter) : base(owner, counter)
     {
 
     }
 
     public override void OnAdd()
     {
-        //行動不可能フラグを建てる
         base.OnAdd();
+        //行動不可能フラグを建てる
         owner.canAction = false;
     }
 
     public override void OnActionBefore()
     {
-        //その後、行動を行うことはできない
-        _BattleLogic.Instance.Message(onGrant);
+        BattleDirectorController.Instance.Message(keepMessage);
     }
 
     public override void OnDamage(EffectInfo info)
     {
         //攻撃を受けたときこの状態異常は解除される
-        Refresh();
+        BattleDirectorController.Instance.RemoveStatusEffect(owner);
     }
 
     public override void OnTurnEnd()

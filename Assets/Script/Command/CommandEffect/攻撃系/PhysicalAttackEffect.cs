@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PhysicalAttackEffect : CommandEffect
 {
-    public AnimationClip animationClip;
     public float damageRate = 1;
     public bool critical;
     public int criticalRate = 32;//会心率
@@ -13,7 +12,7 @@ public class PhysicalAttackEffect : CommandEffect
     public string successMessage = "の攻撃";//成功時メッセージ
     public string failureMessage;//失敗時メッセージ
 
-    private _BattleLogic logic;
+    private BattleDirectorController logic;
     private EffectInfo effectInfo;
 
     public override void SetUp(EffectInfo effectInfo)
@@ -25,7 +24,7 @@ public class PhysicalAttackEffect : CommandEffect
 
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
-        logic = _BattleLogic.Instance;
+        logic = BattleDirectorController.Instance;
 
         //成功判定
         bool m_success = BattleFormula._CheckRate(successRate);

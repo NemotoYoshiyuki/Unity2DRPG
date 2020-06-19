@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HealDirectpr : BattleDirector
 {
-    public BattleCharacter character;
-    public int healAmount;
+    private BattleCharacter character;
+    private int healAmount;
 
     public HealDirectpr(BattleCharacter character, int healAmount)
     {
@@ -13,7 +13,7 @@ public class HealDirectpr : BattleDirector
         this.healAmount = healAmount;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
         character.Recover(healAmount);
         yield break;

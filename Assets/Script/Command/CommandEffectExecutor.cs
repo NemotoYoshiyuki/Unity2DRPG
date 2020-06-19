@@ -24,7 +24,7 @@ public class CommandEffectExecutor : MonoBehaviour
         //効果の範囲が全体の場合
         if (battleCommand.GetTargetType().targetRange == TargetRange.全体)
         {
-            _BattleLogic.Instance.AnimationPlay(battleCommand.GetCommand().animation);
+            BattleDirectorController.Instance.AnimationPlay(battleCommand.GetCommand().animation);
         }
 
         foreach (var effect in effects)
@@ -39,7 +39,7 @@ public class CommandEffectExecutor : MonoBehaviour
                 {
                     //Debug.Log(battleCommand.GetCommand().animation);
                     Debug.Log(target.transform);
-                    _BattleLogic.Instance.AnimationPlay(battleCommand.GetCommand().animation,target.transform);
+                    BattleDirectorController.Instance.AnimationPlay(battleCommand.GetCommand().animation,target.transform);
                 }
 
                 //効果に情報を渡す
@@ -61,7 +61,7 @@ public class CommandEffectExecutor : MonoBehaviour
                      //効果の処理
                 effect.Use(owner, target);
                 //演出を再生する
-            yield return StartCoroutine(_BattleLogic.Instance.Play());
+            yield return StartCoroutine(BattleDirectorController.Instance.Play());
             yield break;
          
                 }
@@ -72,7 +72,7 @@ public class CommandEffectExecutor : MonoBehaviour
             }
 
             //演出を再生する
-            yield return StartCoroutine(_BattleLogic.Instance.Play());
+            yield return StartCoroutine(BattleDirectorController.Instance.Play());
         }
         yield break;
     }

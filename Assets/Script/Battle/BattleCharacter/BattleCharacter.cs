@@ -4,21 +4,38 @@ using UnityEngine;
 
 public class BattleCharacter : MonoBehaviour
 {
-    public Status basicStatus;//変化しない基本ステータス
+    private Status basicStatus;//基礎ステータス
+    public Status BasicStatus => basicStatus;
     public Status status => battleStaus.Status;
-    //状態異常
-    public StatusEffect statusEffect;
-    //行動可能フラグ
-    public bool canAction = true;
-
-    //強化
     public BattleStaus battleStaus;//戦闘用ステータス
 
+    public int hate = 0;//狙われ率
+    public float damageIncrease = 1f;//ダメージ加算倍率
+    public float damageReduction = 1f;//ダメージ減算倍率
+    public bool canAction = true;//行動可能フラグ
+    public bool isCounter = false;//カウンターフラグ
+    public bool isSpellLimit = false;//呪文行動制限
+
     public virtual string CharacterName { get; set; }
+
+    public void SetBasicStatus(Status status)
+    {
+        this.basicStatus = status.Copy();
+    }
 
     public void SetUp()
     {
         this.battleStaus = new BattleStaus(basicStatus);
+    }
+
+    public void GainHp(int value)
+    {
+        status.hp = Mathf.Clamp(status.hp - value, 0, status.maxHp);
+    }
+
+    public void GainMp(int value)
+    {
+        status.mp = Mathf.Clamp(status.mp - value, 0, status.maxMp);
     }
 
     public void Recover(int amount)
@@ -26,16 +43,26 @@ public class BattleCharacter : MonoBehaviour
         status.hp = Mathf.Clamp(status.hp + amount, 0, status.maxHp);
     }
 
+    public void ReceiveDamage(int damage)
+    {
+        status.hp = Mathf.Clamp(status.hp - damage, 0, status.maxHp);
+        if (IsDead()) OnDead();
+    }
+
     //状態異常にする
     public void AddStatusEffect(StatusEffect statusEffect)
     {
-        this.statusEffect = statusEffect;
+        this.battleStaus.statusEffect = statusEffect;
     }
 
-    //状態異常を治療する
-    public void Treatment()
+    public void RemoveStatusEffect()
     {
-        statusEffect = null;
+        this.battleStaus.statusEffect = null;
+    }
+
+    public StatusEffect GetStatusEffect()
+    {
+        return battleStaus.statusEffect;
     }
 
     public void AddBuff(Buff buff)
@@ -44,10 +71,15 @@ public class BattleCharacter : MonoBehaviour
         battleStaus.StatusUpdate();
     }
 
-    public void ReceiveDamage(int damage)
+    public void RemoveBuff()
     {
-        status.hp = Mathf.Clamp(status.hp - damage, 0, status.maxHp);
-        if (IsDead()) OnDead();
+        battleStaus.DeleteBuff();
+        battleStaus.StatusUpdate();
+    }
+
+    public void StatusUpdate()
+    {
+        battleStaus.StatusUpdate();
     }
 
     //コマンド入力が可能な状態なのか
@@ -65,16 +97,6 @@ public class BattleCharacter : MonoBehaviour
     public virtual void OnDead()
     {
         //状態異常を解除
-        statusEffect = null;
-    }
-
-    public void GainHp(int value)
-    {
-        status.hp = Mathf.Clamp(status.hp - value, 0, status.maxHp);
-    }
-
-    public void GainMp(int value)
-    {
-        status.mp = Mathf.Clamp(status.mp - value, 0, status.maxMp);
+        RemoveStatusEffect();
     }
 }

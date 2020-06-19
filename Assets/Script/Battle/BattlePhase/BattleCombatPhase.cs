@@ -24,6 +24,10 @@ public class BattleCombatPhase : MonoBehaviour
 
             //コマンド処理
             yield return StartCoroutine(commandExecution.Execution(command));
+
+            //本当はここで効果の処理を管理したい
+            //効果が実行可能？
+            //効果を実行する
         }
 
         //ターンエンド処理

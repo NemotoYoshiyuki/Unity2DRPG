@@ -13,7 +13,7 @@ public class ResuscitationDirector : BattleDirector
         this.healAmount = healAmount;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
         character.Recover(healAmount);
         yield break;

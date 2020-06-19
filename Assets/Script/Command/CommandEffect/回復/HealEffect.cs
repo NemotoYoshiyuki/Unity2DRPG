@@ -18,6 +18,6 @@ public class HealEffect : CommandEffect
 
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
-        _BattleLogic.Instance.Heal(healAmount, effectInfo.target);
+        BattleDirectorController.Instance.Heal(effectInfo.target, healAmount);
     }
 }

@@ -11,8 +11,10 @@ public class GameController : MonoBehaviour
     public ItemMasterData itemMasterData;
     public EnemyMasterData enemyMasterData;
 
+    [Header("所持金")]
     public int money = 0;
-    [Header("ゲームオーバー再開場所")]
+
+    [Header("ゲーム再開地点")]
     [SceneName] public string resumeScene;
     public Vector3 checkpoint;
 

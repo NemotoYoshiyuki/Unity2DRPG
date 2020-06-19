@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 [System.Serializable]
 public class CharacterData
 {
@@ -20,7 +21,6 @@ public class CharacterData
         this.status = playerData.Status.Copy();
         //初期装備
         equip = new Equip();
-
     }
 
     public string GetName()
@@ -42,7 +42,6 @@ public class CharacterData
 
     public void Recover(int amount)
     {
-        //using UnityEngine;
         status.hp = Mathf.Clamp(status.hp + amount, 0, status.maxHp);
     }
 
@@ -50,6 +49,4 @@ public class CharacterData
     {
         return (CharacterData)this.MemberwiseClone();
     }
-
-    //体力の増減　床ダメージ
 }

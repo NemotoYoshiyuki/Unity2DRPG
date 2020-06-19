@@ -16,18 +16,19 @@ public class AttackCommand : BattleCommand
 
     }
 
-   public override IEnumerator Execution(){
-       
-       //
-       //スキルデータ作成
-       skillData = (SkillData)ScriptableObject.CreateInstance(typeof(SkillData));
-       //武器によって再生するアニメーションを変更する
-       _BattleLogic.Instance.NormalAttack();
-       effects.Add(new PhysicalAttackEffect());
-       //効果を実行する
+    public override IEnumerator Execution()
+    {
+
+        //
+        //スキルデータ作成
+        skillData = (SkillData)ScriptableObject.CreateInstance(typeof(SkillData));
+        //武器によって再生するアニメーションを変更する
+        BattleDirectorController.Instance.NormalAttack(target[0]);
+        effects.Add(new PhysicalAttackEffect());
+        //効果を実行する
         yield return CommandEffectExecutor.Instance.Execution(this);
         yield break;
-   }
+    }
 
     public override List<CommandEffect> GetEffect()
     {

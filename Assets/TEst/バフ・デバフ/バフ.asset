@@ -25,8 +25,8 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: SupportEffect, ns: , asm: Assembly-CSharp}
+      type: {class: AddBuffEffect, ns: , asm: Assembly-CSharp}
       data:
-        statusType: 4
-        count: 2
-        value: 100
+        statusType: 0
+        count: 0
+        value: 0

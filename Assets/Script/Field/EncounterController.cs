@@ -58,7 +58,7 @@ public class EncounterController : MonoBehaviour
 
     public static void Encount(int id)
     {
-        EnemyData enemyData = GameController.Instance.enemyMasterData.characterData.First(x => x.id == id);
+        EnemyData enemyData = GameController.Instance.enemyMasterData.characterData.First(x => x.Id == id);
         var enemyGroups = new List<EncountEnemy>() { new EncountEnemy() { enemy = enemyData, posiiton = 0 } };
         Encount(enemyGroups);
     }

@@ -6,31 +6,23 @@ public class StatusEffect
 {
     public virtual int id { get; }
     public virtual string alimentName { get; }
-    public virtual string onAdd { get; }
-    public virtual string onGrant { get; }
-    public virtual string resolution { get; }
-    //public string onGrant; //付与
-    //public string resolution; //解消
+    public virtual string addMessage { get; }
+    public virtual string keepMessage { get; }
+    public virtual string refreshMessage { get; }
+
     //継続ターン数
     public int counter;
-    //発動メッセージ
-
-
-    //発動タイミング
-    //発動メソッド
-
-
-    internal BattleCharacter owner;//この状態異常にかかっているキャラ
+    public BattleCharacter owner;//この状態異常にかかっているキャラ
 
     //コンストラクタ
-    public StatusEffect(int counter, BattleCharacter owner)
+    public StatusEffect(BattleCharacter owner, int counter)
     {
         this.counter = counter;
         this.owner = owner;
 
-        _BattleLogic.Instance.onActionBefore += OnActionBefore;
-        _BattleLogic.Instance.onDamage += OnDamage;
-        _BattleLogic.Instance.onTurnEnd += OnTurnEnd;
+        BattleController.instance.onActionBefore += OnActionBefore;
+        BattleController.instance.onDamage += OnDamage;
+        BattleController.instance.onTurnEnd += OnTurnEnd;
     }
 
     public virtual void OnAdd()
@@ -55,19 +47,17 @@ public class StatusEffect
 
     public virtual void Refresh()
     {
-        _BattleLogic.Instance.RemoveStatusEffect(owner);
-
-        _BattleLogic.Instance.onActionBefore -= OnActionBefore;
-        _BattleLogic.Instance.onDamage -= OnDamage;
-        _BattleLogic.Instance.onTurnEnd -= OnTurnEnd;
+        BattleController.instance.onActionBefore += OnActionBefore;
+        BattleController.instance.onDamage += OnDamage;
+        BattleController.instance.onTurnEnd += OnTurnEnd;
     }
 
-    public void CountDown()
+    private void CountDown()
     {
         counter--;
-        if (counter <= 0)
+        if (counter < 0)
         {
-            Refresh();
+            BattleDirectorController.Instance.RemoveStatusEffect(owner);
         }
     }
 

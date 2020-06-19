@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class SoundDirector : BattleDirector
 {
-    public AudioClip audioClip;
+    private AudioClip audioClip;
 
     public SoundDirector(AudioClip audioClip)
     {
         this.audioClip = audioClip;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
         //効果音を再生します
-
+        BattleSE.Play(audioClip);
         yield break;
     }
 }

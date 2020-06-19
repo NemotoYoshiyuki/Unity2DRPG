@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpellDamageEffect : CommandEffect
 {
-    public AnimationClip animationClip;
     public int damageAmount;
 
     private EffectInfo effectInfo;
@@ -17,6 +16,6 @@ public class SpellDamageEffect : CommandEffect
 
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
-        _BattleLogic.Instance.DamageLogic(effectInfo,damageAmount);
+        BattleDirectorController.Instance.DamageLogic(effectInfo,damageAmount);
     }
 }

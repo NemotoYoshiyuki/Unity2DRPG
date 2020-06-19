@@ -4,32 +4,31 @@ using UnityEngine;
 
 public class DamageDirector : BattleDirector
 {
-    private int damage;
     private BattleCharacter target;
+    private int damage;
     private string message = null;
 
-    public DamageDirector(int damage, BattleCharacter target)
+    public DamageDirector(BattleCharacter target, int damage)
     {
         this.damage = damage;
         this.target = target;
     }
 
-    public DamageDirector(int damage, BattleCharacter target, string message)
+    public DamageDirector(BattleCharacter target, int damage, string message)
     {
         this.damage = damage;
         this.target = target;
         this.message = message;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
         //Hpを減らす
-        target.GainHp(damage);
+        target.ReceiveDamage(damage);
 
         //メッセージ表示
         if (message != null)
         {
-            Debug.Log(message);
             yield return BattleMessage.Show(message);
         }
         yield break;

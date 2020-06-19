@@ -541,6 +541,147 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24442939}
   m_CullTransparentMesh: 0
+--- !u!1 &78124231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 78124233}
+  - component: {fileID: 78124234}
+  - component: {fileID: 78124232}
+  m_Layer: 0
+  m_Name: BattleSE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &78124232
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78124231}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &78124233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78124231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &78124234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78124231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4539a896c1def0408823c57ec3e44b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 78124232}
 --- !u!1 &96354871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,17 +1154,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65dc349c58c805643853718a208fac39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status:
-    lv: 1
-    maxHp: 999
-    hp: 999
-    maxMp: 999
-    mp: 999
-    attack: 999
-    deffence: 999
-    speed: 999
-    exp: 0
+  battleStaus:
+    status:
+      lv: 0
+      maxHp: 0
+      hp: 0
+      maxMp: 0
+      mp: 0
+      attack: 0
+      deffence: 0
+      speed: 0
+      exp: 0
+    equip:
+      weapon: {fileID: 0}
+      armor: {fileID: 0}
+      accessory: {fileID: 0}
+  hate: 0
+  damageIncrease: 1
+  damageReduction: 1
   canAction: 1
+  isCounter: 0
+  isSpellLimit: 0
+  characterData:
+    id: 0
+    lv: 0
+    exp: 0
+    name: 
+    playerData: {fileID: 0}
+    status:
+      lv: 0
+      maxHp: 0
+      hp: 0
+      maxMp: 0
+      mp: 0
+      attack: 0
+      deffence: 0
+      speed: 0
+      exp: 0
+    equip:
+      weapon: {fileID: 0}
+      armor: {fileID: 0}
+      accessory: {fileID: 0}
+    statusEffectType: 0
   playerData: {fileID: 11400000, guid: d9a7ff1907daba249aa1b67a83e4bc6b, type: 2}
 --- !u!4 &326641631
 Transform:
@@ -1655,8 +1827,11 @@ MonoBehaviour:
   messageSpeed: 0
   soundVolume: 0
   sfxVolume: 0
+  party:
+    characterDatas: []
   inventorySystem:
     itemDatas: []
+    equipments: []
   flagManager:
     masterData: {fileID: 0}
     flags: []
@@ -1675,6 +1850,7 @@ MonoBehaviour:
     inventoryData:
       inventorySystem:
         itemDatas: []
+        equipments: []
     partyData:
       characterDatas: []
     flagData:
@@ -3504,7 +3680,7 @@ GameObject:
   - component: {fileID: 1147216044}
   - component: {fileID: 1147216043}
   m_Layer: 0
-  m_Name: BattleLogic
+  m_Name: BattleDirectorController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3527,6 +3703,8 @@ MonoBehaviour:
   hit: {fileID: 0}
   avoidance: {fileID: 0}
   escape: {fileID: 0}
+  slash: {fileID: 0}
+  blow: {fileID: 0}
 --- !u!4 &1147216044
 Transform:
   m_ObjectHideFlags: 0
@@ -5831,6 +6009,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4338922312855961611, guid: 683b7d35f70d67a4980e088ac90a6ed2,
+        type: 3}
+      propertyPath: VFX
+      value: 
+      objectReference: {fileID: 4942453374854366192, guid: 73bdd6f177386d04e97ee06cc6ecb202,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b7d35f70d67a4980e088ac90a6ed2, type: 3}
 --- !u!1 &1809230658

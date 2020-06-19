@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RemoveStatusEffectDirector : BattleDirector
 {
-    public BattleCharacter battleCharacter;
-    public StatusEffect statusEffect;
+    private BattleCharacter battleCharacter;
+    private StatusEffect statusEffect;
 
     public RemoveStatusEffectDirector(BattleCharacter battleCharacter, StatusEffect statusEffect)
     {
@@ -13,10 +13,12 @@ public class RemoveStatusEffectDirector : BattleDirector
         this.statusEffect = statusEffect;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
         //状態異常を解消する
-        battleCharacter.Treatment();
-        return base.Do();
+        statusEffect.Refresh();
+        battleCharacter.RemoveStatusEffect();
+        yield return BattleMessage.Show(statusEffect.refreshMessage);
+        yield break;
     }
 }

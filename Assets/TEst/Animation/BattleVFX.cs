@@ -6,8 +6,7 @@ using UnityEngine.Playables;
 
 public class BattleVFX : MonoBehaviour
 {
-    [SerializeField]
-    private PlayableDirector vfx;
+    public PlayableDirector VFX;
     public static BattleVFX Instance;
 
     private void Awake()
@@ -17,35 +16,35 @@ public class BattleVFX : MonoBehaviour
 
     public IEnumerator Play(PlayableAsset playableAsset, Transform position)
     {
-        PlayableDirector VFX = Instantiate(vfx, position);
-        VFX.playableAsset = playableAsset;
-        VFX.gameObject.transform.localScale = Vector3Int.one * 2;
-        VFX.Play();
-        
+        PlayableDirector m_VFX = Instantiate(VFX, position);
+        m_VFX.playableAsset = playableAsset;
+        m_VFX.gameObject.transform.localScale = Vector3Int.one * 2;
+        m_VFX.Play();
+
         //再生終了
-        while (VFX.state != PlayState.Paused)
+        while (m_VFX.state != PlayState.Paused)
         {
             yield return null;
         }
 
-        Destroy(VFX.gameObject);
+        Destroy(m_VFX.gameObject);
         yield break;
     }
 
-    public IEnumerator FullScreenPlay(PlayableAsset playableAsset)
+    public IEnumerator Play(PlayableAsset playableAsset)
     {
-        PlayableDirector VFX = Instantiate(vfx);
-        VFX.playableAsset = playableAsset;
-        VFX.gameObject.transform.localScale = Vector3Int.one * 4;
-        VFX.Play();
+        PlayableDirector m_VFX = Instantiate(VFX);
+        m_VFX.playableAsset = playableAsset;
+        m_VFX.gameObject.transform.localScale = Vector3Int.one * 4;
+        m_VFX.Play();
 
         //再生終了
-        while (VFX.state != PlayState.Paused)
+        while (m_VFX.state != PlayState.Paused)
         {
             yield return null;
         }
 
-        Destroy(VFX.gameObject);
+        Destroy(m_VFX.gameObject);
         yield break;
     }
 }

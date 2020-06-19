@@ -7,13 +7,13 @@ public class Palsy : StatusEffect
     public override int id => (int)StatusEffectType.まひ;
     public override string alimentName => "まひ";
 
-    public override string onAdd => $"{owner.CharacterName}の　からだがしびれて\nうごけなくなった！";
+    public override string addMessage => $"{owner.CharacterName}の　からだがしびれて\nうごけなくなった！";
 
-    public override string onGrant => $"{owner.CharacterName}は　からだがしびれて　うごけない！";
+    public override string keepMessage => $"{owner.CharacterName}は　からだがしびれて　うごけない！";
 
-    public override string resolution => $"{owner.CharacterName} の　しびれがきえた";
+    public override string refreshMessage => $"{owner.CharacterName} の　しびれがきえた";
 
-    public Palsy(int counter, BattleCharacter owner) : base(counter, owner)
+    public Palsy(BattleCharacter owner, int counter) : base(owner, counter)
     {
 
     }
@@ -21,14 +21,12 @@ public class Palsy : StatusEffect
     public override void OnAdd()
     {
         //行動不可能フラグを建てる
-        base.OnAdd();
         owner.canAction = false;
     }
 
     public override void OnActionBefore()
     {
-        //その後、行動を行うことはできない
-        _BattleLogic.Instance.Message(onGrant);
+        BattleDirectorController.Instance.Message(keepMessage);
     }
 
     public override void OnTurnEnd()

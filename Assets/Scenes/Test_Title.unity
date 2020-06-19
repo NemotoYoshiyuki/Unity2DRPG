@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74d46456f4f20a46b827a3acca2836d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScene: "\u304A\u57CE"
+  startScene: Test_Field 1
   startPotisition: {x: 0, y: 0}
   startItem:
   - {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}

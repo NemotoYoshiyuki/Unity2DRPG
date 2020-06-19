@@ -9,17 +9,17 @@ public class Equip
     public Armor armor;
     public Accessory accessory;
 
-    public void SetWeapon()
+    public void EquipWeapon(Weapon weapon)
     {
-
+        this.weapon = weapon;
     }
-    public void SetArmor()
+    public void EquipArmor(Armor armor)
     {
-
+        this.armor = armor;
     }
-    public void SetAccessory()
+    public void EquipAccessory(Accessory accessory)
     {
-
+        this.accessory = accessory;
     }
 
     public int GetMaxHp()

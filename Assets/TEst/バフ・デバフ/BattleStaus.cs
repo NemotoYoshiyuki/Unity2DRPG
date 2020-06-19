@@ -7,28 +7,24 @@ using System.Linq;
 public class BattleStaus
 {
     private Status baseStatus;
-    public int lv;
-    [SerializeField]
-    private Status status;
+    [SerializeField] private Status status;
     public Status Status => status;
     public Equip equip;//装備情報
     public List<Buff> buffs = new List<Buff>();
     public StatusEffect statusEffect;//状態異常
 
-    //攻撃加算倍率　バイキルト
-    //防御率
-    //無敵フラグ等の特殊フラグ
-    //物理反射フラグ　無効フラグ
-    //魔法反射フラグ　無効フラグ
-    //ヘイト　狙われ率
-    //命中率
-    //回避率
-    public bool isSpellLimit = false;//呪文制限
+
 
     public BattleStaus(Status status)
     {
         this.baseStatus = status;
         this.status = baseStatus.Copy();
+    }
+
+    public int Attack()
+    {
+        //基礎攻撃力+装備補正+強化補正
+        return 0;
     }
 
     public void StatusUpdate()

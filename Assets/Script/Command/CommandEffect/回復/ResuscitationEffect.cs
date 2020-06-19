@@ -19,6 +19,6 @@ public class ResuscitationEffect : CommandEffect
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
         int healAmount = target.status.maxHp / healRate;
-        _BattleLogic.Instance.Revival(healAmount, effectInfo.target);
+        BattleDirectorController.Instance.Revival(effectInfo.target, healAmount);
     }
 }

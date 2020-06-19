@@ -24,17 +24,18 @@ public class EnemyParty : MonoBehaviour
 
             //グラフィックの設定
             SpriteRenderer sprite = enemy.GetComponent<SpriteRenderer>();
-            sprite.sprite = enemies[i].enemy.graphic;
+            sprite.sprite = enemies[i].enemy.Graphic;
 
             //ステータスの設定
             EnemyCharacter enemyCharacter = enemy.GetComponent<EnemyCharacter>();
 
             //EnemyDataの値を書き換えないようにするためコピーしたものを使います
             enemyCharacter.enemyData = ScriptableObject.Instantiate(enemies[i].enemy);
-            enemyCharacter.basicStatus = enemyCharacter.enemyData.status;
+            enemyCharacter.SetBasicStatus(enemyCharacter.enemyData.Status);
             enemyCharacter.SetUp();
 
             //名前の設定
+            enemyCharacter.CharacterName = enemyCharacter.enemyData.CharacterName;
             enemyCharacter.gameObject.name = enemyCharacter.CharacterName;
             enemyCharacter.gameObject.transform.SetParent(gameObject.transform);
 

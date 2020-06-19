@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class MessageDirector : BattleDirector
 {
-    public string message;
+    private string message;
 
     public MessageDirector(string message)
     {
         this.message = message;
     }
 
-    public override IEnumerator Do()
+    public override IEnumerator Execute()
     {
-        Debug.Log(message);
         yield return BattleMessage.Show(message);
         yield break;
     }

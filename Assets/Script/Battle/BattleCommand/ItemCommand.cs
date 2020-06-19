@@ -25,7 +25,7 @@ public class ItemCommand : BattleCommand
     {
         string itemName = item.itemName;
         string itemMessage = owner.CharacterName + "は" + itemName + "をつかった";
-        _BattleLogic.Instance.Message(itemMessage);
+        BattleDirectorController.Instance.Message(itemMessage);
         //yield return StartCoroutine(message.ShowAuto(itemMessage));
 
         GameController.GetInventorySystem().UseItem(item);

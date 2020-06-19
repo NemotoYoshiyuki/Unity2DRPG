@@ -5,11 +5,12 @@ using UnityEngine;
 public class EnemyCharacter : BattleCharacter
 {
     public EnemyData enemyData;
-    public override string CharacterName { get => enemyData.characterName; set => enemyData.characterName = value; }
+    private string characterName;
+    public override string CharacterName { get => characterName; set => characterName = value; }
 
     public List<Command> GetCommands()
     {
-        return enemyData.commands;
+        return enemyData.Commands;
     }
 
     public override void OnDead()
@@ -20,6 +21,6 @@ public class EnemyCharacter : BattleCharacter
 
     public int DropExp()
     {
-        return enemyData.exp;
+        return enemyData.Status.exp;
     }
 }

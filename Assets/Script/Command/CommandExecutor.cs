@@ -10,8 +10,8 @@ public class CommandExecutor : MonoBehaviour
     {
         //行動開始処理
         //行動キャラが個別に行う
-        StatusEffect statusEffect = battleCommand.owner.statusEffect;
-         if (statusEffect != null) statusEffect.OnActionBefore();
+        // StatusEffect statusEffect = battleCommand.owner.statusEffect;
+        //  if (statusEffect != null) statusEffect.OnActionBefore();
 
         //行動可能な場合
         if (battleCommand.owner.canAction != false)
@@ -26,7 +26,7 @@ public class CommandExecutor : MonoBehaviour
             //yield return effectExecutor.Execution(battleCommand);
         }
 
-       
+
         //ターンエンド処理
         //全員がおこなう
         // if (statusEffect != null)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SupportEffect : CommandEffect
+public class AddBuffEffect : CommandEffect
 {
     public StatusType statusType;
     public int count;
@@ -20,15 +20,15 @@ public class SupportEffect : CommandEffect
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
 
-        _BattleLogic.Instance.AddBuff(target, new Buff(statusType, count, value));
+        BattleDirectorController.Instance.AddBuff(target, new Buff(statusType, count, value));
 
         if (value >= 0)
         {
-            _BattleLogic.Instance.Message($"{target.CharacterName}の{statusType.ToString()}が　あがった");
+            BattleDirectorController.Instance.Message($"{target.CharacterName}の{statusType.ToString()}が　あがった");
         }
         else
         {
-            _BattleLogic.Instance.Message($"{target.CharacterName}の{statusType.ToString()}が　さがった");
+            BattleDirectorController.Instance.Message($"{target.CharacterName}の{statusType.ToString()}が　さがった");
         }
     }
 }

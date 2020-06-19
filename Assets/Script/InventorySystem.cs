@@ -7,6 +7,7 @@ using System.Linq;
 public class InventorySystem
 {
     public List<ItemData> itemDatas = new List<ItemData>();
+    public List<Equipment> equipments = new List<Equipment>();
 
     public void AddItem(ItemData itemData)
     {
@@ -14,12 +15,12 @@ public class InventorySystem
     }
 
     public void AddEqip(Equipment equipment){
-
+        equipments.Add(equipment);
     }
 
     public void AddItem(int id)
     {
-        ItemData itemData = GameController.Instance.itemMasterData.items.FirstOrDefault(x => x.id == id);
+        ItemData itemData = GameController.Instance.itemMasterData.Get().FirstOrDefault(x => x.id == id);
         itemDatas.Add(itemData);
     }
 
@@ -30,7 +31,7 @@ public class InventorySystem
 
     public void UseItem(int id)
     {
-        ItemData itemData = GameController.Instance.itemMasterData.items.FirstOrDefault(x => x.id == id);
+        ItemData itemData = GameController.Instance.itemMasterData.Get().FirstOrDefault(x => x.id == id);
         itemDatas.Remove(itemData);
     }
 

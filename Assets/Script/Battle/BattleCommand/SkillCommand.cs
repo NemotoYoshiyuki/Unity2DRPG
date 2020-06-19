@@ -6,7 +6,6 @@ public class SkillCommand : BattleCommand
 {
     public SkillData skillData;
 
-    //コンストラクタ
     public SkillCommand(SkillData skillData) : base()
     {
         this.skillData = skillData;
@@ -28,8 +27,7 @@ public class SkillCommand : BattleCommand
 
         if (owner.status.mp <= skillMp)
         {
-            //yield return StartCoroutine(message.ShowAuto("しかし ＭＰが たりない！"));
-            _BattleLogic.Instance.Message("しかし ＭＰが たりない！");
+            BattleDirectorController.Instance.Message("しかし ＭＰが たりない！");
             yield break;
         }
 
@@ -52,6 +50,6 @@ public class SkillCommand : BattleCommand
 
     public override TargetType GetTargetType()
     {
-        return new TargetType(skillData.targetUnit,skillData.targetRange);
+        return new TargetType(skillData.targetUnit, skillData.targetRange);
     }
 }
