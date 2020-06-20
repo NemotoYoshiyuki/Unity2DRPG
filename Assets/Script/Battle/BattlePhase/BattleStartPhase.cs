@@ -10,7 +10,7 @@ public class BattleStartPhase : MonoBehaviour
         yield return StartCoroutine(SceneFader.FadeSceneIn());
 
         //遭遇メッセージを表示
-        yield return StartCoroutine(BattleMessage.GetWindow().ShowAuto(BattleText.Get("BattleStart")));
+        yield return StartCoroutine(BattleMessage.GetWindow().ShowAuto("敵が現れた"));
 
         yield break;
     }

@@ -6,12 +6,6 @@ public class RemoveStatusEffect : CommandEffect
 {
     public StatusEffectType effectType;
 
-    public override void SetUp(EffectInfo effectInfo)
-    {
-        effectInfo.characteristic = EffectInfo.Characteristic.特殊;
-        effectInfo.effectType = EffectInfo.EffectType.補助;
-    }
-
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
         //状態異常を解除できない、失敗した

@@ -8,12 +8,6 @@ public class AddStatusEffect : CommandEffect
     public StatusEffectType effectType;//なんの状態異常
     public int counter;//なんターン継続する
 
-    public override void SetUp(EffectInfo effectInfo)
-    {
-        effectInfo.characteristic = EffectInfo.Characteristic.特殊;
-        effectInfo.effectType = EffectInfo.EffectType.補助;
-    }
-
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
         //状態異常を付与できない、効かない

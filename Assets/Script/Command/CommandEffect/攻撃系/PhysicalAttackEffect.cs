@@ -13,14 +13,6 @@ public class PhysicalAttackEffect : CommandEffect
     public string failureMessage;//失敗時メッセージ
 
     private BattleDirectorController logic;
-    private EffectInfo effectInfo;
-
-    public override void SetUp(EffectInfo effectInfo)
-    {
-        this.effectInfo = effectInfo;
-        effectInfo.characteristic = EffectInfo.Characteristic.物理;
-        effectInfo.effectType = EffectInfo.EffectType.攻撃;
-    }
 
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
