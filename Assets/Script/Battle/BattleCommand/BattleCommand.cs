@@ -8,6 +8,8 @@ public class BattleCommand
     public BattleCharacter owner;
     public List<BattleCharacter> target;
 
+    internal bool canEffect = true;
+
     public BattleCommand()
     {
 
@@ -25,6 +27,8 @@ public class BattleCommand
         this.owner = owner;
         this.target.Add(target);
     }
+
+    public bool CanEffec() { return canEffect; }
 
     public virtual IEnumerator Execution() { yield break; }
 

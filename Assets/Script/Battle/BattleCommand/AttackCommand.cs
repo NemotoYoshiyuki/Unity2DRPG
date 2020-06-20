@@ -25,8 +25,6 @@ public class AttackCommand : BattleCommand
         //武器によって再生するアニメーションを変更する
         BattleDirectorController.Instance.NormalAttack(target[0]);
         effects.Add(new PhysicalAttackEffect());
-        //効果を実行する
-        yield return CommandEffectExecutor.Instance.Execution(this);
         yield break;
     }
 

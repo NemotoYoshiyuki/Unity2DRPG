@@ -16,6 +16,6 @@ public class SpellDamageEffect : CommandEffect
 
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
-        BattleDirectorController.Instance.DamageLogic(effectInfo,damageAmount);
+        BattleDirectorController.Instance.DamageLogic(target,damageAmount);
     }
 }

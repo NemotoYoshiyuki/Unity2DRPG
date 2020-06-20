@@ -27,14 +27,13 @@ public class SkillCommand : BattleCommand
 
         if (owner.status.mp <= skillMp)
         {
+            canEffect = false;
             BattleDirectorController.Instance.Message("しかし ＭＰが たりない！");
             yield break;
         }
 
         owner.GainMp(skillMp);
 
-        //効果を実行する
-        yield return CommandEffectExecutor.Instance.Execution(this);
         yield break;
     }
 

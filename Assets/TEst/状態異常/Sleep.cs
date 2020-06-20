@@ -30,7 +30,7 @@ public class Sleep : StatusEffect
         BattleDirectorController.Instance.Message(keepMessage);
     }
 
-    public override void OnDamage(EffectInfo info)
+    public override void OnDamage()
     {
         //攻撃を受けたときこの状態異常は解除される
         BattleDirectorController.Instance.RemoveStatusEffect(owner);

@@ -20,6 +20,8 @@ public class CommandExecutor : MonoBehaviour
             yield return StartCoroutine(battleCommand.Execution());
 
             //MPのチェック
+            if (!battleCommand.CanEffec()) yield break;
+            yield return effectExecutor.Execution(battleCommand);
 
             //コマンドの効果実行
             //バグ　MP不足など効果が実行できない場合でも効果が実行されてしまう

@@ -24,7 +24,7 @@ public class BattleSE : MonoBehaviour
         
     }
 
-    public static void Play(AudioClip audioClip)
+    public static void PlaySE(AudioClip audioClip)
     {
         Instance.audioSource.PlayOneShot(audioClip);
     }

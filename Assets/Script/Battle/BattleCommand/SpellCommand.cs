@@ -25,20 +25,21 @@ public class SpellCommand : BattleCommand
 
         if (owner.status.mp <= spellMp)
         {
+            canEffect = false;
             BattleDirectorController.Instance.Message("しかし ＭＰが たりない！");
             yield break;
         }
+
         //封印
         if (owner.isSpellLimit)
         {
+            canEffect = false;
             BattleDirectorController.Instance.Message("しかし 呪文は 封印されいる");
             yield break;
         }
 
         owner.GainMp(spellMp);
 
-        //効果を実行
-        yield return CommandEffectExecutor.Instance.Execution(this);
         yield break;
     }
 

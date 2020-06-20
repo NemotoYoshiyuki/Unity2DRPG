@@ -72,42 +72,42 @@ public class BattleDirectorController : MonoBehaviour
     }
 
     //物理ダメージ処理
-    public void DamageLogic(EffectInfo info, int damage, bool isCritical = false)
+    public void DamageLogic(BattleCharacter target, int damage, bool isCritical = false)
     {
         //回避判定
-        if (IsAvoidance(info.target))
+        if (IsAvoidance(target))
         {
-            Avoidance(info.target);
+            Avoidance(target);
             return;
         }
 
         if (damage <= 0)
         {
             //ダメージ0以下
-            Add(new MessageDirector(info.target + "に　ダメージを　あたえられない！"));
+            Add(new MessageDirector(target + "に　ダメージを　あたえられない！"));
             return;
         }
 
         if (isCritical)
         {
-            Critical(info.target, damage);
+            Critical(target, damage);
         }
         else
         {
             //ダメージ演出を生成します
-            Hit(info.target);
-            Add(new DamageDirector(info.target, damage));
-            Add(new MessageDirector(info.target.CharacterName + "は" + damage + "うけた"));
+            Hit(target);
+            Add(new DamageDirector(target, damage));
+            Add(new MessageDirector(target.CharacterName + "は" + damage + "うけた"));
         }
 
         ////対象のHPが0になった
-        if (info.target.status.hp < damage)
+        if (target.status.hp < damage)
         {
-            Dead(info.target);
+            Dead(target);
             return;
         }
 
-        BattleController.instance.onDamage?.Invoke(info);
+        BattleController.instance.onDamage?.Invoke();
     }
 
     public void Damage(BattleCharacter target, int damage, string message)

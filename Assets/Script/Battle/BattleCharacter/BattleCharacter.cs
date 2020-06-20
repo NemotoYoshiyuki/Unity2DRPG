@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BattleCharacter : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class BattleCharacter : MonoBehaviour
     public bool canAction = true;//行動可能フラグ
     public bool isCounter = false;//カウンターフラグ
     public bool isSpellLimit = false;//呪文行動制限
+
+    //イベント
+    public Action onActionBefore = null;
 
     public virtual string CharacterName { get; set; }
 
@@ -74,6 +78,12 @@ public class BattleCharacter : MonoBehaviour
     public void RemoveBuff()
     {
         battleStaus.DeleteBuff();
+        battleStaus.StatusUpdate();
+    }
+
+    public void BuffUpdate()
+    {
+        battleStaus.BuffUpdate();
         battleStaus.StatusUpdate();
     }
 

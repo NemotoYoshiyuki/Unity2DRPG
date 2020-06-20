@@ -21,7 +21,7 @@ public class BattleController : MonoBehaviour
 
     //バトルトリガー
     public Action onActionBefore = null;
-    public Action<EffectInfo> onDamage = null;
+    public Action onDamage = null;
     public Action onTurnEnd = null;
 
     public static BattleController instance;
@@ -137,28 +137,52 @@ public class BattleController : MonoBehaviour
         return enemyCharacters.Sum(x => x.DropExp());
     }
 
+    public IEnumerator TurnStart()
+    {
+        yield break;
+    }
+
     public void OnTurnEnd()
     {
         onTurnEnd?.Invoke();
-        //バフの更新
-        //ステータスの再計算
+
+        //バフ・デバフの更新
+        PlayerBuffUpdate();
+        EnemyBuffUpdate();
+
         //commandManager.Clea();
     }
 
-    public void OnBattleEnd(){
-
+    public void OnBattleEnd()
+    {
         //ステータスの引き継ぎ
-        foreach (var item in BattleController.instance.playerCharacters)
+        foreach (var item in playerCharacters)
         {
             CharacterData characterData = GameController.GetParty().Find(item.playerData.CharacterID);
-            characterData.status.hp = item.battleStaus.Status.hp;
-            characterData.status.mp = item.battleStaus.Status.mp;
+            characterData.status.hp = item.status.hp;
+            characterData.status.mp = item.status.mp;
 
             //死亡したキャラはHP１で復活
             if (item.battleStaus.Status.hp < 0)
             {
                 characterData.status.hp = 1;
             }
+        }
+    }
+
+    private void PlayerBuffUpdate()
+    {
+        foreach (var item in AlivePlayerCharacters)
+        {
+            item.BuffUpdate();
+        }
+    }
+
+    private void EnemyBuffUpdate()
+    {
+        foreach (var item in AliveEnemyCharacters)
+        {
+            item.BuffUpdate();
         }
     }
 }

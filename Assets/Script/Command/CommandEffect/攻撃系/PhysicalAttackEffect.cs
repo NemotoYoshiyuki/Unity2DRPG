@@ -56,6 +56,6 @@ public class PhysicalAttackEffect : CommandEffect
 
         //成功メッセージを表示
         logic.Message(owner.CharacterName + successMessage);
-        logic.DamageLogic(effectInfo, damage, m_critical);
+        logic.DamageLogic(target, damage, m_critical);
     }
 }

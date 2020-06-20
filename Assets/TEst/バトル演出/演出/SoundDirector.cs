@@ -14,7 +14,7 @@ public class SoundDirector : BattleDirector
     public override IEnumerator Execute()
     {
         //効果音を再生します
-        BattleSE.Play(audioClip);
+        BattleSE.PlaySE(audioClip);
         yield break;
     }
 }
