@@ -9,7 +9,7 @@ public class NewGame : MonoBehaviour
     [Header("ゲーム開始時の位置")]
     public Vector2 startPotisition;
     [Header("ゲーム開始時の所持アイテム")]
-    public List<ItemData> startItem;
+    public List<Item> startItem;
     [Header("主人公")]
     public PlayerData playerChacter;
     [Header("仲間")]
@@ -21,7 +21,7 @@ public class NewGame : MonoBehaviour
     {
         //PlayerParty.Instance.Join(playerChacter);
         GameController.GetParty().Join(playerChacter);
-        GameController.GetInventorySystem().itemDatas = new List<ItemData>(startItem);
+        GameController.GetInventorySystem().itemDatas = new List<Item>(startItem);
         GameController.GetFlagManager().Init();
         GameController.Instance.resumeScene = startScene;
         GameController.Instance.checkpoint = startPotisition;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SkillCommand : BattleCommand
 {
-    public SkillData skillData;
+    public Skill skillData;
 
-    public SkillCommand(SkillData skillData) : base()
+    public SkillCommand(Skill skillData) : base()
     {
         this.skillData = skillData;
     }
@@ -16,7 +16,7 @@ public class SkillCommand : BattleCommand
 
     }
 
-    public SkillCommand(SkillData skillData, BattleCharacter owner, List<BattleCharacter> target) : base(owner, target)
+    public SkillCommand(Skill skillData, BattleCharacter owner, List<BattleCharacter> target) : base(owner, target)
     {
         this.skillData = skillData;
     }
@@ -37,7 +37,7 @@ public class SkillCommand : BattleCommand
         yield break;
     }
 
-    public override List<CommandEffect> GetEffect()
+    public override List<Effect> GetEffect()
     {
         return skillData.effects;
     }

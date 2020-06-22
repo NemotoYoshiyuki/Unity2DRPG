@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 
     [Header("所持金")]
     public int money = 0;
+    //最大所持金(規定値:99999999)を返す。
 
     [Header("ゲーム再開地点")]
     [SceneName] public string resumeScene;

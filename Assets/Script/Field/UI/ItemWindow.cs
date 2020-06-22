@@ -60,7 +60,7 @@ public class ItemWindow : BaseWindow
 
     private void Initialized()
     {
-        List<ItemData> inventory = GameController.GetInventorySystem().itemDatas;
+        List<Item> inventory = GameController.GetInventorySystem().itemDatas;
         if (inventory == null || inventory.Count < 0) return;
 
         ClearItemList();
@@ -71,13 +71,13 @@ public class ItemWindow : BaseWindow
 
     private void CreateItemList()
     {
-        List<ItemData> items = new List<ItemData>(GameController.GetInventorySystem().itemDatas);
+        List<Item> items = new List<Item>(GameController.GetInventorySystem().itemDatas);
         if (items == null || items.Count < 0) return;
 
         //ボタン作成
         for (int i = 0; i < items.Count; i++)
         {
-            ItemData item = items[i];
+            Item item = items[i];
             ItemButton itemSlot = CreateButton(item);
             itemSlot.index = i;
             itemSlot.transform.SetParent(itemList.transform);
@@ -96,7 +96,7 @@ public class ItemWindow : BaseWindow
         ShowItemDescription(itemSlots[selectedItemIndex].item);
     }
 
-    private ItemButton CreateButton(ItemData itemData)
+    private ItemButton CreateButton(Item itemData)
     {
         ItemButton itemSlot = Instantiate(itemSlotPrefab);
         itemSlot.SetUp(itemData);
@@ -114,7 +114,7 @@ public class ItemWindow : BaseWindow
         return itemSlot;
     }
 
-    public bool CanUse(ItemData item)
+    public bool CanUse(Item item)
     {
         if (item.useType != UseType.戦闘中)
         {
@@ -123,12 +123,12 @@ public class ItemWindow : BaseWindow
         return false;
     }
 
-    private void OnItemButtonClick(ItemData itemData)
+    private void OnItemButtonClick(Item itemData)
     {
         ItemUse(itemData);
     }
 
-    private void ItemUse(ItemData itemData)
+    private void ItemUse(Item itemData)
     {
         fieldEffect.UseItem(itemData);
         //Close();
@@ -139,12 +139,12 @@ public class ItemWindow : BaseWindow
         };
     }
 
-    private void OnItemButtonHover(ItemData itemData)
+    private void OnItemButtonHover(Item itemData)
     {
         ShowItemDescription(itemData);
     }
 
-    private void ShowItemDescription(ItemData itemData)
+    private void ShowItemDescription(Item itemData)
     {
         ItemDescription.SetText(itemData.description);
     }

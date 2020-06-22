@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageEffect : CommandEffect
+public class DamageEffect : Effect
 {
     public int damageAmount;
 }

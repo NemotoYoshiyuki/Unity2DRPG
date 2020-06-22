@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhysicalAttackEffect : CommandEffect
+public class PhysicalAttackEffect : Effect
 {
     public float damageRate = 1;
     public bool critical;

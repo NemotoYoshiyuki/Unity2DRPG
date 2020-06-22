@@ -12,10 +12,18 @@ public abstract class Interactable : MonoBehaviour
 
     }
 
-    public void OnExcute()
-    {
-        PlayerInteract.InteractableStart();
-        OnInteractable();
-        PlayerInteract.InteractableEnd();
-    }
+    //public void Run()
+    //{
+    //    StartCoroutine(OnExcute());
+    //}
+
+    //public abstract IEnumerator Hoge();
+
+    //private IEnumerator OnExcute()
+    //{
+    //    PlayerInteract.InteractableStart();
+    //    yield return Hoge();//イベントの終了を待機
+    //    PlayerInteract.InteractableEnd();
+    //    yield break;
+    //}
 }

@@ -4,7 +4,7 @@ using TMPro;
 public class ItemSlot : MonoBehaviour
 {
     public Sprite icon;
-    public ItemData item;
+    public Item item;
 
     public int index;
 
@@ -23,7 +23,7 @@ public class ItemSlot : MonoBehaviour
         this.text.SetText(text);
     }
 
-    public void SetUp(ItemData itemData)
+    public void SetUp(Item itemData)
     {
         this.item = itemData;
         SetText(item.itemName);

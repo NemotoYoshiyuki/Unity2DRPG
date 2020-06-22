@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddStatusEffect : CommandEffect
+public class AddStatusEffect : Effect
 {
 
     public StatusEffectType effectType;//なんの状態異常

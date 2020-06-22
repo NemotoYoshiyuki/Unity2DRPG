@@ -8,7 +8,7 @@ public class SpellSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 {
     public int index;
     public SpellWindow owner;
-    public SpellData spell;
+    public Spell spell;
     public TextMeshProUGUI text;
     public AudioSource seAudio;
 
@@ -19,7 +19,7 @@ public class SpellSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         selectable = GetComponent<SelectableButton>();
     }
 
-    public void SetUp(SpellData spellData)
+    public void SetUp(Spell spellData)
     {
         this.spell = spellData;
         SetText(spellData.skillName);

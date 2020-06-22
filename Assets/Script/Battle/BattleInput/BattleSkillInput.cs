@@ -15,7 +15,7 @@ public class BattleSkillInput : BattleCommandInput
         selectButtonBox.Close();
     }
 
-    public void Show(List<SkillData> skillDatas)
+    public void Show(List<Skill> skillDatas)
     {
         foreach (var skill in skillDatas)
         {
@@ -28,7 +28,7 @@ public class BattleSkillInput : BattleCommandInput
         selectButtonBox.Show();
     }
 
-    public void OnClick(SkillData skillData)
+    public void OnClick(Skill skillData)
     {
         SkillCommand skill = new SkillCommand(skillData);
         BattleInputController.instance.SelectCommand(skill);

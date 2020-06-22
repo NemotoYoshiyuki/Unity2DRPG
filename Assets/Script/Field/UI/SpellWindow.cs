@@ -22,7 +22,7 @@ public class SpellWindow : BaseWindow
     public CharacterData owner;//選択対象のキャラ
     //private List<PlayerCharacter> party;
     private List<CharacterData> party;
-    private SpellData selectedItem;
+    private Spell selectedItem;
 
     private SideMenu sideMenu;
     private MenuGuide menuGuide;
@@ -114,14 +114,14 @@ public class SpellWindow : BaseWindow
     private void CreateSpellList(CharacterData playerCharacter)
     {
         //List<SpellData> spellDatas = playerCharacter.GetSpells();
-        List<SpellData> spellDatas = playerCharacter.playerData.SpellDatas;
+        List<Spell> spellDatas = playerCharacter.playerData.SpellDatas;
 
         if (spellDatas.Count == 0) return;
 
         //ボタン作成
         for (int i = 0; i < spellDatas.Count; i++)
         {
-            SpellData item = spellDatas[i];
+            Spell item = spellDatas[i];
             SpellSlot spellSlot = CreateButton(item);
             spellSlot.index = i;
             spellSlot.transform.SetParent(list.transform);
@@ -166,12 +166,12 @@ public class SpellWindow : BaseWindow
         selectables.Clear();
     }
 
-    private void ShowSpellDescription(SpellData spellData)
+    private void ShowSpellDescription(Spell spellData)
     {
         spellDescription.SetText(spellData.description);
     }
 
-    private SpellSlot CreateButton(SpellData spellData)
+    private SpellSlot CreateButton(Spell spellData)
     {
         SpellSlot spellSlot = Instantiate(spellSlotPrefab);
         spellSlot.SetUp(spellData);
@@ -190,17 +190,17 @@ public class SpellWindow : BaseWindow
         return spellSlot;
     }
 
-    private void OnItemButtonClick(SpellData spellData)
+    private void OnItemButtonClick(Spell spellData)
     {
         UseSpell(spellData);
     }
 
-    private void OnSpellButtonHover(SpellData spellData)
+    private void OnSpellButtonHover(Spell spellData)
     {
         ShowSpellDescription(spellData);
     }
 
-    private void UseSpell(SpellData spellData)
+    private void UseSpell(Spell spellData)
     {
         selectedItem = spellData;
         HideSpellList();
@@ -218,7 +218,7 @@ public class SpellWindow : BaseWindow
         gameObject.SetActive(false);
     }
 
-    public bool CanFieldSpell(SpellData spellData)
+    public bool CanFieldSpell(Spell spellData)
     {
         if (spellData.useType != UseType.戦闘中)
         {

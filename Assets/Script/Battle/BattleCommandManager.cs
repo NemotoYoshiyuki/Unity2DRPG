@@ -6,7 +6,6 @@ using System.Linq;
 public class BattleCommandManager : MonoBehaviour
 {
     [SerializeReference] public List<BattleCommand> battleCommands = new List<BattleCommand>();
-    private Queue<BattleCommand> _battleCommands;//行動可能なキャラのリスト
 
     public void Add(BattleCommand battleCommand)
     {
@@ -16,28 +15,12 @@ public class BattleCommandManager : MonoBehaviour
     public void Sort()
     {
         //素早さ順に並び替えます
+        battleCommands = battleCommands.OrderByDescending(x => x.owner.status.speed).ToList();
     }
 
     public void Clea()
     {
         battleCommands.Clear();
-    }
-
-    public bool Complete()
-    {
-        //全てのCharacterのコマンドが登録された状態を示す
-        return true;
-    }
-
-    public void Dequeue()
-    {
-        //Queue<T> の先頭にあるオブジェクトを削除し、返します。
-    }
-
-    public bool Finish()
-    {
-        //全てDequeueをした
-        return true;
     }
 
     public void RegisterEnemyCommand()
@@ -64,10 +47,10 @@ public class BattleCommandManager : MonoBehaviour
 
         switch (randomChoiceCommand)
         {
-            case SpellData spellData:
+            case Spell spellData:
                 target = targetFilter.EnemyToFilter(owner, spellData.targetUnit, spellData.targetRange);
                 return new SpellCommand(spellData, owner, target);
-            case SkillData skillData:
+            case Skill skillData:
                 target = targetFilter.EnemyToFilter(owner, skillData.targetUnit, skillData.targetRange);
                 return new SkillCommand(skillData, owner, target);
             default:

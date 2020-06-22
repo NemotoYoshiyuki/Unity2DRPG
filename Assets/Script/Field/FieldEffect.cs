@@ -12,7 +12,7 @@ public class FieldEffect : MonoBehaviour
     public ItemWindow itemWindow;
     public SpellWindow spellWindow;
 
-    public SpellData spellData;
+    public Spell spellData;
     //public PlayerCharacter spellOwner;
     public CharacterData spellOwner;
     //public PlayerCharacter spellTarget;
@@ -22,7 +22,7 @@ public class FieldEffect : MonoBehaviour
     public AudioClip notUse;
     public AudioClip healClip;
 
-    public void UseItem(ItemData itemData)
+    public void UseItem(Item itemData)
     {
         if (!itemWindow.CanUse(itemData))
         {
@@ -59,7 +59,7 @@ public class FieldEffect : MonoBehaviour
         }
     }
 
-    public void UseSpell(SpellData spellData, CharacterData owner)
+    public void UseSpell(Spell spellData, CharacterData owner)
     {
         if (!spellWindow.CanFieldSpell(spellData))
         {
@@ -133,7 +133,7 @@ public class FieldEffect : MonoBehaviour
     //    }
     //}
 
-    private void AllItemExecut(ItemData itemData)
+    private void AllItemExecut(Item itemData)
     {
         //List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
         List<CharacterData> party = GameController.GetParty().characterDatas;
@@ -143,12 +143,12 @@ public class FieldEffect : MonoBehaviour
         }
     }
 
-    private async void ItemExecut(ItemData itemData, CharacterData taregt)
+    private async void ItemExecut(Item itemData, CharacterData taregt)
     {
         //アイテムの消費
         GameController.GetInventorySystem().UseItem(itemData);
 
-        List<CommandEffect> commandEffect = itemData.effects;
+        List<Effect> commandEffect = itemData.effects;
         foreach (var item in commandEffect)
         {
             DoEffect(item, taregt);
@@ -157,7 +157,7 @@ public class FieldEffect : MonoBehaviour
         itemWindow.Open();
     }
 
-    private void AllSpellExecut(SpellData spellData)
+    private void AllSpellExecut(Spell spellData)
     {
         //List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
         List<CharacterData> party = GameController.GetParty().characterDatas;
@@ -167,14 +167,14 @@ public class FieldEffect : MonoBehaviour
         }
     }
 
-    private void SpellExecut(SpellData spellData, CharacterData taregt)
+    private void SpellExecut(Spell spellData, CharacterData taregt)
     {
         //Mpの消費
         //spellOwner.GainMp(this.spellData.mp);
         //マイナスに鳴る
         spellOwner.status.mp -= (this.spellData.mp);
 
-        List<CommandEffect> commandEffect = spellData.effects;
+        List<Effect> commandEffect = spellData.effects;
         foreach (var item in commandEffect)
         {
             DoEffect(item, taregt);
@@ -205,7 +205,7 @@ public class FieldEffect : MonoBehaviour
     //    }
     //}
 
-    public void DoEffect(CommandEffect commandEffect, CharacterData target)
+    public void DoEffect(Effect commandEffect, CharacterData target)
     {
         switch (commandEffect)
         {

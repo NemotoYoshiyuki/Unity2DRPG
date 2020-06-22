@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test_Field 1.unity
     guid: 70f53952afc93d84896685137e0b5ca3
+  - enabled: 1
+    path: "Assets/\u30A2\u30DB.unity"
+    guid: 5d545e2161a1aba48a056effbb7f12cd
   m_configObjects: {}

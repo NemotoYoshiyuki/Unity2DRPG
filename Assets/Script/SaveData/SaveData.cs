@@ -36,7 +36,7 @@ public class SaveData
 
         public void SetInventorySystem(InventorySystem inventorySystem)
         {
-            this.inventorySystem.itemDatas = new List<ItemData>(inventorySystem.itemDatas);
+            this.inventorySystem.itemDatas = new List<Item>(inventorySystem.itemDatas);
         }
     }
 

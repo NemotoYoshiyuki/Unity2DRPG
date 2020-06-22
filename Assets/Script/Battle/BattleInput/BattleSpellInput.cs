@@ -15,7 +15,7 @@ public class BattleSpellInput : BattleCommandInput
         selectButtonBox.Close();
     }
 
-    public void Show(List<SpellData> spellDatas)
+    public void Show(List<Spell> spellDatas)
     {
         foreach (var spell in spellDatas)
         {
@@ -28,7 +28,7 @@ public class BattleSpellInput : BattleCommandInput
         selectButtonBox.Show();
     }
 
-    public void OnClick(SpellData spellData)
+    public void OnClick(Spell spellData)
     {
         SpellCommand spell = new SpellCommand(spellData);
         BattleInputController.instance.SelectCommand(spell);

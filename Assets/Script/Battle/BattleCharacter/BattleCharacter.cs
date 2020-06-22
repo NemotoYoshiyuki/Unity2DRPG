@@ -27,6 +27,11 @@ public class BattleCharacter : MonoBehaviour
         this.basicStatus = status.Copy();
     }
 
+    public void Initialize(Status basicStatus)
+    {
+        SetBasicStatus(status);
+    }
+
     public void SetUp()
     {
         this.battleStaus = new BattleStaus(basicStatus);

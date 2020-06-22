@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SpellCommand : BattleCommand
 {
-    public SpellData spellData;
+    public Spell spellData;
 
-    public SpellCommand(SpellData spellData)
+    public SpellCommand(Spell spellData)
     {
         this.spellData = spellData;
     }
 
-    public SpellCommand(SpellData spellData, BattleCharacter owner, List<BattleCharacter> target) : base(owner, target)
+    public SpellCommand(Spell spellData, BattleCharacter owner, List<BattleCharacter> target) : base(owner, target)
     {
         this.spellData = spellData;
     }
@@ -43,7 +43,7 @@ public class SpellCommand : BattleCommand
         yield break;
     }
 
-    public override List<CommandEffect> GetEffect()
+    public override List<Effect> GetEffect()
     {
         return spellData.effects;
     }

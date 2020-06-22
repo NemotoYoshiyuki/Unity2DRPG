@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 public class Equipment : ScriptableObject
 {
+    public new string name;
+
     [Header("装備時のステータス上昇値")]
     public int maxHp;
     public int maxMp;

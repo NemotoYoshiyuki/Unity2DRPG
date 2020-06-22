@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RemoveStatusEffect : CommandEffect
+public class RemoveStatusEffect : Effect
 {
     public StatusEffectType effectType;
 

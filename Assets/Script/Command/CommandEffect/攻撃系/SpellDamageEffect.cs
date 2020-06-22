@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellDamageEffect : CommandEffect
+public class SpellDamageEffect : Effect
 {
     public int damageAmount;
 

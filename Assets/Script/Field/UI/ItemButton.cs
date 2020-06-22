@@ -8,7 +8,7 @@ public class ItemButton : MonoBehaviour
 {
     public int index;
     public Image icon;
-    public ItemData item;
+    public Item item;
     public TextMeshProUGUI text;
     public AudioSource seAudio;
     public SelectableButton selectable;
@@ -19,7 +19,7 @@ public class ItemButton : MonoBehaviour
 
     }
 
-    public void SetUp(ItemData item)
+    public void SetUp(Item item)
     {
         this.item = item;
         text.SetText(item.itemName);

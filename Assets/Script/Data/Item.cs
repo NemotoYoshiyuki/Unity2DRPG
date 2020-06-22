@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class ItemData : Command
+public class Item : Command
 {
     public int id;
     public string itemName;
@@ -14,5 +14,10 @@ public class ItemData : Command
     public string description;
 
     //スキルの効果
-    [SerializeReference, SubclassSelector] public List<CommandEffect> effects;
+    [SerializeReference, SubclassSelector] public List<Effect> effects;
+
+    public override BattleCommand CreateBattleCommand()
+    {
+        return new ItemCommand(this);
+    }
 }

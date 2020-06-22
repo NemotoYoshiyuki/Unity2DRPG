@@ -32,7 +32,7 @@ public class BattleCommand
 
     public virtual IEnumerator Execution() { yield break; }
 
-    public virtual List<CommandEffect> GetEffect() { return null; }
+    public virtual List<Effect> GetEffect() { return null; }
     public virtual Command GetCommand() { return null; }
 
     public virtual TargetType GetTargetType() { return null; }

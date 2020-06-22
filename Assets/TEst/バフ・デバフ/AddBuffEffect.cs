@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddBuffEffect : CommandEffect
+public class AddBuffEffect : Effect
 {
     public StatusType statusType;
     public int count;

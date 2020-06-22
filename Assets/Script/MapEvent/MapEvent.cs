@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CommonEventExecution : Interactable
+public class MapEvent : Interactable
 {
     public enum LaunchCondition
     {
@@ -21,7 +21,7 @@ public class CommonEventExecution : Interactable
 
 
     [Header("起動条件")]
-    public CommonEventExecution.LaunchCondition launchCondition;
+    public MapEvent.LaunchCondition launchCondition;
     [Header("実行条件")]
     public ConditionalExecution conditional = new ConditionalExecution();
     [Header("実行するイベントスクリプト")]

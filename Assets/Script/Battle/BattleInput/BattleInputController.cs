@@ -114,7 +114,7 @@ public class BattleInputController : MonoBehaviour
         targetInput.Show(target);
     }
 
-    private List<ItemData> itemDatas;
+    private List<Item> itemDatas;
     public void OpenItemInputWindow()
     {
         itemDatas = GameController.GetInventorySystem().itemDatas;
@@ -126,14 +126,14 @@ public class BattleInputController : MonoBehaviour
 
     public void SkillInputWindow()
     {
-        List<SkillData> skillDatas = CurrentInputCharacter.GetSkills();
+        List<Skill> skillDatas = CurrentInputCharacter.GetSkills();
         BattleSkillInput skillInputWindow = Change<BattleSkillInput>();
         skillInputWindow.Show(skillDatas);
     }
 
     public void SpellWindow()
     {
-        List<SpellData> spellDatas = CurrentInputCharacter.GetSpells();
+        List<Spell> spellDatas = CurrentInputCharacter.GetSpells();
         BattleSpellInput spellInput = Change<BattleSpellInput>();
         spellInput.Show(spellDatas);
     }

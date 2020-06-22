@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ItemCommand : BattleCommand
 {
-    public ItemData item;
+    public Item item;
 
-    public ItemCommand(ItemData itemData)
+    public ItemCommand(Item itemData)
     {
         this.item = itemData;
     }
 
-    public ItemCommand(ItemData itemData, BattleCharacter owner, BattleCharacter target) : base(owner, target)
+    public ItemCommand(Item itemData, BattleCharacter owner, BattleCharacter target) : base(owner, target)
     {
         this.item = itemData;
     }
@@ -38,7 +38,7 @@ public class ItemCommand : BattleCommand
         return new TargetType(item.targetUnit, item.targetRange);
     }
 
-    public override List<CommandEffect> GetEffect()
+    public override List<Effect> GetEffect()
     {
         return item.effects;
     }

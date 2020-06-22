@@ -15,7 +15,7 @@ public class BattleItemInput : BattleCommandInput
         selectButtonBox.Close();
     }
 
-    public void Show(List<ItemData> itemDatas)
+    public void Show(List<Item> itemDatas)
     {
         foreach (var item in itemDatas)
         {
@@ -28,7 +28,7 @@ public class BattleItemInput : BattleCommandInput
         selectButtonBox.Show();
     }
 
-    public void OnClick(ItemData itemData)
+    public void OnClick(Item itemData)
     {
         ItemCommand item = new ItemCommand(itemData);
         BattleInputController.instance.SelectCommand(item);

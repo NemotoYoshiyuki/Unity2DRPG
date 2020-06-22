@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class HealEffect : CommandEffect
+public class HealEffect : Effect
 {
     public AnimationClip animationClip;
     public int healAmount;

@@ -20,9 +20,9 @@ public class DefenseCommand : BattleCommand
         return new TargetType(TargetUnit.自分, TargetRange.なし);
     }
 
-    public override List<CommandEffect> GetEffect()
+    public override List<Effect> GetEffect()
     {
         //効果はない
-        return new List<CommandEffect>();
+        return new List<Effect>();
     }
 }

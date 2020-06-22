@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Command/SpellData")]
-public class SpellData : Command
+public class Spell : Command
 {
     public int id;
     public string skillName;
@@ -14,5 +14,10 @@ public class SpellData : Command
     public string description;
 
     //スキルの効果
-    [SerializeReference, SubclassSelector] public List<CommandEffect> effects;
+    [SerializeReference, SubclassSelector] public List<Effect> effects;
+
+    public override BattleCommand CreateBattleCommand()
+    {
+        return new SpellCommand(this);
+    }
 }

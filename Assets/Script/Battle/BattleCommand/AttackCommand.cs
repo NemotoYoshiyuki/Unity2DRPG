@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AttackCommand : BattleCommand
 {
-    private List<CommandEffect> effects = new List<CommandEffect>();
-    public SkillData skillData;
+    private List<Effect> effects = new List<Effect>();
+    public Skill skillData;
     public AttackCommand()
     {
 
@@ -18,19 +18,17 @@ public class AttackCommand : BattleCommand
 
     public override IEnumerator Execution()
     {
-
-        //
         //スキルデータ作成
-        skillData = (SkillData)ScriptableObject.CreateInstance(typeof(SkillData));
+        skillData = (Skill)ScriptableObject.CreateInstance(typeof(Skill));
         //武器によって再生するアニメーションを変更する
         BattleDirectorController.Instance.NormalAttack(target[0]);
         effects.Add(new PhysicalAttackEffect());
         yield break;
     }
 
-    public override List<CommandEffect> GetEffect()
+    public override List<Effect> GetEffect()
     {
-        PhysicalAttackEffect physicalAttack = new PhysicalAttackEffect() { damageRate = 1, critical = false };
+        PhysicalAttackEffect physicalAttack = new PhysicalAttackEffect();
         effects.Add(physicalAttack);
         return effects;
     }

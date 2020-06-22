@@ -8,12 +8,12 @@ public class PlayerCharacter : BattleCharacter
     public PlayerData playerData;
     public override string CharacterName { get => playerData.CharacterName; set => base.CharacterName = value; }
 
-    public List<SpellData> GetSpells()
+    public List<Spell> GetSpells()
     {
         return playerData.SpellDatas;
     }
 
-    public List<SkillData> GetSkills()
+    public List<Skill> GetSkills()
     {
         return playerData.SkillDatas;
     }
