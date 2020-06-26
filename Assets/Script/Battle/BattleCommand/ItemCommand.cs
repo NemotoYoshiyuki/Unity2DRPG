@@ -28,7 +28,7 @@ public class ItemCommand : BattleCommand
         BattleDirectorController.Instance.Message(itemMessage);
         //yield return StartCoroutine(message.ShowAuto(itemMessage));
 
-        GameController.GetInventorySystem().UseItem(item);
+        InventorySystem.UseItem(item);
 
         yield break;
     }

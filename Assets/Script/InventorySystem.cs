@@ -4,39 +4,115 @@ using UnityEngine;
 using System.Linq;
 
 [System.Serializable]
-public class InventorySystem
+public class InventorySystem : MonoBehaviour
 {
-    public List<Item> itemDatas = new List<Item>();
-    public List<Equipment> equipments = new List<Equipment>();
+    [SerializeField] private ItemMasterData itemMasterData;
+    [SerializeField] private List<Item> itemDatas = new List<Item>();
+    [SerializeField] private List<Equipment> equipments = new List<Equipment>();
 
-    public void AddItem(Item itemData)
+    protected static InventorySystem instance;
+    public static InventorySystem Instance
     {
-        itemDatas.Add(itemData);
+        get
+        {
+            if (instance != null)
+                return instance;
+
+            instance = FindObjectOfType<InventorySystem>();
+
+            if (instance != null)
+                return instance;
+
+            Create();
+
+            return instance;
+        }
     }
 
-    public void AddEqip(Equipment equipment){
-        equipments.Add(equipment);
+    protected static InventorySystem Create()
+    {
+        GameObject inventorySystem = new GameObject("InventorySystem");
+        instance = inventorySystem.AddComponent<InventorySystem>();
+        Initialize();
+
+        return instance;
     }
 
-    public void AddItem(int id)
+    protected static void Initialize()
     {
-        Item itemData = GameController.Instance.itemMasterData.Get().FirstOrDefault(x => x.id == id);
-        itemDatas.Add(itemData);
+
     }
 
-    public void UseItem(Item itemData)
+    public static void Initialize(List<Item> items)
     {
-        itemDatas.Remove(itemData);
+        Instance.itemDatas = new List<Item>(items);
     }
 
-    public void UseItem(int id)
+    private void Awake()
     {
-        Item itemData = GameController.Instance.itemMasterData.Get().FirstOrDefault(x => x.id == id);
-        itemDatas.Remove(itemData);
+        //シングルトン
+        if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    public bool HasItem(int id)
+    public static List<Item> GetItems()
     {
-        return itemDatas.Any(x => x.id == id);
+        return Instance.itemDatas;
+    }
+
+    public static List<Equipment> GetEquipments()
+    {
+        return Instance.equipments;
+    }
+
+    public static void AddItem(Item itemData)
+    {
+        Instance.itemDatas.Add(itemData);
+    }
+
+    public static void AddEqip(Equipment equipment)
+    {
+        Instance.equipments.Add(equipment);
+    }
+
+    public static void AddItem(int id)
+    {
+        Item itemData = Instance.itemMasterData.Get().FirstOrDefault(x => x.id == id);
+        Instance.itemDatas.Add(itemData);
+    }
+
+    public static void UseItem(Item itemData)
+    {
+        Instance.itemDatas.Remove(itemData);
+    }
+
+    public static void UseItem(int id)
+    {
+        Item itemData = Instance.itemMasterData.Get().FirstOrDefault(x => x.id == id);
+        Instance.itemDatas.Remove(itemData);
+    }
+
+    public static bool HasItem(int id)
+    {
+        return Instance.itemDatas.Any(x => x.id == id);
+    }
+
+    public static void Save()
+    {
+        SaveData.InventoryData data = SaveSystem.saveData.inventoryData;
+        data.items = new List<Item>(Instance.itemDatas);
+        data.equipment = new List<Equipment>(Instance.equipments);
+    }
+
+    public static void Load()
+    {
+        SaveData.InventoryData data = SaveSystem.saveData.inventoryData;
+        Instance.itemDatas = new List<Item>(data.items);
+        Instance.equipments = new List<Equipment>(data.equipment);
     }
 }

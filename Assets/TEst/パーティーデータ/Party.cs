@@ -2,40 +2,84 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 //フィールド用
 [System.Serializable]
-public class Party
+public class Party : MonoBehaviour
 {
+    [SerializeField] private CharacterMasterData characterMasterData;
+    private const int max = 4;
     public List<CharacterData> characterDatas;
 
-    private const int max = 4;
+    protected static Party instance;
+    public static Party Instance
+    {
+        get
+        {
+            if (instance != null)
+                return instance;
+
+            instance = FindObjectOfType<Party>();
+
+            if (instance != null)
+                return instance;
+
+            Create();
+
+            return instance;
+        }
+    }
+
+    public static Party Create()
+    {
+        GameObject sceneControllerGameObject = new GameObject("SceneController");
+        instance = sceneControllerGameObject.AddComponent<Party>();
+
+        return instance;
+    }
 
     private void Awake()
     {
         //シングルトン
-       
+        if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    public List<CharacterData> GetMember()
+    public static void initialize(List<CharacterData> characterDatas)
+    {
+        Debug.Log(characterDatas.Count);
+        Instance.characterDatas = characterDatas;
+
+        //パーティメンバーの作成
+        Instance.characterDatas.ForEach(x => Join(x));
+    }
+
+    public static List<CharacterData> GetMember()
     {
         //全員
-        return characterDatas;
+        return Instance.characterDatas;
     }
 
-    public CharacterData GetMember(int num)
+    //並び順で検索
+    public static CharacterData GetMember(int num)
     {
         if (num + 1 > max) return null;
-        return characterDatas[num];
+        return Instance.characterDatas[num];
     }
 
     //IDで検索
-    public CharacterData Find(int id)
+    public static CharacterData Find(int id)
     {
-        return characterDatas.Find(x=>x.id == id);
+        return Instance.characterDatas.Find(x => x.id == id);
     }
 
-    public CharacterData Create(PlayerData playerData)
+    static CharacterData Create(PlayerData playerData)
     {
         return new CharacterData(playerData);
     }
@@ -43,58 +87,50 @@ public class Party
     public void Join(int id)
     {
         //マスタデータから条件にあうものを探す
-        //PlayerData playerData = null;
-        //CharacterData characterData = new CharacterData(playerData);
-        //characterDatas.Add(characterData);
-
-        PlayerData playerData = GameController.Instance.characterMaster.characterData.FirstOrDefault(x => x.CharacterID == id);
+        PlayerData playerData = characterMasterData.characterData.FirstOrDefault(x => x.CharacterID == id);
         Join(playerData);
     }
 
-    public void Join(PlayerData playerData)
+    public static void Join(PlayerData playerData)
     {
-        characterDatas.Add(Create(playerData));
+        Instance.characterDatas.Add(Create(playerData));
     }
 
-    public void Join(CharacterData characterData)
+    public static void Join(CharacterData characterData)
     {
         //すでにパーティー内に存在する場合
-        characterDatas.Add(characterData);
+        if (Find(characterData.id) != null) return;
+        Instance.characterDatas.Add(characterData);
     }
 
-    public void Load()
+    public static void Save()
     {
-        //データ読み込み
-        if (!GameController.GetSaveSystem().ExistsSaveData())
-        {
-            Debug.LogWarning("セーブデータが存在しません");
-            return;
-        }
+        SaveData.PartyData partySaveData = SaveSystem.saveData.partyData;
+        partySaveData.characterDatas = new List<CharacterData>(Instance.characterDatas);
+    }
 
-        SaveData saveData = GameController.Instance.saveData;
-        var characterDatas = saveData._partyData.characterDatas;
+    public static void Load()
+    {
+        SaveData.PartyData partySaveData = SaveSystem.saveData.partyData;
 
-        foreach (var data in characterDatas)
-        {
-            Join(data);
-        }
+        initialize(partySaveData.characterDatas);
     }
 
     //入れ替え
-    public void Swap()
+    public static void Swap()
     {
         //控えメンバーと入れ替え
     }
 
 
     //並び替え
-    public void Sort()
+    public static void Sort()
     {
         //メンバーの順番を並び替える
     }
 
-    public Party Copy()
+    public static Party Copy()
     {
-        return (Party)this.MemberwiseClone();
+        return (Party)Instance.MemberwiseClone();
     }
 }

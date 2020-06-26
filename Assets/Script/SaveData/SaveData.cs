@@ -8,9 +8,9 @@ public class SaveData
     public GameData gameData = new GameData();
     public InventoryData inventoryData = new InventoryData();
     public PartyData partyData = new PartyData();
-    public _PartyData _partyData = new _PartyData();
     public FlagData flagData = new FlagData();
     public MapFlagData mapFlagData = new MapFlagData();
+    public VariablePersisterData variablePersisterData = new VariablePersisterData();
 
     [System.Serializable]
     public class GameData
@@ -32,48 +32,14 @@ public class SaveData
     [System.Serializable]
     public class InventoryData
     {
-        public InventorySystem inventorySystem = new InventorySystem();
-
-        public void SetInventorySystem(InventorySystem inventorySystem)
-        {
-            this.inventorySystem.itemDatas = new List<Item>(inventorySystem.itemDatas);
-        }
+        public List<Item> items = new List<Item>();
+        public List<Equipment> equipment = new List<Equipment>();
     }
 
     [System.Serializable]
     public class PartyData
     {
-        public List<PlayerCharacterData> characterDatas = new List<PlayerCharacterData>();
-
-        public void SetData(PlayerData characterData, Status characterStatus)
-        {
-            this.characterDatas.Add(new PlayerCharacterData(characterData, characterStatus));
-        }
-    }
-
-    public class _PartyData
-    {
         public List<CharacterData> characterDatas = new List<CharacterData>();
-
-        public void SetData(CharacterData characterData)
-        {
-            this.characterDatas.Add(characterData.Copy());
-        }
-    }
-
-    [System.Serializable]
-    public class PlayerCharacterData
-    {
-        public string characterName;
-        public PlayerData characterData;
-        public Status characterStatus;
-
-        public PlayerCharacterData(PlayerData playerData, Status status)
-        {
-            this.characterName = playerData.CharacterName;
-            this.characterData = playerData;
-            this.characterStatus = status.Copy();
-        }
     }
 
     [System.Serializable]
@@ -94,5 +60,11 @@ public class SaveData
         {
             this.flags = flagDatas;
         }
+    }
+
+    [System.Serializable]
+    public class VariablePersisterData
+    {
+        public List<VariablePersister.VariableData> variableDatas = new List<VariablePersister.VariableData>();
     }
 }

@@ -19,9 +19,8 @@ public class NewGame : MonoBehaviour
 
     public void PlayNewGame()
     {
-        //PlayerParty.Instance.Join(playerChacter);
-        GameController.GetParty().Join(playerChacter);
-        GameController.GetInventorySystem().itemDatas = new List<Item>(startItem);
+        Party.Join(playerChacter);
+        InventorySystem.Initialize(new List<Item>(startItem));
         GameController.GetFlagManager().Init();
         GameController.Instance.resumeScene = startScene;
         GameController.Instance.checkpoint = startPotisition;

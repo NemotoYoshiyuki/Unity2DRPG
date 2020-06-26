@@ -34,7 +34,7 @@ public class CharacterWindow : BaseWindow
     {
         CloseWindow();
 
-        member = GameController.GetParty().characterDatas;
+        member = Party.GetMember();
 
         for (int i = 0; i < member.Count; i++)
         {

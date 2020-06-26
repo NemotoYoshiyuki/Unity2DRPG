@@ -23,21 +23,11 @@ public class BattleSetUpPhase : MonoBehaviour
         yield break;
     }
 
-    //private void GeneratePlayer()
-    //{
-    //    List<PlayerCharacter> partyMember = PlayerParty.Instance.partyMember;
-    //    BattleController.instance.playerCharacters = partyMember;
-
-    //    foreach (var player in partyMember)
-    //    {
-    //        statusWindow.Register(player);
-    //    }
-    //}
-
     private void GeneratePlayer()
     {
-        PlayerParty.Instance.SetUp();
-        List<PlayerCharacter> partyMember = PlayerParty.Instance.partyMember;
+        List<CharacterData> party = Party.GetMember();
+        playerParty.GeneratePlayer(party);
+        List<PlayerCharacter> partyMember = playerParty.partyMember;
         BattleController.instance.playerCharacters = partyMember;
 
         foreach (var player in partyMember)
@@ -65,8 +55,4 @@ public class BattleSetUpPhase : MonoBehaviour
         backGroundMusic.clip = audioClip;
         backGroundMusic.Play();
     }
-
-    //データのロード
-    //所持品の読み込み
-    //その他コンポーネントの初期化処理
 }

@@ -54,8 +54,8 @@ public class SpellWindow : BaseWindow
 
     public void UserSelect()
     {
-        ////ターゲットリストを表示
-        party = GameController.GetParty().characterDatas;
+        //ターゲットリストを表示
+        party = Party.GetMember();
         menuGuide.Show("だれが呪文を使用しますか");
 
         characterWindow.Select(0);

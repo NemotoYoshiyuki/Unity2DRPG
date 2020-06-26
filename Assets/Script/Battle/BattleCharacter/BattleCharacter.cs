@@ -29,7 +29,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void Initialize(Status basicStatus)
     {
-        SetBasicStatus(status);
+        SetBasicStatus(basicStatus.Copy());
     }
 
     public void SetUp()

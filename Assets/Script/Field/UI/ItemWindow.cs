@@ -60,7 +60,8 @@ public class ItemWindow : BaseWindow
 
     private void Initialized()
     {
-        List<Item> inventory = GameController.GetInventorySystem().itemDatas;
+        List<Item> inventory = InventorySystem.GetItems()
+        ;
         if (inventory == null || inventory.Count < 0) return;
 
         ClearItemList();
@@ -71,7 +72,8 @@ public class ItemWindow : BaseWindow
 
     private void CreateItemList()
     {
-        List<Item> items = new List<Item>(GameController.GetInventorySystem().itemDatas);
+        List<Item> items = new List<Item>(InventorySystem.GetItems());
+
         if (items == null || items.Count < 0) return;
 
         //ボタン作成

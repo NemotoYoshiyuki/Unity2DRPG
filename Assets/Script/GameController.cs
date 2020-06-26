@@ -6,13 +6,9 @@ public class GameController : MonoBehaviour
 {
     protected static GameController instance;
 
-    [Header("マスターデータ")]
-    public CharacterMasterData characterMaster;
-    public ItemMasterData itemMasterData;
-    public EnemyMasterData enemyMasterData;
-
     [Header("所持金")]
     public int money = 0;
+    private const int maxMoney = 99999;
     //最大所持金(規定値:99999999)を返す。
 
     [Header("ゲーム再開地点")]
@@ -23,14 +19,8 @@ public class GameController : MonoBehaviour
     public int messageSpeed;
     public int soundVolume;
     public int sfxVolume;
-
-    public Party party = new Party();
-    public InventorySystem inventorySystem = new InventorySystem();
     public FlagManager flagManager = new FlagManager();
     public MapFlag mapFlag = new MapFlag();
-
-    public SaveSystem saveSystem = new SaveSystem();
-    public SaveData saveData = new SaveData();
 
     public static GameController Instance
     {
@@ -68,82 +58,74 @@ public class GameController : MonoBehaviour
         instance = new GameObject("GameController").AddComponent<GameController>();
     }
 
-    public static Party GetParty()
-    {
-        return instance.party;
-    }
-
-    public static InventorySystem GetInventorySystem()
-    {
-        return Instance.inventorySystem;
-    }
-
-    public static SaveSystem GetSaveSystem()
-    {
-        return Instance.saveSystem;
-    }
-
     public static FlagManager GetFlagManager()
     {
         return Instance.flagManager;
     }
 
-    public static SaveData GetSaveData()
-    {
-        return Instance.saveData;
-    }
-
     public void Save()
     {
-        //前回のセーブデータを破棄
-        this.saveData = new SaveData();
+        // //前回のセーブデータを破棄
+        // this.saveData = new SaveData();
 
-        //ゲームデータ保存
+        // //ゲームデータ保存
+        SaveData saveData = SaveSystem.saveData;
         saveData.gameData.playerPotion = PlayerMovement.playerPotision;
         saveData.gameData.sceneName = SceneController.Instance.CurrentScene;
 
-        //オプション設定保存
-        saveData.gameData.messageSpeed = messageSpeed;
-        saveData.gameData.soundVolume = soundVolume;
-        saveData.gameData.sfxVolume = sfxVolume;
+        // //オプション設定保存
+        // saveData.gameData.messageSpeed = messageSpeed;
+        // saveData.gameData.soundVolume = soundVolume;
+        // saveData.gameData.sfxVolume = sfxVolume;
 
-        //全滅時の再開場所保存
-        saveData.gameData.resumeScene = resumeScene;
-        saveData.gameData.checkpoint = checkpoint;
+        // //全滅時の再開場所保存
+        // saveData.gameData.resumeScene = resumeScene;
+        // saveData.gameData.checkpoint = checkpoint;
 
 
-        //インベントリデータ保存
-        saveData.inventoryData.SetInventorySystem(inventorySystem);
+        // //インベントリデータ保存
+        // //saveData.inventoryData.SetInventorySystem(inventorySystem);
 
-        //パーティーデータ保存
-        var partyMember = PlayerParty.Instance.partyMember;
-        foreach (var member in partyMember)
-        {
-            saveData.partyData.SetData(member.playerData, member.status);
-        }
+        // //パーティーデータ保存
+        // var partyMember = Party.GetMember();
+        // foreach (var member in partyMember)
+        // {
+        //     //saveData._partyData.SetData(member);
+        // }
 
-        //パーティーデータ保存
-        var _partyMember = party.characterDatas;
-        foreach (var member in _partyMember)
-        {
-            saveData._partyData.SetData(member);
-        }
+        // //フラグデータ保存
+        // saveData.flagData.SetFlagData(flagManager.flags);
 
-        //フラグデータ保存
-        saveData.flagData.SetFlagData(flagManager.flags);
+        // //マップフラグデータ保存
+        // saveData.mapFlagData.SetFlagData(mapFlag.mapFlags);
 
-        //マップフラグデータ保存
-        saveData.mapFlagData.SetFlagData(mapFlag.mapFlags);
+        // //ファイルに書き込む
+        // //GetSaveSystem().Save(this);
+        _Save();
+    }
 
-        //ファイルに書き込む
-        GetSaveSystem().Save(this);
+    public void _Save()
+    {
+        InventorySystem.Save();
+        Party.Save();
+        VariablePersister.Save();
+        SaveSystem.Save();
+    }
+
+    public void _Load()
+    {
+        SaveSystem.Load();
+        Party.Load();
+        VariablePersister.Load();
+        InventorySystem.Load();
     }
 
     public void Load()
     {
-        GetSaveSystem().Load(this);
-        PlayerParty.Instance.Load();
-        party.Load();
+        //GetSaveSystem().Load(this);
+        //PlayerParty.Instance.Load();
+        //Party.Load();
+        _Load();
     }
 
     public void GameOver()
@@ -151,7 +133,7 @@ public class GameController : MonoBehaviour
         //ペナルティ
         money = money / 2;
         //パーティーの全回復
-        PlayerParty.Instance.FullRecovery();
+        //PlayerParty.Instance.FullRecovery();
         //チェックポイントから再開
         SceneController.Instance.Transition(resumeScene, checkpoint);
     }

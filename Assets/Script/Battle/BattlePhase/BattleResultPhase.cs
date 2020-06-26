@@ -6,7 +6,7 @@ public class BattleResultPhase : MonoBehaviour
 {
     public IEnumerator Do()
     {
-        List<PlayerCharacter> aliveMember = PlayerParty.Instance.AliveMember();
+        List<PlayerCharacter> aliveMember = BattleController.instance.AlivePlayerCharacters;
         int dropExp = BattleController.instance.GetRewardExp();
 
         foreach (var alivePlayer in aliveMember)
@@ -14,7 +14,7 @@ public class BattleResultPhase : MonoBehaviour
             alivePlayer.status.exp = dropExp;
             string ms = alivePlayer.CharacterName + "は" + dropExp + "けいけんちをかくとく";
             //経験値加算
-            GameController.GetParty().Find(alivePlayer.playerData.CharacterID).exp += dropExp;
+            Party.Find(alivePlayer.playerData.CharacterID).exp += dropExp;
             //レベルがあがったら体力全回復
             yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(ms));
         }
@@ -29,7 +29,7 @@ public class BattleResultPhase : MonoBehaviour
         //基礎ステータスにバトルで損傷したHPとMPを反映する
         foreach (var item in BattleController.instance.playerCharacters)
         {
-            CharacterData characterData = GameController.GetParty().Find(item.playerData.CharacterID);
+            CharacterData characterData =Party.Find(item.playerData.CharacterID);
             Debug.Log(characterData.status.hp);
             characterData.status.hp = item.battleStaus.Status.hp;
             //characterData.status.hp = 777;

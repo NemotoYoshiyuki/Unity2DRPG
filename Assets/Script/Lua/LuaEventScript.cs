@@ -87,7 +87,7 @@ public class LuaEventScript : MonoBehaviour
     //パーティーイベント
     public void PartyIn(int id)
     {
-        PlayerParty.Instance.Join(id);
+        //PlayerParty.Instance.Join(id);
     }
 
     public void GainMony(int mony)
@@ -103,22 +103,23 @@ public class LuaEventScript : MonoBehaviour
     //アイテム操作
     public void AddItem(int id)
     {
-        GameController.Instance.inventorySystem.AddItem(id);
+        InventorySystem.AddItem(id);
     }
 
     public void GainItem(int id)
     {
-        GameController.Instance.inventorySystem.UseItem(id);
+        InventorySystem.UseItem(id);
     }
 
     public bool HasItem(int id)
     {
-        return GameController.Instance.inventorySystem.HasItem(id); ;
+        return InventorySystem.HasItem(id); ;
     }
 
     public PlayerCharacter GetCharacter(int id)
     {
-        return PlayerParty.Instance.GetMember(id);
+        //return PlayerParty.Instance.GetMember(id);
+        return null;
     }
 
     //フラグ操作
@@ -137,7 +138,7 @@ public class LuaEventScript : MonoBehaviour
     {
         StartCoroutine(enumerator());
         IEnumerator enumerator()
-        { 
+        {
             EncounterController.Encount(id);
             BattleController.isBattle = true;
             yield return new WaitUntil(() => BattleController.isBattle == false);

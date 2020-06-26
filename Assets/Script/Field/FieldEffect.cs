@@ -33,7 +33,7 @@ public class FieldEffect : MonoBehaviour
         itemWindow.Close();
 
         //List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
-        List<CharacterData> party = GameController.GetParty().characterDatas;
+        List<CharacterData> party = Party.GetMember();
 
         MenuWindow.instance.menuGuide.Show(itemData.itemName + "使用対象を選んでください");
 
@@ -73,7 +73,7 @@ public class FieldEffect : MonoBehaviour
 
         MenuWindow.instance.menuGuide.Show(spellData.skillName + "使用対象を選んでください");
 
-        List<CharacterData> party = GameController.GetParty().characterDatas;
+        List<CharacterData> party = Party.GetMember();
         //複数対象の処理
         if (spellData.targetRange == TargetRange.全体)
         {
@@ -136,7 +136,7 @@ public class FieldEffect : MonoBehaviour
     private void AllItemExecut(Item itemData)
     {
         //List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
-        List<CharacterData> party = GameController.GetParty().characterDatas;
+        List<CharacterData> party = Party.GetMember();
         foreach (var item in party)
         {
             ItemExecut(itemData, item);
@@ -146,7 +146,7 @@ public class FieldEffect : MonoBehaviour
     private async void ItemExecut(Item itemData, CharacterData taregt)
     {
         //アイテムの消費
-        GameController.GetInventorySystem().UseItem(itemData);
+        InventorySystem.UseItem(itemData);
 
         List<Effect> commandEffect = itemData.effects;
         foreach (var item in commandEffect)
@@ -160,7 +160,7 @@ public class FieldEffect : MonoBehaviour
     private void AllSpellExecut(Spell spellData)
     {
         //List<PlayerCharacter> party = PlayerParty.Instance.partyMember;
-        List<CharacterData> party = GameController.GetParty().characterDatas;
+        List<CharacterData> party = Party.GetMember();
         foreach (var item in party)
         {
             SpellExecut(spellData, item);

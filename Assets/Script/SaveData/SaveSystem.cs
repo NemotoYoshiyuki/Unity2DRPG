@@ -2,34 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class SaveSystem
 {
+    public static SaveData saveData = new SaveData();
+    public static int fileNumber = -1;
+    public const int maxSavefiles = 3;
     public const string SaveFileName = "SaveData";
 
-    public bool ExistsSaveData()
+    //イベントハンドラ
+    public Action onSaveComplete;
+    public Action onLoadComplete;
+
+    public static bool ExistsSaveData()
     {
         return !File.Exists(SaveFileName);
     }
 
-    public void Save(object obj)
+    public static void Save()
     {
-        JsonSerializer.Save(obj, SaveFileName);
+        Save(saveData);
     }
 
-    public void Load(object obj)
+    //非同期
+    public static void Save(SaveData saveData)
     {
-        JsonSerializer.Load(obj, SaveFileName);
+        JsonSerializer.Save(saveData, SaveFileName);
     }
 
-    public void Clear()
+    public static void Load()
     {
-
+        saveData = new SaveData();
+        Load(saveData);
     }
 
-    public void Copy()
+    //非同期
+    public static void Load(SaveData saveData)
     {
+        JsonSerializer.Load(saveData, SaveFileName);
+    }
 
+    public SaveData GetSaveData()
+    {
+        SaveData saveData = new SaveData();
+        Load(saveData);
+        return saveData;
+    }
+
+    public SaveData Copy()
+    {
+        return null;
     }
 
     public void Delete()

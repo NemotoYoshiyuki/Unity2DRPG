@@ -5,6 +5,7 @@ using System.Linq;
 
 public class EncounterController : MonoBehaviour
 {
+    public EnemyMasterData enemyMasterData;
     public bool canEncounter = true;
     public static int walkingSteps;//プレイヤーの歩数
     private static int encounterSteps;//エンカウントするまでの歩数
@@ -58,7 +59,7 @@ public class EncounterController : MonoBehaviour
 
     public static void Encount(int id)
     {
-        EnemyData enemyData = GameController.Instance.enemyMasterData.characterData.First(x => x.Id == id);
+        EnemyData enemyData = Instance.enemyMasterData.characterData.First(x => x.Id == id);
         var enemyGroups = new List<EncountEnemy>() { new EncountEnemy() { enemy = enemyData, posiiton = 0 } };
         Encount(enemyGroups);
     }

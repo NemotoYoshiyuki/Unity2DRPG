@@ -20,7 +20,7 @@ public class BattleInputController : MonoBehaviour
     }
 
     public void Init()
-    { 
+    {
         inputCharacters.Clear();
         foreach (var player in BattleController.instance.AlivePlayerCharacters)
         {
@@ -117,7 +117,7 @@ public class BattleInputController : MonoBehaviour
     private List<Item> itemDatas;
     public void OpenItemInputWindow()
     {
-        itemDatas = GameController.GetInventorySystem().itemDatas;
+        itemDatas = InventorySystem.GetItems();
         BattleItemInput itemInput = Change<BattleItemInput>();
         itemInput.Show(itemDatas);
         //アイテムリストをコピーして保存する

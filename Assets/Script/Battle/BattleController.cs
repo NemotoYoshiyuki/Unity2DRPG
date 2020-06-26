@@ -158,7 +158,7 @@ public class BattleController : MonoBehaviour
         //ステータスの引き継ぎ
         foreach (var item in playerCharacters)
         {
-            CharacterData characterData = GameController.GetParty().Find(item.playerData.CharacterID);
+            CharacterData characterData = Party.Find(item.playerData.CharacterID);
             characterData.status.hp = item.status.hp;
             characterData.status.mp = item.status.mp;
 
