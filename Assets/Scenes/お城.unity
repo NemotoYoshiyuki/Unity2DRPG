@@ -250,7 +250,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1998389387
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2221,6 +2221,81 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1001 &597452448
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1947778965}
+    m_Modifications:
+    - target: {fileID: 5800339346543390128, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_Name
+      value: TreasureBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 758afd4335dd972449a153f8dcd4ca0f, type: 3}
+--- !u!4 &597452449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 597452448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &597940699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,7 +2364,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1998389387
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21301864, guid: 31e24ed712cbf3b4595a8dbc9b18aa9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2410,27 +2485,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da6b2b856be3b74dbcc342cb7d33714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterMaster: {fileID: 0}
-  itemMasterData: {fileID: 0}
-  enemyMasterData: {fileID: 0}
   money: 444
-  inventorySystem:
-    itemDatas: []
-  flagManager:
-    masterData: {fileID: 0}
-    flags: []
-  saveData:
-    gameData:
-      playerPotion: {x: 0, y: 0}
-      sceneName: 
-      money: 0
-    inventoryData:
-      inventorySystem:
-        itemDatas: []
-    partyData:
-      characterDatas: []
-    flagData:
-      flags: []
+  reStartSceneName: 
+  reStartpoint: {x: 0, y: 0, z: 0}
+  messageSpeed: 0
+  soundVolume: 0
+  sfxVolume: 0
 --- !u!4 &735203691
 Transform:
   m_ObjectHideFlags: 0
@@ -2573,6 +2633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb73350bd2cd644f96d029651becd1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventTrigger: 0
   newSceneName: "\u57CE\u4E0B\u753A"
   transitionDestinationTag: 0
   canTransition: 1
@@ -2742,7 +2803,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 982356601
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -4888052718916091045, guid: fa3bfbfb4eb8b104b9b16adc260b559b,
     type: 3}
@@ -2917,7 +2978,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1998389387
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21301880, guid: 31e24ed712cbf3b4595a8dbc9b18aa9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4823,7 +4884,7 @@ PrefabInstance:
     - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
         type: 3}
@@ -4875,6 +4936,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 597452449}
   - {fileID: 2115568233}
   - {fileID: 1873383701}
   - {fileID: 2113938444}
@@ -5032,7 +5094,7 @@ PrefabInstance:
     - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
         type: 3}
@@ -5107,7 +5169,7 @@ PrefabInstance:
     - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5800339346543390129, guid: 758afd4335dd972449a153f8dcd4ca0f,
         type: 3}

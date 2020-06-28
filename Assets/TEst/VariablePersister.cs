@@ -20,6 +20,11 @@ public class VariablePersister
         }
     }
 
+    public static bool Exist(string key)
+    {
+        return VariableDatas.Any(x => x.key == key);
+    }
+
     static VariableData Get(string key)
     {
         return VariableDatas.FirstOrDefault(x => x.key == key);

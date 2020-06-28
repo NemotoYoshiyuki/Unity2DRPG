@@ -31,7 +31,7 @@ public class Inn : Interactable
 
         if (choiceResult == 1)
         {
-            if (GameController.Instance.money <= 0)
+            if (GameController.Money <= 0)
             {
                 yield return StartCoroutine(messageWindow.ShowClick("お金が　たりないようです"));
                 messageWindow.Close();
@@ -40,7 +40,7 @@ public class Inn : Interactable
             }
 
             yield return StartCoroutine(messageWindow.ShowClick("それでは　ごゆっくり おやすみください"));
-            GameController.Instance.money -= roomCharge;
+            GameController.Money -= roomCharge;
             Stay();
             yield return StartCoroutine(SceneFader.FadeSceneOut());
             yield return StartCoroutine(SceneFader.FadeSceneIn());

@@ -23,11 +23,11 @@ public class SaveWindow : BaseWindow
 
     public void Save()
     {
-        GameController.Instance.Save();
+        GameController.Save();
     }
 
     public void Load()
     {
-        GameController.Instance.Load();
+        GameController.Load();
     }
 }

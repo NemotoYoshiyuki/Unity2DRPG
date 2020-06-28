@@ -21,9 +21,9 @@ public class NewGame : MonoBehaviour
     {
         Party.Join(playerChacter);
         InventorySystem.Initialize(new List<Item>(startItem));
-        GameController.GetFlagManager().Init();
-        GameController.Instance.resumeScene = startScene;
-        GameController.Instance.checkpoint = startPotisition;
+        FlagManager.Initialize();
+        GameController.Instance.reStartSceneName = startScene;
+        GameController.Instance.reStartpoint = startPotisition;
         SceneController.Instance.Transition(startScene, startPotisition);
     }
 }

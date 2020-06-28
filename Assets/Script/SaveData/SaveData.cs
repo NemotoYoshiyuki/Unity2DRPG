@@ -25,8 +25,8 @@ public class SaveData
         public int sfxVolume;
 
         //全滅した時の復活場所
-        public string resumeScene;
-        public Vector3 checkpoint;
+        public string reStartSceneName;
+        public Vector3 reStartpoint;
     }
 
     [System.Serializable]
@@ -46,10 +46,6 @@ public class SaveData
     public class FlagData
     {
         public List<Flag> flags = new List<Flag>();
-        public void SetFlagData(List<Flag> flagDatas)
-        {
-            this.flags = flagDatas;
-        }
     }
 
     [System.Serializable]

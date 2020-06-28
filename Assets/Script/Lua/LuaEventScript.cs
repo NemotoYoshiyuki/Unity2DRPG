@@ -92,12 +92,12 @@ public class LuaEventScript : MonoBehaviour
 
     public void GainMony(int mony)
     {
-        GameController.Instance.money -= mony;
+        GameController.Money -= mony;
     }
 
     public void AddMony(int mony)
     {
-        GameController.Instance.money += mony;
+        GameController.Money += mony;
     }
 
     //アイテム操作
@@ -125,12 +125,12 @@ public class LuaEventScript : MonoBehaviour
     //フラグ操作
     public bool GetFlag(string flagName)
     {
-        return GameController.Instance.flagManager.GetValue(flagName);
+        return FlagManager.GetValue(flagName);
     }
 
     public void SetFlag(string flagName, bool value)
     {
-        GameController.Instance.flagManager.SetFlag(flagName, value);
+        FlagManager.SetFlag(flagName, value);
     }
 
     //戦闘操作

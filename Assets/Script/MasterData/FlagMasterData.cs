@@ -2,6 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Flag
+{
+    public string flagName;
+    public bool value = false;
+
+    public Flag(string flagName, bool value)
+    {
+        this.flagName = flagName;
+        this.value = value;
+    }
+}
+
 [CreateAssetMenu()]
 public class FlagMasterData : ScriptableObject
 {

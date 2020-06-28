@@ -74,6 +74,6 @@ public class MapEvent : Interactable
     {
         if (conditional.flagName == string.Empty) return true;
 
-        return GameController.GetFlagManager().Equals(conditional.flagName, conditional.flagValue);
+        return FlagManager.Equals(conditional.flagName, conditional.flagValue);
     }
 }

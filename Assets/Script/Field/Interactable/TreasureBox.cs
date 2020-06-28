@@ -6,18 +6,27 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class TreasureBox : Interactable
 {
+    [Header("宝箱の識別番号")]
+    [SerializeField] private ulong id;
+    [Header("宝箱の中身")]
     public int money = 0;
-    public Item item;
-    public Equipment equipment;
-    public Sprite enptyImage;//宝箱を開けた時置き換えられる画像
-    bool isObtain;
+    public Item item = null;
+    public Equipment equipment = null;
+
+    private bool isOpen;
+    private Sprite enptyImage;//宝箱を開けた時置き換えられる画像
+    private string sceneName => SceneController.Instance.CurrentScene;
+    private string key => $"{sceneName}_宝箱を開けた_{id}";
 
     private void Start()
     {
         gameObject.layer = LayerMask.NameToLayer("Interactable");
-        isObtain = GameController.Instance.mapFlag.GetValue(FlagName);
+        id = UnityEditor.GlobalObjectId.GetGlobalObjectIdSlow(gameObject).targetObjectId;
 
-        if (ItemExists())
+        if (!VariablePersister.Exist(key)) return;
+        isOpen = VariablePersister.GetBool(key);
+
+        if (!isOpen)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = enptyImage;
@@ -29,10 +38,6 @@ public class TreasureBox : Interactable
         StartCoroutine(OpenBox());
     }
 
-    private bool ItemExists()
-    {
-        return isObtain || item == null;
-    }
 
     public IEnumerator OpenBox()
     {
@@ -40,21 +45,13 @@ public class TreasureBox : Interactable
 
         PlayerInteract.InteractableStart();
 
-        if (ItemExists())
+        if (isOpen)
         {
             yield return StartCoroutine(messageWindow.ShowClick("からっぽだ"));
             messageWindow.Close();
             PlayerInteract.InteractableEnd();
             yield break;
         }
-
-        // isObtain = true;
-        // SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        // spriteRenderer.sprite = enptyImage;
-        // GameController.GetInventorySystem().AddItem(item);
-        // string ms = item.itemName + "を手に入れた";
-        // yield return StartCoroutine(MessageSystem.GetWindow().ShowClick(ms));
-        // messageWindow.Close();
 
         //お金が入っていた
         if (money < 0)
@@ -75,7 +72,7 @@ public class TreasureBox : Interactable
         }
 
         //フラグの保存
-        GameController.Instance.mapFlag.SetFlag(FlagName, true);
+        VariablePersister.SetBool(key, true);
 
         PlayerInteract.InteractableEnd();
         yield break;
@@ -83,29 +80,29 @@ public class TreasureBox : Interactable
 
     public IEnumerator GetMony()
     {
-        GameController.Instance.money += money;
+        GameController.Money += money;
         yield return PicUp(money.ToString());
         yield break;
     }
 
     public IEnumerator GetItem()
     {
-        GameController.GetInventorySystem().AddItem(item);
+        InventorySystem.AddItem(item);
         yield return PicUp(item.itemName);
         yield break;
     }
 
     public IEnumerator GetEqip()
     {
-        GameController.GetInventorySystem().AddEqip(equipment);
+        InventorySystem.AddEqip(equipment);
         yield return PicUp(equipment.name);
         yield break;
     }
 
     public IEnumerator PicUp(string itemName)
     {
-        if (isObtain) yield break;
-        isObtain = true;
+        if (isOpen) yield break;
+        isOpen = true;
         MessageWindow messageWindow = MessageSystem.GetWindow();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = enptyImage;
@@ -114,6 +111,4 @@ public class TreasureBox : Interactable
         messageWindow.Close();
         yield break;
     }
-
-    public string FlagName => SceneController.Instance.CurrentScene + gameObject.name;
 }

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 //https://qiita.com/_tybt/items/bc9c3be75c04ab547c35
 public class PlayerMovement : MonoBehaviour
 {
     public static Vector3 playerPotision;
     public static bool canMove = true;
+    public static Action onWalk;
 
     public float speed = 1.0f;
 

@@ -7,20 +7,18 @@ public class GameController : MonoBehaviour
     protected static GameController instance;
 
     [Header("所持金")]
-    public int money = 0;
+    [SerializeField] private int money = 0;
     private const int maxMoney = 99999;
-    //最大所持金(規定値:99999999)を返す。
+    public static int Money { get { return Instance.money; } set { Instance.money = Mathf.Clamp(value, 0, maxMoney); } }
 
     [Header("ゲーム再開地点")]
-    [SceneName] public string resumeScene;
-    public Vector3 checkpoint;
+    [SceneName] public string reStartSceneName;
+    public Vector3 reStartpoint;
 
     [Header("オプション項目")]
     public int messageSpeed;
     public int soundVolume;
     public int sfxVolume;
-    public FlagManager flagManager = new FlagManager();
-    public MapFlag mapFlag = new MapFlag();
 
     public static GameController Instance
     {
@@ -58,74 +56,52 @@ public class GameController : MonoBehaviour
         instance = new GameObject("GameController").AddComponent<GameController>();
     }
 
-    public static FlagManager GetFlagManager()
+    private void SaveGameData()
     {
-        return Instance.flagManager;
-    }
-
-    public void Save()
-    {
-        // //前回のセーブデータを破棄
-        // this.saveData = new SaveData();
-
-        // //ゲームデータ保存
         SaveData saveData = SaveSystem.saveData;
+
+        //ゲームデータ保存
         saveData.gameData.playerPotion = PlayerMovement.playerPotision;
         saveData.gameData.sceneName = SceneController.Instance.CurrentScene;
+        saveData.gameData.reStartSceneName = reStartSceneName;
+        saveData.gameData.reStartpoint = reStartpoint;
+        //オプション設定保存
+        saveData.gameData.messageSpeed = messageSpeed;
+        saveData.gameData.soundVolume = soundVolume;
+        saveData.gameData.sfxVolume = sfxVolume;
 
-        // //オプション設定保存
-        // saveData.gameData.messageSpeed = messageSpeed;
-        // saveData.gameData.soundVolume = soundVolume;
-        // saveData.gameData.sfxVolume = sfxVolume;
-
-        // //全滅時の再開場所保存
-        // saveData.gameData.resumeScene = resumeScene;
-        // saveData.gameData.checkpoint = checkpoint;
-
-
-        // //インベントリデータ保存
-        // //saveData.inventoryData.SetInventorySystem(inventorySystem);
-
-        // //パーティーデータ保存
-        // var partyMember = Party.GetMember();
-        // foreach (var member in partyMember)
-        // {
-        //     //saveData._partyData.SetData(member);
-        // }
-
-        // //フラグデータ保存
-        // saveData.flagData.SetFlagData(flagManager.flags);
-
-        // //マップフラグデータ保存
-        // saveData.mapFlagData.SetFlagData(mapFlag.mapFlags);
-
-        // //ファイルに書き込む
-        // //GetSaveSystem().Save(this);
-        _Save();
     }
 
-    public void _Save()
+    public static void Save()
     {
+        Instance.SaveGameData();
         InventorySystem.Save();
         Party.Save();
+        FlagManager.Save();
         VariablePersister.Save();
         SaveSystem.Save();
     }
 
-    public void _Load()
+    private void LoadGameData()
     {
-        SaveSystem.Load();
-        Party.Load();
-        VariablePersister.Load();
-        InventorySystem.Load();
+        SaveData.GameData gameData = SaveSystem.saveData.gameData;
+
+        reStartSceneName = gameData.reStartSceneName;
+        reStartpoint = gameData.reStartpoint;
+
+        messageSpeed = gameData.messageSpeed;
+        soundVolume = gameData.soundVolume;
+        sfxVolume = gameData.sfxVolume;
     }
 
-    public void Load()
+    public static void Load()
     {
-        //GetSaveSystem().Load(this);
-        //PlayerParty.Instance.Load();
-        //Party.Load();
-        _Load();
+        SaveSystem.Load();
+        Instance.LoadGameData();
+        Party.Load();
+        FlagManager.Load();
+        VariablePersister.Load();
+        InventorySystem.Load();
     }
 
     public void GameOver()
@@ -135,6 +111,6 @@ public class GameController : MonoBehaviour
         //パーティーの全回復
         //PlayerParty.Instance.FullRecovery();
         //チェックポイントから再開
-        SceneController.Instance.Transition(resumeScene, checkpoint);
+        SceneController.Instance.Transition(reStartSceneName, reStartpoint);
     }
 }
