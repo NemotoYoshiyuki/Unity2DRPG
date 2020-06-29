@@ -8,13 +8,15 @@ public class TreasureBox : Interactable
 {
     [Header("宝箱の識別番号")]
     [SerializeField] private ulong id;
+
+    public Sprite enptyImage;//宝箱を開けた時置き換えられる画像
+
     [Header("宝箱の中身")]
     public int money = 0;
     public Item item = null;
     public Equipment equipment = null;
 
     private bool isOpen;
-    private Sprite enptyImage;//宝箱を開けた時置き換えられる画像
     private string sceneName => SceneController.Instance.CurrentScene;
     private string key => $"{sceneName}_宝箱を開けた_{id}";
 
@@ -35,7 +37,8 @@ public class TreasureBox : Interactable
 
     public override void OnInteractable()
     {
-        StartCoroutine(OpenBox());
+        GameEvent.Execute(OpenBox());
+        //StartCoroutine(OpenBox());
     }
 
 

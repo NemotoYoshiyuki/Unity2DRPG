@@ -68,7 +68,8 @@ public class LuaScript : MonoBehaviour
     {
         this.luaFile = luaFile;
         luaCode = luaFile.text;
-        StartCoroutine(RunCoroutine());
+        //StartCoroutine(RunCoroutine());
+        GameEvent.Execute(RunCoroutine());
     }
 
     public void Execution(string code)
@@ -118,9 +119,9 @@ public class LuaScript : MonoBehaviour
     public IEnumerator RunCoroutine()
     {
         //プレイヤーの移動を制御
-        PlayerMovement.canMove = false;
-        PlayerInteract.canInteract = false;
-        WindowSystem.canOpen = false;
+        // PlayerMovement.canMove = false;
+        // PlayerInteract.canInteract = false;
+        // WindowSystem.canOpen = false;
 
         //コルーチンを開始
         Run();
@@ -132,9 +133,9 @@ public class LuaScript : MonoBehaviour
         }
 
         //メッセージウィンドウを閉じる等の終了処理
-        PlayerMovement.canMove = true;
-        PlayerInteract.canInteract = true;
-        WindowSystem.canOpen = true;
+        // PlayerMovement.canMove = true;
+        // PlayerInteract.canInteract = true;
+        // WindowSystem.canOpen = true;
         luaEvent.End();
         yield break;
     }
