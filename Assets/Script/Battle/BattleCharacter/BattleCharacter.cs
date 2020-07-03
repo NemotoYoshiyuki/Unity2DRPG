@@ -6,35 +6,31 @@ using System;
 public class BattleCharacter : MonoBehaviour
 {
     private Status basicStatus;//基礎ステータス
-    public Status BasicStatus => basicStatus;
     public Status status => battleStaus.Status;
     public BattleStaus battleStaus;//戦闘用ステータス
 
     public int hate = 0;//狙われ率
     public float damageIncrease = 1f;//ダメージ加算倍率
     public float damageReduction = 1f;//ダメージ減算倍率
+    public bool canCommandInput = true;//コマンド入力が可能な状態
     public bool canAction = true;//行動可能フラグ
+    public bool CanCastSpell = false;//呪文行動制限
     public bool isCounter = false;//カウンターフラグ
-    public bool isSpellLimit = false;//呪文行動制限
 
     //イベント
     public Action onActionBefore = null;
+    public Action onActionAfter = null;
 
     public virtual string CharacterName { get; set; }
-
-    public void SetBasicStatus(Status status)
-    {
-        this.basicStatus = status.Copy();
-    }
 
     public void Initialize(Status basicStatus)
     {
         SetBasicStatus(basicStatus.Copy());
     }
 
-    public void SetUp()
+    public void SetBasicStatus(Status status)
     {
-        this.battleStaus = new BattleStaus(basicStatus);
+        this.basicStatus = status.Copy();
     }
 
     public void GainHp(int value)
@@ -95,12 +91,6 @@ public class BattleCharacter : MonoBehaviour
     public void StatusUpdate()
     {
         battleStaus.StatusUpdate();
-    }
-
-    //コマンド入力が可能な状態なのか
-    public bool CanCommandInput()
-    {
-        return true;
     }
 
     public bool IsDead()

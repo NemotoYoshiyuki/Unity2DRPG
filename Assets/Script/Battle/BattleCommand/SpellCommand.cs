@@ -31,7 +31,7 @@ public class SpellCommand : BattleCommand
         }
 
         //封印
-        if (owner.isSpellLimit)
+        if (owner.CanCastSpell)
         {
             canEffect = false;
             BattleDirectorController.Instance.Message("しかし 呪文は 封印されいる");

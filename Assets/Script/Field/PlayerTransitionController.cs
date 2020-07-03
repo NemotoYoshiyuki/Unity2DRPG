@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 //プレイヤーの座標移動を管理します
 public class PlayerTransitionController : MonoBehaviour
 {
-    [SerializeField]
-    protected PlayerMovement m_PlayerInput;
+    [SerializeField] protected PlayerMovement m_PlayerInput;
 
     protected static PlayerTransitionController instance;
     public static PlayerTransitionController Instance
@@ -80,14 +79,8 @@ public class PlayerTransitionController : MonoBehaviour
 
     public PlayerMovement FindPlayerInput()
     {
-        //シーン内を検索する
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
-
-        //ない場合
-        if (player == null)
-        {
-            player = Instantiate(m_PlayerInput);
-        }
+        if (player == null) player = Instantiate(m_PlayerInput);
         return player;
     }
 }

@@ -6,7 +6,7 @@ public static class JsonSerializer
     public static void Save(object obj, string fileName)
     {
         //各クラスをjsonにする
-        var json = JsonUtility.ToJson(obj);
+        var json = JsonUtility.ToJson(obj, true);
         var filePath = GetFilePath(fileName);
         File.WriteAllText(filePath, json);
 

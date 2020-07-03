@@ -10,9 +10,17 @@ public class EncounterArea : MonoBehaviour
     public AudioClip bgm;
     public List<EnemyGroup> enemyGroups;
 
+    [System.Serializable]
+    public class EnemyGroup
+    {
+        [Range(1, 100)]
+        public int rate;
+        public List<EncountEnemy> enemyGrop;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (EncounterController.Instance.canEncounter == false)
+        if (EncounterController.canEncounter == false)
         {
             return;
         }
@@ -42,6 +50,7 @@ public class EncounterArea : MonoBehaviour
         return enemyGroups[randomChose].enemyGrop;
     }
 
+    //重み付き抽選
     private int Lottery()
     {
         float total = enemyGroups.Select(x => x.rate).Sum();
@@ -58,14 +67,6 @@ public class EncounterArea : MonoBehaviour
         }
         return enemyGroups.Count - 1;
     }
-}
-
-[System.Serializable]
-public class EnemyGroup
-{
-    [Range(1, 100)]
-    public int rate;
-    public List<EncountEnemy> enemyGrop;
 }
 
 [System.Serializable]

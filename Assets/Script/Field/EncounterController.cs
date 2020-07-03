@@ -5,11 +5,10 @@ using System.Linq;
 
 public class EncounterController : MonoBehaviour
 {
-    public EnemyMasterData enemyMasterData;
-    public bool canEncounter = true;
+    [SerializeField] private EnemyMasterData enemyMasterData;
+    public static bool canEncounter = true;
     public static int walkingSteps;//プレイヤーの歩数
     private static int encounterSteps;//エンカウントするまでの歩数
-    public static bool isEncount = false;
 
     [Tooltip("バトルデータ")]
     public Sprite backGroundImage;
@@ -54,7 +53,7 @@ public class EncounterController : MonoBehaviour
 
         SetEncounterSteps();
         Instance.StartCoroutine(SceneFader.FadeSceneOut());
-        SceneController.Instance.Transition("Battle 1");
+        SceneController.Transition("Battle 1");
     }
 
     public static void Encount(int id)

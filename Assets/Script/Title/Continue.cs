@@ -21,7 +21,7 @@ public class Continue : MonoBehaviour
         SaveData.GameData gameData = SaveSystem.saveData.gameData;
 
         //プレイヤーの位置を指定してシーンを再生
-        SceneController.Instance.Transition(gameData.sceneName, gameData.playerPotion);
+        SceneController.Transition(gameData.sceneName, gameData.playerPotion);
     }
 
     private bool ExistsSaveData()

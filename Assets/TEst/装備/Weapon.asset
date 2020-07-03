@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0491fa4c67aca414e8c69d55285a7eac, type: 3}
   m_Name: Weapon
   m_EditorClassIdentifier: 
-  status:
-    lv: 0
-    maxHp: 0
-    hp: 0
-    maxMp: 0
-    mp: 0
-    attack: 0
-    deffence: 0
-    speed: 0
-    exp: 0
+  id: 0
+  name: 
+  maxHp: 0
+  maxMp: 0
+  attack: 0
+  deffence: 0
+  speed: 0

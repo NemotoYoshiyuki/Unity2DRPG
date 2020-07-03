@@ -24,6 +24,6 @@ public class NewGame : MonoBehaviour
         FlagManager.Initialize();
         GameController.Instance.reStartSceneName = startScene;
         GameController.Instance.reStartpoint = startPotisition;
-        SceneController.Instance.Transition(startScene, startPotisition);
+        SceneController.Transition(startScene, startPotisition);
     }
 }

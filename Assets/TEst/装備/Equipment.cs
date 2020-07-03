@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 public class Equipment : ScriptableObject
 {
+    public uint id;
     public new string name;
 
     [Header("装備時のステータス上昇値")]
@@ -9,5 +10,4 @@ public class Equipment : ScriptableObject
     public int attack;
     public int deffence;
     public int speed;
-    //特殊効果
 }

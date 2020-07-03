@@ -16,9 +16,9 @@ public class GameController : MonoBehaviour
     public Vector3 reStartpoint;
 
     [Header("オプション項目")]
-    public int messageSpeed;
-    public int soundVolume;
-    public int sfxVolume;
+    public float messageSpeed = 1;
+    public float soundVolume = 1;
+    public float sfxVolume = 1;
 
     public static GameController Instance
     {
@@ -111,6 +111,6 @@ public class GameController : MonoBehaviour
         //パーティーの全回復
         //PlayerParty.Instance.FullRecovery();
         //チェックポイントから再開
-        SceneController.Instance.Transition(reStartSceneName, reStartpoint);
+        SceneController.Transition(reStartSceneName, reStartpoint);
     }
 }

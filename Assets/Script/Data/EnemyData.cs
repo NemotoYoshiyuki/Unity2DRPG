@@ -9,11 +9,16 @@ public class EnemyData : ScriptableObject
     [SerializeField] private int id;
     [SerializeField] private Sprite graphic;
     [SerializeField] private Status status;
-    [SerializeField] private List<Command> commands;
+    [Header("戦利品")]
+    [SerializeField] private float dropRate;
+    [SerializeField] private Item dropItem;
+    [Header("戦闘中使用する技"), SerializeField] private List<Command> commands;
 
     public string CharacterName => characterName;
     public int Id => id;
     public Sprite Graphic => graphic;
     public Status Status => status;
+    public float DropRate => dropRate;
+    public Item DropItem => dropItem;
     public List<Command> Commands => commands;
 }

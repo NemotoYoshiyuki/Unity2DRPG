@@ -24,7 +24,7 @@ public class BattleInputController : MonoBehaviour
         inputCharacters.Clear();
         foreach (var player in BattleController.instance.AlivePlayerCharacters)
         {
-            if (player.CanCommandInput())
+            if (player.canCommandInput)
             {
                 inputCharacters.Enqueue(player);
             }

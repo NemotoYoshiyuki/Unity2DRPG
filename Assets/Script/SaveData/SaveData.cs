@@ -9,7 +9,6 @@ public class SaveData
     public InventoryData inventoryData = new InventoryData();
     public PartyData partyData = new PartyData();
     public FlagData flagData = new FlagData();
-    public MapFlagData mapFlagData = new MapFlagData();
     public VariablePersisterData variablePersisterData = new VariablePersisterData();
 
     [System.Serializable]
@@ -20,9 +19,9 @@ public class SaveData
         public int money;
 
         //オプション
-        public int messageSpeed;
-        public int soundVolume;
-        public int sfxVolume;
+        public float messageSpeed;
+        public float soundVolume;
+        public float sfxVolume;
 
         //全滅した時の復活場所
         public string reStartSceneName;
@@ -46,16 +45,6 @@ public class SaveData
     public class FlagData
     {
         public List<Flag> flags = new List<Flag>();
-    }
-
-    [System.Serializable]
-    public class MapFlagData
-    {
-        public List<Flag> flags = new List<Flag>();
-        public void SetFlagData(List<Flag> flagDatas)
-        {
-            this.flags = flagDatas;
-        }
     }
 
     [System.Serializable]

@@ -6,27 +6,12 @@ using UnityEngine.Experimental.Rendering;
 [RequireComponent(typeof(Collider2D))]
 public class TransitionPoint : MonoBehaviour
 {
-    public enum EventTrigger
-    {
-        コライダー接触,
-        決定キーで実行
-    }
-
-    [Header("起動条件")]
-    public EventTrigger eventTrigger;
-
     [Header("シーン移動先")]
-    [SceneName]
-    public string newSceneName;
+    [SceneName] public string newSceneName;
     [Tooltip("The tag of the SceneTransitionDestination script in the scene being transitioned to.")]
     public SceneTransitionDestination.DestinationTag transitionDestinationTag;
 
     public bool canTransition = true;
-
-    void Start()
-    {
-        canTransition = true;
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -45,6 +30,4 @@ public class TransitionPoint : MonoBehaviour
     {
         PlayerTransitionController.Transition(newSceneName, transitionDestinationTag);
     }
-
-   
 }

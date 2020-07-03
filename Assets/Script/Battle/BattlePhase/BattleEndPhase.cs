@@ -7,7 +7,7 @@ public class BattleEndPhase : MonoBehaviour
     public IEnumerator Win()
     {
         BattleController.isBattle = false;
-        yield return StartCoroutine(SceneController.Instance.BackToField());
+        yield return StartCoroutine(SceneController.BackToField());
         yield break;
     }
 

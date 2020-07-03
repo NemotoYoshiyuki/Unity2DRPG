@@ -120,7 +120,7 @@ public class BattleController : MonoBehaviour
             isBattle = false;
             yield return StartCoroutine(messageWindow.ShowAuto("逃げ切れた"));
             OnBattleEnd();
-            yield return StartCoroutine(SceneController.Instance.BackToField());
+            yield return StartCoroutine(SceneController.BackToField());
             yield break;
         }
         else
