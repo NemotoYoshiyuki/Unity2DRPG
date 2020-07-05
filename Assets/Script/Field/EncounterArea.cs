@@ -18,26 +18,52 @@ public class EncounterArea : MonoBehaviour
         public List<EncountEnemy> enemyGrop;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (EncounterController.canEncounter == false)
-        {
-            return;
-        }
+        PlayerMovement.onWalk += Encount;
+    }
 
-        if (!collision.GetComponent<PlayerMovement>().Moving())
-        {
-            return;
-        }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        PlayerMovement.onWalk -= Encount;
+    }
 
+    void OnDisable()
+    {
+        PlayerMovement.onWalk -= Encount;
+    }
+
+    void Encount()
+    {
+        if (!EncounterController.canEncounter) return;
         EncounterController.walkingSteps++;
-
         if (EncounterController.IsEncount)
         {
             //エンカウントする
             EncounterController.Encount(GetEncountEnemy(), backGroundImage, bgm);
         }
     }
+
+    // private void OnTriggerStay2D(Collider2D collision)
+    // {
+    //     if (EncounterController.canEncounter == false)
+    //     {
+    //         return;
+    //     }
+
+    //     if (!collision.GetComponent<PlayerMovement>().Moving())
+    //     {
+    //         return;
+    //     }
+
+    //     EncounterController.walkingSteps++;
+
+    //     if (EncounterController.IsEncount)
+    //     {
+    //         //エンカウントする
+    //         EncounterController.Encount(GetEncountEnemy(), backGroundImage, bgm);
+    //     }
+    // }
 
     private List<EncountEnemy> GetEncountEnemy()
     {

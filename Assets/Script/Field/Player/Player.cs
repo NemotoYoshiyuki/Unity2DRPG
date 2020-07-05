@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   public void SetPosition()
+    public void SetPosition()
     {
         //向きを保存して生成
     }

@@ -43,7 +43,7 @@ public class EncounterController : MonoBehaviour
     public static void SetEncounterSteps()
     {
         walkingSteps = 0;
-        encounterSteps = Random.Range(50, 300);
+        encounterSteps = Random.Range(10, 50);
     }
 
     public static void Encount(List<EncountEnemy> enemies, Sprite backGroundImage = null, AudioClip bgm = null)
