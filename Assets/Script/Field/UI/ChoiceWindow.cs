@@ -36,7 +36,6 @@ public class ChoiceWindow : MonoBehaviour
         {
             index = 1;
             OnClick();
-
         });
 
         noButton.onClick.AddListener(() =>
