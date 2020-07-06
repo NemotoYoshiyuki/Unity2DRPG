@@ -1,0 +1,22 @@
+﻿return function()
+    say("おなかへったな～\nパンがたべたいな")
+    say("そうだ！　パンを持ってきくれたら\n仲間になってあげる")
+
+    --パンを所持している場合
+    local hasItem = hasItem(3)
+    if hasItem then
+        -- body
+        say "パンをあげますか"
+        --選択肢を表示
+        local choice = choice("あげる", "あげない")
+        if choice == 1 then
+            say "うまい！　約束どうり仲間になるよ"
+            --仲間に入れる
+            partyIn(1)
+            --フラグをたてる
+            setFlag("アキレスが仲間になった", true)
+        elseif choice == 2 then
+            say "くれないの"
+        end
+    end
+end

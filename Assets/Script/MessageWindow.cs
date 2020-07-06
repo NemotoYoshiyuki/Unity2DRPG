@@ -25,6 +25,15 @@ public class MessageWindow : MonoBehaviour
         yield break;
     }
 
+    public IEnumerator ShowClick(List<string> text)
+    {
+        foreach (var item in text)
+        {
+            yield return ShowClick(item);
+        }
+        yield break;
+    }
+
     public void ShowText(string text)
     {
         Open();

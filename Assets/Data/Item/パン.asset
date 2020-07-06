@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3b307455eb5caa49a1edf35449bf3f4, type: 3}
-  m_Name: "\u3044\u3044\u3084\u304F\u305D\u3046"
+  m_Name: "\u30D1\u30F3"
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
-  id: 2
-  itemName: "\u3044\u3044\u3084\u304F\u305D\u3046"
+  id: 3
+  itemName: "\u30D1\u30F3"
   useType: 2
   targetUnit: 2
   targetRange: 1
   mp: 0
-  description: "60\u56DE\u5FA9\u3057\u307E\u3059"
+  description: "\u4F53\u529B\u309215\u56DE\u5FA9\u3059\u308B"
   effects:
   - id: 0
   references:
@@ -28,4 +28,4 @@ MonoBehaviour:
       type: {class: HealEffect, ns: , asm: Assembly-CSharp}
       data:
         animationClip: {fileID: 0}
-        healAmount: 60
+        healAmount: 15

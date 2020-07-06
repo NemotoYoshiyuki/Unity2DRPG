@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57117949998b1a40a72b1d846afef95, type: 3}
+  m_Name: "\u30A2\u30AD\u30EC\u30B9"
+  m_EditorClassIdentifier: 
+  characterName: "\u30A2\u30AD\u30EC\u30B9"
+  characterID: 3
+  status:
+    lv: 0
+    maxHp: 10
+    hp: 10
+    maxMp: 10
+    mp: 10
+    attack: 10
+    deffence: 10
+    speed: 10
+    exp: 0
+  spellDatas:
+  - {fileID: 11400000, guid: 503f92ad7aae28f41964d16f3041407b, type: 2}
+  - {fileID: 11400000, guid: 503f92ad7aae28f41964d16f3041407b, type: 2}
+  - {fileID: 11400000, guid: c3df78851716f754dafd35ac1e4c665b, type: 2}
+  - {fileID: 11400000, guid: 697b75c2f297b9b45ab1609af2f75430, type: 2}
+  skillDatas: []
+  equip:
+    weapon: {fileID: 0}
+    armor: {fileID: 0}
+    accessory: {fileID: 0}
