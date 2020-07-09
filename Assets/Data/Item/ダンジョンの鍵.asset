@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b307455eb5caa49a1edf35449bf3f4, type: 3}
+  m_Name: "\u30C0\u30F3\u30B8\u30E7\u30F3\u306E\u9375"
+  m_EditorClassIdentifier: 
+  animation: {fileID: 0}
+  id: 4
+  itemName: "\u30C0\u30F3\u30B8\u30E7\u30F3\u306E\u9375"
+  useType: 2
+  targetUnit: 0
+  targetRange: 0
+  mp: 0
+  description: "\u30C0\u30F3\u30B8\u30E7\u30F3\u306E\u6249\u3092\u958B\u3051\u308B\u305F\u3081\u306E\u9375"
+  effects: []
+  references:
+    version: 1
