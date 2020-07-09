@@ -10,9 +10,10 @@
         --選択肢を表示
         local choice = choice("あげる", "あげない")
         if choice == 1 then
-            say "うまい！　約束どうり仲間になるよ"
+            say "おいしい！　約束どうり仲間になるよ"
+            say "ぼくは　武闘家のアキレス　こうみえてすごく強いよ\nだって子供瓦割り大会で優勝したんだもん"
             --仲間に入れる
-            partyIn(1)
+            partyIn(3)
             --フラグをたてる
             setFlag("アキレスが仲間になった", true)
         elseif choice == 2 then

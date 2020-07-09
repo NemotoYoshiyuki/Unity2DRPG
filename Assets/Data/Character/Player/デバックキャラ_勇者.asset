@@ -24,6 +24,16 @@ MonoBehaviour:
     deffence: 10
     speed: 10
     exp: 0
+  growthRate:
+    lv: 0
+    maxHp: 1
+    hp: 2
+    maxMp: 3
+    mp: 4
+    attack: 5
+    deffence: 6
+    speed: 7
+    exp: 0
   spellDatas:
   - {fileID: 11400000, guid: a83d8245301ce8842832924a9a4461f5, type: 2}
   - {fileID: 11400000, guid: 572456bf78c3056429fc14d5b45dc478, type: 2}
@@ -33,6 +43,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d82585c07b1a5f40a0c844440ee0486, type: 2}
   - {fileID: 11400000, guid: b866d94bf6763d94894ee675421a5531, type: 2}
   - {fileID: 11400000, guid: 18922217b03577c4dbb76caee0e45414, type: 2}
+  - {fileID: 11400000, guid: 697b75c2f297b9b45ab1609af2f75430, type: 2}
   skillDatas:
   - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
   - {fileID: 11400000, guid: 6a099cf3e75957f428ff4b507bec6b96, type: 2}
+  equip:
+    weapon: {fileID: 11400000, guid: ca37daa9dc0983f44a4ee0fcd7b9a31f, type: 2}
+    armor: {fileID: 0}
+    accessory: {fileID: 0}

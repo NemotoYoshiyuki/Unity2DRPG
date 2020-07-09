@@ -26,6 +26,7 @@ public class BattleCharacter : MonoBehaviour
     public void Initialize(Status basicStatus)
     {
         SetBasicStatus(basicStatus.Copy());
+        battleStaus = new BattleStaus(basicStatus);
     }
 
     public void SetBasicStatus(Status status)
@@ -46,6 +47,11 @@ public class BattleCharacter : MonoBehaviour
     public void Recover(int amount)
     {
         status.hp = Mathf.Clamp(status.hp + amount, 0, status.maxHp);
+    }
+
+    public void RecoverMp(int amount)
+    {
+        status.mp = Mathf.Clamp(status.mp + amount, 0, status.maxMp);
     }
 
     public void ReceiveDamage(int damage)

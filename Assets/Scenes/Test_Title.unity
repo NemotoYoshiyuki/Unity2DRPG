@@ -193,11 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74d46456f4f20a46b827a3acca2836d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScene: "\u304A\u57CE"
-  startPotisition: {x: 0, y: 0}
+  startScene: Test_Field 1
+  startPotisition: {x: -3, y: -4}
   startItem:
   - {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
   - {fileID: 11400000, guid: 270da3b449d490945b3ee00dda80c0ca, type: 2}
+  - {fileID: 11400000, guid: 7155f3d92dc44374fa2485ab71e7e4c4, type: 2}
   playerChacter: {fileID: 11400000, guid: 70c8f02e58888a84085bf7b9c859794d, type: 2}
   friend1: {fileID: 0}
   friend2: {fileID: 0}
@@ -973,7 +974,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMasterData: {fileID: 0}
-  canEncounter: 1
   backGroundImage: {fileID: 0}
   bgm: {fileID: 0}
   enemyGroups: []

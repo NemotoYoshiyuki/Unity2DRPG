@@ -13,13 +13,13 @@ public class BattleStaus
     public List<Buff> buffs = new List<Buff>();
     public StatusEffect statusEffect;//状態異常
 
-
-
     public BattleStaus(Status status)
     {
         this.baseStatus = status;
         this.status = baseStatus.Copy();
     }
+
+
 
     public int Attack()
     {

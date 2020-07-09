@@ -24,6 +24,16 @@ MonoBehaviour:
     deffence: 10
     speed: 10
     exp: 0
+  growthRate:
+    lv: 0
+    maxHp: 3
+    hp: 0
+    maxMp: 1
+    mp: 0
+    attack: 6
+    deffence: 2
+    speed: 2
+    exp: 0
   spellDatas:
   - {fileID: 11400000, guid: 503f92ad7aae28f41964d16f3041407b, type: 2}
   - {fileID: 11400000, guid: 503f92ad7aae28f41964d16f3041407b, type: 2}

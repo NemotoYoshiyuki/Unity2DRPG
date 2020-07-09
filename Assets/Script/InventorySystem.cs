@@ -97,6 +97,11 @@ public class InventorySystem : MonoBehaviour
         Instance.itemDatas.Remove(itemData);
     }
 
+    public static bool HasItem(Item item)
+    {
+        return Instance.itemDatas.Any(x => x.id == item.id);
+    }
+
     public static bool HasItem(int id)
     {
         return Instance.itemDatas.Any(x => x.id == id);
