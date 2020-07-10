@@ -137,6 +137,16 @@ public class BattleController : MonoBehaviour
         return enemyCharacters.Sum(x => x.DropExp());
     }
 
+    public int GetRewardGold()
+    {
+        return enemyCharacters.Sum(x => x.DropGold());
+    }
+
+    public Item GetRewardItem()
+    {
+        return null;
+    }
+
     public IEnumerator TurnStart()
     {
         yield break;

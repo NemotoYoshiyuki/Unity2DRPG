@@ -7,7 +7,27 @@ public class BattleEndPhase : MonoBehaviour
     public IEnumerator Win()
     {
         BattleController.isBattle = false;
+        yield return SaveStatus();
         yield return StartCoroutine(SceneController.BackToField());
+        yield break;
+    }
+
+    //データの保存を完全に行うために記録が終了するまで待機する
+    private IEnumerator SaveStatus()
+    {
+        foreach (var item in BattleController.instance.playerCharacters)
+        {
+            //バトルで損傷したHPとMPを反映する
+            CharacterData characterData = Party.Find(item.playerData.CharacterID);
+            characterData.status.hp = item.battleStaus.Status.hp;
+            characterData.status.mp = item.battleStaus.Status.mp;
+
+            //死亡したキャラはHP１で復活
+            if (characterData.status.hp < 0)
+            {
+                characterData.status.hp = 1;
+            }
+        }
         yield break;
     }
 

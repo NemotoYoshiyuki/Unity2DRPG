@@ -19,6 +19,11 @@ public class EnemyCharacter : BattleCharacter
         gameObject.SetActive(false);
     }
 
+    public int DropGold()
+    {
+        return enemyData.DropGold;
+    }
+
     public int DropExp()
     {
         return enemyData.Status.exp;

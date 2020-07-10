@@ -6,46 +6,32 @@ public class BattleResultPhase : MonoBehaviour
 {
     public IEnumerator Do()
     {
+        //お金を獲得
+        int gold = BattleController.instance.GetRewardGold();
+        GameController.Money += gold;
+        if (gold < 0) yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(gold + "ゴールドを てにいれた！"));
+
+        //経験値の獲得とレベルアップ
         List<PlayerCharacter> aliveMember = BattleController.instance.AlivePlayerCharacters;
         int dropExp = BattleController.instance.GetRewardExp();
-
         foreach (var alivePlayer in aliveMember)
         {
-            alivePlayer.status.exp = dropExp;
+            CharacterData characterData = Party.Find(alivePlayer.playerData.CharacterID);
             string ms = alivePlayer.CharacterName + "は" + dropExp + "けいけんちをかくとく";
             yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(ms));
-
-            //経験値加算
-            //Party.Find(alivePlayer.playerData.CharacterID).exp += dropExp;
-            //テスト
-            int lv = Party.Find(alivePlayer.playerData.CharacterID).lv;
-            yield return Hoge(Party.Find(alivePlayer.playerData.CharacterID), dropExp);
-            if (lv != Party.Find(alivePlayer.playerData.CharacterID).lv)
-            {
-                //レベルがあがったら体力全回復
-                CharacterData data = Party.Find(alivePlayer.playerData.CharacterID);
-                alivePlayer.status.hp = data.status.maxHp;
-                alivePlayer.status.mp = data.status.maxMp;
-            }
+            int lv = characterData.lv;
+            yield return GiveExp(characterData, dropExp);
+            if (characterData.lv < lv) continue;
+            alivePlayer.status.hp = characterData.status.maxHp;
+            alivePlayer.status.mp = characterData.status.maxMp;
         }
 
-        //基礎ステータスにバトルで損傷したHPとMPを反映する
-        foreach (var item in BattleController.instance.playerCharacters)
-        {
-            CharacterData characterData = Party.Find(item.playerData.CharacterID);
-            characterData.status.hp = item.battleStaus.Status.hp;
-            characterData.status.mp = item.battleStaus.Status.mp;
-
-            //死亡したキャラはHP１で復活
-            if (characterData.status.hp < 0)
-            {
-                characterData.status.hp = 1;
-            }
-        }
+        //アイテムの獲得
+        yield return RewardItem();
         yield break;
     }
 
-    public IEnumerator Hoge(CharacterData characterData, int exp)
+    private IEnumerator GiveExp(CharacterData characterData, int exp)
     {
         characterData.exp += exp;
         while (IsLevelUp(characterData))
@@ -65,7 +51,7 @@ public class BattleResultPhase : MonoBehaviour
         return false;
     }
 
-    public IEnumerator LevelUp(CharacterData characterData)
+    private IEnumerator LevelUp(CharacterData characterData)
     {
         List<string> ms = new List<string>();
 
@@ -99,6 +85,26 @@ public class BattleResultPhase : MonoBehaviour
             characterData.status.speed += growth.speed;
             ms.Add(string.Format(m, "速さ", growth.speed.ToString()));
         }
+        yield return BattleMessage.GetWindow().ShowClick(ms);
+        yield break;
+    }
+
+    private void LearnSpell()
+    {
+
+    }
+
+    private void LearnSkill()
+    {
+
+    }
+
+    private IEnumerator RewardItem()
+    {
+        Item item = BattleController.instance.GetRewardItem();
+        if (item == null) yield break;
+        InventorySystem.AddItem(item);
+        string ms = $"たからばこが　おちている！\n" + item + "を　てにいれた";
         yield return BattleMessage.GetWindow().ShowClick(ms);
         yield break;
     }
