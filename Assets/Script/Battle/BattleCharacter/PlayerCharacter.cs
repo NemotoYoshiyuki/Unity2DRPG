@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerCharacter : BattleCharacter
@@ -10,12 +11,12 @@ public class PlayerCharacter : BattleCharacter
 
     public List<Spell> GetSpells()
     {
-        return playerData.SpellDatas;
+        return characterData.GetSpells();
     }
 
     public List<Skill> GetSkills()
     {
-        return playerData.SkillDatas;
+        return characterData.GetSkills();
     }
 
     public int GetLevel()

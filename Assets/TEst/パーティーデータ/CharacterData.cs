@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class CharacterData
@@ -19,6 +21,7 @@ public class CharacterData
         this.playerData = playerData;
         //初期の設定
         this.status = playerData.Status.Copy();
+        this.lv = playerData.Status.lv;
         //初期装備
         equip = new Equip();
     }
@@ -40,9 +43,30 @@ public class CharacterData
         return status;
     }
 
+    public void FullRecover()
+    {
+        Recover(9999);
+        RecoverMp(9999);
+    }
+
     public void Recover(int amount)
     {
         status.hp = Mathf.Clamp(status.hp + amount, 0, status.maxHp);
+    }
+
+    public void RecoverMp(int amount)
+    {
+        status.mp = Mathf.Clamp(status.mp + amount, 0, status.maxMp);
+    }
+
+    public List<Spell> GetSpells()
+    {
+        return playerData.SpellDatas.Where(x => x.lv < lv).Select(x => x.spell).ToList();
+    }
+
+    public List<Skill> GetSkills()
+    {
+        return playerData.SkillDatas.Where(x => x.lv < lv).Select(x => x.skill).ToList();
     }
 
     public CharacterData Copy()

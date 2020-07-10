@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BattleResultPhase : MonoBehaviour
@@ -86,17 +87,30 @@ public class BattleResultPhase : MonoBehaviour
             ms.Add(string.Format(m, "速さ", growth.speed.ToString()));
         }
         yield return BattleMessage.GetWindow().ShowClick(ms);
+
+        //呪文を覚える
+        yield return LearnSpell(characterData);
+        //特技を覚える
+        yield return LearnSkill(characterData);
         yield break;
     }
 
-    private void LearnSpell()
+    private IEnumerator LearnSpell(CharacterData characterData)
     {
-
+        var learnSpells = characterData.playerData.SpellDatas;
+        Spell learnSpell = learnSpells.FirstOrDefault(x => x.lv == characterData.lv)?.spell;
+        if (learnSpell == null) yield break;
+        yield return BattleMessage.GetWindow().ShowClick($"{characterData.GetName()}は　{learnSpell.skillName}の　じゅもんを　おぼえた！");
+        yield break;
     }
 
-    private void LearnSkill()
+    private IEnumerator LearnSkill(CharacterData characterData)
     {
-
+        var learnSkills = characterData.playerData.SkillDatas;
+        Skill learnSkill = learnSkills.FirstOrDefault(x => x.lv == characterData.lv)?.skill;
+        if (learnSkill == null) yield break;
+        yield return BattleMessage.GetWindow().ShowClick($"{characterData.GetName()}は　{learnSkill.skillName}の　じゅもんを　おぼえた！");
+        yield break;
     }
 
     private IEnumerator RewardItem()
@@ -104,7 +118,7 @@ public class BattleResultPhase : MonoBehaviour
         Item item = BattleController.instance.GetRewardItem();
         if (item == null) yield break;
         InventorySystem.AddItem(item);
-        string ms = $"たからばこが　おちている！\n" + item + "を　てにいれた";
+        string ms = "たからばこが　おちている！\n" + item + "を　てにいれた";
         yield return BattleMessage.GetWindow().ShowClick(ms);
         yield break;
     }

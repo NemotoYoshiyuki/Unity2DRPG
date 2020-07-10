@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: "\u30A2\u30AD\u30EC\u30B9"
   characterID: 3
   status:
-    lv: 0
+    lv: 1
     maxHp: 10
     hp: 10
     maxMp: 10
@@ -35,10 +35,14 @@ MonoBehaviour:
     speed: 2
     exp: 0
   spellDatas:
-  - {fileID: 11400000, guid: 503f92ad7aae28f41964d16f3041407b, type: 2}
-  - {fileID: 11400000, guid: 503f92ad7aae28f41964d16f3041407b, type: 2}
-  - {fileID: 11400000, guid: c3df78851716f754dafd35ac1e4c665b, type: 2}
-  - {fileID: 11400000, guid: 697b75c2f297b9b45ab1609af2f75430, type: 2}
+  - lv: 0
+    spell: {fileID: 0}
+  - lv: 0
+    spell: {fileID: 0}
+  - lv: 0
+    spell: {fileID: 0}
+  - lv: 0
+    spell: {fileID: 0}
   skillDatas: []
   equip:
     weapon: {fileID: 0}

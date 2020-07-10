@@ -114,7 +114,7 @@ public class SpellWindow : BaseWindow
     private void CreateSpellList(CharacterData playerCharacter)
     {
         //List<SpellData> spellDatas = playerCharacter.GetSpells();
-        List<Spell> spellDatas = playerCharacter.playerData.SpellDatas;
+        List<Spell> spellDatas = playerCharacter.GetSpells();
 
         if (spellDatas.Count == 0) return;
 
