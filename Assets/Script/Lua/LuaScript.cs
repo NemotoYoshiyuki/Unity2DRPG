@@ -83,6 +83,7 @@ public class LuaScript : MonoBehaviour
         UserData.RegisterAssembly(typeof(LuaScript).Assembly);
         UserData.RegisterType<PlayerCharacter>();
         UserData.RegisterType<Status>();
+        UserData.RegisterType<CharacterData>();
         UserData.RegisterType<GameObject>();
 
         script = new Script(CoreModules.Preset_Complete);

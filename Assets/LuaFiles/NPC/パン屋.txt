@@ -1,0 +1,17 @@
+﻿return function()
+    say "パン一個100えんだよ"
+
+    local choice = choice("ちょうだい", "いらない")
+
+    if choice == 1 then
+        local money = getMoney()
+        if money < 100 then
+            say "お金が足りないよ"
+        else
+            -- body
+            say "まいど"
+            addItem(3)
+            gainMoney(100)
+        end
+    end
+end

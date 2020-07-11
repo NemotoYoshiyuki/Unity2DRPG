@@ -1,0 +1,17 @@
+﻿return function ()
+say "どうやら仲間を探しているようですね"
+say "私でよければお力になりましょう"
+
+local choice = choice("はい","いいえ")
+
+if choice == 1 then
+        say "回復ならおまかせください"
+		local npc = getNPC()
+		npc.SetActive(false)
+		say "そうりょがなかまになった"
+		partyIn(1)
+		setFlag("そうりょが仲間になった",true)
+    elseif choice == 2 then
+        say "そうですか"
+    end
+end

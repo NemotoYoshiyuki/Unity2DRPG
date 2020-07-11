@@ -1,0 +1,10 @@
+﻿return function()
+    local パン屋出店 = getFlag("パン屋出店")
+    if パン屋出店 == true then
+        -- body
+        say "パン屋開店中"
+    else
+        -- body
+        say "パン屋準備中\n仲間を増やしてね"
+    end
+end

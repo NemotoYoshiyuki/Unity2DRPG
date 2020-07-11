@@ -29,6 +29,18 @@ function M.wait(time)
 end
 
 -------------
+--- Money
+-------------
+
+function M.getMoney()
+	return luaEvent.GetMoney()
+end
+
+function M.gainMoney(money)
+	return luaEvent.GainMony(money)
+end 
+
+-------------
 -- Flag
 -------------
 

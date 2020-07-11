@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: "D\u3086\u3046\u3057\u3083"
   characterID: 0
   status:
-    lv: 0
+    lv: 1
     maxHp: 10
     hp: 10
     maxMp: 29

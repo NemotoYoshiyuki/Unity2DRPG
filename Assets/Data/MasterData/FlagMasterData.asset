@@ -21,3 +21,5 @@ MonoBehaviour:
     value: 1
   - flagName: "\u30A2\u30AD\u30EC\u30B9\u304C\u4EF2\u9593\u306B\u306A\u3063\u305F"
     value: 1
+  - flagName: "\u30D1\u30F3\u5C4B\u51FA\u5E97"
+    value: 0

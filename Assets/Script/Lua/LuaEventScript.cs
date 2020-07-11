@@ -90,7 +90,12 @@ public class LuaEventScript : MonoBehaviour
         //PlayerParty.Instance.Join(id);
     }
 
-    public void GainMony(int mony)
+    public int GetMoney()
+    {
+        return GameController.Money;
+    }
+
+    public void GainMoney(int mony)
     {
         GameController.Money -= mony;
     }
@@ -116,10 +121,9 @@ public class LuaEventScript : MonoBehaviour
         return InventorySystem.HasItem(id); ;
     }
 
-    public PlayerCharacter GetCharacter(int id)
+    public CharacterData GetCharacter(int id)
     {
-        //return PlayerParty.Instance.GetMember(id);
-        return null;
+        return Party.GetMember(0);
     }
 
     //フラグ操作

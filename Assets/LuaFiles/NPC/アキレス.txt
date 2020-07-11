@@ -16,6 +16,9 @@
             partyIn(3)
             --フラグをたてる
             setFlag("アキレスが仲間になった", true)
+            --姿を消す
+            local npc = getNPC()
+            npc.SetActive(false)
         elseif choice == 2 then
             say "くれないの"
         end

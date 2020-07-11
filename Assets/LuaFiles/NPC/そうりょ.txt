@@ -1,17 +1,25 @@
-﻿return function ()
-say("どうやら仲間を探しているようですね")
-say "私でよければお力になりましょう"
+﻿return function()
+    say "どうやら仲間を探しているようですね"
+    say "レベル　が　3いじょうなら　なかまになりますぞ"
 
-local choice = choice("はい","いいえ")
+    local hero = luaEvent.GetCharacter(0)
+    local lv = hero.lv
+    if lv >= 3 then
+        say("レベル" .. lv .. "ですか　おつよいですね\nいっしょに旅をさせてもらっていいでしょうか")
 
-if choice == 1 then
-        say "回復ならおまかせください"
-		local npc = getNPC()
-		npc.SetActive(false)
-		say "そうりょがなかまになった"
-		partyIn(1)
-		setFlag("そうりょが仲間になった",true)
-    elseif choice == 2 then
-        say "そうですか"
+        local choice = choice("はい", "いいえ")
+        if choice == 1 then
+            say "回復ならおまかせください"
+            local npc = getNPC()
+            npc.SetActive(false)
+            say "そうりょがなかまになった"
+            partyIn(1)
+            setFlag("そうりょが仲間になった", true)
+            setFlag("パン屋出店", true)
+        elseif choice == 2 then
+            say "そうですか"
+        end
+    else
+        say "まちのそとで　敵を倒してレベルあげをするといいですぞ"
     end
 end
