@@ -17,6 +17,7 @@ public class TransitionPoint : MonoBehaviour
     {
         if (!canTransition) return;
         canTransition = false;
+        PlayerMovement.Instance.CancelMove();
 
         TransitionInternal();
     }

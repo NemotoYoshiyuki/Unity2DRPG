@@ -6,6 +6,7 @@ using System;
 //https://qiita.com/_tybt/items/bc9c3be75c04ab547c35
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance;
     public static Vector3 playerPotision;
     public static bool canMove = true;
     public static Action onWalk = null;
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         // オブジェクトに設定しているRigidbody2Dの参照を取得する
         this.rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -140,5 +142,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (smoothMovement == null) return;
         StopCoroutine(smoothMovement);
+        moveing = false;
     }
 }
