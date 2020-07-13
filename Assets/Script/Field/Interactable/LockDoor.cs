@@ -22,7 +22,7 @@ public class LockDoor : Interactable
         if (!VariablePersister.Exist(key)) return;
         isOpen = VariablePersister.GetBool(key);
 
-        if (!isOpen)
+        if (isOpen)
         {
             door.SetActive(false);
         }

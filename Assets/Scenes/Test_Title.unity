@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74d46456f4f20a46b827a3acca2836d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScene: "\u57CE\u4E0B\u753A"
-  startPotisition: {x: -3, y: -4}
+  startScene: "\u304A\u57CE"
+  startPotisition: {x: 0, y: 8}
   startItem:
   - {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
   - {fileID: 11400000, guid: 270da3b449d490945b3ee00dda80c0ca, type: 2}
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2094bd7c7d11bdd4aa1184835a768977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMasterData: {fileID: 0}
+  enemyMasterData: {fileID: 11400000, guid: a924e6e07f05e8a48b348cfd136ef497, type: 2}
   backGroundImage: {fileID: 0}
   bgm: {fileID: 0}
   enemyGroups: []
@@ -2490,6 +2490,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808868139}
   m_CullTransparentMesh: 0
+--- !u!1 &1844139441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1844139443}
+  - component: {fileID: 1844139442}
+  m_Layer: 0
+  m_Name: EncounterController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1844139442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844139441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2094bd7c7d11bdd4aa1184835a768977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMasterData: {fileID: 11400000, guid: a924e6e07f05e8a48b348cfd136ef497, type: 2}
+  backGroundImage: {fileID: 0}
+  bgm: {fileID: 0}
+  enemyGroups: []
+--- !u!4 &1844139443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844139441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1859704340
 GameObject:
   m_ObjectHideFlags: 0

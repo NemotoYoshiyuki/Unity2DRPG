@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Vector2 inputAxis;
     private bool moveing = false;
+    private Coroutine smoothMovement;
 
 
     private void Awake()
@@ -120,17 +121,24 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawLine(start - v, end - v, Color.blue, 1f);
         //boxCollider.enabled = true;
 
+
         //エンカウントエリアを取ってしまう
         if (hit.transform == null)
         {
-            StartCoroutine(SmoothMovement(end));
+            smoothMovement = StartCoroutine(SmoothMovement(end));
             return true;
         }
         else if (hit.collider.isTrigger == true)
         {
-            StartCoroutine(SmoothMovement(end));
+            smoothMovement = StartCoroutine(SmoothMovement(end));
             return true;
         }
         return false;
+    }
+
+    public void CancelMove()
+    {
+        if (smoothMovement == null) return;
+        StopCoroutine(smoothMovement);
     }
 }

@@ -37,7 +37,7 @@ function M.getMoney()
 end
 
 function M.gainMoney(money)
-	return luaEvent.GainMony(money)
+	return luaEvent.GainMoney(money)
 end 
 
 -------------
@@ -78,6 +78,10 @@ end
 
 function M.getNPC()
 	return luaEvent.GetNPC()
+end
+
+function M.findNPC(name)
+	return luaEvent.FindNPC(name)
 end
 
 function M.battle(id)
