@@ -26,6 +26,8 @@ public class ChoiceWindow : MonoBehaviour
         yesButton.GetComponentInChildren<TextMeshProUGUI>().SetText(yse);
         noButton.GetComponentInChildren<TextMeshProUGUI>().SetText(no);
 
+        yesButton.GetComponent<Button>().Select();
+
         void OnClick()
         {
             isChoise = true;

@@ -87,7 +87,7 @@ public class LuaEventScript : MonoBehaviour
     //パーティーイベント
     public void PartyIn(int id)
     {
-        //PlayerParty.Instance.Join(id);
+        Party.Instance.Join(id);
     }
 
     public int GetMoney()
