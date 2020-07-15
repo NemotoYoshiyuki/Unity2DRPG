@@ -37,7 +37,6 @@ public class SpellCommand : BattleCommand
             BattleDirectorController.Instance.Message("しかし 呪文は 封印されいる");
             yield break;
         }
-
         owner.GainMp(spellMp);
 
         yield break;

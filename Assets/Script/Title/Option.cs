@@ -5,9 +5,9 @@ using System;
 
 public class Option : MonoBehaviour
 {
-    [Range(0,5)]public int messageSpeed;
-    [Range(0, 5)] public int soundVolume;
-    [Range(0, 5)] public int sfxVolume;
+    [Range(0, 1)] public float messageSpeed;
+    [Range(0, 1)] public float soundVolume;
+    [Range(0, 1)] public float sfxVolume;
 
     public Action ChangeVolume;
 }

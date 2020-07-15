@@ -46,8 +46,8 @@ public class BattleCombatPhase : MonoBehaviour
     //コマンド実行
     private IEnumerator CommandExecution(BattleCommand battleCommand)
     {
-        //行動可能な場合
-        if (battleCommand.owner.canAction != false) yield break;
+        //行動不可能な場合
+        if (battleCommand.owner.canAction == false) yield break;
 
         //コマンド実行
         yield return StartCoroutine(battleCommand.Execution());

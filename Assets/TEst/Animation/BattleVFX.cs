@@ -6,14 +6,15 @@ using UnityEngine.Playables;
 
 public class BattleVFX : MonoBehaviour
 {
-    public PlayableDirector VFX;
     public static BattleVFX Instance;
+    [SerializeField] private PlayableDirector VFX;
 
     private void Awake()
     {
         Instance = this;
     }
 
+    //指定した位置で小さく再生
     public IEnumerator Play(PlayableAsset playableAsset, Transform position)
     {
         PlayableDirector m_VFX = Instantiate(VFX, position);
@@ -21,7 +22,7 @@ public class BattleVFX : MonoBehaviour
         m_VFX.gameObject.transform.localScale = Vector3Int.one * 2;
         m_VFX.Play();
 
-        //再生終了
+        //再生終了待機
         while (m_VFX.state != PlayState.Paused)
         {
             yield return null;
@@ -31,6 +32,7 @@ public class BattleVFX : MonoBehaviour
         yield break;
     }
 
+    //画面中央で大きく再生
     public IEnumerator Play(PlayableAsset playableAsset)
     {
         PlayableDirector m_VFX = Instantiate(VFX);
@@ -38,7 +40,7 @@ public class BattleVFX : MonoBehaviour
         m_VFX.gameObject.transform.localScale = Vector3Int.one * 4;
         m_VFX.Play();
 
-        //再生終了
+        //再生終了待機
         while (m_VFX.state != PlayState.Paused)
         {
             yield return null;

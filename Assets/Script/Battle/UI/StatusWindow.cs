@@ -7,13 +7,13 @@ using TMPro;
 
 public class StatusWindow : MonoBehaviour
 {
-    public StatusWindowElment statusWindowElment;
-    public Transform horizontalLayout;
+    public StatusWindowElment[] statusWindowElment;
+    private int count = 0;
 
     public void Register(PlayerCharacter playerCharacter)
     {
-        StatusWindowElment _statusWindowElment = Instantiate(statusWindowElment);
-        _statusWindowElment.Initialized(playerCharacter);
-        _statusWindowElment.transform.SetParent(horizontalLayout);
+        statusWindowElment[count].gameObject.SetActive(true);
+        statusWindowElment[count].Initialized(playerCharacter);
+        count++;
     }
 }

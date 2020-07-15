@@ -53,7 +53,7 @@ public class EncounterController : MonoBehaviour
 
         SetEncounterSteps();
         Instance.StartCoroutine(SceneFader.FadeSceneOut());
-        SceneController.Transition("Battle 1");
+        SceneController.Transition("Battle");
     }
 
     public static void Encount(int id)
