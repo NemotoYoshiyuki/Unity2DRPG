@@ -27,7 +27,6 @@ public class BattleVFX : MonoBehaviour
         {
             yield return null;
         }
-
         Destroy(m_VFX.gameObject);
         yield break;
     }

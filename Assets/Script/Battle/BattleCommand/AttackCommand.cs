@@ -22,7 +22,7 @@ public class AttackCommand : BattleCommand
         skillData = (Skill)ScriptableObject.CreateInstance(typeof(Skill));
         //武器によって再生するアニメーションを変更する
         BattleDirectorController.Instance.NormalAttack(target[0]);
-        effects.Add(new PhysicalAttackEffect());
+        //effects.Add(new PhysicalAttackEffect());
         yield break;
     }
 
