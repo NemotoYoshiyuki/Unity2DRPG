@@ -32,7 +32,7 @@ public class BattleCombatPhase : MonoBehaviour
 
 
             //効果実行
-            if (!command.CanEffec()) yield break;
+            if (!command.CanEffec()) continue;
             yield return EffctExecution(command);
         }
 
