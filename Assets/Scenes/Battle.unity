@@ -3913,8 +3913,8 @@ MonoBehaviour:
   hit: {fileID: 0}
   avoidance: {fileID: 0}
   escape: {fileID: 0}
-  slash: {fileID: 11400000, guid: 15c4f8b9b96c1154caa3d1fc072cdf1f, type: 2}
-  blow: {fileID: 11400000, guid: e20fce573b0bf1446b1d213a34335c6c, type: 2}
+  slash: {fileID: 11400000, guid: df1393769f992144db08c088298f5c88, type: 2}
+  blow: {fileID: 0}
 --- !u!4 &1147216044
 Transform:
   m_ObjectHideFlags: 0

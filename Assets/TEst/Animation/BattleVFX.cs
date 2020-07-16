@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
@@ -20,6 +21,7 @@ public class BattleVFX : MonoBehaviour
         PlayableDirector m_VFX = Instantiate(VFX, position);
         m_VFX.playableAsset = playableAsset;
         m_VFX.gameObject.transform.localScale = Vector3Int.one * 2;
+        Bind(m_VFX);
         m_VFX.Play();
 
         //再生終了待機
@@ -37,6 +39,7 @@ public class BattleVFX : MonoBehaviour
         PlayableDirector m_VFX = Instantiate(VFX);
         m_VFX.playableAsset = playableAsset;
         m_VFX.gameObject.transform.localScale = Vector3Int.one * 4;
+        Bind(m_VFX);
         m_VFX.Play();
 
         //再生終了待機
@@ -47,5 +50,17 @@ public class BattleVFX : MonoBehaviour
 
         Destroy(m_VFX.gameObject);
         yield break;
+    }
+
+    private void Bind(PlayableDirector VFX)
+    {
+        Animator animator = VFX.GetComponent<Animator>();
+        var animationBinding = VFX.playableAsset.outputs.First(c => c.streamName == "Animation Track");
+        VFX.SetGenericBinding(animationBinding.sourceObject, animator);
+        Debug.Log(animationBinding);
+
+        AudioSource audioSource = VFX.GetComponent<AudioSource>();
+        var audioSourceBinding = VFX.playableAsset.outputs.First(c => c.streamName == "Audio Track");
+        VFX.SetGenericBinding(audioSourceBinding.sourceObject, animator);
     }
 }
