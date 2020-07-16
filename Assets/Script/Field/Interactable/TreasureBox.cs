@@ -57,7 +57,7 @@ public class TreasureBox : Interactable
         }
 
         //お金が入っていた
-        if (money < 0)
+        if (money > 0)
         {
             yield return GetMony();
         }
