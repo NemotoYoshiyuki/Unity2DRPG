@@ -10,7 +10,7 @@ public class BattleResultPhase : MonoBehaviour
         //お金を獲得
         int gold = BattleController.instance.GetRewardGold();
         GameController.Money += gold;
-        if (gold < 0) yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(gold + "ゴールドを てにいれた！"));
+        if (gold > 0) yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(gold + "ゴールドを てにいれた！"));
 
         //経験値の獲得とレベルアップ
         List<PlayerCharacter> aliveMember = BattleController.instance.AlivePlayerCharacters;
