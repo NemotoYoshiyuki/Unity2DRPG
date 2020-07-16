@@ -20,8 +20,10 @@ public class AttackCommand : BattleCommand
     {
         //スキルデータ作成
         skillData = (Skill)ScriptableObject.CreateInstance(typeof(Skill));
+        skillData.animation = BattleDirectorController.Instance.slash;
+        BattleDirectorController.Instance.Message(owner.CharacterName + "の　攻撃");
         //武器によって再生するアニメーションを変更する
-        BattleDirectorController.Instance.NormalAttack(target[0]);
+        //BattleDirectorController.Instance.NormalAttack(target[0]);
         //effects.Add(new PhysicalAttackEffect());
         yield break;
     }

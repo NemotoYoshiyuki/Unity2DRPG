@@ -9,7 +9,8 @@ public class PhysicalAttackEffect : Effect
     public int criticalRate = 32;//会心率
     public int hitRate = 100;//命中率
     public int successRate = 100;//成功率
-    public string successMessage = "の攻撃";//成功時メッセージ
+    public string successMessage = string.Empty;//成功時メッセージ
+    //public string successMessage = "の攻撃";//成功時メッセージ
     public string failureMessage;//失敗時メッセージ
 
     private BattleDirectorController logic;
@@ -47,7 +48,7 @@ public class PhysicalAttackEffect : Effect
         }
 
         //成功メッセージを表示
-        logic.Message(owner.CharacterName + successMessage);
+        if (successMessage != string.Empty) logic.Message(owner.CharacterName + successMessage);
         logic.DamageLogic(target, damage, m_critical);
     }
 }
