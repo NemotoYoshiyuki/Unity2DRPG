@@ -34,16 +34,10 @@ MonoBehaviour:
     deffence: 2
     speed: 2
     exp: 0
-  spellDatas:
+  spellDatas: []
+  skillDatas:
   - lv: 0
-    spell: {fileID: 0}
-  - lv: 0
-    spell: {fileID: 0}
-  - lv: 0
-    spell: {fileID: 0}
-  - lv: 0
-    spell: {fileID: 0}
-  skillDatas: []
+    skill: {fileID: 11400000, guid: 6a099cf3e75957f428ff4b507bec6b96, type: 2}
   equip:
     weapon: {fileID: 0}
     armor: {fileID: 0}
