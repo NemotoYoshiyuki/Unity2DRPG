@@ -22,7 +22,8 @@ public class BattleResultPhase : MonoBehaviour
             yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(ms));
             int lv = characterData.lv;
             yield return GiveExp(characterData, dropExp);
-            if (characterData.lv < lv) continue;
+            if (characterData.lv == lv) continue;
+            //レベルが上昇したとき回復する
             alivePlayer.status.hp = characterData.status.maxHp;
             alivePlayer.status.mp = characterData.status.maxMp;
         }

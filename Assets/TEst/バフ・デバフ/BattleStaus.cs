@@ -29,10 +29,11 @@ public class BattleStaus
 
     public void StatusUpdate()
     {
+        //HPとMPは引き継ぐ
         int hp = status.hp;
         int mp = status.mp;
 
-        //HPとMPは引き継ぐ
+        //補正値を消去
         status = GetBasicStatus();
         status.hp = hp;
         status.mp = mp;

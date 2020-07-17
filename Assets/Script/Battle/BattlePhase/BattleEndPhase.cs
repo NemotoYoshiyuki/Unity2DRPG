@@ -19,9 +19,10 @@ public class BattleEndPhase : MonoBehaviour
         {
             //バトルで損傷したHPとMPを反映する
             CharacterData characterData = Party.Find(item.playerData.CharacterID);
-            characterData.status.hp = item.battleStaus.Status.hp;
-            characterData.status.mp = item.battleStaus.Status.mp;
+            characterData.status.hp = item.status.hp;
+            characterData.status.mp = item.status.mp;
 
+            //#TODO: テスト項目
             //死亡したキャラはHP１で復活
             if (characterData.status.hp < 0)
             {
