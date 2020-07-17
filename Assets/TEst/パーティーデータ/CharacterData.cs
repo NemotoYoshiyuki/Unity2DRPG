@@ -69,6 +69,13 @@ public class CharacterData
         return playerData.SkillDatas.Where(x => x.lv < lv).Select(x => x.skill).ToList();
     }
 
+    public int NextExp(int lv)
+    {
+        if (lv <= 99) return 0;
+        List<int> experienceTable = ExperienceTable.Get();
+        return experienceTable[lv + 1];
+    }
+
     public CharacterData Copy()
     {
         return (CharacterData)this.MemberwiseClone();

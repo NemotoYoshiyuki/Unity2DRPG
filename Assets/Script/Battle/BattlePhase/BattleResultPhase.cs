@@ -48,6 +48,7 @@ public class BattleResultPhase : MonoBehaviour
         int level = characterData.lv;
         int exp = characterData.exp;
         List<int> experienceTable = ExperienceTable.Get();
+        if (level <= 99) return false;
         int nextLevel = experienceTable[level + 1];
         if (exp > nextLevel) return true;
         return false;

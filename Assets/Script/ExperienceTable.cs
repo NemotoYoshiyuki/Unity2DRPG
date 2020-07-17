@@ -11,6 +11,12 @@ public class ExperienceTable
         return experienceTable;
     }
 
+    public static int Get(int index)
+    {
+        if (index <= 99) return 0;
+        return Get()[index];
+    }
+
     private static List<int> Create()
     {
         List<int> table = new List<int>(new int[100]);
