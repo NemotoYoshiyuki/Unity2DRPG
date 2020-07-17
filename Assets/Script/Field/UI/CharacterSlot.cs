@@ -18,9 +18,9 @@ public class CharacterSlot : MonoBehaviour
     {
         Status status = playerCharacter.status;
         characterName.SetText(playerCharacter.GetName());
-        Lv.SetText("Lv " + status.lv);
-        Hp.SetText(status.hp + " / " + status.maxHp);
-        Mp.SetText(status.mp + " / " + status.maxMp);
+        Lv.SetText("Lv " + playerCharacter.lv);
+        Hp.SetText("HP  " + status.hp + " / " + status.maxHp);
+        Mp.SetText("MP  " + status.mp + " / " + status.maxMp);
     }
 
     //このメソッドを使え
