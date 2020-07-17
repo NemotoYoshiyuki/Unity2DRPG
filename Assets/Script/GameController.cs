@@ -109,7 +109,7 @@ public class GameController : MonoBehaviour
         //ペナルティ
         money = money / 2;
         //パーティーの全回復
-        //PlayerParty.Instance.FullRecovery();
+        Party.FullRecovery();
         //チェックポイントから再開
         SceneController.Transition(reStartSceneName, reStartpoint);
     }

@@ -103,6 +103,14 @@ public class Party : MonoBehaviour
         Instance.characterDatas.Add(characterData);
     }
 
+    public static void FullRecovery()
+    {
+        foreach (var item in Instance.characterDatas)
+        {
+            item.FullRecover();
+        }
+    }
+
     public static void Save()
     {
         SaveData.PartyData partySaveData = SaveSystem.saveData.partyData;
