@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: "\u304A\u3084\u3076\u3093"
   m_EditorClassIdentifier: 
   characterName: "\u304A\u3084\u3076\u3093"
+  id: 0
+  graphic: {fileID: 21300000, guid: aec2b6bb15395b04aaf4ca974cbd05e8, type: 3}
   status:
     lv: 0
     maxHp: 77
@@ -23,8 +25,9 @@ MonoBehaviour:
     deffence: 77
     speed: 77
     exp: 77
-  graphic: {fileID: 21300000, guid: a5d3c03baf6e0e1498f8a83073b00db4, type: 3}
-  exp: 77
+  dropGold: 0
+  dropRate: 0
+  dropItem: {fileID: 0}
   commands:
   - {fileID: 11400000, guid: c3df78851716f754dafd35ac1e4c665b, type: 2}
   - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
