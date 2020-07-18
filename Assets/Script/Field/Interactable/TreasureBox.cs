@@ -16,7 +16,7 @@ public class TreasureBox : Interactable
     public Item item = null;
     public Equipment equipment = null;
 
-    private bool isOpen;
+    private bool isOpen = false;
     private string sceneName => SceneController.Instance.CurrentScene;
     private string key => $"{sceneName}_宝箱を開けた_{id}";
 
@@ -28,7 +28,7 @@ public class TreasureBox : Interactable
         if (!VariablePersister.Exist(key)) return;
         isOpen = VariablePersister.GetBool(key);
 
-        if (!isOpen)
+        if (isOpen)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = enptyImage;

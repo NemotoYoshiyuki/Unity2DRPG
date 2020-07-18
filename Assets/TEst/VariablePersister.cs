@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 public class VariablePersister
 {
@@ -11,9 +12,9 @@ public class VariablePersister
     public class VariableData
     {
         public string key;
-        public object variable;
+        public string variable;
 
-        public VariableData(string key, object variable)
+        public VariableData(string key, string variable)
         {
             this.key = key;
             this.variable = variable;
@@ -36,27 +37,30 @@ public class VariablePersister
 
         if (exists == false)
         {
-            VariableDatas.Add(new VariableData(key, obj));
+            VariableDatas.Add(new VariableData(key, obj.ToString()));
         }
         else
         {
-            Get(key).variable = obj;
+            Get(key).variable = obj.ToString();
         }
     }
 
     public static int GetInt(string key)
     {
-        return (int)Get(key).variable;
+        return Convert.ToInt32(Get(key).variable);
+        //return (int)Get(key).variable;
     }
 
     public static float GetFloat(string key)
     {
-        return (float)Get(key).variable;
+        return Convert.ToSingle(Get(key).variable);
+        //return (float)Get(key).variable;
     }
 
     public static bool GetBool(string key)
     {
-        return (bool)Get(key).variable;
+        return Convert.ToBoolean(Get(key).variable);
+        //return (bool)Get(key).variable;
     }
 
     public static void SetInt(string key, int value)
