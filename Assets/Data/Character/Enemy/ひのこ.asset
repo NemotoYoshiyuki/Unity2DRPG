@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: "\u3072\u306E\u3053"
   m_EditorClassIdentifier: 
   characterName: "\u3072\u306E\u3053"
+  id: 4
+  graphic: {fileID: 21300000, guid: a5d3c03baf6e0e1498f8a83073b00db4, type: 3}
   status:
     lv: 0
-    maxHp: 77
-    hp: 77
-    maxMp: 77
-    mp: 77
-    attack: 77
-    deffence: 77
-    speed: 77
-    exp: 77
-  graphic: {fileID: 21300000, guid: a5d3c03baf6e0e1498f8a83073b00db4, type: 3}
-  exp: 77
+    maxHp: 22
+    hp: 22
+    maxMp: 22
+    mp: 22
+    attack: 18
+    deffence: 12
+    speed: 22
+    exp: 10
+  dropGold: 0
+  dropRate: 0
+  dropItem: {fileID: 0}
   commands:
   - {fileID: 11400000, guid: c3df78851716f754dafd35ac1e4c665b, type: 2}
   - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}

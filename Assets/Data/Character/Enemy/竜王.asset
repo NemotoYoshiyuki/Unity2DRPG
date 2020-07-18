@@ -17,13 +17,13 @@ MonoBehaviour:
   graphic: {fileID: 21300000, guid: 46a84907cde41294fab23bf100f70758, type: 3}
   status:
     lv: 0
-    maxHp: 77
-    hp: 77
-    maxMp: 77
-    mp: 77
-    attack: 1
-    deffence: 1
-    speed: 77
+    maxHp: 60
+    hp: 60
+    maxMp: 60
+    mp: 60
+    attack: 30
+    deffence: 20
+    speed: 20
     exp: 0
   dropGold: 0
   dropRate: 0

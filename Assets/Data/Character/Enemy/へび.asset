@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: "\u3078\u3073"
   m_EditorClassIdentifier: 
   characterName: "\u3078\u3073"
-  id: 0
+  id: 1
   graphic: {fileID: 21300000, guid: f2049fc81b384324a97f20b4089c14c4, type: 3}
   status:
     lv: 0
-    maxHp: 12
-    hp: 12
+    maxHp: 8
+    hp: 8
     maxMp: 8
     mp: 8
     attack: 6
