@@ -24,7 +24,6 @@ public class SkillCommand : BattleCommand
     public override IEnumerator Execution()
     {
         int skillMp = skillData.mp;
-
         if (owner.status.mp <= skillMp)
         {
             canEffect = false;

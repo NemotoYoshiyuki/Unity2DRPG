@@ -75,6 +75,12 @@ public class CharacterWindow : BaseWindow
             Destroy(item.gameObject);
         }
         characterSlots.Clear();
+
+        foreach (var item in selectItems)
+        {
+            Destroy(item);
+        }
+        selectItems.Clear();
     }
 
     public void AddLisner(UnityAction<int> unityAction)
