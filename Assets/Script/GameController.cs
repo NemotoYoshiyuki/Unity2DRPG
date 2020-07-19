@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
         SaveData saveData = SaveSystem.saveData;
 
         //ゲームデータ保存
+        saveData.gameData.money = money;
         saveData.gameData.playerPotion = PlayerMovement.playerPotision;
         saveData.gameData.sceneName = SceneController.Instance.CurrentScene;
         saveData.gameData.reStartSceneName = reStartSceneName;
@@ -86,6 +87,7 @@ public class GameController : MonoBehaviour
     {
         SaveData.GameData gameData = SaveSystem.saveData.gameData;
 
+        money = gameData.money;
         reStartSceneName = gameData.reStartSceneName;
         reStartpoint = gameData.reStartpoint;
 
