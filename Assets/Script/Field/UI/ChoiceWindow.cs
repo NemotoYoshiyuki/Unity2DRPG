@@ -47,6 +47,8 @@ public class ChoiceWindow : MonoBehaviour
         });
 
         yield return new WaitUntil(() => isChoise == true);
+        //選択を選んだときにメッセージ送りが起こるのを防ぐためのWait
+        yield return new WaitForSeconds(0.2f);
         yield break;
     }
 
