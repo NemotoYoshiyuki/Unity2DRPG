@@ -48,7 +48,7 @@ public class BattleResultPhase : MonoBehaviour
         int level = characterData.lv;
         int exp = characterData.exp;
         List<int> experienceTable = ExperienceTable.Get();
-        if (level <= 99) return false;
+        if (level >= 99) return false;
         int nextLevel = experienceTable[level + 1];
         if (exp > nextLevel) return true;
         return false;
@@ -57,37 +57,21 @@ public class BattleResultPhase : MonoBehaviour
     private IEnumerator LevelUp(CharacterData characterData)
     {
         List<string> ms = new List<string>();
+        Status growth = characterData.playerData.GrowthRate;
 
         characterData.lv++;
-        ms.Add(characterData.GetName() + "の レベルがあがった\nレベルが" + characterData.lv + "になった");
 
-        string m = "{0}が{1}あがった";
-        Status growth = characterData.playerData.GrowthRate;
-        if (growth.maxHp != 0)
-        {
-            characterData.status.maxHp += growth.maxHp;
-            ms.Add(string.Format(m, "体力", growth.maxHp.ToString()));
-        }
-        if (growth.maxMp != 0)
-        {
-            characterData.status.maxMp += growth.maxMp;
-            ms.Add(string.Format(m, "MP", growth.maxMp.ToString()));
-        }
-        if (growth.attack != 0)
-        {
-            characterData.status.attack += growth.attack;
-            ms.Add(string.Format(m, "攻撃", growth.attack.ToString()));
-        }
-        if (growth.deffence != 0)
-        {
-            characterData.status.deffence += growth.deffence;
-            ms.Add(string.Format(m, "防御", growth.deffence.ToString()));
-        }
-        if (growth.speed != 0)
-        {
-            characterData.status.speed += growth.speed;
-            ms.Add(string.Format(m, "速さ", growth.speed.ToString()));
-        }
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        sb.Append($"{characterData.GetName()}は レベル{characterData.lv}に　あがった!");
+        sb.Append($"\nさいだいＨＰが　{growth.maxHp}ポイント　あがった!");
+        sb.Append($"\nさいだいMＰが　{growth.maxMp}ポイント　あがった!");
+        ms.Add(sb.ToString());
+
+        sb.Clear();
+        sb.Append($"こうげき＋{growth.attack}  ぼうぎょ+{growth.deffence}\n");
+        sb.Append($"すばやさ＋{growth.speed}");
+        ms.Add(sb.ToString());
+
         yield return BattleMessage.GetWindow().ShowClick(ms);
 
         //呪文を覚える
