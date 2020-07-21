@@ -14,6 +14,7 @@ public class SaveData
     [System.Serializable]
     public class GameData
     {
+        public float playTime;
         public Vector2 playerPotion;
         public string sceneName;
         public int money;

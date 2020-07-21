@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameController : MonoBehaviour
 {
@@ -56,11 +57,23 @@ public class GameController : MonoBehaviour
         instance = new GameObject("GameController").AddComponent<GameController>();
     }
 
+    private float playTime = 0;
+    public float PlayTime()
+    {
+        return playTime + UpTime();
+    }
+
+    public float UpTime()
+    {
+        return Time.realtimeSinceStartup;
+    }
+
     private void SaveGameData()
     {
         SaveData saveData = SaveSystem.saveData;
 
         //ゲームデータ保存
+        saveData.gameData.playTime = PlayTime();
         saveData.gameData.money = money;
         saveData.gameData.playerPotion = PlayerMovement.playerPotision;
         saveData.gameData.sceneName = SceneController.Instance.CurrentScene;
@@ -83,10 +96,21 @@ public class GameController : MonoBehaviour
         SaveSystem.Save();
     }
 
+    public static void Save(int fileNumber)
+    {
+        Instance.SaveGameData();
+        InventorySystem.Save();
+        Party.Save();
+        FlagManager.Save();
+        VariablePersister.Save();
+        SaveSystem.Save(fileNumber);
+    }
+
     private void LoadGameData()
     {
         SaveData.GameData gameData = SaveSystem.saveData.gameData;
 
+        playTime = gameData.playTime;
         money = gameData.money;
         reStartSceneName = gameData.reStartSceneName;
         reStartpoint = gameData.reStartpoint;
@@ -99,6 +123,16 @@ public class GameController : MonoBehaviour
     public static void Load()
     {
         SaveSystem.Load();
+        Instance.LoadGameData();
+        Party.Load();
+        FlagManager.Load();
+        VariablePersister.Load();
+        InventorySystem.Load();
+    }
+
+    public static void Load(int fileNumber)
+    {
+        SaveSystem.LoadFile(fileNumber);
         Instance.LoadGameData();
         Party.Load();
         FlagManager.Load();
