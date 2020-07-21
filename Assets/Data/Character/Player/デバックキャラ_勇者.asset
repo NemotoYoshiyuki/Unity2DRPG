@@ -45,6 +45,6 @@ MonoBehaviour:
   - lv: 2
     skill: {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
   equip:
-    weapon: {fileID: 11400000, guid: ca37daa9dc0983f44a4ee0fcd7b9a31f, type: 2}
-    armor: {fileID: 0}
-    accessory: {fileID: 0}
+    weapon: {fileID: 11400000, guid: a516a8a463560ac438113461fa69a357, type: 2}
+    armor: {fileID: 11400000, guid: 9405e97f2c39e32458cc0783fe2d9501, type: 2}
+    accessory: {fileID: 11400000, guid: 111d29a725826154f871b5890eb58fea, type: 2}

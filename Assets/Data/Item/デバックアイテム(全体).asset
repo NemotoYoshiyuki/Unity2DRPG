@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b307455eb5caa49a1edf35449bf3f4, type: 3}
   m_Name: "\u30C7\u30D0\u30C3\u30AF\u30A2\u30A4\u30C6\u30E0(\u5168\u4F53)"
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
   id: 999999
   itemName: "\u30C7\u30D0\u30C3\u30AF\u30A2\u30A4\u30C6\u30E0(\u5168\u4F53)"
-  useType: 1
+  useType: 0
   targetUnit: 2
   targetRange: 2
   mp: 0
@@ -26,4 +27,5 @@ MonoBehaviour:
     00000000:
       type: {class: HealEffect, ns: , asm: Assembly-CSharp}
       data:
+        animationClip: {fileID: 0}
         healAmount: 30
