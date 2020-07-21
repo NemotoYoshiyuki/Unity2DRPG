@@ -7,7 +7,7 @@ public class Continue : MonoBehaviour
 {
     public Button continueButton;
 
-    private void Start()
+    private void Awake()
     {
         if (!ExistsSaveData())
         {
