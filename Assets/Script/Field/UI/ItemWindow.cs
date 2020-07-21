@@ -62,10 +62,10 @@ public class ItemWindow : BaseWindow
     private void Initialized()
     {
         List<Item> inventory = InventorySystem.GetItems();
-
+        //前回の表示内容をクリア
+        ClearItemList();
         if (inventory == null || inventory.Count <= 0) return;
 
-        ClearItemList();
         CreateItemList();
         itemSlots[0].selectable.Select();
         ShowItemDescription(itemSlots[0].item);
@@ -75,7 +75,7 @@ public class ItemWindow : BaseWindow
     {
         List<Item> items = new List<Item>(InventorySystem.GetItems());
 
-        if (items == null || items.Count < 0) return;
+        if (items == null || items.Count <= 0) return;
 
         //ボタン作成
         for (int i = 0; i < items.Count; i++)
@@ -93,8 +93,10 @@ public class ItemWindow : BaseWindow
     public void RefreshItemList()
     {
         ClearItemList();
-        CreateItemList();
+        List<Item> inventory = InventorySystem.GetItems();
+        if (inventory == null || inventory.Count <= 0) return;
 
+        CreateItemList();
         itemSlots[selectedItemIndex].selectable.Select();
         ShowItemDescription(itemSlots[selectedItemIndex].item);
     }
@@ -164,6 +166,7 @@ public class ItemWindow : BaseWindow
         itemSlots.ForEach(x => Destroy(x.gameObject));
         itemSlots.Clear();
         selectables.Clear();
+        ItemDescription.SetText(string.Empty);
     }
 
     private void RegisterNavigation()
