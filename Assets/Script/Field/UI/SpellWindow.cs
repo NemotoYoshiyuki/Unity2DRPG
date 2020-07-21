@@ -81,17 +81,20 @@ public class SpellWindow : BaseWindow
         //アイテムリストを表示
         gameObject.SetActive(true);
 
-        ClearSpellList();
-        CreateSpellList(owner);
-        spellSlots[0].selectable.Select();
-        ShowSpellDescription(spellSlots[0].spell);
-
         //キャンセルが押されたら
         OnCancel = () =>
         {
             HideSpellList();
             UserSelect();
         };
+
+        ClearSpellList();
+        List<Spell> spellDatas = owner.GetSpells();
+        if (spellDatas.Count == 0) return;
+
+        CreateSpellList(owner);
+        spellSlots[0].selectable.Select();
+        ShowSpellDescription(spellSlots[0].spell);
     }
 
     //public void ShowSpellList(PlayerCharacter owner)
@@ -165,6 +168,7 @@ public class SpellWindow : BaseWindow
         spellSlots.ForEach(x => Destroy(x.gameObject));
         spellSlots.Clear();
         selectables.Clear();
+        spellDescription.SetText(string.Empty);
     }
 
     private void ShowSpellDescription(Spell spellData)
