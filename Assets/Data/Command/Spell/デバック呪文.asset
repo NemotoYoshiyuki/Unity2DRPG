@@ -15,7 +15,7 @@ MonoBehaviour:
   animation: {fileID: 11400000, guid: cb7e8607c60fbcb4b8db3d0b4f9bd253, type: 2}
   id: 1
   skillName: "\u30C7\u30D0\u30C3\u30AF\u546A\u6587"
-  useType: 0
+  useType: 2
   targetUnit: 3
   targetRange: 2
   mp: 4

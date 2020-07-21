@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ee8cd5c0c15944eafa0f8a1c79e4d7, type: 3}
   m_Name: "\u30B6\u30AA\u30EA\u30AF"
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
   id: 2
   skillName: "\u30B6\u30AA\u30EA\u30AF"
-  useType: 2
+  useType: 3
   targetUnit: 2
   targetRange: 1
   mp: 15
@@ -26,5 +27,6 @@ MonoBehaviour:
     00000000:
       type: {class: ResuscitationEffect, ns: , asm: Assembly-CSharp}
       data:
+        animationClip: {fileID: 0}
         rate: 100
         healRate: 100

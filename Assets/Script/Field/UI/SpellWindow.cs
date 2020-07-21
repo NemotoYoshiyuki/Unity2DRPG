@@ -225,7 +225,7 @@ public class SpellWindow : BaseWindow
 
     public bool CanFieldSpell(Spell spellData)
     {
-        if (spellData.useType != UseType.戦闘中)
+        if (spellData.useType == UseType.マップ上 || spellData.useType == UseType.いつでも)
         {
             if (owner.status.mp <= spellData.mp) return false;
             return true;

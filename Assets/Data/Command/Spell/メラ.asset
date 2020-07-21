@@ -15,7 +15,7 @@ MonoBehaviour:
   animation: {fileID: 11400000, guid: abb896629e1a71a4d8915abd5a15357d, type: 2}
   id: 1
   skillName: "\u30E1\u30E9"
-  useType: 0
+  useType: 1
   targetUnit: 3
   targetRange: 1
   mp: 4
@@ -27,5 +27,4 @@ MonoBehaviour:
     00000000:
       type: {class: SpellDamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        animationClip: {fileID: 0}
         damageAmount: 20
