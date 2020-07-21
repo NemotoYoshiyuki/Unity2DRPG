@@ -19,6 +19,7 @@ public class BattleItemInput : BattleCommandInput
     {
         foreach (var item in itemDatas)
         {
+            if (CanUseItem(item) == false) continue;
             Button _button = Instantiate(button);
             _button.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
             _button.onClick.AddListener(() => OnClick(item));
@@ -26,6 +27,11 @@ public class BattleItemInput : BattleCommandInput
         }
 
         selectButtonBox.Show();
+    }
+
+    public bool CanUseItem(Item item)
+    {
+        return item.useType == UseType.戦闘中 || item.useType == UseType.いつでも;
     }
 
     public void OnClick(Item itemData)
