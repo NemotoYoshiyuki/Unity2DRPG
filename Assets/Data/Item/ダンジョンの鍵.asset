@@ -15,7 +15,7 @@ MonoBehaviour:
   animation: {fileID: 0}
   id: 4
   itemName: "\u30C0\u30F3\u30B8\u30E7\u30F3\u306E\u9375"
-  useType: 2
+  useType: 4
   targetUnit: 0
   targetRange: 0
   mp: 0

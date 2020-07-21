@@ -121,7 +121,8 @@ public class ItemWindow : BaseWindow
 
     public bool CanUse(Item item)
     {
-        if (item.useType != UseType.戦闘中)
+
+        if (item.useType == UseType.マップ上 || item.useType == UseType.いつでも)
         {
             return true;
         }
