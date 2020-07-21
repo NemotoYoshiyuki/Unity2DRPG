@@ -43,6 +43,7 @@ public class ItemWindow : BaseWindow
         OnCancel = () =>
         {
             MenuWindow.instance.focusWindow = MenuWindow.instance;
+            MenuWindow.instance.sideMenu.sideButtons[0].Select();
             Close();
         };
     }
@@ -60,9 +61,9 @@ public class ItemWindow : BaseWindow
 
     private void Initialized()
     {
-        List<Item> inventory = InventorySystem.GetItems()
-        ;
-        if (inventory == null || inventory.Count < 0) return;
+        List<Item> inventory = InventorySystem.GetItems();
+
+        if (inventory == null || inventory.Count <= 0) return;
 
         ClearItemList();
         CreateItemList();
@@ -133,11 +134,13 @@ public class ItemWindow : BaseWindow
     private void ItemUse(Item itemData)
     {
         fieldEffect.UseItem(itemData);
+
         //Close();
 
         OnCancel = () =>
         {
             Open();
+            MenuWindow.instance.menuGuide.Hide();
         };
     }
 

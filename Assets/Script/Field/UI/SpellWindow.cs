@@ -70,6 +70,7 @@ public class SpellWindow : BaseWindow
         OnCancel = () =>
         {
             MenuWindow.instance.focusWindow = MenuWindow.instance;
+            MenuWindow.instance.sideMenu.sideButtons[1].Select();
             menuGuide.Hide();
             selectTarget.Release();
         };

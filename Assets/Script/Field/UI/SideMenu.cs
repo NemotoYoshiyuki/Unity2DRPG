@@ -8,7 +8,7 @@ public class SideMenu : MonoBehaviour
 {
     public List<SelectableButton> sideButtons;
 
-    private void Start()
+    private void OnEnable()
     {
         sideButtons[0].Select();
     }

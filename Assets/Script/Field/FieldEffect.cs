@@ -45,6 +45,7 @@ public class FieldEffect : MonoBehaviour
             characterWindow.AddLisner((int index) =>
             {
                 AllItemExecut(itemData);
+                MenuWindow.instance.menuGuide.Hide();
             });
         }
         else
@@ -55,6 +56,7 @@ public class FieldEffect : MonoBehaviour
             {
                 CharacterData playerCharacter = party[index];
                 ItemExecut(itemData, playerCharacter);
+                MenuWindow.instance.menuGuide.Hide();
             });
         }
     }
@@ -82,6 +84,7 @@ public class FieldEffect : MonoBehaviour
             characterWindow.AddLisner((int index) =>
             {
                 AllSpellExecut(spellData);
+                MenuWindow.instance.menuGuide.Hide();
             });
         }
         else
@@ -92,6 +95,7 @@ public class FieldEffect : MonoBehaviour
             {
                 CharacterData playerCharacter = party[index];
                 SpellExecut(spellData, playerCharacter);
+                MenuWindow.instance.menuGuide.Hide();
             });
         }
     }
