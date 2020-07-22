@@ -549,11 +549,11 @@ MonoBehaviour:
   backGroundImage: {fileID: 21300000, guid: 275b0575471406d4ea8d715456a3a4dc, type: 3}
   bgm: {fileID: 0}
   enemyGroups:
-  - rate: 50
+  - rate: 90
     enemyGrop:
     - enemy: {fileID: 11400000, guid: dd20403049431af4ebf64498737d114d, type: 2}
       posiiton: 0
-  - rate: 50
+  - rate: 10
     enemyGrop:
     - enemy: {fileID: 11400000, guid: dd20403049431af4ebf64498737d114d, type: 2}
       posiiton: 0
