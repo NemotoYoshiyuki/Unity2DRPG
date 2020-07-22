@@ -15,17 +15,20 @@ public class BattleResultPhase : MonoBehaviour
         //経験値の獲得とレベルアップ
         List<PlayerCharacter> aliveMember = BattleController.instance.AlivePlayerCharacters;
         int dropExp = BattleController.instance.GetRewardExp();
-        foreach (var alivePlayer in aliveMember)
+        if (dropExp > 0)
         {
-            CharacterData characterData = Party.Find(alivePlayer.playerData.CharacterID);
-            string ms = alivePlayer.CharacterName + "は" + dropExp + "けいけんちをかくとく";
-            yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(ms));
-            int lv = characterData.lv;
-            yield return GiveExp(characterData, dropExp);
-            if (characterData.lv == lv) continue;
-            //レベルが上昇したとき回復する
-            alivePlayer.status.hp = characterData.status.maxHp;
-            alivePlayer.status.mp = characterData.status.maxMp;
+            foreach (var alivePlayer in aliveMember)
+            {
+                CharacterData characterData = Party.Find(alivePlayer.playerData.CharacterID);
+                string ms = alivePlayer.CharacterName + "は" + dropExp + "けいけんちをかくとく";
+                yield return StartCoroutine(BattleMessage.GetWindow().ShowClick(ms));
+                int lv = characterData.lv;
+                yield return GiveExp(characterData, dropExp);
+                if (characterData.lv == lv) continue;
+                //レベルが上昇したとき回復する
+                alivePlayer.status.hp = characterData.status.maxHp;
+                alivePlayer.status.mp = characterData.status.maxMp;
+            }
         }
 
         //アイテムの獲得
@@ -61,7 +64,7 @@ public class BattleResultPhase : MonoBehaviour
 
         characterData.lv++;
         characterData.status.maxHp += growth.maxHp;
-        characterData.status.maxHp += growth.maxHp;
+        characterData.status.maxMp += growth.maxMp;
         characterData.status.attack += growth.attack;
         characterData.status.deffence += growth.deffence;
         characterData.status.speed += growth.speed;
