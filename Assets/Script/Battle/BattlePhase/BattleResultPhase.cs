@@ -60,6 +60,11 @@ public class BattleResultPhase : MonoBehaviour
         Status growth = characterData.playerData.GrowthRate;
 
         characterData.lv++;
+        characterData.status.maxHp += growth.maxHp;
+        characterData.status.maxHp += growth.maxHp;
+        characterData.status.attack += growth.attack;
+        characterData.status.deffence += growth.deffence;
+        characterData.status.speed += growth.speed;
 
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
         sb.Append($"{characterData.GetName()}は レベル{characterData.lv}に　あがった!");
