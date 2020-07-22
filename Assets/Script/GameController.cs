@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour
         //ゲームデータ保存
         saveData.gameData.playTime = PlayTime();
         saveData.gameData.money = money;
-        saveData.gameData.playerPotion = PlayerMovement.playerPotision;
+        saveData.gameData.playerPotion = PlayerMovement.Instance.transform.position;
         saveData.gameData.sceneName = SceneController.Instance.CurrentScene;
         saveData.gameData.reStartSceneName = reStartSceneName;
         saveData.gameData.reStartpoint = reStartpoint;
