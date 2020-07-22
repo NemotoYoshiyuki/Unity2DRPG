@@ -50,6 +50,9 @@ public class LockDoor : Interactable
             //ドアを開ける
             door.SetActive(false);
 
+            //鍵を消費する
+            InventorySystem.UseItem(keyItem);
+
             //フラグの保存
             VariablePersister.SetBool(key, true);
         }
