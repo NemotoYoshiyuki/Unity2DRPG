@@ -28,7 +28,9 @@ public class TargetFilter
                 target = enemyCharacters;
                 break;
             case TargetUnit.死亡者:
-                target = playerCharacters.Where(x => x.IsDead()).ToList();
+                var allPlayer = BattleController.instance.playerCharacters;
+                target = allPlayer;
+                //target = allPlayer.Where(x => x.IsDead()).ToList();
                 break;
             default:
                 break;
@@ -59,7 +61,8 @@ public class TargetFilter
                 target = enemyCharacters;
                 break;
             case TargetUnit.死亡者:
-                target = playerCharacters.Where(x => x.IsDead()).ToList();
+                var allPlayer = BattleController.instance.playerCharacters;
+                target = allPlayer.Where(x => x.IsDead()).ToList();
                 break;
             default:
                 break;
@@ -103,7 +106,8 @@ public class TargetFilter
                 target = playerCharacters;
                 break;
             case TargetUnit.死亡者:
-                target = enemyCharacters.Where(x => x.IsDead()).ToList();
+                var allEnemy = BattleController.instance.playerCharacters;
+                target = allEnemy.Where(x => x.IsDead()).ToList();
                 break;
             default:
                 break;
@@ -127,7 +131,8 @@ public class TargetFilter
         return new List<BattleCharacter>() { random };
     }
 
-    public BattleCharacter Auto(IReadOnlyCollection<BattleCharacter> target){
+    public BattleCharacter Auto(IReadOnlyCollection<BattleCharacter> target)
+    {
         //ヘイトが高い順に決める
 
         //ヘイトが全て同じ場合ランダム

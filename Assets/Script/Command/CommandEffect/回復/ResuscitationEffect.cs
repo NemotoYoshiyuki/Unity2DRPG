@@ -10,7 +10,12 @@ public class ResuscitationEffect : Effect
 
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
-        int healAmount = target.status.maxHp / healRate;
-        BattleDirectorController.Instance.Revival(target, healAmount);
+        if (!target.IsDead())
+        {
+            BattleDirectorController.Instance.Message("しかし　なにもおきなかった！");
+            return;
+        }
+        var healAmount = (float)target.status.maxHp * ((float)healRate / 100f);
+        BattleDirectorController.Instance.Revival(target, (int)healAmount);
     }
 }

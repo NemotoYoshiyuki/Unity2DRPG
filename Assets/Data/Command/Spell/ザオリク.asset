@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 2
   skillName: "\u30B6\u30AA\u30EA\u30AF"
   useType: 3
-  targetUnit: 2
+  targetUnit: 4
   targetRange: 1
   mp: 15
   description: "\u5473\u65B9\u4E00\u4EBA\u3092\u8607\u751F\u3057\u307E\u3059"
@@ -29,4 +29,4 @@ MonoBehaviour:
       data:
         animationClip: {fileID: 0}
         rate: 100
-        healRate: 100
+        healRate: 50
