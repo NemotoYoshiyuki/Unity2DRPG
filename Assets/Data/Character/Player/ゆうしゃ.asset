@@ -41,6 +41,6 @@ MonoBehaviour:
     spell: {fileID: 11400000, guid: a83d8245301ce8842832924a9a4461f5, type: 2}
   skillDatas: []
   equip:
-    weapon: {fileID: 0}
-    armor: {fileID: 0}
-    accessory: {fileID: 0}
+    weapon: {fileID: 11400000, guid: a516a8a463560ac438113461fa69a357, type: 2}
+    armor: {fileID: 11400000, guid: 9405e97f2c39e32458cc0783fe2d9501, type: 2}
+    accessory: {fileID: 11400000, guid: 111d29a725826154f871b5890eb58fea, type: 2}

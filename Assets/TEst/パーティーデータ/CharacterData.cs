@@ -24,6 +24,9 @@ public class CharacterData
         this.lv = playerData.Status.lv;
         //初期装備
         equip = new Equip();
+        equip.weapon = playerData.Equip.weapon;
+        equip.armor = playerData.Equip.armor;
+        equip.accessory = playerData.Equip.accessory;
     }
 
     public string GetName()

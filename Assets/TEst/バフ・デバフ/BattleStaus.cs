@@ -61,7 +61,7 @@ public class BattleStaus
             return;
         }
         Debug.Log(equip);
-        Debug.Log(equip.GetMaxHp());
+        Debug.Log(equip.GetAttack());
         status.maxHp += equip.GetMaxHp();
         status.maxMp += equip.GetMaxMp();
         status.attack += equip.GetAttack();
