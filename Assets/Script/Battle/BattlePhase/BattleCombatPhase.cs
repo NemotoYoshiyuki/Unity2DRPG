@@ -15,6 +15,8 @@ public class BattleCombatPhase : MonoBehaviour
         //コマンド並び替え
         commandManager.Sort();
 
+        BattleController.instance.OnTrunStart();
+
         foreach (var command in commands)
         {
             BattleCharacter owner = command.owner;

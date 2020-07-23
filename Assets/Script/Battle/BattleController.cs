@@ -22,6 +22,7 @@ public class BattleController : MonoBehaviour
     //バトルトリガー
     public Action onActionBefore = null;
     public Action onDamage = null;
+    public Action onTrunStart = null;
     public Action onTurnEnd = null;
 
     public static BattleController instance;
@@ -152,6 +153,13 @@ public class BattleController : MonoBehaviour
         yield break;
     }
 
+    public void OnTrunStart()
+    {
+        onTrunStart?.Invoke();
+        //statusの更新
+        PlayerStatusUpdate();
+    }
+
     public void OnTurnEnd()
     {
         onTurnEnd?.Invoke();
@@ -177,6 +185,14 @@ public class BattleController : MonoBehaviour
             {
                 characterData.status.hp = 1;
             }
+        }
+    }
+
+    private void PlayerStatusUpdate()
+    {
+        foreach (var item in AlivePlayerCharacters)
+        {
+            item.battleStaus.StatusUpdate();
         }
     }
 
