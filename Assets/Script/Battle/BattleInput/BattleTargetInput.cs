@@ -9,7 +9,7 @@ public class BattleTargetInput : BattleCommandInput
 {
     public Button selectButton;
     public GameObject buttonHolder;
-    private List<Button> selectButtons= new List<Button>();
+    private List<Button> selectButtons = new List<Button>();
 
     public override void Close()
     {
@@ -32,6 +32,7 @@ public class BattleTargetInput : BattleCommandInput
             button.transform.SetParent(buttonHolder.transform);
             selectButtons.Add(button);
         }
+        selectButtons[0].Select();
     }
 
     private void ClearButtons()

@@ -9,6 +9,7 @@ public class SelectButtonBox : BattleCommandInput
     public int displayNumber = 8;//表示件数
     public Button nextButton;
     public Button backButton;
+    public Button returnButton;
     private int page = 1;
     private List<Button> selectButtons = new List<Button>();
 
@@ -29,6 +30,13 @@ public class SelectButtonBox : BattleCommandInput
 
     private void UpdateItems()
     {
+        //表示するボタンがないとき
+        if (selectButtons.Count == 0)
+        {
+            returnButton.Select();
+            return;
+        }
+
         selectButtons.ForEach(x => x.gameObject.SetActive(false));
 
         int min = (displayNumber * page - displayNumber);
@@ -38,6 +46,9 @@ public class SelectButtonBox : BattleCommandInput
         for (int i = min; i < max; i++)
         {
             selectButtons[i].gameObject.SetActive(true);
+
+            //最初のボタンをセレクト状態にする
+            if (min == i) selectButtons[min].Select();
         }
     }
 
