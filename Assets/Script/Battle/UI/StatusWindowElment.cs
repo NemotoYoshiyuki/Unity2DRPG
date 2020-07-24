@@ -9,8 +9,7 @@ public class StatusWindowElment : MonoBehaviour
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI mpText;
-    private string m_hp = string.Empty;
-    private string m_mp = string.Empty;
+    public TextMeshProUGUI condition;
 
     public void Initialized(PlayerCharacter playerCharacter)
     {
@@ -20,16 +19,16 @@ public class StatusWindowElment : MonoBehaviour
 
     private void Update()
     {
-        SetText(playerCharacter.status.hp.ToString(), playerCharacter.status.mp.ToString());
+        SetText(playerCharacter.status.hp, playerCharacter.status.mp);
     }
 
-    private void SetText(string hp, string mp)
+    private void SetText(int hp, int mp)
     {
         //文字列に変化がないとき更新しない
-        if (hp == m_hp & mp == m_mp) return;
-        hpText.SetText("Hp" + hp);
-        mpText.SetText("Mp" + mp);
-        m_hp = hp;
-        m_mp = mp;
+        hpText.text = "Hp" + hp;
+        mpText.text = "Mp" + mp;
+
+        if (hp <= 0) condition.text = "しぼう";
+        else condition.text = string.Empty;
     }
 }
