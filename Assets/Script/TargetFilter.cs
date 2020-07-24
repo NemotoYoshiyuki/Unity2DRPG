@@ -131,12 +131,24 @@ public class TargetFilter
         return new List<BattleCharacter>() { random };
     }
 
-    public BattleCharacter Auto(IReadOnlyCollection<BattleCharacter> target)
+    public BattleCharacter Auto(BattleCommand battleCommand)
     {
+        List<BattleCharacter> target = new List<BattleCharacter>();
         //ヘイトが高い順に決める
 
         //ヘイトが全て同じ場合ランダム
-        return Randam(target)[0];
+
+        var owner = battleCommand.owner;
+        //味方
+        if (owner is PlayerCharacter)
+        {
+            target = PlayerToFilter(battleCommand);
+        }
+        else
+        {
+            target = EnemyToFilter(battleCommand);
+        }
+        return target[0];
     }
 
     public List<BattleCharacter> GetP(BattleCommand battleCommand)

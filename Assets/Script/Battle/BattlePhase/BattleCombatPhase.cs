@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -80,7 +81,7 @@ public class BattleCombatPhase : MonoBehaviour
                 if (TargetUnit.死亡者 != targetUnit && target.IsDead())
                 {
                     TargetFilter targetFilter = new TargetFilter();
-                    newTarget = targetFilter.Auto(targets);
+                    newTarget = targetFilter.Auto(battleCommand);
                 }
 
                 //効果の処理
