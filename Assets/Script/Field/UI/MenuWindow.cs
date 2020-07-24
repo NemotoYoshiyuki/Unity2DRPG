@@ -27,7 +27,7 @@ public class MenuWindow : BaseWindow
         //PlayerMovement.canMove = true;
         PlayerInteract.InteractableEnd();
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {

@@ -10,7 +10,17 @@ public class SideMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        sideButtons[0].Select();
+        StartCoroutine(OnRendering());
+        IEnumerator OnRendering()
+        {
+            //Buttonのレンダリング完了するまで待つ必要がある
+            yield return new WaitForEndOfFrame();
+            //すでにセレクト状態のボタンはSelect()メソッドを使用しても何起きない
+            //そのため、一度ボタンのセレクトを解除する必要がある
+            EventSystem.current.SetSelectedGameObject(null);
+            sideButtons[0].Select();
+            yield return null;
+        }
     }
 
     public void Lock()
