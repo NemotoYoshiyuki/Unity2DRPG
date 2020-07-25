@@ -25,9 +25,9 @@ MonoBehaviour:
     deffence: 12
     speed: 22
     exp: 10
-  dropGold: 0
-  dropRate: 0
-  dropItem: {fileID: 0}
+  dropGold: 40
+  dropRate: 5
+  dropItem: {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
   commands:
   - {fileID: 11400000, guid: c3df78851716f754dafd35ac1e4c665b, type: 2}
   - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}

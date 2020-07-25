@@ -112,7 +112,7 @@ public class BattleResultPhase : MonoBehaviour
         Item item = BattleController.instance.GetRewardItem();
         if (item == null) yield break;
         InventorySystem.AddItem(item);
-        string ms = "たからばこが　おちている！\n" + item + "を　てにいれた";
+        string ms = "たからばこが　おちている！\n" + item.itemName + "を　てにいれた";
         yield return BattleMessage.GetWindow().ShowClick(ms);
         yield break;
     }

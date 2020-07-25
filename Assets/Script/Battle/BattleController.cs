@@ -59,25 +59,25 @@ public class BattleController : MonoBehaviour
         yield return StartCoroutine(battleStart.Do());
 
 
-        //勝敗がつくまでループする
-        while (!Settle())
-        {
-            //コマンド入力
-            yield return StartCoroutine(battleInput.Do());
+        // //勝敗がつくまでループする
+        // while (!Settle())
+        // {
+        //     //コマンド入力
+        //     yield return StartCoroutine(battleInput.Do());
 
-            //逃亡
-            if (escape) yield return StartCoroutine(Escape());
+        //     //逃亡
+        //     if (escape) yield return StartCoroutine(Escape());
 
-            //戦闘
-            yield return StartCoroutine(battleCombat.Combat());
-        }
+        //     //戦闘
+        //     yield return StartCoroutine(battleCombat.Combat());
+        // }
 
-        //敗北した時
-        if (IsLose())
-        {
-            yield return StartCoroutine(battleEnd.GameOver());
-            yield break;
-        }
+        // //敗北した時
+        // if (IsLose())
+        // {
+        //     yield return StartCoroutine(battleEnd.GameOver());
+        //     yield break;
+        // }
 
         //リザルト処理
         yield return StartCoroutine(battleResult.Do());
@@ -145,6 +145,14 @@ public class BattleController : MonoBehaviour
 
     public Item GetRewardItem()
     {
+        foreach (var enemy in enemyCharacters)
+        {
+            float randam = UnityEngine.Random.Range(1, 100);
+            if (enemy.enemyData.DropRate >= randam)
+            {
+                return enemy.enemyData.DropItem;
+            }
+        }
         return null;
     }
 
