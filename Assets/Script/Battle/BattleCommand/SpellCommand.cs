@@ -22,6 +22,12 @@ public class SpellCommand : BattleCommand
         string spellMessage = $"{owner.CharacterName}は　{spellData.skillName}をとなえた"; ;
         BattleDirectorController.Instance.Message(spellMessage);
 
+        //行動開始時のメッセージ表示
+        if (spellData.actionMessage != string.Empty)
+        {
+            string actionMessage = spellData.actionMessage;
+            BattleDirectorController.Instance.Message(actionMessage);
+        }
 
         if (owner.status.mp <= spellMp)
         {

@@ -24,6 +24,14 @@ public class SkillCommand : BattleCommand
     public override IEnumerator Execution()
     {
         int skillMp = skillData.mp;
+
+        if (skillData.actionMessage != string.Empty)
+        {
+            string actionMessage = owner.CharacterName + skillData.actionMessage;
+            BattleDirectorController.Instance.Message(actionMessage);
+        }
+
+
         if (owner.status.mp <= skillMp)
         {
             canEffect = false;

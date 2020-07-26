@@ -28,6 +28,13 @@ public class ItemCommand : BattleCommand
         BattleDirectorController.Instance.Message(itemMessage);
         //yield return StartCoroutine(message.ShowAuto(itemMessage));
 
+        //行動開始時のメッセージ表示
+        if (item.actionMessage != string.Empty)
+        {
+            string actionMessage = item.actionMessage;
+            BattleDirectorController.Instance.Message(actionMessage);
+        }
+
         InventorySystem.UseItem(item);
 
         yield break;

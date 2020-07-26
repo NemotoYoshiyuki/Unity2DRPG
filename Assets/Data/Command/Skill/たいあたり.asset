@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84120fa2659d9db49a3e12070d47bc29, type: 3}
   m_Name: "\u305F\u3044\u3042\u305F\u308A"
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
+  actionMessage: "\u306E\u3053\u3046\u3052\u304D"
   id: 0
   skillName: "\u305F\u3044\u3042\u305F\u308A"
   useType: 0
@@ -27,11 +29,10 @@ MonoBehaviour:
     00000000:
       type: {class: PhysicalAttackEffect, ns: , asm: Assembly-CSharp}
       data:
-        animationClip: {fileID: 0}
         damageRate: 1.1
         critical: 0
         criticalRate: 0
         hitRate: 100
         successRate: 100
-        successMessage: "\u306E\u3053\u3046\u3052\u304D"
+        successMessage: 
         failureMessage: 

@@ -10,7 +10,6 @@ public class PhysicalAttackEffect : Effect
     public int hitRate = 100;//命中率
     public int successRate = 100;//成功率
     public string successMessage = string.Empty;//成功時メッセージ
-    //public string successMessage = "の攻撃";//成功時メッセージ
     public string failureMessage;//失敗時メッセージ
 
     private BattleDirectorController logic;
