@@ -69,7 +69,11 @@ public class BattleCombatPhase : MonoBehaviour
 
         //効果の範囲が全体の場合
         if (battleCommand.GetTargetType().targetRange == TargetRange.全体)
-            BattleDirectorController.Instance.AnimationPlay(playableAsset);
+        {
+            //敵キャラクタの行動はアニメション表示をしない
+            if (owner is PlayerCharacter)
+                BattleDirectorController.Instance.AnimationPlay(playableAsset);
+        }
 
         foreach (var effect in effects)
         {
@@ -86,7 +90,10 @@ public class BattleCombatPhase : MonoBehaviour
 
                 //効果の処理
                 if (battleCommand.GetTargetType().targetRange == TargetRange.単体)
-                    BattleDirectorController.Instance.AnimationPlay(playableAsset, newTarget.transform);
+                    //敵キャラクタの行動はアニメション表示をしない
+                    if (owner is PlayerCharacter)
+                        BattleDirectorController.Instance.AnimationPlay(playableAsset, newTarget.transform);
+
                 effect.Use(owner, newTarget);
                 //演出を再生する
                 yield return (BattleDirectorController.Instance.Play());
