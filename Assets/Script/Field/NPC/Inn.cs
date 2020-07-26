@@ -59,10 +59,6 @@ public class Inn : Interactable
 
     public void Stay()
     {
-        //var party = PlayerParty.Instance.partyMember;
-        //foreach (var item in party)
-        //{
-        //    item.Recover(9999);
-        //}
+        Party.FullRecovery();
     }
 }
