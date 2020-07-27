@@ -20,6 +20,7 @@ public class BattleCharacter : MonoBehaviour
     //イベント
     public Action onActionBefore = null;
     public Action onActionAfter = null;
+    public Action onDamage = null;
 
     public virtual string CharacterName { get; set; }
 

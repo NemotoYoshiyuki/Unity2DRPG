@@ -107,7 +107,9 @@ public class BattleDirectorController : MonoBehaviour
             return;
         }
 
-        BattleController.instance.onDamage?.Invoke();
+        //こうげきを受けたときに発動する効果
+        target.onDamage?.Invoke();
+        //BattleController.instance.onDamage?.Invoke();
     }
 
     public void Damage(BattleCharacter target, int damage, string message)

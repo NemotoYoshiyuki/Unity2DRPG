@@ -21,7 +21,8 @@ public class StatusEffect
         this.owner = owner;
 
         owner.onActionBefore += OnActionBefore;
-        BattleController.instance.onDamage += OnDamage;
+        //BattleController.instance.onDamage += OnDamage;
+        owner.onDamage += OnDamage;
         BattleController.instance.onTurnEnd += OnTurnEnd;
     }
 
@@ -48,7 +49,8 @@ public class StatusEffect
     public virtual void Refresh()
     {
         owner.onActionBefore -= OnActionBefore;
-        BattleController.instance.onDamage -= OnDamage;
+        //BattleController.instance.onDamage -= OnDamage;
+        owner.onDamage -= OnDamage;
         BattleController.instance.onTurnEnd -= OnTurnEnd;
     }
 
