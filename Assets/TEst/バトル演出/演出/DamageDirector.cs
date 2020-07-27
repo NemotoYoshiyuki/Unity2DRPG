@@ -25,7 +25,6 @@ public class DamageDirector : BattleDirector
     {
         //Hpを減らす
         target.ReceiveDamage(damage);
-
         //メッセージ表示
         if (message != null)
         {

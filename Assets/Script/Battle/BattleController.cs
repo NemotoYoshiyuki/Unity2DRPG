@@ -105,7 +105,8 @@ public class BattleController : MonoBehaviour
     public bool IsEscapeSuccess()
     {
         //30％で逃走が成功
-        return Utility.CheckRate(30);
+        //return Utility.CheckRate(30);
+        return Utility.CheckRate(0);
     }
 
     public void OnEscape()
@@ -168,15 +169,16 @@ public class BattleController : MonoBehaviour
         PlayerStatusUpdate();
     }
 
-    public void OnTurnEnd()
+    public IEnumerator OnTurnEnd()
     {
         onTurnEnd?.Invoke();
-
+        yield return BattleDirectorController.Instance.Play();
         //バフ・デバフの更新
         PlayerBuffUpdate();
         EnemyBuffUpdate();
 
         //commandManager.Clea();
+        yield break;
     }
 
     public void OnBattleEnd()

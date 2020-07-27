@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: "\u901A\u5E38\u653B\u6483"
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
+  actionMessage: "\u306E\u3000\u3053\u3046\u3052\u304D"
   id: 0
-  skillName: 
-  useType: 0
+  skillName: "\u901A\u5E38\u653B\u6483"
+  useType: 1
   targetUnit: 3
   targetRange: 1
   mp: 0
@@ -33,5 +34,5 @@ MonoBehaviour:
         criticalRate: 32
         hitRate: 100
         successRate: 100
-        successMessage: "\u306E\u3053\u3046\u3052\u304D"
+        successMessage: 
         failureMessage: 

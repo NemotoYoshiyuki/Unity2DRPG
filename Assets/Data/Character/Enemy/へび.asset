@@ -29,5 +29,4 @@ MonoBehaviour:
   dropRate: 10
   dropItem: {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
   commands:
-  - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
-  - {fileID: 11400000, guid: 6d7157d44afd1c942af752e38818bf7d, type: 2}
+  - {fileID: 11400000, guid: 941714bcc2f9b4c4caa19e9fc73a8d1c, type: 2}

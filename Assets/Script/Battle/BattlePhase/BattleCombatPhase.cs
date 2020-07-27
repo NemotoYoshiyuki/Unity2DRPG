@@ -40,7 +40,7 @@ public class BattleCombatPhase : MonoBehaviour
         }
 
         //ターンエンド処理
-        BattleController.instance.OnTurnEnd();
+        yield return BattleController.instance.OnTurnEnd();
         commandManager.Clea();
 
         yield break;

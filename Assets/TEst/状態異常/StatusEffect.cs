@@ -47,9 +47,9 @@ public class StatusEffect
 
     public virtual void Refresh()
     {
-        owner.onActionBefore += OnActionBefore;
-        BattleController.instance.onDamage += OnDamage;
-        BattleController.instance.onTurnEnd += OnTurnEnd;
+        owner.onActionBefore -= OnActionBefore;
+        BattleController.instance.onDamage -= OnDamage;
+        BattleController.instance.onTurnEnd -= OnTurnEnd;
     }
 
     private void CountDown()

@@ -17,11 +17,12 @@ public class Poison : StatusEffect
 
     public override void OnTurnEnd()
     {
-        //毒ダメージ
-        int damage = 100;
-        BattleDirectorController.Instance.Damage(owner, damage, keepMessage);
-
         //ターン経過で解消
         base.OnTurnEnd();
+
+        if (counter < 0) return;
+        //毒ダメージ(最大HPの10%)
+        float damage = owner.status.maxHp * 0.1f;
+        BattleDirectorController.Instance.Damage(owner, (int)damage, keepMessage);
     }
 }

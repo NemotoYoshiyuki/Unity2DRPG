@@ -29,6 +29,7 @@ public class StatusWindowElment : MonoBehaviour
         mpText.text = "Mp" + mp;
 
         if (hp <= 0) condition.text = "しぼう";
+        else if (playerCharacter.GetStatusEffect() != null) condition.text = playerCharacter.GetStatusEffect().alimentName;
         else condition.text = string.Empty;
     }
 }

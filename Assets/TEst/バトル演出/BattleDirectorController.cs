@@ -112,7 +112,7 @@ public class BattleDirectorController : MonoBehaviour
 
     public void Damage(BattleCharacter target, int damage, string message)
     {
-        Hit(target);
+        //Hit(target);
         Add(new DamageDirector(target, damage, message));
 
         if (target.status.hp < damage)

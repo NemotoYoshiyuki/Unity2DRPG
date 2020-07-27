@@ -60,8 +60,8 @@ public class BattleStaus
         {
             return;
         }
-        Debug.Log(equip);
-        Debug.Log(equip.GetAttack());
+        //Debug.Log(equip);
+        //Debug.Log(equip.GetAttack());
         status.maxHp += equip.GetMaxHp();
         status.maxMp += equip.GetMaxMp();
         status.attack += equip.GetAttack();
@@ -105,7 +105,7 @@ public class BattleStaus
     {
         //一番大きな値を採用する　乗算
         Status 強化補正値 = Get強化補正値();
-        Debug.Log(強化補正値.maxHp);
+        //Debug.Log(強化補正値.maxHp);
         status.maxHp += 強化補正値.maxHp;
         status.maxMp += 強化補正値.maxMp;
         status.attack += 強化補正値.attack;

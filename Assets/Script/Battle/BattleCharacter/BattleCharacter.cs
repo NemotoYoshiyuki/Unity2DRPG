@@ -57,7 +57,7 @@ public class BattleCharacter : MonoBehaviour
     public void ReceiveDamage(int damage)
     {
         status.hp = Mathf.Clamp(status.hp - damage, 0, status.maxHp);
-        if (IsDead()) OnDead();
+        //if (IsDead()) OnDead();
     }
 
     //状態異常にする
@@ -68,6 +68,8 @@ public class BattleCharacter : MonoBehaviour
 
     public void RemoveStatusEffect()
     {
+        Debug.Log(battleStaus.statusEffect);
+        this.battleStaus.statusEffect.Refresh();
         this.battleStaus.statusEffect = null;
     }
 
