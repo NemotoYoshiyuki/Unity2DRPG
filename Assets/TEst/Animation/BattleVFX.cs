@@ -57,7 +57,6 @@ public class BattleVFX : MonoBehaviour
         Animator animator = VFX.GetComponent<Animator>();
         var animationBinding = VFX.playableAsset.outputs.First(c => c.streamName == "Animation Track");
         VFX.SetGenericBinding(animationBinding.sourceObject, animator);
-        Debug.Log(animationBinding);
 
         AudioSource audioSource = VFX.GetComponent<AudioSource>();
         var audioSourceBinding = VFX.playableAsset.outputs.First(c => c.streamName == "Audio Track");

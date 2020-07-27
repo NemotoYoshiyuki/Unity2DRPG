@@ -8,15 +8,14 @@ public class RemoveStatusEffect : Effect
 
     public override void Use(BattleCharacter owner, BattleCharacter target)
     {
-        //状態異常を解除できない、失敗した
-        if (target.GetStatusEffect() == null)
-        {
-            BattleDirectorController.Instance.Message("なにもおきなかった");
-            return;
-        }
-        else if (target.GetStatusEffect().id == (int)StatusEffectType.全て || target.GetStatusEffect().id == (int)effectType)
+        if (effectType == StatusEffectType.全て || target.GetStatusEffect().id == (int)effectType)
         {
             BattleDirectorController.Instance.RemoveStatusEffect(target);
+        }
+        else
+        {
+            //状態異常を解除できない、失敗した
+            BattleDirectorController.Instance.Message("なにもおきなかった");
         }
     }
 }
