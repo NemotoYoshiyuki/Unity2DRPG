@@ -84,8 +84,9 @@ function M.findNPC(name)
 	return luaEvent.FindNPC(name)
 end
 
-function M.battle(id)
-	luaEvent.Battle(id)
+function M.battle(id,canEscape)
+	canEscape = canEscape or false
+	luaEvent.Battle(id,canEscape)
 	coroutine.yield()
 end
 

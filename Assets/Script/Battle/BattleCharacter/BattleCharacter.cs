@@ -69,6 +69,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void RemoveStatusEffect()
     {
+        if (GetStatusEffect() == null) return;
         Debug.Log(battleStaus.statusEffect);
         this.battleStaus.statusEffect.Refresh();
         this.battleStaus.statusEffect = null;

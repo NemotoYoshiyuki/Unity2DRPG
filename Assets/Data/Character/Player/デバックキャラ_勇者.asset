@@ -37,8 +37,10 @@ MonoBehaviour:
   spellDatas:
   - lv: 0
     spell: {fileID: 11400000, guid: 697b75c2f297b9b45ab1609af2f75430, type: 2}
-  - lv: 2
-    spell: {fileID: 11400000, guid: 697b75c2f297b9b45ab1609af2f75430, type: 2}
+  - lv: 1
+    spell: {fileID: 11400000, guid: 3d82585c07b1a5f40a0c844440ee0486, type: 2}
+  - lv: 1
+    spell: {fileID: 11400000, guid: 18922217b03577c4dbb76caee0e45414, type: 2}
   skillDatas:
   - lv: 1
     skill: {fileID: 11400000, guid: 6a099cf3e75957f428ff4b507bec6b96, type: 2}

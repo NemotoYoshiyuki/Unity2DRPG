@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ee8cd5c0c15944eafa0f8a1c79e4d7, type: 3}
   m_Name: "\u72B6\u614B\u7570\u5E38\u89E3\u9664\u546A\u6587"
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
+  actionMessage: 
   id: 0
   skillName: "\u72B6\u614B\u7570\u5E38\u89E3\u9664"
-  useType: 0
-  targetUnit: 3
+  useType: 3
+  targetUnit: 2
   targetRange: 1
   mp: 0
   description: "\u72B6\u614B\u7570\u5E38\u89E3\u9664\u3059\u308B"
@@ -26,4 +28,4 @@ MonoBehaviour:
     00000000:
       type: {class: RemoveStatusEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectType: 99
+        effectType: 1

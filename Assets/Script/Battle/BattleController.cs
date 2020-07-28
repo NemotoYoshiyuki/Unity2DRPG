@@ -9,6 +9,7 @@ public class BattleController : MonoBehaviour
     public List<PlayerCharacter> playerCharacters;
     public List<EnemyCharacter> enemyCharacters;
 
+    [HideInInspector] public bool canEscape;
     private bool escape = false;
 
     //バトルフェイズ
@@ -99,7 +100,7 @@ public class BattleController : MonoBehaviour
 
     public bool CanEscape()
     {
-        return true;
+        return this.canEscape;
     }
 
     public bool IsEscapeSuccess()

@@ -14,6 +14,7 @@ public class EncounterController : MonoBehaviour
     public Sprite backGroundImage;
     public AudioClip bgm;
     public List<EncountEnemy> enemyGroups;
+    public bool canEscape = true;
 
 
     public static EncounterController Instance;
@@ -46,8 +47,9 @@ public class EncounterController : MonoBehaviour
         encounterSteps = Random.Range(10, 50);
     }
 
-    public static void Encount(List<EncountEnemy> enemies, Sprite backGroundImage = null, AudioClip bgm = null)
+    public static void Encount(List<EncountEnemy> enemies, Sprite backGroundImage = null, AudioClip bgm = null, bool canEscape = true)
     {
+        Instance.canEscape = canEscape;
         Instance.backGroundImage = backGroundImage;
         Instance.enemyGroups = enemies;
 
@@ -56,10 +58,10 @@ public class EncounterController : MonoBehaviour
         SceneController.Transition("Battle");
     }
 
-    public static void Encount(int id)
+    public static void Encount(int id, bool canEscape = true)
     {
         EnemyData enemyData = Instance.enemyMasterData.characterData.First(x => x.Id == id);
         var enemyGroups = new List<EncountEnemy>() { new EncountEnemy() { enemy = enemyData, posiiton = 0 } };
-        Encount(enemyGroups);
+        Encount(enemyGroups, canEscape: canEscape);
     }
 }

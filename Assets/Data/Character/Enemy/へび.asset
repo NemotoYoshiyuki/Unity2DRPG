@@ -21,7 +21,7 @@ MonoBehaviour:
     hp: 8
     maxMp: 8
     mp: 8
-    attack: 6
+    attack: 100
     deffence: 6
     speed: 6
     exp: 8

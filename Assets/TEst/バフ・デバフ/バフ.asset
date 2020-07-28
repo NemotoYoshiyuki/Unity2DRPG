@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: "\u30D0\u30D5"
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
+  actionMessage: 
   id: 0
   skillName: "\u30D0\u30D5"
-  useType: 0
-  targetUnit: 1
+  useType: 1
+  targetUnit: 2
   targetRange: 1
   mp: 0
   description: "\u30D0\u30D5"
@@ -27,6 +28,6 @@ MonoBehaviour:
     00000000:
       type: {class: AddBuffEffect, ns: , asm: Assembly-CSharp}
       data:
-        statusType: 0
-        count: 0
-        value: 0
+        statusType: 4
+        count: 2
+        value: -3

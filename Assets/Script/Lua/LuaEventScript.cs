@@ -138,12 +138,12 @@ public class LuaEventScript : MonoBehaviour
     }
 
     //戦闘操作
-    public void Battle(int id)
+    public void Battle(int id, bool canEscape = true)
     {
         StartCoroutine(enumerator());
         IEnumerator enumerator()
         {
-            EncounterController.Encount(id);
+            EncounterController.Encount(id, canEscape);
             BattleController.isBattle = true;
             yield return new WaitUntil(() => BattleController.isBattle == false);
             LuaScript.instance.Resume();

@@ -18,6 +18,7 @@ public class BattleSetUpPhase : MonoBehaviour
         EncounterController encounter = EncounterController.Instance;
         SetBackGroundImage(encounter.backGroundImage);
         SetPlayAudio(encounter.bgm);
+        SetBattleSetting(encounter.canEscape);
         GeneratePlayer();
         GenerateEnemy(encounter.enemyGroups);
         yield break;
@@ -40,6 +41,11 @@ public class BattleSetUpPhase : MonoBehaviour
     {
         enemyParty.GenerateEnemy(enemies);
         BattleController.instance.enemyCharacters = enemyParty.EnemyCharacters;
+    }
+
+    private void SetBattleSetting(bool canEscape)
+    {
+        BattleController.instance.canEscape = canEscape;
     }
 
     private void SetBackGroundImage(Sprite image)

@@ -9,6 +9,7 @@ public class BattleMainInput : BattleCommandInput
 
     void Start()
     {
+        Debug.Log(BattleController.instance.CanEscape());
         if (!BattleController.instance.CanEscape())
         {
             EscapeButton.interactable = false;

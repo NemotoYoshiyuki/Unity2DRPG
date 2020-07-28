@@ -1,10 +1,10 @@
 ﻿return function ()
 say("よくぞここまでたどり着いた\nだがお前たちはここで消えてもらう")
-battle(99)
+battle(99,false)
 wait(1)
 say("これで勝ったと思うなよ")
 say("竜王は真の正体を表した")
-battle(100)
+battle(100,false)
 --シーンの読み込みが完了するまで待機
 wait(2)
 setFlag("竜王をたおした",true)
