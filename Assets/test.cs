@@ -12,7 +12,7 @@ public class test : MonoBehaviour
         int c = 0;
         for (int i = 0; i < 10000; i++)
         {
-            if (BattleFormula._CheckRate(rate))
+            if (BattleFormula.CheckRate(rate))
             {
                 c++;
             }

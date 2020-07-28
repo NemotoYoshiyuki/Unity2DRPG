@@ -19,7 +19,7 @@ public class PhysicalAttackEffect : Effect
         logic = BattleDirectorController.Instance;
 
         //成功判定
-        bool m_success = BattleFormula._CheckRate(successRate);
+        bool m_success = BattleFormula.CheckRate(successRate);
         if (!m_success)
         {
             //失敗メッセージを表示
@@ -28,7 +28,7 @@ public class PhysicalAttackEffect : Effect
         }
 
         //命中
-        bool m_hit = BattleFormula._CheckRate(hitRate);
+        bool m_hit = BattleFormula.CheckRate(hitRate);
         if (!m_hit)
         {
             //Miss
@@ -40,7 +40,7 @@ public class PhysicalAttackEffect : Effect
         damage = Mathf.RoundToInt(damage * damageRate);
 
         //クリティカル
-        bool m_critical = BattleFormula._CheckRate(1);
+        bool m_critical = BattleFormula.CheckRate(1);
         if (m_critical)
         {
             damage = Mathf.RoundToInt(damage * 1.5f);
