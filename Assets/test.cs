@@ -6,17 +6,17 @@ using System;
 
 public class test : MonoBehaviour
 {
+    public int rate;
     void Start()
     {
-        int i = 11;
-        Debug.Log((i.ToString()));
-        bool b = true;
-        Debug.Log(b.ToString());
-
-        string ii = "11";
-        int ci = Convert.ToInt32(ii);
-        Debug.Log(ci);
-        bool cb = Convert.ToBoolean("true");
-        Debug.Log(cb);
+        int c = 0;
+        for (int i = 0; i < 10000; i++)
+        {
+            if (BattleFormula._CheckRate(rate))
+            {
+                c++;
+            }
+        }
+        Debug.Log(c);
     }
 }

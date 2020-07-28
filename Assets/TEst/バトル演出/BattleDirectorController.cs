@@ -163,7 +163,7 @@ public class BattleDirectorController : MonoBehaviour
     public bool IsAvoidance(BattleCharacter character)
     {
         //敵の回避率を参照
-        return BattleFormula._CheckRate(1);
+        return BattleFormula.CheckRate(1);
     }
 
     private void Dead(BattleCharacter character)

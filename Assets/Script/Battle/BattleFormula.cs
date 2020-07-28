@@ -22,15 +22,6 @@ public class BattleFormula
             return false;
     }
 
-    public static bool _CheckRate(int rate)
-    {
-        rate = 100 - rate;
-        if (rate < UnityEngine.Random.Range(0, 100))
-            return true;
-        else
-            return false;
-    }
-
     public static bool CheckRate(float rate)
     {
         if ((UnityEngine.Random.value * 100.0f) < rate)
