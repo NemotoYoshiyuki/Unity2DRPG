@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0491fa4c67aca414e8c69d55285a7eac, type: 3}
-  m_Name: "\u3069\u3046\u306E\u3051\u3093"
+  m_Name: "\u3066\u3064\u306E\u3051\u3093"
   m_EditorClassIdentifier: 
   id: 0
-  name: "\u3069\u3046\u306E\u3051\u3093"
+  name: "\u3066\u3064\u306E\u3051\u3093"
   maxHp: 0
   maxMp: 0
-  attack: 10
+  attack: 20
   deffence: 0
   speed: 0
-  description: "\u9285\u88FD\u306E\u5263"
+  description: "\u9244\u88FD\u306E\u5263"

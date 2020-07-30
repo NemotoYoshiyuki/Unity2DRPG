@@ -43,7 +43,13 @@ public class CharacterData
     public Status GetStatus()
     {
         //装備の補正を含んだステータスを返す
-        return status;
+        Status m_status = status.Copy();
+        m_status.maxHp += equip.GetMaxHp();
+        m_status.maxMp += equip.GetMaxMp();
+        m_status.attack += equip.GetAttack();
+        m_status.deffence += equip.GetDeffence();
+        m_status.speed += equip.GetSpeed();
+        return m_status;
     }
 
     public void FullRecover()

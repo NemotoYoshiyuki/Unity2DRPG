@@ -66,4 +66,9 @@ public class Equip
 
         return weaponValue + armorValue + accessoryValue;
     }
+
+    public Equip Copy()
+    {
+        return (Equip)this.MemberwiseClone();
+    }
 }

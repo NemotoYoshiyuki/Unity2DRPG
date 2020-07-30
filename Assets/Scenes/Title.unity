@@ -2272,6 +2272,7 @@ MonoBehaviour:
   backGroundImage: {fileID: 0}
   bgm: {fileID: 0}
   enemyGroups: []
+  canEscape: 1
 --- !u!4 &843536629
 Transform:
   m_ObjectHideFlags: 0

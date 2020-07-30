@@ -6,6 +6,20 @@ using System.Linq;
 [System.Serializable]
 public class InventorySystem : MonoBehaviour
 {
+
+    public class EquipmentItem
+    {
+        public Equipment equipment;
+        //装備しているCharacterのID
+        public int characterId = -1;
+
+        public EquipmentItem(Equipment equipment)
+        {
+            this.equipment = equipment;
+            this.characterId = -1;
+        }
+    }
+
     [SerializeField] private ItemMasterData itemMasterData;
     [SerializeField] private List<Item> itemDatas = new List<Item>();
     [SerializeField] private List<Equipment> equipments = new List<Equipment>();
