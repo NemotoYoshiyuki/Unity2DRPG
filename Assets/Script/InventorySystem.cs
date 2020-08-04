@@ -10,6 +10,8 @@ public class InventorySystem : MonoBehaviour
     public class EquipmentItem
     {
         public Equipment equipment;
+        //装備アイテムのID
+        public int equipmentId;
         //装備しているCharacterのID
         public int characterId = -1;
 

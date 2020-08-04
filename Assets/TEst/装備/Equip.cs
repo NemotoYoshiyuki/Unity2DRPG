@@ -13,10 +13,12 @@ public class Equip
     {
         this.weapon = weapon;
     }
+
     public void EquipArmor(Armor armor)
     {
         this.armor = armor;
     }
+
     public void EquipAccessory(Accessory accessory)
     {
         this.accessory = accessory;
