@@ -12,6 +12,7 @@ public class Item : Command
     public TargetRange targetRange;
     public int mp;
     public string description;
+    public int price;
 
     //スキルの効果
     [SerializeReference, SubclassSelector] public List<Effect> effects;

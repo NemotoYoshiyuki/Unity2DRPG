@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\u30D1\u30F3"
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
+  actionMessage: 
   id: 3
   itemName: "\u30D1\u30F3"
   useType: 3
@@ -20,6 +21,7 @@ MonoBehaviour:
   targetRange: 1
   mp: 0
   description: "\u4F53\u529B\u309215\u56DE\u5FA9\u3059\u308B"
+  price: 100
   effects:
   - id: 0
   references:

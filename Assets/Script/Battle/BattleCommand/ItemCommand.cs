@@ -35,7 +35,7 @@ public class ItemCommand : BattleCommand
             BattleDirectorController.Instance.Message(actionMessage);
         }
 
-        InventorySystem.UseItem(item);
+        InventorySystem.Remove(item);
 
         yield break;
     }

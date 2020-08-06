@@ -102,12 +102,12 @@ public class InventorySystem : MonoBehaviour
         Instance.itemDatas.Add(itemData);
     }
 
-    public static void UseItem(Item itemData)
+    public static void Remove(Item itemData)
     {
         Instance.itemDatas.Remove(itemData);
     }
 
-    public static void UseItem(int id)
+    public static void Remove(int id)
     {
         Item itemData = Instance.itemMasterData.Get().FirstOrDefault(x => x.id == id);
         Instance.itemDatas.Remove(itemData);

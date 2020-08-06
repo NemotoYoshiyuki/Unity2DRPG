@@ -113,7 +113,7 @@ public class LuaEventScript : MonoBehaviour
 
     public void GainItem(int id)
     {
-        InventorySystem.UseItem(id);
+        InventorySystem.Remove(id);
     }
 
     public bool HasItem(int id)

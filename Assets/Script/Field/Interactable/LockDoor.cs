@@ -57,7 +57,7 @@ public class LockDoor : Interactable
             triggerColider.enabled = false;
 
             //鍵を消費する
-            InventorySystem.UseItem(keyItem);
+            InventorySystem.Remove(keyItem);
 
             //フラグの保存
             VariablePersister.SetBool(key, true);

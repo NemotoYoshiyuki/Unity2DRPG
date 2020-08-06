@@ -150,7 +150,7 @@ public class FieldEffect : MonoBehaviour
     private async void ItemExecut(Item itemData, CharacterData taregt)
     {
         //アイテムの消費
-        InventorySystem.UseItem(itemData);
+        InventorySystem.Remove(itemData);
 
         List<Effect> commandEffect = itemData.effects;
         foreach (var item in commandEffect)
