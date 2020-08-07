@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
                 UpdateAnimator(direction);
             }
 
-            bool canWalk = Move((int)inputAxis.x, (int)inputAxis.y);
+            bool canWalk = _Move((int)inputAxis.x, (int)inputAxis.y);
             if (canWalk)
             {
                 playerPotision = gameObject.transform.position;
@@ -123,6 +123,9 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawLine(start - v, end - v, Color.blue, 1f);
         //boxCollider.enabled = true;
 
+        //何かと衝突
+        if (hit.collider?.isTrigger == false) return false;
+        Debug.Log(hit.collider.gameObject.name);
 
         //エンカウントエリアを取ってしまう
         if (hit.transform == null)
@@ -136,6 +139,29 @@ public class PlayerMovement : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public bool _Move(int xDir, int yDir)
+    {
+        Vector2 start = transform.position;
+        Vector2 end = start + new Vector2(xDir * movingdistance, yDir * movingdistance);
+
+        //boxCollider.enabled = false;
+        //x方向は少し下にRayを飛ばす
+        Vector2 v = new Vector2(0, 0.1f);
+        //自分と同一のレイヤーとEncountArea以外のすべてを判定する
+        LayerMask mask = ~(1 << gameObject.layer | 1 << LayerMask.NameToLayer("EncountArea"));
+        RaycastHit2D[] hits = new RaycastHit2D[3];
+        var hitNum = Physics2D.LinecastNonAlloc(start - v, end - v, hits, mask);
+        Debug.DrawLine(start - v, end - v, Color.blue, 1f);
+        //boxCollider.enabled = true;
+
+        foreach (var hit in hits)
+        {
+            if (hit.collider?.isTrigger == false) return false;
+        }
+        smoothMovement = StartCoroutine(SmoothMovement(end));
+        return true;
     }
 
     public void CancelMove()
