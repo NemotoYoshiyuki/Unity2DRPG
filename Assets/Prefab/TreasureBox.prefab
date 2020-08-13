@@ -122,6 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e16ff3012cb3041a792c902d39e0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
+  UniqueID: 0
+  id: 0
   enptyImage: {fileID: 6271433347336348431, guid: 84475f7729c1d5540a9c25953790f1d7,
     type: 3}
+  money: 0
+  item: {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
+  equipment: {fileID: 0}

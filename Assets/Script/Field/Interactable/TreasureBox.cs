@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class TreasureBox : Interactable
 {
-    [Header("宝箱の識別番号")]
-    [SerializeField] private ulong id;
-
     public Sprite enptyImage;//宝箱を開けた時置き換えられる画像
 
     [Header("宝箱の中身")]
@@ -18,13 +16,11 @@ public class TreasureBox : Interactable
 
     private bool isOpen = false;
     private string sceneName => SceneController.Instance.CurrentScene;
-    private string key => $"{sceneName}_宝箱を開けた_{id}";
+    private string key => $"{sceneName}_宝箱[{transform.position.x},{transform.position.y}]を開けた";
 
     private void Start()
     {
         gameObject.layer = LayerMask.NameToLayer("Interactable");
-        id = UnityEditor.GlobalObjectId.GetGlobalObjectIdSlow(gameObject).targetObjectId;
-
         if (!VariablePersister.Exist(key)) return;
         isOpen = VariablePersister.GetBool(key);
 

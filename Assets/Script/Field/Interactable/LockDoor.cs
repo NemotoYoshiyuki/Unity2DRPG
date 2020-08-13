@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class LockDoor : Interactable
 {
@@ -10,15 +11,13 @@ public class LockDoor : Interactable
 
     private Collider2D triggerColider;
     private bool isOpen;
-    private ulong id;
     private string sceneName => SceneController.Instance.CurrentScene;
-    private string key => $"{sceneName}_ドアを開けた_{id}";
+    private string key => $"{sceneName}＿扉[{transform.position.x},{transform.position.y}]を開けた";
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.layer = LayerMask.NameToLayer("Interactable");
-        id = UnityEditor.GlobalObjectId.GetGlobalObjectIdSlow(gameObject).targetObjectId;
         triggerColider = GetComponent<Collider2D>();
 
         if (!VariablePersister.Exist(key)) return;
