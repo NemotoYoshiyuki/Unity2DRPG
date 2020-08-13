@@ -152,16 +152,28 @@ public class PlayerMovement : MonoBehaviour
         //自分と同一のレイヤーとEncountArea以外のすべてを判定する
         LayerMask mask = ~(1 << gameObject.layer | 1 << LayerMask.NameToLayer("EncountArea"));
         RaycastHit2D[] hits = new RaycastHit2D[3];
-        var hitNum = Physics2D.LinecastNonAlloc(start - v, end - v, hits, mask);
+        BoxCollider2D[] result = new BoxCollider2D[3];
+        //var hitNum = Physics2D.LinecastNonAlloc(start - v, end - v, hits, mask);
+        Vector2 size = new Vector2(0.9f, 0.5f);
+        Vector2 size0 = new Vector2(0.9f, 0.9f);
+        //var hitNum = Physics2D.BoxCastNonAlloc(start, size, 0, direction, hits, 0.5f, mask);
+        var hitNum = Physics2D.OverlapBoxNonAlloc(gameObject.transform.position + ((Vector3)direction * 0.5f), size0, 0, result, mask);
+
         Debug.DrawLine(start - v, end - v, Color.blue, 1f);
         //boxCollider.enabled = true;
 
-        foreach (var hit in hits)
+        foreach (var hit in result)
         {
-            if (hit.collider?.isTrigger == false) return false;
+            //Debug.Log(hit.transform.gameObject.name);
+            if (hit?.isTrigger == false) return false;
         }
         smoothMovement = StartCoroutine(SmoothMovement(end));
         return true;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(gameObject.transform.position + ((Vector3)direction * 0.5f), new Vector3(0.9f, 0.9f, 0f));
     }
 
     public void CancelMove()
