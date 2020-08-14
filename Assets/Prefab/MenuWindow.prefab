@@ -720,10 +720,10 @@ RectTransform:
   m_Father: {fileID: 7503988977621528550}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240.5, y: -440.625}
-  m_SizeDelta: {x: 481, y: 176.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3201670142013372420
 CanvasRenderer:
@@ -5629,10 +5629,10 @@ RectTransform:
   m_Father: {fileID: 7503988977621528550}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240.5, y: -616.875}
-  m_SizeDelta: {x: 481, y: 176.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7503988977459739216
 CanvasRenderer:
@@ -6194,10 +6194,10 @@ RectTransform:
   m_Father: {fileID: 7503988977621528550}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240.5, y: -88.125}
-  m_SizeDelta: {x: 481, y: 176.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7503988977832353775
 CanvasRenderer:
@@ -6409,7 +6409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7503988977942273641
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6625,6 +6625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7503988978022724367}
   - component: {fileID: 7503988978022724364}
+  - component: {fileID: 6672765612147582684}
   m_Layer: 5
   m_Name: List
   m_TagString: Untagged
@@ -6646,10 +6647,10 @@ RectTransform:
   m_Father: {fileID: 7503988977322279167}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0024414, y: 2}
-  m_SizeDelta: {x: 1438.5, y: 1076}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -240.75, y: 0}
+  m_SizeDelta: {x: -481.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7503988978022724364
 MonoBehaviour:
@@ -6668,14 +6669,22 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+--- !u!222 &6672765612147582684
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7503988978022724365}
+  m_CullTransparentMesh: 0
 --- !u!1 &7503988978035966286
 GameObject:
   m_ObjectHideFlags: 0
@@ -7402,10 +7411,10 @@ RectTransform:
   m_Father: {fileID: 7503988977621528550}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240.5, y: -264.375}
-  m_SizeDelta: {x: 481, y: 176.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7503988978371617557
 CanvasRenderer:
@@ -7999,7 +8008,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 650, y: 100}
+  m_CellSize: {x: 700, y: 100}
   m_Spacing: {x: 10, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 2
@@ -8169,7 +8178,8 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9de2ef11d5d25841b9aca3e7920f089, type: 2}
-  m_sharedMaterial: {fileID: 0}
+  m_sharedMaterial: {fileID: -7380099893524326847, guid: f9de2ef11d5d25841b9aca3e7920f089,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8314,7 +8324,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

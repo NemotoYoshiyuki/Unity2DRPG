@@ -26,7 +26,7 @@ public class EquipList : BaseWindow
         if (weapons.Count == 0) return;
         foreach (var weapon in weapons)
         {
-            SelectableButton _selectableButton = Instantiate(selectableButton);
+            SelectableButton _selectableButton = Instantiate(selectableButton, list.transform);
             TextMeshProUGUI buttonText = _selectableButton.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = weapon.name;
             _selectableButton.onClick.AddListener(() =>
@@ -43,7 +43,7 @@ public class EquipList : BaseWindow
                 equipParameter.ShowParameter(character, weapon);
                 description.text = weapon.description;
             });
-            _selectableButton.transform.SetParent(list.transform);
+            //_selectableButton.transform.SetParent(list.transform);
             selectableButtons.Add(_selectableButton);
         }
         selectableButtons[0].Select();
@@ -58,7 +58,7 @@ public class EquipList : BaseWindow
         if (armors.Count == 0) return;
         foreach (var armor in armors)
         {
-            SelectableButton _selectableButton = Instantiate(selectableButton);
+            SelectableButton _selectableButton = Instantiate(selectableButton, list.transform);
             TextMeshProUGUI buttonText = _selectableButton.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = armor.name;
             _selectableButton.onClick.AddListener(() =>
@@ -75,7 +75,7 @@ public class EquipList : BaseWindow
                 equipParameter.ShowParameter(character, armor);
                 description.text = armor.description;
             });
-            _selectableButton.transform.SetParent(list.transform);
+            //_selectableButton.transform.SetParent(list.transform);
             selectableButtons.Add(_selectableButton);
         }
         selectableButtons[0].Select();
@@ -90,7 +90,7 @@ public class EquipList : BaseWindow
         if (accessorys.Count == 0) return;
         foreach (var accessory in accessorys)
         {
-            SelectableButton _selectableButton = Instantiate(selectableButton);
+            SelectableButton _selectableButton = Instantiate(selectableButton, list.transform);
             TextMeshProUGUI buttonText = _selectableButton.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = accessory.name;
             _selectableButton.onClick.AddListener(() =>

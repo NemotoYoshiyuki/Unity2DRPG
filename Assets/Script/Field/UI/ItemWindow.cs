@@ -83,7 +83,7 @@ public class ItemWindow : BaseWindow
             Item item = items[i];
             ItemButton itemSlot = CreateButton(item);
             itemSlot.index = i;
-            itemSlot.transform.SetParent(itemList.transform);
+            //itemSlot.transform.SetParent(itemList.transform);
             itemSlots.Add(itemSlot);
             selectables.Add(itemSlot.selectable);
         }
@@ -103,7 +103,7 @@ public class ItemWindow : BaseWindow
 
     private ItemButton CreateButton(Item itemData)
     {
-        ItemButton itemSlot = Instantiate(itemSlotPrefab);
+        ItemButton itemSlot = Instantiate(itemSlotPrefab, itemList.gameObject.transform);
         itemSlot.SetUp(itemData);
 
         //クリック動作

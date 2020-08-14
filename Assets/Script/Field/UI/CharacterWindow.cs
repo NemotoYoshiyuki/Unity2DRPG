@@ -38,14 +38,14 @@ public class CharacterWindow : BaseWindow
 
         for (int i = 0; i < member.Count; i++)
         {
-            CharacterSlot characterSlot = Instantiate(characterSlotPrefab);
+            CharacterSlot characterSlot = Instantiate(characterSlotPrefab, list.gameObject.transform);
             characterSlot.playerCharacter = member[i];
             characterSlot.Show();
 
             SelectableButton selectItem = characterSlot.selectableButton;
             selectItem.index = i;
 
-            characterSlot.transform.SetParent(list.transform);
+            //characterSlot.transform.SetParent(list.transform);
 
             characterSlots.Add(characterSlot);
 

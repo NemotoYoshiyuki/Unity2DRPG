@@ -128,7 +128,7 @@ public class SpellWindow : BaseWindow
             Spell item = spellDatas[i];
             SpellSlot spellSlot = CreateButton(item);
             spellSlot.index = i;
-            spellSlot.transform.SetParent(list.transform);
+            //spellSlot.transform.SetParent(list.transform);
             spellSlots.Add(spellSlot);
             selectables.Add(spellSlot.selectable);
         }
@@ -178,7 +178,7 @@ public class SpellWindow : BaseWindow
 
     private SpellSlot CreateButton(Spell spellData)
     {
-        SpellSlot spellSlot = Instantiate(spellSlotPrefab);
+        SpellSlot spellSlot = Instantiate(spellSlotPrefab, list.gameObject.transform);
         spellSlot.SetUp(spellData);
 
         //クリック動作

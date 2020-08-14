@@ -90,7 +90,7 @@ public class Shop : MonoBehaviour
     {
         foreach (var item in product)
         {
-            ShopItemButton BuyButton = Instantiate(productButton);
+            ShopItemButton BuyButton = Instantiate(productButton, listViewContent.gameObject.transform);
             BuyButton.productName.text = item.itemName;
             BuyButton.monyText.text = item.price.ToString() + "G";
 
@@ -102,7 +102,7 @@ public class Shop : MonoBehaviour
                 ProductDescription(item);
             });
             productButtons.Add(BuyButton);
-            BuyButton.transform.SetParent(listViewContent.transform);
+            //BuyButton.transform.SetParent(listViewContent.transform);
         }
     }
 
@@ -118,7 +118,7 @@ public class Shop : MonoBehaviour
         int buttonIndex = -1;
         foreach (var item in items)
         {
-            ShopItemButton sellButton = Instantiate(productButton);
+            ShopItemButton sellButton = Instantiate(productButton, listViewContent.gameObject.transform);
             buttonIndex++;
             sellButton.button.index = buttonIndex;
             sellButton.productName.text = item.itemName;
@@ -136,7 +136,7 @@ public class Shop : MonoBehaviour
                 ProductDescription(item);
             });
             productButtons.Add(sellButton);
-            sellButton.transform.SetParent(listViewContent.transform);
+            //sellButton.transform.SetParent(listViewContent.transform);
         }
         productButtons[0].button.Select();
     }
