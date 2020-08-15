@@ -8,6 +8,11 @@ public class TitleController : MonoBehaviour
     public Button ContinueButton;
     public Button newGameButton;
 
+    void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +24,5 @@ public class TitleController : MonoBehaviour
         {
             newGameButton.Select();
         }
-
     }
 }
