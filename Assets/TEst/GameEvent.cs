@@ -54,6 +54,10 @@ public class GameEvent : MonoBehaviour
         //イベント開始処理
         OnEventStart();
 
+        //遅延実行 キー入力の干渉をさける
+        yield return new WaitForEndOfFrame();
+        //yield return new WaitForSeconds(0.5f);
+
         //イベント実行
         yield return StartCoroutine(routine);
 
