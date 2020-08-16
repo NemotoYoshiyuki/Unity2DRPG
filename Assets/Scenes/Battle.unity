@@ -4372,7 +4372,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1242437202}
   - component: {fileID: 1242437204}
-  - component: {fileID: 1242437205}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -4417,19 +4416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 795616781}
---- !u!114 &1242437205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242437201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb491f1d2d48bb7488ca53df59bc3f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  memo: "\u30EC\u30A4\u30A2\u30A6\u3068\u524D\u306B\u30DC\u30BF\u30F3\u3092\u9078\u629E\u3057\u3066\u3044\u308B"
 --- !u!1 &1302646876
 GameObject:
   m_ObjectHideFlags: 0
@@ -4517,6 +4503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCharacters: []
   enemyCharacters: []
+  canEscape: 0
   battleSetUp: {fileID: 988095034}
   battleStart: {fileID: 988095033}
   battleInput: {fileID: 988095032}
