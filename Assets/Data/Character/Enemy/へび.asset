@@ -21,7 +21,7 @@ MonoBehaviour:
     hp: 8
     maxMp: 8
     mp: 8
-    attack: 100
+    attack: 5
     deffence: 6
     speed: 6
     exp: 8
@@ -29,4 +29,4 @@ MonoBehaviour:
   dropRate: 10
   dropItem: {fileID: 11400000, guid: 2de581474d5e17642990b18fe077e764, type: 2}
   commands:
-  - {fileID: 11400000, guid: 941714bcc2f9b4c4caa19e9fc73a8d1c, type: 2}
+  - {fileID: 11400000, guid: 541338cbaf8e2f249a1cba234cdfff84, type: 2}
