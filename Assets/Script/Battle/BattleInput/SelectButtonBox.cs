@@ -74,6 +74,8 @@ public class SelectButtonBox : BattleCommandInput
     public void AddRegister(Button selectButton)
     {
         selectButton.transform.SetParent(gameObject.transform);
+        //何故かAutoLayoutを使用したとき解像度によってスケールが変化するので防止する
+        selectButton.transform.localScale = Vector3.one;
         this.selectButtons.Add(selectButton);
     }
 
