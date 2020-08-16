@@ -22,7 +22,9 @@ public class Conversation : Interactable
         List<string> content = conversation;
         foreach (var item in content)
         {
+            yield return new WaitForEndOfFrame();
             yield return StartCoroutine(messageWindow.ShowClick(item));
+            yield return new WaitForEndOfFrame();
         }
         messageWindow.Close();
 
